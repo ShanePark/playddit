@@ -1,100 +1,10 @@
 <table style="border-collapse: collapse; width: 100.116%; height: 258px;" border="1"><tbody><tr><td style="width: 100%; text-align: center;"><div id="index"><h3>목차</h3></div></td></tr><tr style="height: 36px;"><td style="width: 100%; height: 36px;"><div id="index">&nbsp;</div><h3><span style="font-family: 'Nanum Gothic';"><a href="#list1">1. Github 가입하기</a></span></h3></td></tr><tr style="height: 37px;"><td style="width: 100%; height: 37px;"><h3><span style="font-family: 'Nanum Gothic';"><a href="#list2">2. Repository (저장소) 만들기</a></span></h3></td></tr><tr style="height: 37px;"><td style="width: 100%; height: 37px;"><h3><span style="font-family: 'Nanum Gothic';"><a href="#list3">3. Sourcetree 다운로드 및 설치</a></span></h3></td></tr><tr style="height: 37px;"><td style="width: 100%; height: 37px;"><h3><span style="font-family: 'Nanum Gothic';"><a href="#list4">4. Sourcetree를 사용해 내 프로젝트를 Repository에 업로드 (동기화, Commit &amp; push) 하기</a></span></h3></td></tr><tr style="height: 37px;"><td style="width: 100%; height: 37px;"><h3><span style="font-family: 'Nanum Gothic';"><a href="#list5">5. 새로운 컴퓨터에 기존 Repository 에서 프로젝트를 받아오기 (동기화, Pull)</a></span></h3></td></tr><tr style="height: 37px;"><td style="width: 100%; height: 37px;"><h3><span style="font-family: 'Nanum Gothic';"><a href="#list6">6. 수정된 코드를 저장소에 반영하기 ( Commit &amp; push )</a></span></h3></td></tr></tbody></table>
 
-[클릭해주세요 > 서론 건너띄고 바로 \[수업 내용 깃허브에 올려 동기화하는 법\] 보기](#content)
-
-8주간의 수업 기간이 지났습니다.
-
-이에 맞춰 저의 Github Contributions 화면상 초록네모들도 드디어 8번째 줄을 채우게 되었습니다.
-
-처음 시작할때만 해도 허허벌판이었는데, 꾸준히 하니 뭔가 차오르기는 하는게 느껴집니다.
-
-[##_Image|kage@KYIjP/btqUhATBpQN/I6TM28PbnzoyGC6IWygT8K/img.png|alignCenter|data-origin-width="0" data-origin-height="0" width="507" height="NaN" data-ke-mobilestyle="widthContent"|||_##]
-
-1주차 수업이 끝난 주말. 여러가지 많은 고민이 있었습니다.
-
-일단 수업내용이 꽤나 많았고, 그럼에도 그걸로 충분하지 않겠구나라는 생각이 들었습니다.
-
-수업이 짧지만, 짧다고만은 할 수 없는 8개월 가량 이어질 예정이었는데,
-
-그 기간동안 저 스스로의 '목표'나 '가이드라인'을 정하고 싶었고,
-
-그 결정을 위해 몇시간동안 열심히 인터넷 검색을 한 뒤 스스로에게 몇가지 방향을 제시 할 수 있었습니다. 
-
-첫째로, Github을 통한 이력 관리 하기.
-
-둘째로, 개인 블로그를 통한 나의 배움 과정 매주 정리하기.
-
-이 두가지의 작은 다짐을 한 11월 21일. 그렇게 저의 Github에 첫번째 초록 불이 들어왔고,
-
-며칠간의 영하 18도의 추위에 따른 처참했던 수도관 동파와
-
-하루 종일 걸린 그 수습에 바쁘고 피곤해 첫번째 위기가 찾아온 오늘이지만,
-
-이렇게나마 블로그 글도 작성해 나가며 아직까지는 잘 지켜내고 있습니다.
-
-처음 Github을 쓰고자 마음 먹고, 관련 정보를 찾아볼때는 정말 막막했습니다.
-
-뭐, 이 글을 찾아보는 분들이 많지는 않으시겠지만 굳이 찾아 읽고 계신분이 있다면 그때의 저와 같은 처지가 아닐까 생각이 듭니다. 
-
-평소에는 궁금한게 있어서 네이버에 치면 귀신같이 어떻게 내 마음을 읽었는지 정확한 질문을 한 사람과, 그에 맞는 기가 막힌 답변을 달아주신 분들이 있어 역시 인터넷 검색으로는 찾지 못하는 게 없구나 싶었는데,
-
-막상 Github을 배우기 위해 네이버, google 을 아무리 찾아 봐도 나에게 맞는 정보는 그 어디에도 존재하지 않았습니다.
-
-대부분의 자료는 
-
-1\. 난이도가 너무 높아 엄두도 내지 못하거나
-
-2\. 나는 사용법을 익히고 싶은데 이론에 대해 설명하다가 끝나는 듯 하거나
-
-3\. Terminal 창을 보여줘서 하고싶은 의지를 꺾게끔 만드는 검색 결과 뿐이었습니다.
-
-[##_Image|kage@IF9Xz/btqSZykmoMa/RYuvZPDlFijKKGkHFLT5qk/img.png|alignCenter|data-origin-width="0" data-origin-height="0" width="687" height="NaN" data-ke-mobilestyle="widthContent"|내가 원한건 이런 화면이 아닌데...?||_##]
-
-아마도 다른 분들도 여기서 많이 포기하시지 않았을까 싶네요.
-
-Youtube를 통해 자료도 검색해보고, T 아카데미에서 깃허브 관련 강의들도 찾아서 봤지만, 딱히 저에게 도움 되는 자료를 찾을 수가 없었습니다.
-
-어쩌겠습니까.. 하긴 해야겠고. 기본부터 그냥 차근히 해보자 했습니다.
-
-[##_Image|kage@bZwIZO/btqS9ZtTlaU/Q6SzFH4TdrbPOt4Pi6qgnK/img.png|alignCenter|data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent"|Github 에서 제공하는 Github 튜토리얼||_##]
-
-[lab.github.com/githubtraining/introduction-to-github?overlay=register-box-overlay](https://lab.github.com/githubtraining/introduction-to-github?overlay=register-box-overlay)
-
-[
-
-Introduction to GitHub | GitHub Learning Lab
-
-If you are looking for a quick and fun introduction to GitHub, you've found it. This class will get you started using GitHub in less than an hour.
-
-lab.github.com
 
 
 
-](https://lab.github.com/githubtraining/introduction-to-github)
+제가 설명할 내용은 Git을 제대로 배우기 위한 내용과는 거리가 있을 수 있다는 점 양해해주세요.
 
-위의 페이지를 통해 Github 에서는 말그대로 '깃허브 사용법' 을 제공해 줍니다.
-
-이게 시작이었고, 나중에 6주차가 지나고 나서 Github을 통해 팀 프로젝트를 진행할때가 되어서야 이때 튜토리얼 했던 내용들이 소중한 자산이 되어서 저희 팀이 Github을 활용하는데 큰 도움이 되었습니다. ( 물론 제대로 알고 활용했냐 물으면 대답하지 못하겠지만 저희 나름대로 알차게 활용을 했고, 프로젝트 진행에서 Github이 정말 큰 도움이 되었습니다)
-
-**하지만.**  우리가 지금 당장 원하는건 이게 아니죠,
-
-**내가 학원 혹은 학교에서 수업을 듣고 있는 내용을 USB 파일이나 e-mail로 전송하지 않고, 집에 있는 PC나 개인 laptop으도 똑같은 작업을 그대로 이어 갈 수 있게끔** 하는게 목적이고,
-
-그게 팀 프로젝트 전까지는 저의 유일한 Github 활용이기도 했습니다.
-
-팀 프로젝트에서 협업에 Github을 사용했다는 발표에, 같은 반에 계신 몇몇분들이 사용법에 대해 문의를 주셨습니다. 제가 처음 그랬던 것 처럼 혼자 해보려고 가입도 해보고, 이것 저것 설치도 해보고 하다하다 안되서 마지막에 도움 요청을 하시거나, 아니면 그냥 포기해버린 분들도 몇분 계셨는데요
-
-설명을 해 드릴때 마다 똑같은 내용을 설명 드려야하는데 심지어 그때마다 제가 설명을 딱히 잘 하지도 못했습니다.
-
-매번 열심히 설명 해 드렸음에도 미안한 마음 뿐이었습니다.
-
-이 글을 쓰게 된 동기입니다.
-
-서론이 길었습니다. 제가 설명할 내용은 Git을 제대로 배우기 위한 내용과는 거리가 있을 수 있다는 점 양해해주세요.
-
-어쨌든 저는 지금의 주제인
-
----
 
 **'수업 내용 깃허브에 올려 동기화하기'** 에만 집중해 설명해 보도록 하겠습니다.
 
