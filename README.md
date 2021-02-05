@@ -1,11 +1,10 @@
 # playddit
 ## social network service for DDIT students
 <hr>
-## ▶️ playddit Project
-## by team playddit
+
 ### thank you for visiting our project page
 ### this repository is about middle term team project called "playddit"
-### our team started this project on 5th Feb 2021
+### 'team playddit' has been working on this project since 5th Feb 2021
 ### any feedbacks would be greatly appreciated
 
 >### Team playddit
