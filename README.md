@@ -1,8 +1,6 @@
 # playddit
 playddit is an social network service for DDIT students
-# DDIT_Project1
 <hr>
-
 ## ▶️ playddit Project
 ## by team playddit
 ### thank you for visiting our project page
