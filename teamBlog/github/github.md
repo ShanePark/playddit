@@ -1,12 +1,8 @@
-<style>
-.index{
-    font-size : 2.0em;
-}
 </style>
 <br>
 <h1>수업 내용 깃허브에 올려 동기화하기</h1>
 
-본 문서는 markdown을 기반으로 html을 적절히 혼합하여 작성하였습니다.
+본 문서는 markdown을 기반으로 작성되었습니다.
 <br>
 
 |<span id="content" style="font-size:2em">Contents</span>|
@@ -21,7 +17,7 @@
 <hr>
 <br>
 
-<a href="#content" class="index" id="index1">1. Github 가입하기</a>
+<a style="font-size:2em" href="#content" class="index" id="index1">1. Github 가입하기</a>
 
 어렵지 않습니다.
 
@@ -34,7 +30,7 @@
 
 <br>
 
-<a href="#content" class="index" id="index2">2. 저장소 만들기</a>
+<a style="font-size:2em" href="#content" class="index" id="index2">2. 저장소 만들기</a>
 
 Repositories 메뉴에서 우측 상단의 New 를 눌러서 생성하시면됩니다.
 
@@ -56,7 +52,7 @@ Repositories 메뉴에서 우측 상단의 New 를 눌러서 생성하시면됩�
 
 Github에서의 세팅은 이걸로 끝입니다.
 
-<a href="#content" class="index" id="index3">3. 소스트리 다운로드</a>
+<a style="font-size:2em" href="#content" class="index" id="index3">3. 소스트리 다운로드</a>
 
 
 [www.sourcetreeapp.com/](https://www.sourcetreeapp.com/)
@@ -94,7 +90,7 @@ SSH 키가 뭔지 모르신다면 그냥 '아니오'를 선택하시면 됩니�
 
 설치가 완료되었습니다.
 
-<a href="#content" class="index" id="index4">4\. Sourcetree를 사용해 내 프로젝트를 Repository에 업로드 (동기화, Commit & push) 하기</a>
+<a style="font-size:2em" href="#content" class="index" id="index4">4\. Sourcetree를 사용해 내 프로젝트를 Repository에 업로드 (동기화, Commit & push) 하기</a>
 
 
 최대한, 처음 설치했을때 모습과 비슷하게 보이려고 tab을 다 닫아봤는데, 저의 Local repositories에 있는 내용들은 무시하시면 됩니다.
@@ -237,7 +233,7 @@ Github의 저장소와 본인 컴퓨터의 해당 폴더는 서로 연결이 되
 
 축하합니다. 여기까지 따라 오셨다면 Github에 수업내용을 올리는데 성공하셨습니다.
 
-<a href="#content" class="index" id="index5">5\. 새로운 컴퓨터에서 기존 Repository 에서 프로젝트를 받아오기 (동기화, Pull)</a>
+<a style="font-size:2em" href="#content" class="index" id="index5">5\. 새로운 컴퓨터에서 기존 Repository 에서 프로젝트를 받아오기 (동기화, Pull)</a>
 
 새로운 컴퓨터에서 같은 저장소를 동기화 하는 방법 설명해드리겠습니다.
 
@@ -287,7 +283,7 @@ Clone 누르면 끝입니다.
 6 ) 폴더에 들어가보면 잘 동기화 된 것을 확인 할 수 있습니다.
 
 
-<a href="#content" class="index" id="index6">6\. 수정된 코드를 저장소에 반영하기 (Commit & push)]</a>
+<a style="font-size:2em" href="#content" class="index" id="index6">6\. 수정된 코드를 저장소에 반영하기 (Commit & push)]</a>
 
 ![image](github40.png)
 ![image](github41.png)
