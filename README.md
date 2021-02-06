@@ -9,7 +9,9 @@
 ### 소중한 피드백을 남겨주세요!
 <br>
 
->### Team playddit ⌚️
+### Team blog
+>[playddit team blog](./teamBlog/teamblog.md)
+### Team members ⌚️
 >[Shane](https://github.com/Shane-Park)   
 >[Scarlett](https://github.com/Scarl-ett)   
 >[josh](https://github.com/JeonghoonWon)   
