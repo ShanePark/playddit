@@ -1,4 +1,3 @@
-</style>
 <br>
 <h1>수업 내용 깃허브에 올려 동기화하기</h1>
 
@@ -346,3 +345,5 @@ workspace 통째로 커밋해서 사용하시다가 , 나중에 좀 익숙해지
 저는 이걸 깨닫기 까지 무려 7주가 걸렸습니다. metaData들의 conflict에 지칠때쯤 이 길로 오시면 되고 그때까지는 workspace 통째로 커밋하셔도 push 와 pull 만 잊지 않는다면 잘 사용하실수 있습니다.
 
 긴글 본다고 고생하셨습니다!
+
+><a style="font-size:1.5em" href="#content" class="index">처음으로 돌아가기</a>
