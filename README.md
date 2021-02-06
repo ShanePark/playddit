@@ -1,11 +1,13 @@
 # 📱 playddit
-## social network service for DDIT students
+## playddit는 우리 학생들의 소셜미디어에요.
+
 <hr>
 
-### thank you for visiting our project page
-### this project is initially designed for our mid-term team project
-### 'team playddit' has been working on this since 5th Feb 2021.
-### any feedback would be greatly appreciated
+### 방문을 환영해요!
+### playddit는 2021년 2월 5일부터
+### 중간 프로젝트의 일환으로 시작되었어요.
+### 소중한 피드백을 남겨주세요!
+<br>
 
 >### Team playddit ⌚️
 >[Shane](https://github.com/Shane-Park)   
