@@ -1,0 +1,41 @@
+pre{
+	 background-color : #999999;
+	 font-size : 1.5em;
+	 white-space : pre-wrap;
+	 
+	 /*
+	 	pre : 공백은 그대로, 줄바꿈이 되지 않는다.
+	 	pre-wrap : 공백은 그대로 줄바꿈 된다.
+	 	pre-line : 공백을 여러개 줘도 공백은 하나만 표시한다.줄바꿈이 된다.
+	 	nowrap : 공백을 여러개 줘도 공백은 하나만 표시하고, 줄바꿈이 되지 않는다.
+	 */
+ }
+ form{
+ 	line-height: 150%;
+ }
+ .box input[type=button]{
+ 	width : auto;
+ 	height : 40px;
+ 	background : #515151;
+ 	color : white;
+ 	padding : 5px 10px;
+ 	border-radius : 15px;
+ }
+ 
+ .box div{
+ 	margin : 20px;
+ 	height : auto;
+ 	padding : 10px;
+ 	border : 2px dotted #bbbbbb;
+ 	width : 80%;
+ }
+  div.box{
+ 	height : auto;
+ 	margin : 10px;
+ 	padding-top : 10px;
+ 	padding-left : 30px;
+ 	background : #515151;
+ 	border : 3px solid #515151;
+ 	width : auto;
+ 	border-radius : 15px;
+ }
