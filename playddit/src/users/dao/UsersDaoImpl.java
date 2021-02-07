@@ -12,6 +12,7 @@ import util.SqlMapUtil;
 public class UsersDaoImpl implements UsersDao {
 	private SqlMapClient smc = SqlMapUtil.getSqlMapClient();
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<UsersVO> getAllUsers() {
 		List<UsersVO> list = new ArrayList<>();
