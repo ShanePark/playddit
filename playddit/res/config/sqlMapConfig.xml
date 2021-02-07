@@ -24,7 +24,7 @@
  	 	
  	 	형식 : <typeAlias alias="alias명 type="클래스의 전체이름"/>
  	  -->
- 	  <typeAlias alias = "UsersVO" type="users.UsersVO"/>
+ 	  <typeAlias alias = "UsersVO" type="users.vo.UsersVO"/>
  	  
  	  <!-- DB와의 연결을 처리하는 부분 -->
  	  <transactionManager type="JDBC">
