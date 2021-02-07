@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.5.1.min.js"></script>
+<script>
+$(function(){
+	//request 객체를 생성
+	xhr = new XMLHttpRequest();
+	
+	$('input:button').on('click', function(){
+		
+		// 요청
+		xhr.open("get", "users.jsp", true)
+		xhr.send()
+		
+		// 응답
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				
+				res = JSON.parse(this.responseText);
+				
+				//출력
+				code = "<table border='1'>";
+				code += "<tr><td>아이디</td>"
+				code += "<td>이름</td>";
+				code += "<td>비밀번호</td></tr>";
+				$.each(res,function(i,v){
+					code += "<tr><td>"+res[i].id+"</td>";
+					code += "<td>"+res[i].name+"</td>";
+					code += "<td>"+res[i].password+"</td></tr>";
+				})
+				
+				code += "</table>";
+				
+				$('#result1').html(code);
+			}
+		}
+		
+	})
+})
+</script>
+<style>
+</style>
+</head>
+<body>
+<div class = "box">
+확인 버튼을 클릭하면 users table의 데이터를 조회하여
+result1에 출력한다.
+	<br><br>
+	
+	<input type="button" value="확인">
+	
+	<div id ="result1"></div>
+</div>
+
+</body>
+</html>
