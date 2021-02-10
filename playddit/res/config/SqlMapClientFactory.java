@@ -23,14 +23,14 @@ public class SqlMapClientFactory {
 			// 1-3. 위에서 읽어온 Reader객체를 이용하여 실제 환경 설정을 진행한 후 SQL문을
 			//		호출해서 실행할 객체를 생성한다.
 			smc = SqlMapClientBuilder.buildSqlMapClient(rd);
-		
+			rd.close();
 		} catch (Exception ex){
-		
+			
 		}
 		
 	}
 	
-	public static SqlMapClient getCliect(){
+	public static SqlMapClient getClient(){
 		return smc;
 	}
 }
