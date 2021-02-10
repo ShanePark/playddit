@@ -7,12 +7,9 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import config.SqlMapClientFactory;
-import users.service.IUsersService;
 import users.vo.UsersVO;
-import util.SqlMapUtil;
 
 public class UsersDaoImpl implements IUsersDao {
-	@SuppressWarnings("unchecked")
 	
 	private SqlMapClient client;
 	private static IUsersDao dao;
@@ -29,6 +26,7 @@ public class UsersDaoImpl implements IUsersDao {
 	
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<UsersVO> getAllUsers() {
 		List<UsersVO> list = new ArrayList<>();
