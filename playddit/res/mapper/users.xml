@@ -8,4 +8,10 @@
 		select *
 		from users
 	</select>
+	
+	<select id="selectById" resultClass="String" parameterClass="String">
+		select user_id from users
+		where user_id = #user_id#
+	</select>
+	
 </sqlMap>
