@@ -9,9 +9,17 @@
 		from users
 	</select>
 	
+	<!-- 아이디 중복체크 -->
 	<select id="selectById" resultClass="String" parameterClass="String">
 		select user_id from users
 		where user_id = #user_id#
+	</select>
+	
+	<!-- 팔로잉 목록 출력 -->
+	<select id="followingList" resultClass="UserVO" parameterClass="String">
+		select followee 
+		from follow, users
+		where follow.followee = users.$user_id$ 
 	</select>
 	
 </sqlMap>

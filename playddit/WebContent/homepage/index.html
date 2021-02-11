@@ -40,6 +40,39 @@
 				dataType : 'json'
 			})
 		})
+		
+		$(function(){
+			$('#flbtn').on('click', function(){
+				followingList = $('#followingList').val().trim();
+				
+				if(followingList.length < 1){
+					$('#flspan').html("팔로잉한 친구가 없어요. 지금 친구를 검색해 팔로잉 해보세요.");
+					return false;
+				}
+				
+				$.ajax({
+					url : '/playddit/followingList.do',
+					type : 'post',
+					data : { 'user_id' : followingList},
+					success : function(res){
+						
+						code = "<table>";
+						code += "<tr><td>아이디</td><td>이름</td><td>닉네임</td></tr>";
+						code += "<tr><td>" + res.id +"</td></tr>";
+						code += "<tr><td>" + res.name +"</td></tr>";
+						code += "<tr><td>" + res.nickname +"</td></tr>";
+						code += "</table>";
+						
+						console.log("res.id");
+						$('#idspan').html(code);
+					},
+					error : function(xhr){
+						alert("상태 : " + xhr.status);
+					},
+					dataType : 'json'
+				})
+			})
+		})
 	})
 </script>
 </head>
@@ -48,14 +81,21 @@ welcome to playddit
 <div>
 	<input type="button" value="click">
 </div>
-	<h3>회원가입 테스트</h3>
+
 	<br>
-	<form>
+	<h3>회원가입 테스트</h3>
 		<div>
 			<input type="text" id="id" placeholder="Enter id" name="mem_id">
 		</div>
 		<button id="idbtn" type="button">check</button>
 		<span id="idspan"></span>
-	</form>
+
+	<br>
+	<h3>팔로잉 목록 출력</h3>
+	<div>
+		<input type="text" id="followingList">
+	</div>
+	<button id="flbtn" type="button">팔로잉 목록</button>
+	<span id="flspan"></span>
 </body>
 </html>
