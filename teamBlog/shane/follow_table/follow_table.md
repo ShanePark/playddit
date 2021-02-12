@@ -54,8 +54,8 @@ where user_id = 'a004';
 select *
 from users
 where user_id in (select followee 
-					from follow
-					where follower='a001');
+		    from follow
+		   where follower='a001');
 ```
 
 where 절에서 = 이 아닌 in 이 쓰인것에 주목해주세요. 서브쿼리 안의 쿼리에서 불러오는 값이 여러개고, 해당 아이디들의 정보를 모두 불러와야 하니 in 을 사용합니다.
