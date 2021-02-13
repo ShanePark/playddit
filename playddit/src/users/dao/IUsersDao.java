@@ -10,4 +10,10 @@ public interface IUsersDao {
 	
 	// 아이디 중복체크
 	public String selectById(String user_id) throws SQLException;
+	
+	// 팔로잉 목록 출력
+	public List<UsersVO> followingList(String user_id) throws SQLException;
+	
+	
 }
+	

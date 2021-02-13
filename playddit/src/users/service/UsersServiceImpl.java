@@ -39,6 +39,23 @@ public class UsersServiceImpl implements IUsersService {
 		}
 		return resId;
 	}
+
+	/**
+	 * 팔로잉 목록 출력
+	 */
+	@Override
+	public List<UsersVO> followingList(String user_id) {
+		List<UsersVO> following = null;
+		
+		try {
+			following = dao.followingList(user_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return following;
+	}
+	
+	
 	
 	
 }

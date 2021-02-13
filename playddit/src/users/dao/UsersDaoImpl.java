@@ -50,4 +50,17 @@ public class UsersDaoImpl implements IUsersDao {
 		return resId;
 	}
 
+	/**
+	 * 팔로잉 목록 출력
+	 */
+	@Override
+	public List<UsersVO> followingList(String user_id) throws SQLException {
+		List<UsersVO> following = null;
+		
+		// sql문의 수행 결과를 리턴받음
+		following = (List<UsersVO>) client.queryForList("users.followingList", user_id);
+		
+		return following;
+	}
+
 }
