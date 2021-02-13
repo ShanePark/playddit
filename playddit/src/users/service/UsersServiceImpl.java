@@ -44,13 +44,12 @@ public class UsersServiceImpl implements IUsersService {
 	 * 팔로잉 목록 출력
 	 */
 	@Override
-	public UsersVO followingList(String user_id) {
-		UsersVO following = null;
+	public List<UsersVO> followingList(String user_id) {
+		List<UsersVO> following = null;
 		
 		try {
 			following = dao.followingList(user_id);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return following;

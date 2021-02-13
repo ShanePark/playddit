@@ -16,10 +16,12 @@
 	</select>
 	
 	<!-- 팔로잉 목록 출력 -->
-	<select id="followingList" resultClass="UserVO" parameterClass="String">
-		select followee 
-		from follow, users
-		where follow.followee = users.$user_id$ 
+	<select id="followingList" resultClass="UsersVO" parameterClass="String">
+		select *
+		from users
+		where user_id in (select followee
+         			       from follow
+                			where follower = #user_id#)
 	</select>
 	
 </sqlMap>

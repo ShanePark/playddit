@@ -1,6 +1,5 @@
 package users.service;
 
-import java.sql.SQLException;
 import java.util.List;
 import users.vo.UsersVO;
 
@@ -11,6 +10,6 @@ public interface IUsersService {
 	public String selectById(String user_id);
 	
 	// 팔로잉 목록 출력
-	public UsersVO followingList(String user_id); 
+	public List<UsersVO> followingList(String user_id); 
 	
 }

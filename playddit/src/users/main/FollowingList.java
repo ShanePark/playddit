@@ -1,6 +1,7 @@
 package users.main;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,11 +26,11 @@ public class FollowingList extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-		String Id = request.getParameter("user_id");
+		String id = request.getParameter("user_id");
 		
 		IUsersService service = UsersServiceImpl.getService();
 		
-		UsersVO following = service.followingList(Id);
+		List<UsersVO> following = service.followingList(id);
 		
 		request.setAttribute("following", following);
 		
