@@ -1,7 +1,3 @@
-/**
- * index.html파일의 function
- */
-
 function idcheck(){
 	idvalue = $('#id').val().trim();
 			
