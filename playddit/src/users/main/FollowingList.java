@@ -34,7 +34,7 @@ public class FollowingList extends HttpServlet {
 		
 		request.setAttribute("following", following);
 		
-		RequestDispatcher disp = request.getRequestDispatcher("test/following.jsp");
+		RequestDispatcher disp = request.getRequestDispatcher("jsp/users/following.jsp");
 		disp.forward(request, response);
 	}
 	

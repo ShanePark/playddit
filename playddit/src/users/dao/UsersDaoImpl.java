@@ -53,6 +53,7 @@ public class UsersDaoImpl implements IUsersDao {
 	/**
 	 * 팔로잉 목록 출력
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<UsersVO> followingList(String user_id) throws SQLException {
 		List<UsersVO> following = null;
