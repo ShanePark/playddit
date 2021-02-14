@@ -47,3 +47,7 @@ function followingList(){
 		dataType : 'json'
 	})
 }
+
+function idPassCheck(){
+	alert('please implement this method');
+}

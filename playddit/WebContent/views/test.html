@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="../js/jquery-3.5.1.min.js"></script>
-<script src="../js/index.js"></script>
+<script src="../js/test.js"></script>
 
 <style>
 	#idbtn{
@@ -26,6 +26,9 @@
 		$('#flbtn').on('click', function(){
 			followingList();
 		})
+		$('#idPassBtn').on('click', function(){
+			idPassCheck();
+		})
 	})
 </script>
 </head>
@@ -34,21 +37,26 @@ welcome to playddit
 <div>
 	<input type="button" value="click">
 </div>
-
-	<br>
 	<h3>회원가입 테스트</h3>
-		<div>
-			<input type="text" id="id" placeholder="Enter id" name="mem_id">
-		</div>
-		<button id="idbtn" type="button">check</button>
-		<span id="idspan"></span>
-
-	<br>
-	<h3>팔로잉 목록 출력</h3>
+	<div>
+		<input type="text" id="id" placeholder="Enter id" name="mem_id">
+	</div>
+	<button id="idbtn" type="button">check</button>
+	<span id="idspan"></span>
+	
+	<hr><br><h3>팔로잉 목록 출력</h3>
 	<div>
 		<input type="text" id="followingList">
 	</div>
 	<button id="flbtn" type="button">팔로잉 목록</button>
 	<span id="flspan"> </span>
+	
+	<hr><br><h3>아이디 비밀번호 확인</h3>
+	<div>
+		아이디 : <input type="text" id="idCheck"><br>
+		비밀번호 : <input type="password" id="passCheck">
+	</div>
+	<button id="idPassBtn" type="button">check</button>
+	<span id="idPassSpan"> </span>
 </body>
 </html>
