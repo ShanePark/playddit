@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
 <%
 	// 저장된 값 가져오기
+	@SuppressWarnings("unchecked")
 	List<UsersVO> list = (List<UsersVO>)request.getAttribute("following");
 %>
 [

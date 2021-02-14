@@ -34,7 +34,7 @@ public class idCheck extends HttpServlet {
 		request.setAttribute("resultvalue", result);
 		
 		// 5. view페이지로 forward
-		RequestDispatcher disp = request.getRequestDispatcher("test/idCheck.jsp");
+		RequestDispatcher disp = request.getRequestDispatcher("jsp/users/idCheck.jsp");
 		disp.forward(request, response);
 	}
 
