@@ -54,6 +54,21 @@ public class UsersServiceImpl implements IUsersService {
 		}
 		return following;
 	}
+
+	/**
+	 * 아이디 비밀번호 일치 여부
+	 */
+	@Override
+	public UsersVO match(String user_id,String user_pw) {
+		UsersVO vo = null;
+		try {
+			vo = dao.match(user_id, user_pw);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
+	}
 	
 	
 	

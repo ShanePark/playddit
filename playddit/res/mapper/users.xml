@@ -24,4 +24,10 @@
                 			where follower = #user_id#)
 	</select>
 	
+	<!-- 아이디 & 비밀번호 일치 여부 -->
+	<select id="match" resultClass="UsersVO" parameterClass="map">
+		select * 
+ 		 from users
+         where user_id=#user_id# and user_password=#user_pw#
+	</select>
 </sqlMap>

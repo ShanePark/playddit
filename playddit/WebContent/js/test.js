@@ -49,5 +49,44 @@ function followingList(){
 }
 
 function idPassCheck(){
-	alert('please implement this method');
+	idvalue = $('#idCheck').val().trim();
+	pwvalue = $('#passCheck').val().trim();
+	
+	if(idvalue.length < 1 || pwvalue.length < 1){
+		$('#idPassSpan').html("아이디 또는 비밀번호를 입력해주세요.");
+		return;
+	}
+	
+	$.ajax({
+		url : '/playddit/match.do',
+		type : 'post',
+		data : { 'user_id': idvalue,
+				 'user_pw' : pwvalue },
+		success : function(res){
+			code = "아이디 : " + res.id;	
+			code += "닉네임 : " + res.nickname;
+			
+			$('#idPassSpan').html(code);
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+	})
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
