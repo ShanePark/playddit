@@ -53,6 +53,7 @@ public class VerifyEmail {
 			message.setText("Welcome to playddit. your code is ["+code+"]");
 			
 			Transport.send(message);	// send message
+			System.out.println("이메일 전송을 성공적으로 완료했습니다.");
 			
 			
 		} catch (AddressException e) {
