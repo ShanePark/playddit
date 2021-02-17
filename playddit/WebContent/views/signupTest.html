@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.5.1.min.js"></script>
+<script src="../js/singupTest.js"></script>
+
+<script>
+	$(function(){
+		// id(email) check
+		$('#idbtn').on('click', function(){	
+			idCheck();
+		})
+		
+		// password check
+		$('#pwbtn').on('click', function(){
+			pwvalue = $('#pw').val().trim();
+			if(pwvalue.length < 8 || pwvalue.length > 12){
+				$('#pwspan').text("8글자 이상 12글자 이하로 입력하세요.").css('color', 'red');
+			}else{
+				pwCheck();
+			}
+		})
+		
+		// password recheck
+		$('#pwChkbtn').on('click', function(){
+			pwChkvalue = $('#pwChk').val().trim();
+			
+			if(pwvalue == pwChkvalue){
+				$('#pwChkspan').text("비밀번호가 일치합니다.").css('color', 'green');
+			}else{
+				$('#pwChkspan').text("비밀번호가 일치하지 않습니다.").css('color', 'red');	
+			}
+		})
+		
+		// name check
+		$('#namebtn').on('click', function(){
+			namevalue = $('#name').val().trim();
+			
+			if(namevalue.length < 2 || namevalue.length > 5){
+				$('#namespan').text("한글 2자 이상 5자 이하로 입력하세요.").css('color', 'red');
+			}else{
+				nameCheck();
+			}
+		})
+		
+		// ph check
+		$('#phonebtn').on('click', function(){
+			phCheck();
+		})
+		
+		// birth check
+		$('#birthbtn').on('click', function(){
+			birthCheck();
+		})
+		
+		
+	})
+
+</script>
+</head>
+
+<body>
+	<h3>정규화 테스트</h3>
+	<br>
+	<div>
+		email <input type="email" id="id" placeholder="please enter your email">
+	</div>
+	<button id="idbtn" type="button">check</button>
+	<span id="idspan"></span><br><br>
+	
+	<div>
+		nickname  <input type="text" id="nick" placeholder="please enter your nickname">
+	</div>
+	<button id="nickbtn" type="button">check</button>
+	<span id="nickspan"></span><br><br>
+	
+	<div><!-- password확인하기 위해 type을 text로 설정 -->
+		password  <input type="text" id="pw" placeholder="please enter your password">
+	</div>
+	<button id="pwbtn" type="button">check</button>
+	<span id="pwspan"></span><br><br>
+	
+	<div>
+		passwordChk  <input type="text" id="pwChk" placeholder="please check your password">
+	</div>
+	<button id="pwChkbtn" type="button">check</button>
+	<span id="pwChkspan"></span><br><br>
+	
+	<div>
+		name  <input type="text" id="name" placeholder="please enter your name">
+	</div>
+	<button id="namebtn" type="button">check</button>
+	<span id="namespan"></span><br><br>
+	
+	<div>
+		phoneNumber  <input type="text" id="phone" placeholder="please enter your phone number">
+	</div>
+	<button id="phonebtn" type="button">check</button>
+	<span id="phonespan"></span><br><br>
+	
+	<div >
+		birthDay  <input type="date" id="birth" placeholder="Choose your birthday">
+	</div>
+	<button id="birthbtn" type="button">check</button>
+	<span id="birthspan"></span><br><br>
+	
+</body>
+</html>
