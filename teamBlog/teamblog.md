@@ -17,6 +17,9 @@
 ### JavaScript
 >추후 추가될 예정입니다.
 
+### ibatis
+>[ibatis selectKey 사용법 - scarlett](scarlett/notion/ibatis - selectkey 사용법.md)<br/>
+
 ### Servlet
 >[Servlet이란? - summer](summer/servlet/Servlet.md)<br/>
 
