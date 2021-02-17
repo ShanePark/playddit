@@ -2,7 +2,9 @@ package users.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -62,6 +64,20 @@ public class UsersDaoImpl implements IUsersDao {
 		following = (List<UsersVO>) client.queryForList("users.followingList", user_id);
 		
 		return following;
+	}
+
+	/**
+	 * 아이디 비밀번호 일치여부
+	 */
+	@Override
+	public UsersVO match(String user_id, String user_pw) throws SQLException {
+		UsersVO vo = null;
+		Map<String, String> map = new HashMap<>();
+		map.put("user_id", user_id);
+		map.put("user_pw", user_pw);
+		vo = (UsersVO) client.queryForObject("users.match", map);
+
+		return vo;
 	}
 
 }

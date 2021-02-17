@@ -14,6 +14,9 @@ public interface IUsersDao {
 	// 팔로잉 목록 출력
 	public List<UsersVO> followingList(String user_id) throws SQLException;
 	
+	// 아이디 비밀번호 일치여부
+	public UsersVO match(String user_id, String user_pw) throws SQLException;
+	
 	
 }
 	
