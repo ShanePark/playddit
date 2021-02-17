@@ -1,6 +1,5 @@
 package users.service;
 
-import java.sql.SQLException;
 import java.util.List;
 import users.vo.UsersVO;
 
