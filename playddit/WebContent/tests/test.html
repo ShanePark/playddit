@@ -16,6 +16,9 @@
 <script>
 	$(document).ready(function(){
 		var idCookie = getCookie("id");
+		if( idCookie !== undefined)
+			$('#idchk').attr("checked", true);
+		
 		$('#idCheck').val(idCookie);
 		
 		$('input:button').on('click',function(){
