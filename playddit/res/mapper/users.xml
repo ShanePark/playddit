@@ -5,7 +5,7 @@
 
 <sqlMap namespace = "users">
 	<select id="selectAll" resultClass="UsersVO">
-		select *
+		select user_id
 		from users
 	</select>
 	
@@ -17,7 +17,7 @@
 	
 	<!-- 팔로잉 목록 출력 -->
 	<select id="followingList" resultClass="UsersVO" parameterClass="String">
-		select *
+		select user_id, user_nickname, user_name
 		from users
 		where user_id in (select followee
          			       from follow
@@ -26,7 +26,7 @@
 	
 	<!-- 아이디 & 비밀번호 일치 여부 -->
 	<select id="match" resultClass="UsersVO" parameterClass="map">
-		select * 
+		select user_id, user_password, user_nickname
  		 from users
          where user_id=#user_id# and user_password=#user_pw#
 	</select>
