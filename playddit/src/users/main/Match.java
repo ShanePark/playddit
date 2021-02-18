@@ -19,15 +19,12 @@ public class Match extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 
 		String id = request.getParameter("user_id");
 		String pw = request.getParameter("user_pw");
 		IUsersService service = UsersServiceImpl.getService();
 
 		UsersVO vo = service.match(id, pw);
-
-
 
 		request.setAttribute("match", vo);
 

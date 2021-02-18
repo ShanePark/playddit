@@ -15,6 +15,9 @@
 </style>
 <script>
 	$(document).ready(function(){
+		var idCookie = getCookie("id");
+		$('#idCheck').val(idCookie);
+		
 		$('input:button').on('click',function(){
 			alert("우리 팀원들 환영해요!");
 		})
@@ -28,6 +31,13 @@
 		})
 		$('#idPassBtn').on('click', function(){
 			idPassCheck();
+		})
+		$('#idchk').on('click',function(){
+			if( $('#idchk:checked').val() == 'on'){
+				rememberId();
+			}else{
+				forgetId();
+			}
 		})
 	})
 </script>
@@ -54,7 +64,8 @@ welcome to playddit
 	<hr><br><h3>아이디 비밀번호 확인</h3>
 	<div>
 		아이디 : <input type="text" id="idCheck"><br>
-		비밀번호 : <input type="password" id="passCheck">
+		비밀번호 : <input type="password" id="passCheck"><br>
+		아이디저장<input id="idchk" type="checkbox">
 	</div>
 	<button id="idPassBtn" type="button">check</button>
 	<span id="idPassSpan"> </span>

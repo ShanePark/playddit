@@ -63,8 +63,12 @@ function idPassCheck(){
 		data : { 'user_id': idvalue,
 				 'user_pw' : pwvalue },
 		success : function(res){
-			code = "아이디 : " + res.id;	
-			code += "닉네임 : " + res.nickname;
+			if( res.id == 'null' ){
+				code = "아이디나 비밀번호를 확인해주세요.";
+			}else{
+				code = "아이디 : " + res.id;	
+				code += "닉네임 : " + res.nickname;
+			}
 			
 			$('#idPassSpan').html(code);
 		},
@@ -75,6 +79,26 @@ function idPassCheck(){
 	})
 }
 
+function setCookie(name, value, exp){
+	var date = new Date();
+	date.setTime(date.getTime() + exp*24*60*60*1000);
+	document.cookie = name+'='+value+';expires='+date.toUTCString()+';path=1';
+}
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function rememberId(){
+	id = $('#idCheck').val().trim();
+	setCookie("id", id, 30);
+}
+
+function forgetId(){
+	setCookie("id",'',-1);
+}
 
 
 
