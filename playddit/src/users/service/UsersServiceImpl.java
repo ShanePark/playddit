@@ -27,7 +27,9 @@ public class UsersServiceImpl implements IUsersService {
 	public List<UsersVO> getAllUsers() {
 		return dao.getAllUsers();
 	}
-
+	/**
+	 * 아이디 중복 검사
+	 */
 	@Override
 	public String selectById(String user_id) {
 		String resId = null;
@@ -38,6 +40,21 @@ public class UsersServiceImpl implements IUsersService {
 			e.printStackTrace();
 		}
 		return resId;
+	}
+	
+	/**
+	 * 닉네임 중복 검사
+	 */
+	@Override
+	public String selectByNick(String user_nickname) {
+		String resNick = null;
+		try {
+			resNick = dao.selectByNick(user_nickname);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resNick;
 	}
 
 	/**

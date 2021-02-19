@@ -30,4 +30,12 @@
  		 from users
          where user_id=#user_id# and user_password=#user_pw#
 	</select>
+	
+	<!-- 닉네임 중복검사 -->
+	<select id="selectByNick" resultClass="String" parameterClass="String">
+		select user_nickname
+		  from users
+		 where user_nickname = #user_nickname#
+	</select>
+	
 </sqlMap>
