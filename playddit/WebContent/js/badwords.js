@@ -507,7 +507,7 @@ function wordchk(nickvalue){
     arrList[arrList.length]="성게시판";
     arrList[arrList.length]="성고민상담";
     arrList[arrList.length]="성과섹스";
-//    arrList[arrList.length]="성기";
+    arrList[arrList.length]="성기";
     arrList[arrList.length]="성보조기구";
     arrList[arrList.length]="성상담";
     arrList[arrList.length]="성인";
@@ -1597,7 +1597,7 @@ function wordchk(nickvalue){
     arrList[arrList.length]="porner";
     arrList[arrList.length]="suck";
     arrList[arrList.length]="swaping";
-//    arrList[arrList.length]="18";
+    arrList[arrList.length]="18";
     arrList[arrList.length]="넣어줘";
     arrList[arrList.length]="무삭제원판";
     arrList[arrList.length]="색녀";
@@ -1718,11 +1718,11 @@ function wordchk(nickvalue){
 	
 	for(i = 0; i < length; i++){
 		if(nickvalue.indexOf(arrList[i]) != -1){
-			$('#nickspan').text('사용 불가능한 단어가 포함된 닉네임입니다.').css('color', 'red');
+			$('#nickmsg').text('사용 불가능한 단어가 포함된 닉네임입니다.').css('color', 'red');
 			return
 		}
 	}
-		$('#nickspan').text('사용가능한 닉네임입니다.').css('color', 'green');	
+		$('#nickmsg').text('사용가능한 닉네임입니다.').css('color', 'green');	
 		return
 	
 	/*for(str in arrList){

@@ -8,8 +8,11 @@ import users.vo.UsersVO;
 public interface IUsersDao {
 	public List<UsersVO> getAllUsers();
 	
-	// 아이디 중복체크
+	// 아이디 중복검사
 	public String selectById(String user_id) throws SQLException;
+	
+	// 닉네임 중복검사
+	public String selectByNick(String user_nickname) throws SQLException;
 	
 	// 팔로잉 목록 출력
 	public List<UsersVO> followingList(String user_id) throws SQLException;

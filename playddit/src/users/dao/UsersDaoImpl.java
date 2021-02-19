@@ -41,7 +41,9 @@ public class UsersDaoImpl implements IUsersDao {
 		return list;
 	}
 
-	// 아이디 중복체크
+	/**
+	 * 아이디 중복검사
+	 */
 	@Override
 	public String selectById(String user_id) throws SQLException {
 		String resId = null;
@@ -52,6 +54,15 @@ public class UsersDaoImpl implements IUsersDao {
 		return resId;
 	}
 
+	/**
+	 * 닉네임 중복검사
+	 */
+	
+	@Override
+	public String selectByNick(String user_nickname) throws SQLException {
+		return (String) client.queryForObject("users.selectByNick", user_nickname);
+	}
+	
 	/**
 	 * 팔로잉 목록 출력
 	 */
