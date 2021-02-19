@@ -17,14 +17,6 @@ function idCheck(){
 		}
 }
 
-// 닉네임 정규화
-function nickCheck(){
-	nickvalue = $('#nick').val().trim();
-	
-	// 형식 
-	regnick = /^[가-힣]+[a-zA-Z]+[0-9]+$/;
-}
-
 // 비밀번호 정규화(영문대소문자, 숫자, 특수문자를 한개씩. 8~12글자)
 function pwCheck(){
 	pwvalue = $('#pw').val().trim();
