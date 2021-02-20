@@ -13,6 +13,44 @@ import javax.mail.internet.MimeMessage;
 
 public class VerifyEmail {
 	
+	public static void sendEmail(String id, String pw) {
+		String recipient = id;
+		String code = pw;
+		
+		final String user = "ddit302@gmail.com";
+		final String password = "ddit.or.kr.302";
+		Properties prop = new Properties();
+		prop.put("mail.smtp.host", "smtp.gmail.com");
+		prop.put("mail.smtp.port", 465);
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.ssl.enable", "true");
+		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+		
+		Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(user, password);
+			}
+		});
+		
+		// 4. Message 클래스의 객체를 사용하여 수신자와 내용, 제목의 메시지를 작성한다.
+		// 5. Transport 클래스를 사용하여 작성한 메세지를 전달한다.
+		
+		MimeMessage message = new MimeMessage(session);
+		try {
+			message.setFrom(new InternetAddress(user));
+			
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+			message.setSubject("PLAYDDIT 임시 비밀번호 안내");
+			message.setText("임시비밀번호를 안내해 드립니다. 괄호 안의 값만 입력해주세요 ["+code+"]");
+			Transport.send(message);	// send message
+			
+		} catch (AddressException e) {
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
 		String recipient = "psh40963@naver.com";
 		String code = "abc";

@@ -100,9 +100,45 @@ function forgetId(){
 	setCookie("id",'',-1);
 }
 
+function sendTempPass(){
+ 	let email = $('#findmail').val().trim();
+	
+	$.ajax({
+		url : '/playddit/users/idCheck.do',
+		type : 'post',
+		data : { 'id' : email },
+		success : function(res){
+			let result = res.result;
+			if(result=='1'){
+				sendTempPass2(email);
+			}else{
+				$('#msg').text('가입되지 않은 이메일 입니다.');
+			}
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+	})
 
+}
 
+function sendTempPass2(email){
+	$.ajax({
+		url : '/playddit/users/sendTempPass2.do',
+		type : 'post',
+		data : {'email' : email},
+		success : function(res){
+			alert(email+"로 이메일 전송이 완료되었습니다.");
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+		
+	})
 
+}
 
 
 

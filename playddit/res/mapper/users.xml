@@ -38,4 +38,11 @@
 		 where user_nickname = #user_nickname#
 	</select>
 	
+	<!-- 임시 비밀번호 설정 -->
+	<update id="sendTempPass2" parameterClass="map">
+		update users
+		set user_password = #password#
+		where user_id = #email#
+	</update>
+	
 </sqlMap>

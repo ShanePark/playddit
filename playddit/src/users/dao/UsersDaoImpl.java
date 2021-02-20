@@ -91,4 +91,12 @@ public class UsersDaoImpl implements IUsersDao {
 		return vo;
 	}
 
+	@Override
+	public int sendTempPass2(String email, String password) throws SQLException {
+		Map<String, String> map = new HashMap<>();
+		map.put("email", email);
+		map.put("password", password);
+		return client.update("users.sendTempPass2", map);
+	}
+
 }
