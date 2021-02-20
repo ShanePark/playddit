@@ -10,24 +10,24 @@ import users.service.IUsersService;
 import users.service.UsersServiceImpl;
 import web.IAction;
 
-public class NicknameCheck implements IAction {
+public class IdCheck implements IAction {
+	
 
 	@Override
 	public boolean isRedirect() {
-		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String user_nickname = request.getParameter("user_nickname");
+		String user_id = request.getParameter("id");
 		IUsersService service = UsersServiceImpl.getService();
-		String result = service.selectByNick(user_nickname);
-		request.setAttribute("nickvalue", result);
-		return "/users/nickCheck.jsp";
+		String result = service.selectById(user_id);
+		request.setAttribute("resultvalue", result);
 		
+		return "/users/idCheck.jsp";
 	}
 
 }

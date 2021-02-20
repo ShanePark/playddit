@@ -6,7 +6,7 @@ function idcheck(){
 		return false;
 	}
 	$.ajax({
-		url : '/playddit/idCheck.do',
+		url : '/playddit/users/idCheck.do',
 		type : 'post',
 		data : { 'id' : idvalue },
 		success : function(res){
@@ -28,7 +28,7 @@ function followingList(){
 	}
 	
 	$.ajax({
-		url : '/playddit/followingList.do',
+		url : '/playddit/users/followingList.do',
 		type : 'post',
 		data : { 'user_id' : idvalue},
 		success : function(res){
@@ -58,7 +58,7 @@ function idPassCheck(){
 	}
 	
 	$.ajax({
-		url : '/playddit/match.do',
+		url : '/playddit/users/match.do',
 		type : 'post',
 		data : { 'user_id': idvalue,
 				 'user_pw' : pwvalue },
