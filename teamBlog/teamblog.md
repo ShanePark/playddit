@@ -16,7 +16,7 @@
 >[list와 set의 차이점 - scarlett](scarlett/notion/HIGH.md)<br/>
 
 ### JavaScript
->추후 추가될 예정입니다.
+>[Javascript 에서 쿠키 사용하기 - shane](shane/js/jsCookie/jsCookie.md)<br>
 
 ### ibatis
 >[ibatis selectKey 사용법 - scarlett](scarlett/notion/ibatis_selectkey.md)<br/>
