@@ -2,7 +2,6 @@ package users.service;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import users.dao.IUsersDao;
 import users.dao.UsersDaoImpl;
 import users.vo.UsersVO;
@@ -10,7 +9,6 @@ import users.vo.UsersVO;
 public class UsersServiceImpl implements IUsersService {
 	private IUsersDao dao;
 	private static UsersServiceImpl service;
-	
 	
 	public UsersServiceImpl() {
 		dao = UsersDaoImpl.getDao();
@@ -85,6 +83,17 @@ public class UsersServiceImpl implements IUsersService {
 			e.printStackTrace();
 		}
 		return vo;
+	}
+
+	@Override
+	public int setNewPass(String email, String password) {
+		int result = 0;
+		try {
+			result = dao.setNewPass(email, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	

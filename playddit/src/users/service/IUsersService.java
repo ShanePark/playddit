@@ -18,5 +18,7 @@ public interface IUsersService {
 	// 아이디 비밀번호 일치여부
 	public UsersVO match(String user_id, String user_pw);
 	
+	// 암호 변경하기
+	public int setNewPass(String user_id, String password);
 
 }

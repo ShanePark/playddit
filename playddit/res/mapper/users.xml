@@ -38,4 +38,11 @@
 		 where user_nickname = #user_nickname#
 	</select>
 	
+	<!-- 비밀번호 변경 -->
+	<update id="setNewPass" parameterClass="map">
+		update users
+		set user_password = #password#
+		where user_id = #email#
+	</update>
+	
 </sqlMap>

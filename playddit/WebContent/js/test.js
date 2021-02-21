@@ -10,7 +10,11 @@ function idcheck(){
 		type : 'post',
 		data : { 'id' : idvalue },
 		success : function(res){
-			$('#idspan').html(res.result).css('color', 'green');
+			if(res.result == '0')
+				$('#idspan').html('사용가능아이디').css('color', 'green');
+			else
+				$('#idspan').html('이미 존재하는 아이디입니다').css('color', 'red');
+			
 		},
 		error : function(xhr){
 			alert("상태 : " + xhr.status);
@@ -100,9 +104,50 @@ function forgetId(){
 	setCookie("id",'',-1);
 }
 
+function sendTempPass(){
+ 	let email = $('#findmail').val().trim();
+	
+	$.ajax({
+		url : '/playddit/users/idCheck.do',
+		type : 'post',
+		data : { 'id' : email },
+		success : function(res){
+			let result = res.result;
+			if(result=='1'){
+				$('#msg').text('이메일 발송중입니다. 잠시만 기다려주세요.');
+				sendTempPass2(email);
+			}else{
+				$('#msg').text('가입되지 않은 이메일 입니다.');
+			}
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+	})
 
+}
 
+function sendTempPass2(email){
+	$.ajax({
+		url : '/playddit/users/sendTempPass2.do',
+		type : 'post',
+		data : {'email' : email},
+		success : function(res){
+			if(res.result=='1'){
+				alert(email+"로 이메일 전송이 완료되었습니다.");
+			}else{
+				alert(res.result);
+			}
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+		
+	})
 
+}
 
 
 

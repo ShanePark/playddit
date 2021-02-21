@@ -5,7 +5,6 @@
 <title>Insert title here</title>
 <script src="../js/jquery-3.5.1.min.js"></script>
 <script src="../js/test.js"></script>
-
 <style>
 	#idbtn{
 		width : 50px;
@@ -18,8 +17,20 @@
 		var idCookie = getCookie("id");
 		if( idCookie !== undefined)
 			$('#idchk').attr("checked", true);
-		
 		$('#idCheck').val(idCookie);
+		
+		
+		
+		
+		
+		$('#passBtn').on('click',function(){
+			sendTempPass();
+		})
+		
+		
+		
+		
+		
 		
 		$('#idbtn').on('click', function(){
 			idcheck();
@@ -65,5 +76,19 @@ welcome to playddit
 	</div>
 	<button id="idPassBtn" type="button">check</button>
 	<span id="idPassSpan"> </span>
+	<br><hr>
+	<div>
+		<p>가입한 이메일 주소를 입력하세요.</p>
+		<form id="find">
+			<p>
+				<span class="red">*</span> Email 
+				<span class="red" id="msg">
+					 </span>
+			</p>
+			<input type="text" id="findmail" name="findmail"
+				placeholder="Please enter your email" />
+			<button type="button" id="passBtn" class="purBtn">임시 비밀번호 전송</button>
+		</form>
+	</div>
 </body>
 </html>
