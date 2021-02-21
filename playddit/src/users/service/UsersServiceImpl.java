@@ -1,26 +1,14 @@
 package users.service;
 
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-
 import users.dao.IUsersDao;
 import users.dao.UsersDaoImpl;
-import users.main.signUp.VerifyEmail;
 import users.vo.UsersVO;
-import util.CryptoUtil;
 
 public class UsersServiceImpl implements IUsersService {
 	private IUsersDao dao;
 	private static UsersServiceImpl service;
-	
 	
 	public UsersServiceImpl() {
 		dao = UsersDaoImpl.getDao();
@@ -98,28 +86,10 @@ public class UsersServiceImpl implements IUsersService {
 	}
 
 	@Override
-	public int sendTempPass2(String email) {
-		String password = "";	//	10글자의 암호 랜덤생성
-		for(int i=0; i<10; i++) {
-			char randomChar = (char)(int)(Math.random()*26+65);
-			password += randomChar;
-		}
-		
-		// 변경된 임시 암호를 이메일로 보내기	
-		VerifyEmail.sendEmail(email, password);
-		
-		// 암호는 암호화하여 DB에 저장 , 보안을 위해 key값을 복합적으로 구성
-		String key = "playddit"+email+password;
-		String data1="";
+	public int setNewPass(String email, String password) {
+		int result = 0;
 		try {
-			data1 = CryptoUtil.encryptAES256(password, key);
-		} catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException
-				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e1) {
-			e1.printStackTrace();
-		}
-		int result = -1;
-		try {
-			result = dao.sendTempPass2(email, data1);
+			result = dao.setNewPass(email, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

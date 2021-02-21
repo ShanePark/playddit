@@ -18,7 +18,7 @@ public interface IUsersService {
 	// 아이디 비밀번호 일치여부
 	public UsersVO match(String user_id, String user_pw);
 	
-	// 임시 암호 설정 및 이메일로 전송
-	public int sendTempPass2(String email);
+	// 암호 변경하기
+	public int setNewPass(String user_id, String password);
 
 }
