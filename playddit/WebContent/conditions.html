@@ -24,75 +24,103 @@
                 <img src="images/logo1.png" alt="logo" />
             </div>
             <div id="content">
-                <div id="title">
+                <div class="title">
                     <h2>SIGN UP</h2>
-                    <p id="subtitle">Terms and conditions</p>
-                    <p id="cont">
+                    <p class="subtitle">Terms and conditions</p>
+                    <p class="cont">
                         playddit에 오신것을 환영합니다.<br/>
                         좀더 좋은 서비스를 위해 아래의 약관에 동의해주세요.
                     </p>
                 </div>
                 
-                <input type="checkbox" name="agree" class="check_box"/>
-                <label for="check_box">
+                <input type="checkbox" name="agree" id="allchk"/>
+                <label for="allchk">
                     <span class="chk"></span>
+                    <h5>모두 동의합니다.</h5>
                 </label>
-                <h5>모두 동의합니다.</h5>
-                <dib class="longbar"></dib>
+                
+                <div class="longbar"></div>
+                
                 <form id="condition" action="condition.jsp" method="get">
                     <div id="condiLeft">
+                        <p><span class="red">*</span> 필수약관</p>
                         <ul class="conditions" id="must">
-                            <li>
-                                <input type="checkbox" class="mustCondi" name="must1"/>
-                                <span list="1">서비스 이용약관(필수)</span>
+                            <li class="longbar">
+                                <input type="checkbox" class="mustCondi" name="must1" id="must1"/>
+                                <label for="must1">
+                                    <span class="chk"></span>
+                                    <span list="1">서비스 이용약관(필수)</span>
+                                </label>
                                 <i class="fas fa-chevron-right"></i>
                             </li>
-                            <li>
-                                <input type="checkbox" class="mustCondi" name="must2"/>
-                                <span list="2">개인정보 수집 및 이용동의(필수)</span>
+                            <li class="longbar">
+                                <input type="checkbox" class="mustCondi" name="must2" id="must2"/>
+                                <label for="must2">
+                                    <span class="chk"></span>
+                                    <span list="2">개인정보 수집 및 이용동의(필수)</span>
+                                </label>
                                 <i class="fas fa-chevron-right"></i>
                             </li>
-                            <li>
-                                <input type="checkbox" class="mustCondi" name="must3"/>
-                                <span list="3">개인정보의 제3자 제공 동의(필수)</span>
+                            <li class="longbar">
+                                <input type="checkbox" class="mustCondi" name="must3" id="must3"/>
+                                <label for="must3">
+                                    <span class="chk"></span>
+                                    <span list="3">개인정보의 제3자 제공 동의(필수)</span>
+                                </label>
                                 <i class="fas fa-chevron-right"></i>
                             </li>
                         </ul>
                     </div>
-                    <div id="conrdiRight">
+                    
+                    <div id="condiRight">
+                        <p>선택약관</p>
                         <ul class="conditions" id="pick">
-                            <li>
-                                <input type="checkbox" class="pickCondi" name="pick1"/>
-                                <span list="1">위치기반서비스 이용약관 동의(선택)</span>
+                            <li class="longbar">
+                                <input type="checkbox" class="pickCondi" name="pick1" id="pick1"/>
+                                <label for="pick1">
+                                    <span class="chk"></span>
+                                    <span list="1">위치기반서비스 이용약관 동의(선택)</span>
+                                </label>
                                 <i class="fas fa-chevron-right"></i>
                             </li>
-                            <li>
-                                <input type="checkbox" class="pickCondi" name="pick2"/>
-                                <span list="2">선택적인 수집/이용 동의(선택)</span>
+                            <li class="longbar"> 
+                                <input type="checkbox" class="pickCondi" name="pick2" id="pick2"/>
+                                <label for="pick2">
+                                    <span class="chk"></span>
+                                    <span list="2">선택적인 수집/이용 동의(선택)</span>
+                                </label>
                                 <i class="fas fa-chevron-right"></i>
                             </li>
-                            <li>
-                                <input type="checkbox" class="pickCondi" name="pick3"/>
-                                <span list="3">프로모션 등 정보 이메일 수신 동의(선택)</span>
+                            <li class="longbar">
+                                <input type="checkbox" class="pickCondi" name="pick3" id="pick3"/>
+                                <label for="pick3">
+                                    <span class="chk"></span>
+                                    <span list="3">프로모션 등 정보 이메일 수신 동의(선택)</span>
+                                </label>
                                 <i class="fas fa-chevron-right"></i>
                             </li>
                         </ul>
                     </div>
-                    <button type="button" id="condiBtn">NEXT</button>
+                    <div style="clear : both;"></div>
+                    <button type="button" id="condiBtn" class="skyBtn">NEXT</button>
                 </form>
             </div>
 	    </div>
 	    
-	    <p>&copy; PLAYDDIT All Rights Reserved</p>
+	    <p id="copy">&copy; PLAYDDIT All Rights Reserved</p>
 	    
 	    <!-- 이용약관 Modal -->
 	    <div id="modal">
-            <div id="condiModal">
-                <button type="button" id="close">
-                    <i class="fas fa-times"></i>
-                </button>
+            <div id="condiModal" class="cen fullModal">
+                <div id="closeBox">
+                    <button type="button" id="close" style="color : #a8ccfd;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div style="clear: both;"></div>
                 <h2>서비스 이용약관</h2>
-                <p>
+                <div class="longbar"></div>
+                <div id="condiTxt">
                     제 1 조 (목적)<br/>
                     이 약관은 playddit(이하 "사이트"라 합니다)에서 제공하는 인터넷서비스(이하 "서비스"라 합니다)의 이용 조건 및 절차에 관한 기본적인 사항을 규정함을 목적으로 합니다.<br/>
                     <br/><br/><br/>    
@@ -226,10 +254,16 @@
 
 
                     서비스와 관련하여 사이트와 회원간에 분쟁이 발생할 경우 사이트의 본사 소재지를 관할하는 법원을 관할법원으로 합니다.
-                </p>
+                </div>
             </div>
-	    </div>
-	    
+        </div>
+        <script>
+            $(document).ready(function(){
+                $("#allchk").click(function(){
+                    $("input:checkbox").prop( 'checked', this.checked );
+                });
+            });
+        </script>
 	</body>
 </html>
 
