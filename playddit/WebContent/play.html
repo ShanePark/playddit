@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1, width=device-width" />
+		<meta name="author" content="playddit" />
+		<meta name="description" content="대덕인재개발원 학생들을 위한 스터디그룹, 소모임, 학급 공지사항, 주변 맛집 검색 등 다양한
+                                            커뮤니티 서비스를 제공합니다." />
+		<meta name="keywords" content="대덕인재개발원, 대전 중구 대덕인재개발원, 대덕인재, 개발자과정, 프로그래머, 자바" />
+		<title>playddit</title>
+		<link href="favicon.ico" rel="icon shortcut" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link href="css/common.css" rel="stylesheet"/>
+        <link href="css/user.css" rel="stylesheet" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="script/modal.js"></script>
+	</head>
+    <body id="pink">
+        <div id="wrap" class="cen">
+            <form action="join.jsp" method="post">
+                <div id="welcomTop">
+                    <div class="title">
+                        <h2>Welcome to playddit!</h2>
+                        <p class="subtitle">
+                            Please set up your profile
+                        </p>
+                    </div>
+                    <div id="profile">
+                        <div id="myPic">
+                            <div id="cir">
+                                <img src="images/default.png" alt="프로필사진" />
+                            </div>
+                            <span id="modiPic"><i class="fas fa-edit"></i></span>
+                        </div>
+                        <p id="name">Scarl-ett</p>
+                        <p id="mail">chdnjs7610@gmail.com</p>
+                    </div>
+                </div>
+                <div id="welcomBottom">
+                    <div id="class">
+                        <p>Class<span class="msg"></span></p>
+                        <div class="item">
+                            <select name="class">
+                                <option>Choose your class</option>
+                                <option value="학급번호">풀-스택 개발자 양성과정 2기 - 401호</option>
+                                <option value="학급번호">풀-스택 개발자 양성과정 3기 - 402호</option>
+                                <option value="학급번호">풀-스택 개발자 양성과정 4기 - 403호</option>
+                                <option value="학급번호">풀-스택 개발자 양성과정 5기 - 404호</option>
+                                <option value="학급번호">풀-스택 개발자 양성과정 6기 - 302호</option>
+                                <option value="학급번호">AI 소프트웨어 엔지니어링 1기 - 405호</option>
+                                <option value="학급번호">풀-스택 개발자 양성과정 7기 - 406호</option>
+                            </select>
+                        </div>  
+                    </div>
+                    <div id="followBox">
+                        <div class="miniBox">
+                            <div class="smallPic">
+                                <img src="images/default.png" alt="프로필사진"/>
+                            </div>
+                            <p class="followName">Shane</p>
+                            <p class="followClass">6기 - 302호</p>
+                            <span><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="miniBox">
+                            <div class="smallPic">
+                                <img src="images/default.png" alt="프로필사진"/>
+                            </div>
+                            <p class="followName">SUMMER</p>
+                            <p class="followClass">6기 - 302호</p>
+                            <span><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="miniBox">
+                            <div class="smallPic">
+                                <img src="images/default.png" alt="프로필사진"/>
+                            </div>
+                            <p class="followName">홍길동</p>
+                            <p class="followClass">6기 - 302호</p>
+                            <span><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="miniBox">
+                            <div class="smallPic">
+                                <img src="images/default.png" alt="프로필사진"/>
+                            </div>
+                            <p class="followName">josh</p>
+                            <p class="followClass">6기 - 302호</p>
+                            <span><i class="fas fa-plus"></i></span>
+                        </div>
+                    </div>
+                    <button type="submit" id="join">PLAY</button>
+                </div>
+            </form>
+        </div>
+        
+        <script>
+            $(document).ready(function(){
+                $('.eye').on('click',function(){
+                    $(this).toggleClass("active");
+                    if($(".eye").hasClass("active")){
+                        $(this).prev("input").attr("type", "text");
+                    }else{
+                        $(this).prev("input").attr("type", "password");
+                    }
+                });
+                
+                $(".double").on("click", function(){
+                   $(this).toggleClass("active"); 
+                });
+            });
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

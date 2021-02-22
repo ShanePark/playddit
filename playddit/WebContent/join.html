@@ -116,7 +116,7 @@
         <p id="copy">&copy; PLAYDDIT All Rights Reserved</p>
         
         <!-- code Modal -->
-        <div id="modal">
+        <div id="modal" class="code">
             <div id="codeModal" class="cen fullModal">
                 <div id="closeBox">
                     <button type="button" id="close" style="color : #a8ccfd;">
@@ -127,112 +127,29 @@
                 <div style="clear: both;"></div>
                 
                 <div id="codeTop">
+                    <img src="images/code.png" alt="이메일인증" />
                     <div class="title">
                         <h2>Welcome to playddit!</h2>
                         <p class="subtitle">
                             Email authentication is required
                         </p>
                     </div>
-                    
-                    <img src="images/code.png" alt="이메일인증" />
                 </div>
-                
+
                 <div id="codeBottom">
                     <p class="cont">
-                        환영합니다! 회원가입 완료를 위한 이메일 인증을 진행 해 주세요.<br/>
-                        <span id="codeMail">chdnjs7610@gmail.com</span> 메일함을 확인해주세요!
+                    환영합니다! 회원가입 완료를 위한 이메일 인증을 진행 해 주세요.<br/><span id="codeMail">chdnjs7610@gmail.com</span> 메일함을 확인해주세요!
                     </p>
-                    
+
                     <form action="code.jsp" id="codeCont" method="post">
                         <h2>인증 코드 입력</h2>
                         <input type="text" name="code" />
-                    
-                        <button type="button" id="remail">인증코드 재발송</button>
+
+                        <br/>
+                        <button type="reset" id="remail">인증코드 재발송</button>
                         <button type="submit" id="subCode">이메일 인증 확인</button>
                     </form>
                 </div>
-            </div>
-        </div>
-        
-        <!--가입 완료 후 모달-->
-        <div id="modal2">
-            <div id="welcomModal" class="cen fullModal">
-                <form action="join.jsp" method="post">
-                    <div id="welcomTop">
-                        <div class="title">
-                            <h2>Welcome to playddit!</h2>
-                            <p class="subtitle">
-                                Please set up your profile
-                            </p>
-                        <div>
-
-                        <div id="profile">
-                            <div id="myPic">
-                                <div id="cir">
-                                    <img src="images/default.png" alt="프로필사진" />
-                                </div>
-                                <span id="modiPic"><i class="fas fa-edit"></i></span>
-                            </div>
-                            <p id="name">Scarl-ett</p>
-                            <p id="mail">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-
-                    <div id="welcomBottom">
-                        <div id="class">
-                            <p>Class<span class="msg"></span></p>
-                            <div class="item">
-                                <select name="class">
-                                    <option>Choose your class</option>
-                                    <option value="학급번호">풀-스택 개발자 양성과정 2기 - 401호</option>
-                                    <option value="학급번호">풀-스택 개발자 양성과정 3기 - 402호</option>
-                                    <option value="학급번호">풀-스택 개발자 양성과정 4기 - 403호</option>
-                                    <option value="학급번호">풀-스택 개발자 양성과정 5기 - 404호</option>
-                                    <option value="학급번호">풀-스택 개발자 양성과정 6기 - 302호</option>
-                                    <option value="학급번호">AI 소프트웨어 엔지니어링 1기 - 405호</option>
-                                    <option value="학급번호">풀-스택 개발자 양성과정 7기 - 406호</option>
-                                </select>
-                            </div>  
-                        </div>
-                        
-                        <div id="followBox">
-                            <div class="miniBox">
-                                <div class="smallPic">
-                                    <img src="images/default.png" alt="프로필사진"/>
-                                </div>
-                                <p class="followName">Shane</p>
-                                <p class="followClass">6기 - 302호</p>
-                                <span><i class="fas fa-plus"></i></span>
-                            </div>
-                            <div class="miniBox">
-                                <div class="smallPic">
-                                    <img src="images/default.png" alt="프로필사진"/>
-                                </div>
-                                <p class="followName">Shane</p>
-                                <p class="followClass">6기 - 302호</p>
-                                <span><i class="fas fa-plus"></i></span>
-                            </div>
-                            <div class="miniBox">
-                                <div class="smallPic">
-                                    <img src="images/default.png" alt="프로필사진"/>
-                                </div>
-                                <p class="followName">Shane</p>
-                                <p class="followClass">6기 - 302호</p>
-                                <span><i class="fas fa-plus"></i></span>
-                            </div>
-                            <div class="miniBox">
-                                <div class="smallPic">
-                                    <img src="images/default.png" alt="프로필사진"/>
-                                </div>
-                                <p class="followName">Shane</p>
-                                <p class="followClass">6기 - 302호</p>
-                                <span><i class="fas fa-plus"></i></span>
-                            </div>
-                        </div>
-                        
-                        <button type="submit" name="join">PLAY</button>
-                    </div>
-                </form>
             </div>
         </div>
         
