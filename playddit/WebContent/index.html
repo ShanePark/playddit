@@ -13,6 +13,14 @@
         <link href="css/user.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/modal.js"></script>
+		<script src="script/index.js"></script>
+		<script>
+			$(function(){
+				$('#passBtn').on('click',function(){
+					sendTempPass();
+				})	
+			})
+		</script>
 	</head>
 <body>
     <div id="wrap" class="cen">
@@ -59,15 +67,13 @@
             <div id="modalCont">
                 <i class="fas fa-unlock-alt"></i>
                 <p>가입한 이메일 주소를 입력하세요.</p>
-                <form action="forgotPass.jsp" method="post" id="find">
+                <form id="find">
                     <p>
                         <span class="red">*</span>
-                        Email
-                        <span class="red" id="msg">
-                            가입되지 않은 이메일 입니다.
-                        </span>
+                        Email<br>
+                        <span class="red" id="msg"></span>
                     </p>
-                    <input type="text" name="findmail" placeholder="Please enter your email" />
+                    <input type="text" id="findmail" name="findmail" placeholder="Please enter your email" />
                     <button type="button" id="passBtn" class="purBtn">임시 비밀번호 전송</button>
                 </form>
             </div>
