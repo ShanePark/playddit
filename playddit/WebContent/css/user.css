@@ -193,6 +193,7 @@ body {
     margin: auto;
     display: block;
     text-align: left;
+    margin-bottom : 3px;
 }
 #find #msg {
     display: inline-block;
@@ -455,7 +456,225 @@ label[for='allchk'] h5 {
 }
 
 /*회원가입 인증코드 모달*/
+#codeModal #closeBox {
+    width: 100%;
+}
+#codeTop, #codeBottom {
+    background: #d5e5f3;
+    border-radius: 45px;
+    box-shadow: 2px 5px 5px #e5eefd;
+    padding: 5%;
+}
 
+#codeTop {
+    height: 26%;
+    margin-bottom: 15px;
+}
+#codeTop .title {
+    float: left;
+    height: 100%;
+    margin-top: 2%;
+}
+#codeTop img {
+    float: right;
+    width: 35%;
+    margin-top: -5%;
+}
+
+#codeBottom{
+    height: 59%;
+    text-align: center;
+}
+#codeBottom p {
+    font-weight: bold;
+    font-family : 'Nanum Gothic', sans-serif;
+    margin-bottom: 8%;
+}
+#codeBottom #codeMail {
+    color: #2a5ac4;
+    font-weight: bold;
+    vertical-align: 2px;
+}
+#codeBottom form h2 {
+    display: inline-block;
+    margin-right: 15px;
+}
+#codeBottom form input {
+    border: 1px solid #e7e7e7;
+    border-radius: 40px;
+    width: 476px;
+    height: 80px;
+    padding: 3%;
+    font-size: 1.5em;
+}
+#codeBottom form button {
+    border: none;
+    border-radius: 23px;
+    width : 225px;
+    height: 45px;
+    color: white;
+    font-size: 1.05em;
+    font-weight: bold;
+    margin-top: 7%;
+}
+#codeBottom button[type='reset'] {
+    background: #59698d;
+    margin-right: 15px;
+}
+#codeBottom button[type='submit'] {
+    background: #7093e0;
+}
+
+/*가입 완료 후 모달*/
+#pink {
+	background-image: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+#pink #wrap {
+    background: white;
+    margin-top: 0;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 5px 5px 25px #c9bcd0;
+}
+
+#welcomTop {
+    padding: 4%;
+}
+#myPic {
+    display: inline-block;
+    margin: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#myPic #cir {
+    width : 125px;
+    height: 125px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 2px 5px 5px #e5eefd;
+    cursor: pointer;
+}
+#myPic #cir img {
+    width: 100%;
+}
+#myPic #modiPic {
+    cursor: pointer;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 1.2em;
+    color: #7795d8;
+}
+
+#profile #name {
+    color: #7795d8;
+    font-weight: 800;
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: 15px;
+}
+#profile #mail {
+    color: #bcbcbc;
+    text-align: center;
+    margin-top: 3px;
+    font-size: 0.95em;
+}
+
+#welcomBottom {
+    background: #e7eefc;
+    margin-top: -30px; 
+    height: 100vh;
+    padding: 40px;
+}
+
+#class p {
+    width: 365px;
+    text-align: left;
+    margin: auto;
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+#class .item {
+    width: 365px;
+    height: 45px;
+    border: 1px solid #e7e7e7;
+    border-radius: 23px;
+    background: white;
+    line-height: 45px;
+    margin: 0 auto 50px auto;
+}
+#class .item select {
+    border: none;
+    width: 95%;
+    border-radius: 23px;
+    padding: 0 20px;
+}
+
+#followBox {
+    text-align: center;
+}
+#followBox > .miniBox {
+    display: inline-block;
+    cursor: pointer;
+    width: 127px;
+    height: 138px;
+    background: white;
+    box-shadow: 2px 5px 5px #dae7fc;
+    border-radius: 12px;
+    margin-right: 20px;
+    padding: 10px;
+    position: relative;
+}
+#followBox .smallPic {
+    box-shadow: 0px 0px 10px #dae1ef;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: auto;
+}
+#followBox .smallPic img {
+    width: 100%;
+}
+#followBox .followName {
+    color:  #7795d8;
+    font-size: 0.95em;
+    font-weight: 700;
+    margin-top: 10px;
+}
+#followBox .followClass {
+    font-size: 0.92em;
+    color: #b7b7b7;
+    margin-top: 3px;
+}
+#followBox span {
+    display: inline-block;
+    border: 2px solid #7795d8;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+}
+#followBox span i {
+    color :  #7795d8;
+}
+
+#join {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 50px;
+    border: none;
+    width: 245px;
+    height: 45px;
+    background: #7795d8;
+    border-radius: 23px;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 700;
+}
 
 /*여기부터 태블릿pc*/
 @media all and (max-width: 1200px) {
@@ -526,6 +745,7 @@ label[for='allchk'] h5 {
     
     .sky #wrap #content {
         width: 85%;
+        margin: 16% auto;
     }
     
     #condition > div {
@@ -544,7 +764,7 @@ label[for='allchk'] h5 {
         padding: 0 20px;
     }
     .joinBox .msg{
-        font-size: 0.78em;
+        font-size: 0.75em;
     }
     .joinBox .item input {
         width: 75%;
@@ -552,6 +772,70 @@ label[for='allchk'] h5 {
     
     .eye {
         margin-right: -22px;
+    }
+    
+    .joinBox .double {
+    font-size: 0.8em;
+    }
+    
+    /*회원가입 인증코드 모달*/
+    #codeTop {
+        position: relative;
+    }
+    #codeTop .title {
+        margin-top: 2.7em;
+    }
+    #codeTop img {
+        float: none;
+        width: 40%;
+        position: absolute;
+        bottom: 0;
+        right: 7%;
+    }
+
+    #codeBottom{
+        height: 62%;
+        padding: 10%;
+    }
+    #codeBottom p {
+        font-size : 0.95em;
+    }
+    #codeBottom form h2 {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    #codeBottom form input {
+        padding: 5%;
+        width: 98%
+    }
+    #codeBottom form button {
+        margin-top: 8%;
+        width: 47%;
+    }
+    
+    /*가입 완료 후 페이지*/
+    #welcomTop {
+        padding: 6%;
+    }
+    #myPic #cir {
+        width : 110px;
+        height: 110px;
+    }
+
+    #profile #name {
+        margin-top: 10px;
+    }
+    #profile #mail {
+        color: #bcbcbc;
+        text-align: center;
+        margin-top: 3px;
+        font-size: 0.95em;
+    }
+
+    #followBox > .miniBox {
+        width: 120px;
+        margin-right: 15px;
     }
 }
 
@@ -711,6 +995,136 @@ label[for='allchk'] h5 {
     .joinBox .item {
         width: 100%;
         padding: 0 20px;
+    }
+    .joinBox .msg{
+        font-size: 0.9em;
+    }
+    
+    /*회원가입 인증코드 모달*/
+    #codeModal {
+        padding: 0;
+        height: 94vh;
+    }
+    #codeModal #closeBox {
+        width: 100%;
+        position: fixed;
+        z-index: 100;
+        padding: 5%;
+    }
+    #codeTop, #codeBottom {
+        background: #d5e5f3;
+        border-radius: 45px;
+        box-shadow: 2px 5px 5px #e5eefd;
+        padding: 5%;
+    }
+    #codeTop {
+        margin-bottom: 0;
+    }
+    #codeTop .title {
+        font-size: 0.9em;
+        float: none;
+        margin-top: 2.7em;
+        margin-left: 2.2em;
+    }
+    #codeTop img {
+        display: none;
+    }
+
+    #codeBottom{
+        height: 74%;
+        padding: 10%;
+    }
+    #codeBottom p {
+        font-size : 1em;
+    }
+    #codeMail {
+        display: block;
+    }
+    #codeBottom form input {
+        padding: 10%;
+        width: 99%
+    }
+    #codeBottom form button {
+        margin-top: 4%;
+        width: 99%;
+    }
+    #codeTop, #codeBottom {
+        box-shadow: none;
+    }
+    
+    /*가입 완료 후 페이지*/
+    #pink {
+        min-height: none;
+        overflow: auto;
+    }
+    #welcomTop {
+        padding: 6%;
+    }
+    #myPic #cir {
+        width : 100px;
+        height: 100px;
+    }
+
+    #followBox > .miniBox {
+        float: left;
+        width: calc((100% - 15px) / 2);
+        margin-bottom: 15px
+    }
+    #followBox > .miniBox:nth-of-type(even){
+        margin-right: 0!important;
+    }
+    
+    #welcomBottom {
+        padding: 4%;
+        margin-top: 0;
+        height: 120vh;
+    }
+
+    #class p {
+        width: 100%;
+        padding-top: 20px;
+    }
+    #followBox .smallPic img {
+        width: 100%;
+    }
+    #followBox .followName {
+        color:  #7795d8;
+        font-size: 0.95em;
+        font-weight: 700;
+        margin-top: 10px;
+    }
+    #followBox .followClass {
+        font-size: 0.92em;
+        color: #b7b7b7;
+        margin-top: 3px;
+    }
+    #followBox span {
+        display: inline-block;
+        border: 2px solid #7795d8;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -5px;
+        right: -5px;
+    }
+    #followBox span i {
+        color :  #7795d8;
+    }
+
+    #join {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 50px;
+        border: none;
+        width: 245px;
+        height: 45px;
+        background: #7795d8;
+        border-radius: 23px;
+        color: white;
+        font-size: 1.2em;
+        font-weight: 700;
     }
 }
 
