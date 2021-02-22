@@ -5,6 +5,7 @@ body {
     background-image: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
     height: 100vh;
     overflow: auto;
+    min-height: 960px;
 }
 
 #wrap {
@@ -41,6 +42,7 @@ body {
 }
 #loginRight>img {
     width: 15em;
+    z-index: 1;
 }
 #loginRight form {
     margin-top: 2.5em;
@@ -79,6 +81,8 @@ body {
     margin-right: 5px;
     margin-top: 2px;
     cursor: pointer;
+    z-index: 100;
+    position: relative;
 }
 #loginRight #loginBox2 span {
     float: left;
@@ -218,6 +222,7 @@ body {
 /*약관동의페이지*/
 .sky {
     background: #e5f4fc;
+    min-height: 960px;
 }
 
 .sky #wrap {
@@ -249,23 +254,26 @@ body {
     float: none;
 }
 
-#title #subtitle{
+.title {
+    margin-bottom: 2em;
+}
+.title .subtitle{
     color: #b7b7b7;
     margin-top: 5px;
     margin-bottom: 32px;
 }
-#title #cont {
+.cont {
     line-height: 1.7em;
 }
 
-input[type="checkbox"] + label {
-    border: none;
+#content input[type="checkbox"] {
+    display: none;
 }
 input[type="checkbox"] + label .chk {
     display: inline-block;
     width: 24px;
     height: 24px;
-    margin: -2px 10px 0 0;
+    margin: -2px 4px 0 0;
     vertical-align: middle;
     background: url(../images/checkbox.svg) left top no-repeat;
     cursor: pointer;
@@ -276,11 +284,184 @@ input[type="checkbox"]:checked + label .chk {
     background-size: cover;
 }
 
+label[for='allchk'] {
+    display: inline-block;
+}
+label[for='allchk'] h5 {
+    display: inline-block;
+    font-family : 'Nanum Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+.longbar {
+    border-bottom: 2px solid #eaf3fe;
+    margin: 3% 0;
+}
+
+#condition > div {
+    width : 42%;
+}
+#condition p {
+    font-weight: 800;
+    font-family : 'Nanum Gothic', sans-serif;
+}
+#condition li {
+    padding: 10px 0 15px 0;
+}
+#condition #condiLeft {
+    float: left;
+}
+#condition #condiRight {
+    float: right;
+}
+
+.fa-chevron-right {
+    color: #b0cff5;
+    float: right;
+    margin-right: 3%;
+    cursor: pointer;
+}
+
+.skyBtn{
+    clear: both;
+    background: #a8ccfd;
+    border: none;
+    width: 260px;
+    border-radius: 30px;
+    height: 50px;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 6% auto;
+    display: block;
+}
+
+.sky #copy {
+    top : 100px;
+    text-align: center;
+}
+
+/*이용약관 modal*/
+.fullModal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 790px;
+    border-radius: 45px;
+    margin: auto 0;
+    background: white;
+    padding: 20px 40px;
+    margin-top: 300px;
+}
+.fullModal #closeBox {
+    padding: 0;
+}
+.fullModal #closeBox #close {
+    padding: 1%;
+}
+.fullModal #condiTxt{
+    height: 78%;
+    overflow: auto;
+    padding: 0 3px;
+}
+
+.fullModal #condiTxt::-webkit-scrollbar {
+    width: 6px;
+}
+.fullModal #condiTxt::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+.fullModal #condiTxt::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #b0cff5; 
+}
+.fullModal #condiTxt::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+/*회원가입 페이지*/
+#joinForm {
+    padding-top: 20px;
+}
+
+.joinBox {
+    width: 45%;
+}
+.joinBox > p {
+    margin-bottom: 8px;
+}
+.joinBox .msg{
+    color : #ff5959;
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+
+#joinLeft {
+    float: left;
+}
+
+#joinRight {
+    float: right;
+}
+#joinRight input {
+    width: 100%;
+}
+
+#joinRight select {
+    border: none;
+    width: 100%;
+}
+
+.joinBox .item {
+    border-radius: 22.5px;
+    border: 1px solid #e7e7e7;
+    background: white;
+    width: 360px;
+    height: 45px;
+    line-height: 44px;
+    text-align: left;
+    padding: 0 22px;
+    margin-bottom: 14px;
+}
+.joinBox .item input {
+    border: none;
+    width: 78%;
+}
+.joinBox .double {
+    float: right;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family : 'Nanum Gothic', sans-serif;
+    color: #c5d6e7;
+    cursor: pointer;
+}
+
+.eye {
+    width: 69px;
+    margin-top: -11px;
+    margin-right: -24px;
+    fill: #c5d6e7;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    float: right;
+}
+.active {
+    color: #6884dd!important;
+    fill : #6884dd;
+}
+
+/*회원가입 인증코드 모달*/
+
+
 /*여기부터 태블릿pc*/
 @media all and (max-width: 1200px) {
     /*로그인페이지*/
     #wrap {
-        height: 80%;    
+        height: 80%;
     }
     
     #loginRight .loginBox {
@@ -336,16 +517,53 @@ input[type="checkbox"]:checked + label .chk {
     #modalBody>p {
         font-size: 0.85em;
     }
+    
+    /*약관동의*/
+    #title {
+        margin-bottom: 2em;
+        margin-top: 7em; 
+    }
+    
+    .sky #wrap #content {
+        width: 85%;
+    }
+    
+    #condition > div {
+        width : 48%;
+    }
+    #condition span {
+        font-size: 0.75em;
+    }
+    input[type="checkbox"] + label .chk {
+        margin: -2px 1px 0 0;
+    }
+    
+    /*회원가입페이지*/
+    .joinBox .item {
+        width: 100%;
+        padding: 0 20px;
+    }
+    .joinBox .msg{
+        font-size: 0.78em;
+    }
+    .joinBox .item input {
+        width: 75%;
+    }
+    
+    .eye {
+        margin-right: -22px;
+    }
 }
 
 /*여기부터 모바일버전*/
-@media all and (max-width:780px) {
-    /*로그인페이지*/
+@media all and (max-width:767px) {
+    body {
+        overflow: auto;
+    }
     #wrap {
         height: 100%;
         border-radius: 0;
         margin: 0;
-        overflow: auto;
     }
     #wrap>div {
         float: none;
@@ -354,11 +572,12 @@ input[type="checkbox"]:checked + label .chk {
 
     #loginLeft {
         width: 100%;
-        padding-top: 13%;
+        height: 30%!important;
+        position: relative;
     }
     #loginLeft>img {
-        position: relative;
-        bottom: 0;
+        position: absolute;
+        bottom: 2px;
         left: 50%;
         transform: translateX(-50%);
         width: 70%;
@@ -369,28 +588,30 @@ input[type="checkbox"]:checked + label .chk {
         padding-top: 4em;
         margin-top: -3px;
         height: 680px!important;
+        min-height: 680px;
+        height: 60%;
     }
     #loginRight>img {
         width: 17em;
     }
     #loginRight .loginBox {
-        width: 75%;
+        width: 80%;
     }
     #loginRight .loginBox input {
         font-size: 15px;
         display: inline-block;
     }
     #loginRight #loginBox2 {
-        width: 72%;
+        width: 80%;
     }
     #loginRight #loginBox2 span {
-        font-size: 0.9em;
+        font-size: 0.8em;
     }
     #loginRight #forgotPass {
-        font-size: 0.9em;
+        font-size: 0.8em;
     }
     .purBtn {
-        width: 75%;
+        width: 80%;
         font-size: 1em;
     }
 
@@ -428,6 +649,68 @@ input[type="checkbox"]:checked + label .chk {
         font-size: 1em;
         line-height: 1.5em;
         margin-top: 22px;
+    }
+    
+    /*약관동의*/
+    .sky #wrap {
+        background-image: none;
+    }
+
+    .sky #wrap #header {
+        padding: 5%;
+    }
+    .sky #wrap #content {
+        width: 88%;
+    }
+    
+    #condition > div {
+        width : 100%;
+        margin: 20px 0;
+    }
+    #condiBtn {
+        margin: 10% auto;
+    }
+
+    .sky #copy {
+        top : -30px;
+    }
+    
+    #title {
+        margin-bottom: 2em;
+        margin-top: 3em; 
+    }
+    
+    #condition span {
+        font-size: 0.80em;
+    }
+
+    /*이용약관 modal*/
+    #condiModal {
+        width: 97%;
+        height: 94vh;
+        padding: 20px 10px
+    }
+    #condiModal #closeBox #close {
+        padding: 2%;
+    }
+    #condiModal #condiTxt {
+        height: 83%;
+    }
+    
+    /*회원가입페이지*/
+    .over {
+        min-height: 1100px;
+        overflow: auto;
+    }
+    .over #wrap {
+    }
+    .joinBox {
+        float: none;
+        width: 100%;
+    }
+    .joinBox .item {
+        width: 100%;
+        padding: 0 20px;
     }
 }
 

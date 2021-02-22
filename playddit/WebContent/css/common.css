@@ -83,7 +83,7 @@ input::placeholder {
 }
 
 /*여기부터 모바일버전*/
-@media all and (max-width:780px) {
+@media all and (max-width:767px) {
     .cen {
         width: 100%;
     }
