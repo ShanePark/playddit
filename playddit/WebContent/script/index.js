@@ -44,7 +44,33 @@ function sendTempPass2(email){
 	})
 }
 
-
+function idPassCheck(){
+	idvalue = $('#idCheck').val().trim();
+	pwvalue = $('#passCheck').val().trim();
+	
+	if(idvalue.length < 1 || pwvalue.length < 1){
+		alert("아이디 또는 비밀번호를 입력해주세요.");
+		return;
+	}
+	
+	$.ajax({
+		url : '/playddit/users/match.do',
+		type : 'post',
+		data : { 'user_id': idvalue,
+				 'user_pw' : pwvalue },
+		success : function(res){
+			if( res.id == 'null' ){
+				alert("아이디나 비밀번호를 확인해주세요.");
+			}else{
+				alert("접속완료 !!! 아이디 : " + res.id + "닉네임 : "+res.nickname);
+			}
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+	})
+}
 
 
 

@@ -19,7 +19,10 @@
 				$('#passBtn').on('click',function(){
 					sendTempPass();
 				})	
+				$('#signIn').on('click', function(){
+					idPassCheck();
 			})
+		})
 		</script>
 	</head>
 <body>
@@ -29,22 +32,22 @@
         </div>
         <div id="loginRight">
             <img src="images/logo2.png" alt="logo" />
-            <form action="login.jsp" method="post" id="login">
+            <form id="login">
                 <div class="loginBox">
                     <i class="fas fa-user"></i>
-                    <input type="text" name="mail" placeholder="Useremail" />
+                    <input type="text" id="idCheck" name="mail" placeholder="Useremail" />
                 </div>
                 <div class="loginBox">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="pass" placeholder="Password" />
+                    <input type="password" id="passCheck" name="pass" placeholder="Password" />
                 </div>
                 
                 <div id="loginBox2">
-                    <input type="checkbox" name="auto" value="remember"/><span class="purple">Remember Me</span>
+                    <input type="checkbox" id="idchk" name="auto" value="remember"/><span class="purple">Remember Me</span>
                     <button type="button" class="purple" id="forgotPass">Forgot Password?</button>
                 </div>
                 
-                <button type="submit" id="signIn" class="purBtn">SIGN IN</button>
+                <button type="button" id="signIn" class="purBtn">SIGN IN</button>
             </form>
             
             <div id="joinBox">
