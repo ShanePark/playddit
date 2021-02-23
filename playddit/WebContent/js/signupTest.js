@@ -5,29 +5,34 @@
 
 // 아이디 정규화(이메일형식)
 function idCheck(){
-		idvalue = $('#id').val().trim();
+		idvalue = $('#mail').val().trim();
 		
 		// 형식
-		regemail = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z]+){1,2}$/;
+		regemail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+(\.([a-zA-Z]){2,3}){1,2}$/;
 		
-		if(regemail.test(idvalue)){
-			$('#idspan').text("올바른 형식입니다.").css('color', 'green');
+			///^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+		
+		if(!regemail.test(idvalue)){
+			$('#mail').parents('.box').find('.msg').text("이메일 형식에 맞게 입력하세요.");
 		}else{
-			$('#idspan').text("이메일 형식에 맞게 입력하세요.").css('color', 'red');
+			$('#mail').parents('.box').find('.msg').empty();
+			
 		}
+		
+		
 }
 
 // 비밀번호 정규화(영문대소문자, 숫자, 특수문자를 한개씩. 8~12글자)
 function pwCheck(){
-	pwvalue = $('#pw').val().trim();
+	pwvalue = $('#pass').val().trim();
 	
 	// 형식 - 영문대소문자, 숫자, 특수문자를 반드시 한개이상씩 입력
 	passreg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()]).{8,12}$/;
 	
-	if(passreg.test(pwvalue)){
-		$('#pwspan').text("올바른 형식입니다.").css('color', 'green');
+	if(!passreg.test(pwvalue)){
+		$('#pass').parents('.box').find('.msg').text("비밀번호 형식에 맞게 입력하세요.");
 	}else{
-		$('#pwspan').text("비밀번호 형식에 맞게 입력하세요.").css('color', 'red');
+		$('#pass').parents('.box').find('.msg').empty();
 	}
 	
 }
@@ -39,10 +44,10 @@ function nameCheck(){
 	// 형식 - 한글 2~5글자
 	regname = /^[가-힣]{2,5}$/;
 	
-	if(regname.test(namevalue)){
-		$('#namespan').text("올바른 형식입니다.").css('color', 'green');
+	if(!regname.test(namevalue)){
+		$('#name').parents('.box').find('.msg').text("올바른 형식이 아닙니다.").css('color', 'red');
 	}else{
-		$('#namespan').text("올바른 형식이 아닙니다.").css('color', 'red');
+		$('#name').parents('.box').find('.msg').empty();
 	}
 }
 
@@ -53,10 +58,10 @@ function phCheck(){
 	// 형식
 	reghp = /^\d{3}-\d{3,4}-\d{4}$/;
 	
-	if(reghp.test(phonevalue)){
-		$('#phonespan').text("올바른 형식입니다.").css('color', 'green');
+	if(!reghp.test(phonevalue)){
+		$('#phone').parents('.box').find('.msg').text("올바른 형식이 아닙니다.");
 	}else{
-		$('#phonespan').text("올바른 형식이 아닙니다.").css('color', 'red');
+		$('#phone').parents('.box').find('.msg').empty();
 		
 	}
 
@@ -76,9 +81,9 @@ function birthCheck(){
 	year = toyear - birthyear;
 	
 	if(year >= 18 && year <= 90){
-		$('#birthspan').text("가입 가능합니다.").css('color', 'green');
+		$('#birth').parents('.box').find('.msg').empty();
 	}else{
-		$('#birthspan').text("가입 불가능합니다.").css('color', 'red');
+		$('#birth').parents('.box').find('.msg').text("가입 불가능합니다.");
 	}
 }
 

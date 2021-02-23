@@ -96,6 +96,22 @@ public class UsersServiceImpl implements IUsersService {
 		return result;
 	}
 	
+	/**
+	 * 회원가입
+	 */
+	@Override
+	public String insertUser(UsersVO UsersVO) {
+		String user_id = null;
+		try {
+			user_id = dao.insertUser(UsersVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user_id;
+	}
+		
+	
 	
 	
 	

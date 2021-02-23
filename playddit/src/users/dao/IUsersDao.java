@@ -22,5 +22,8 @@ public interface IUsersDao {
 	
 	// 암호 변경하기
 	public int setNewPass(String user_id, String password) throws SQLException;
+	
+	// 회원가입
+	public String insertUser(UsersVO UsersVO) throws SQLException;	
 }
 	
