@@ -16,6 +16,12 @@
 		<script src="script/index.js"></script>
 		<script>
 			$(function(){
+				var idCookie = getCookie("id");
+				if( idCookie !== undefined){
+					$('#idchk').attr("checked", true);
+					$('#idCheck').val(idCookie);
+				}
+				
 				$('#passBtn').on('click',function(){
 					sendTempPass();
 				})	
