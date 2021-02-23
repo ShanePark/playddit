@@ -16,6 +16,12 @@
 		<script src="script/index.js"></script>
 		<script>
 			$(function(){
+				var idCookie = getCookie("id");
+				if( idCookie !== undefined){
+					$('#idchk').attr("checked", true);
+					$('#idCheck').val(idCookie);
+				}
+				
 				$('#passBtn').on('click',function(){
 					sendTempPass();
 				})	
@@ -70,7 +76,7 @@
             <div id="modalCont">
                 <i class="fas fa-unlock-alt"></i>
                 <p>가입한 이메일 주소를 입력하세요.</p>
-                <form id="find">
+                <form id="find" onsubmit="return false">
                     <p>
                         <span class="red">*</span>
                         Email

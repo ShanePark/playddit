@@ -1,5 +1,10 @@
 function sendTempPass(){
  	let email = $('#findmail').val().trim();
+	var regemail = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z]+){1,2}$/;
+	if(!regemail.test(email)){
+		alert("이메일 형식에 맞게 입력해주세요.");
+		return;
+	}
 	
 	$.ajax({
 		url : '/playddit/users/idCheck.do',
@@ -53,6 +58,19 @@ function idPassCheck(){
 		return;
 	}
 	
+	var regemail = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z]+){1,2}$/;
+	if(!regemail.test(idvalue)){
+		alert("이메일 형식에 맞게 아이디를 입력해주세요.");
+		return;
+	}
+	
+	if( $('#idchk').is(":checked")){
+		rememberId();
+	}else{
+		forgetId();
+	}
+
+	
 	$.ajax({
 		url : '/playddit/users/match.do',
 		type : 'post',
@@ -72,7 +90,26 @@ function idPassCheck(){
 	})
 }
 
+function setCookie(name, value, exp){
+	var date = new Date();
+	date.setTime(date.getTime() + exp*24*60*60*1000);
+	document.cookie = name+'='+escape(value)+';expires='+date.toUTCString()+';path=1';
+}
 
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return unescape(parts.pop()).split(';').shift();
+}
+
+function rememberId(){
+	id = $('#idCheck').val().trim();
+	setCookie("id", id, 30);
+}
+
+function forgetId(){
+	setCookie("id",'',-1);
+}
 
 
 
