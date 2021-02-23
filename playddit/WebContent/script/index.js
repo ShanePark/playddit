@@ -30,6 +30,8 @@ function sendTempPass2(email){
 			if(res.result=='1'){
 				alert(email+"로 이메일 전송이 완료되었습니다.");
 				$("#modal").fadeOut(200);
+				$('#msg').text('');
+				$('#findmail').val('');
 			}else{
 				alert(res.result);
 			}
