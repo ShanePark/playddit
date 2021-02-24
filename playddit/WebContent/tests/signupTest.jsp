@@ -43,6 +43,8 @@
 			}else {
 				//msg에 이메일 형식에 맞게 입력하세요. 출력 해주세요.
 				$('#mail').parents('.box').find('.msg').text("이메일 형식을 확인해주세요.");
+				tex = $('#mail').parents('.box').find('.msg').text();
+				console.log(tex);
 				return false;
 			}
 		})
@@ -70,7 +72,7 @@
 		$('#nickDbtn').on('click', function(){
 			nickvalue = $('#nickname').val().trim();
 			if(nickvalue.length < 2 || nickvalue.length > 8){
-				$(this).parents('.box').find('.msg').text("2글자 이상 8글자 이하로 입력하세요.");
+				$(this).parents('.box').find('.msg').text("닉네임 형식을 확인해주세요.");
 			}else{	
 				nickCheck(this);
 			}
@@ -123,9 +125,22 @@
 			birthCheck();
 		})
 		
-		// 제출버튼 클릭 이벤트
-		$('#joinForm').on('submit', function(){
+		$('#joinBtn').on('click', function(){
+ 			if($('#mail').parents('.box').find('.msg').text().length > 1 || $('#mail').val() == ""){
+				alert("이메일을 입력해주세요.");
+				return false;
+			} else if($('#nickname').parents('.box').find('.msg').text().length > 1 || $('#nickname').val() == ""){
+				alert("닉네임을 입력해주세요.");
+				return false;
+			}else if($('#pass').parents('.box').find('.msg').text().length > 1 || $('#pass').val() == ""){
+				alert("비밀번호를 입력해주세요.");
+				return false;
+			}else if($('#passchk').parents('.box').find('.msg').text().legnth > 1 ||  $('#pass').val() != $('#passchk').val()){
+				alert("비밀번호 일치여부를 확인해주세요.");
+				return false;
+			}
 			
+ 			
 		})
 		
 	})
@@ -133,7 +148,7 @@
 </script>
 </head>
 <body >
-	 <form method="post" id="joinForm" action="<%= request.getContextPath() %>/users/join.do">
+	 <form method="post" id="joinForm" action="<%= request.getContextPath()%>/users/join.do">
                    <div id="joinLeft" class="joinBox">
                         <div class="box">
                             <p><span class="red">*</span> Email<span class="msg"></span></p>
