@@ -10,14 +10,15 @@
 		<link href="favicon.ico" rel="icon shortcut" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href="css/common.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
     <body>
         <div class="cen" id="wrap">
-            <nav id="nav">
+            <nav id="lnb">
                 <ul>
-                    <li class="main">
-                        <a href="#"  class="active">
+                    <li class="main active">
+                        <a href="#">
                             <i class="fas fa-comment-dots"></i>Feed
                         </a>
                     </li>
@@ -60,6 +61,9 @@
                         </li>
                         <li>
                             <a href="#"><i class="fas fa-envelope"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-pen-nib"></i></a>
                         </li>
                         <li>
                             <a href="#"><i class="fas fa-bell"></i></a>
@@ -127,6 +131,108 @@
                             <p class="txtCont">
                                 프로그래머스 문제풀이 중..ㅠ<br/>
                                 어떤 경우에 틀렸는지 좀 알려주세요...ㅠㅠ
+                            </p>
+                        </div>
+                        <button type="button" class="more">더보기 &gt;</button>
+                        
+                        <div class="countComm">
+                            댓글 <span class="count">13</span>개
+                        </div>
+                        
+                        <div class="commantBox">
+                            <ul>
+                                <li class="comm">
+                                    <a href="#" class="commUser">summer</a>
+                                    <span>프로그래머스 언제 다하죠?ㅠ</span>
+                                    <ul class="replyBox">
+                                        <li class="reply">
+                                            <a href="#" class="replyUser">summer</a>
+                                            <span>대댓글</span>
+                                        </li>
+                                        <li class="reply">
+                                            <a href="#" class="replyUser">summer</a>
+                                            <span>대댓글</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="comm">
+                                    <a href="#" class="commUser">홍길동</a>
+                                    <span>화이팅~!</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="feed">
+                        <div class="proBox">
+                            <div class="proCir">
+                                <img src="images/default.png" alt="프로필사진" />
+                            </div>
+                            <p class="proName">Scarl-ett</p>
+                            <span class="proClass">6기 - 302호</span>
+                        </div>
+                        
+                        <!--글만 있을 경우 출력되지 않는다.-->
+                        <!--<div class="feedPic">
+                            <div class="slider">
+                                <div class="slide">
+                                    <img src="images/feed.png"  />
+                                </div>
+                            </div>
+                        </div>-->
+                        
+                        <div class="icon">
+                            <form action="feedUpdate.jsp" method="post">
+                                <button type="submit" class="like">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button type="button" class="commant">
+                                    <i class="far fa-comment-dots"></i>
+                                </button>
+                                <button type="button" class="dm">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </form>
+                            
+                            <div class="page">
+                                <ul>
+                                    <li><i class="fas fa-circle"></i></li>
+                                    <li><i class="far fa-circle"></i></li>
+                                </ul>
+                            </div>
+                            
+                            <button type="button" class="report">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="txt">
+                            <p class="proName">Scarl-ett</p>
+                            <p class="txtCont">
+                                안되나용 왜 나는 안되나용<br/>
+                                그놈은 되고 왜 나는 안되나용<br/>
+                                <br/>
+                                사랑 때문에 너무 아프다<br/>
+                                너무 아파서 술 한잔 때렸다<br/>
+                                모질게 나를 버리고 가면<br/>
+                                남겨진 나는 어떡하라고<br/>
+                                사느냐 죽느냐 그것이 문제로다<br/>
+                                <br/>
+                                안되나용 왜 나는 안되나용<br/>
+                                그놈은 되고 왜 나는 안되나용<br/>
+                                얼굴이니 아니면 입방정이니<br/>
+                                그러면 나는 누구를 만나나용<br/>
+                                <br/>
+                                그놈 때문에 뚜껑 열렸다<br/>
+                                뚜껑 열려서 술 한잔 때렸다<br/>
+                                그렇게 그녈 데리고 가면<br/>
+                                남겨진 나는 어떡하라고<br/>
+                                썸한번 못 타고 이렇게 끝나나용<br/>
+                                <br/>
+                                안되나용 왜 나는 안되나용<br/>
+                                그놈은 되고 왜 나는 안되나용<br/>
+                                얼굴이니 아니면 그냥 아니니<br/>
+                                그러면 나는 영원히 안되나용<br/>
                             </p>
                         </div>
                         <button type="button" class="more">더보기 &gt;</button>
@@ -245,30 +351,32 @@
             
             <div id="profile">
                 <div id="infoBox">
-                    <div id="userPic">
+                    <a href="#" id="userPic">
                         <img src="images/default.png" />
+                    </a>
+                    <div id="userBox">
+                        <a href="#" id="userName">Scarl-ett</a>
+                        <span id="userMail">chdnjs7610@gmail.com</span>
                     </div>
-                    <p id="userName">Scarl-ett</p>
-                    <span id="userMail">chdnjs7610@gmail.com</span>
                 </div>
                 <div id="followBox">
                     <ul>
                         <li>
                             <span class="th">게시물</span><br/>
-                            <span id="allFeed">100</span>
+                            <a href="#" id="allFeed">100</a>
                         </li>
                         <li>
                             <span class="th">팔로워</span><br/>
-                            <span id="Follower">100</span>
+                            <a href="#" id="Follower">100</a>
                         </li>
                         <li>
                             <span class="th">팔로잉</span><br/>
-                            <span id="Follwing">15</span>
+                            <a href="#" id="Follwing">15</a>
                         </li>
                     </ul>
                 </div>
                 <div id="myInfo">
-                    <h6 id="className">풀-스택 개발자 양성과정 6기 - 302호</h6>
+                    <a href="#" id="className">풀-스택 개발자 양성과정 6기 - 302호</a>
                     <p id="self">
                         여기는 간단한 자기소개가 들어갑니다.<br/>
                         최대 3줄정도 들어가는 걸로 디자인 함.<br/>
@@ -282,8 +390,10 @@
                                 <div class="groupCir">
                                     <img src="images/default.png"/>
                                 </div>
-                                <p class="groupName">6기 - 302호</p>
-                                <span class="mem">소속인원 25</span>
+                                <div class="groupInfo">
+                                    <p class="groupName">6기 - 302호</p>
+                                    <span class="mem">소속인원 25</span>
+                                </div>
                             </a>
                         </li>
                          <li class="group">
@@ -291,8 +401,10 @@
                                 <div class="groupCir">
                                     <img src="images/default.png"/>
                                 </div>
-                                <p class="groupName">정보처리기사</p>
-                                <span class="mem">스터디원 6</span>
+                                <div class="groupInfo">
+                                    <p class="groupName">정보처리기사</p>
+                                    <span class="mem">스터디원 6</span>
+                                </div>
                             </a>
                         </li>
                          <li class="group">
@@ -300,8 +412,10 @@
                                 <div class="groupCir">
                                     <img src="images/default.png"/>
                                 </div>
-                                <p class="groupName">프로그래머스 스터디</p>
-                                <span class="mem">스터디원 20</span>
+                                <div class="groupInfo">
+                                    <p class="groupName">프로그래머스 스터디</p>
+                                    <span class="mem">스터디원 20</span>
+                                </div>
                             </a>
                         </li>
                     </ul>
