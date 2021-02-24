@@ -106,10 +106,6 @@ body {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-#mnav {
-    display: none;
-}
-
 #contents #search {
     flex: auto;
     margin-top: 2px;
@@ -293,12 +289,16 @@ footer #copy {
         width: 90%!important;
     }
     
+    #contents {
+        overflow: hidden;
+    }
     #contents header {
         display: none;
     }
     
     #mheader {
         display: block;
+        overflow: hidden;
     }
     
     #mheaderTop {
@@ -318,20 +318,24 @@ footer #copy {
         width: 100%;
     }
     
-    #contents #gnb li {
+    #contents #mgnb li {
         margin-right: 12px;
     }
-    #contents #gnb li a {
+    #contents #mgnb li a {
         font-size: 1.1em;
     }
     
-    #mheader #search {
+    #mheader #msearch {
         float: right;
         margin-top: 10px;
     }
     
     #mnav {
-        display: block;
+        width: 85%;
+        height: 800px;
+        background-color: white;
+        margin-left: -120%;
+        transition: margin-left 0.5s;
     }
     
     #lnb {

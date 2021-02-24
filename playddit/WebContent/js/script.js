@@ -13,7 +13,7 @@ $(function(){
             $("#hsearch_btn").css("background-position","3px 3px");
         }else{
             $("#mnav").css({
-            marginLeft: "-85%"
+                marginLeft: "-85%"
             });
             $("#back").stop().fadeOut(200);
             $("#ham").removeClass("ex");
