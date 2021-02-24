@@ -13,6 +13,12 @@
         <link href="css/style.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/script.js"></script>
+		<script src="script/main.js"></script>
+		<script>
+			$(function(){
+				loadProfile();
+			})
+		</script>
 	</head>
     <body>
         <div class="cen" id="wrap">
@@ -182,33 +188,29 @@
                         <img src="images/default.png" />
                     </a>
                     <div id="userBox">
-                        <a href="#" id="userName">Scarl-ett</a>
-                        <span id="userMail">ddchdnjs7610@gmail.com</span>
+                        <a href="#" id="userName"></a>
+                        <span id="userMail"></span>
                     </div>
                 </div>
                 <div id="followBox">
                     <ul>
                         <li>
                             <span class="th">게시물</span><br/>
-                            <a href="#" id="allFeed">100</a>
+                            <a href="#" id="allFeed"></a>
                         </li>
                         <li>
                             <span class="th">팔로워</span><br/>
-                            <a href="#" id="Follower">100</a>
+                            <a href="#" id="Follower"></a>
                         </li>
                         <li>
                             <span class="th">팔로잉</span><br/>
-                            <a href="#" id="Following">15</a>
+                            <a href="#" id="Following"></a>
                         </li>
                     </ul>
                 </div>
                 <div id="myInfo">
-                    <a href="#" id="className">풀-스택 개발자 양성과정 6기 - 302호</a>
-                    <p id="self">
-                        여기는 간단한 자기소개가 들어갑니다.
-                        최대 3줄정도 들어가는 걸로 디자인 함.
-                        간단한 자기소개 끝!!
-                    </p>
+                    <a href="#" id="className"></a>
+                    <p id="self"></p>
                 </div>
                 <div id="myGroup">
                     <ul>
