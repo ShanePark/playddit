@@ -1,0 +1,220 @@
+@charset "utf-8";
+/*컨텐츠 페이지 공통속성*/
+body {
+    background-image: linear-gradient(80deg, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+
+#wrap {
+    border-radius: 45px;
+    background: rgba(255, 255, 255, 0.4);
+    margin: 5% auto 1% auto;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 5px 5px 25px #c9bcd0;
+}
+
+#lnb {
+    width: 15%;
+    margin-right: 13px;
+}
+#lnb ul {
+    position: relative;
+    top: 120px;
+}
+#lnb .main {
+    display: inline-block;
+    width: 100%;
+    border-radius: 10px;
+    height: 45px;
+    line-height: 45px;
+    margin-bottom: 10px;
+    font-size: 1.05em;
+    padding: 0 15px;
+}
+#lnb li:hover {
+    background: #a1c4fd;
+}
+#lnb li:hover a {
+    color: white;
+}
+#lnb li.active{
+    background: #bed1f0;
+}
+#lnb li.active a{
+    color: white;
+}
+#lnb .main a {
+    display: inline-block;
+    width: 100%;
+}
+#lnb .main a i {
+    font-size: 1.5em;
+    vertical-align: middle;
+    display: inline-block;
+    width: 30px;
+    margin-right: 13px;
+}
+
+#contents {
+    background: white;
+    border-radius: 35px;
+    margin-right: 13px;
+    width: 58%;
+    padding: 22px;
+}
+#contents header {
+    height: 100px;
+}
+#contents header>a {
+    display: inline-block;
+    width: 130px;
+}
+#contents header img {
+    width: 100%;
+}
+
+#contents #gnb {
+    float: right;
+    margin-top: 3px;
+}
+#contents #gnb li {
+    float: left;
+    margin-right: 10px;
+}
+#contents #gnb li a {
+    color : #a1c4fd;
+    display: inline-block;
+    font-size: 1.3em;
+}
+
+#profile {
+    background: white;
+    border-radius: 35px;
+    width: 26%;
+    height: 100%;
+    padding: 22px;
+} 
+#profile #infoBox {
+    display: flex;
+}
+#profile #userPic {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    box-shadow: 2px 3px 3px #dae7fc;
+}
+#profile #userPic img {
+    width: 100%;
+}
+
+#profile #userBox {
+    width: calc(100% - 68px);
+    margin-top: 10px;
+}
+#profile #userName {
+    color: #a1c4fd;
+    font-size: 1.25em;
+    font-weight: 600;
+}
+#profile #userMail {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #929292;
+}
+
+#profile #followBox {
+    margin-top: 25px;
+    border-bottom: 1px solid #e9e7fb;
+    padding-bottom: 28px;
+    margin-bottom: 30px;
+}
+#profile li {
+    display: inline-block;
+    width: calc(96% / 3);
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+#profile li .th {
+    margin-bottom: 10px;
+    display: inline-block;
+}
+#profile li a {
+    font-weight: 800;
+}
+
+#profile #myInfo #className {
+    font-size: 0.95em;
+    font-weight: 800;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+#profile #myInfo #self {
+    font-size: 0.92em;
+    line-height: 1.6em;
+    margin : 10px 0 30px 0;
+}
+
+#myGroup .group {
+    width: 100%;
+    height: 75px;
+    background : white;
+    box-shadow: 1px 1px 5px #dae7fc;
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+}
+#myGroup .group a {
+    display: inline-block;
+    width: 100%;
+    display: flex;
+}
+#myGroup .groupCir {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    box-shadow: 2px 3px 3px #dae7fc;
+    display: inline-block;
+}
+#myGroup .groupCir img {
+    width: 100%;
+}
+#myGroup .groupInfo {
+    width: calc(100% - 58px);
+    text-align: left;
+    padding-left: 12px;
+    padding-top: 12px;
+}
+#myGroup .groupInfo .groupName {
+    font-size: 0.95em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#myGroup .groupInfo .mem {
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+#logout {
+    margin-top: 70px;
+    color : #a1c4fd;
+    border: none;
+    background: none;
+    font-size: 1.5em;
+    float: right;
+}
+
+footer {
+    text-align: center;
+    margin-bottom: 5%;
+}
+footer #copy {
+    color : #b7b7b7;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+
+
