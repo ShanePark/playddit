@@ -17,19 +17,13 @@
 		
 		<script>
 			$(function(){
-				var idCookie = getCookie("id");
+				var idCookie = getCookie("remember_id");
 				if( idCookie !== undefined){
 					$('#idchk').attr("checked", true);
 					$('#idCheck').val(idCookie);
 				}
 				
-				$('#passBtn').on('click',function(){
-					sendTempPass();
-				})	
-				$('#signIn').on('click', function(){
-					idPassCheck();
 			})
-		})
 		</script>
 	</head>
 <body>
@@ -39,7 +33,7 @@
         </div>
         <div id="loginRight">
             <img src="images/logo2.png" alt="logo" />
-            <form id="login">
+            <form onsubmit="idPassCheck()" id="login">
                 <div class="loginBox">
                     <i disabled class="fas fa-user"></i>
                     <input type="text" id="idCheck" name="mail" placeholder="Useremail" />
@@ -54,7 +48,7 @@
                     <button type="button" class="purple" id="forgotPass">Forgot Password?</button>
                 </div>
                 
-                <button type="button" id="signIn" class="purBtn">SIGN IN</button>
+                <button type="submit" id="signIn" class="purBtn">SIGN IN</button>
             </form>
             
             <div id="joinBox">
@@ -77,14 +71,14 @@
             <div id="modalCont">
                 <i class="fas fa-unlock-alt"></i>
                 <p>가입한 이메일 주소를 입력하세요.</p>
-                <form id="find" onsubmit="return false">
+                <form id="find" onsubmit="sendTempPass()">
                     <p>
                         <span class="red">*</span>
                         Email
                         <span class="red" id="msg"></span>
                     </p>
                     <input type="text" id="findmail" name="findmail" placeholder="Please enter your email" />
-                    <button type="button" id="passBtn" class="purBtn">임시 비밀번호 전송</button>
+                    <button type="submit" id="passBtn" class="purBtn">임시 비밀번호 전송</button>
                 </form>
             </div>
             <p>가입한 이메일 주소로 임시 비밀번호를 전송합니다. 메일함을 확인하세요.</p>

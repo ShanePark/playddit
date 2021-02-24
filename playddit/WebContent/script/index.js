@@ -1,5 +1,8 @@
 function sendTempPass(){
- 	let email = $('#findmail').val().trim();
+	
+	event.preventDefault(); // submit의 고유 기능 방지
+ 	
+	let email = $('#findmail').val().trim();
 	var regemail = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z]+){1,2}$/;
 	if(!regemail.test(email)){
 		alert("이메일 형식에 맞게 입력해주세요.");
@@ -50,6 +53,7 @@ function sendTempPass2(email){
 }
 
 function idPassCheck(){
+	event.preventDefault(); // submit의 고유 기능 방지
 	idvalue = $('#idCheck').val().trim();
 	pwvalue = $('#passCheck').val().trim();
 	
@@ -69,7 +73,6 @@ function idPassCheck(){
 	}else{
 		forgetId();
 	}
-
 	
 	$.ajax({
 		url : '/playddit/users/match.do',
@@ -81,6 +84,7 @@ function idPassCheck(){
 				alert("아이디나 비밀번호를 확인해주세요.");
 			}else{
 				alert("접속완료 !!! 아이디 : " + res.id + "닉네임 : "+res.nickname);
+				location.href="./tests/maintest.html";
 			}
 		},
 		error : function(xhr){
@@ -89,6 +93,7 @@ function idPassCheck(){
 		dataType : 'json'
 	})
 }
+
 
 function setCookie(name, value, exp){
 	var date = new Date();
@@ -104,11 +109,11 @@ function getCookie(name) {
 
 function rememberId(){
 	id = $('#idCheck').val().trim();
-	setCookie("id", id, 30);
+	setCookie("remember_id", id, 30);
 }
 
 function forgetId(){
-	setCookie("id",'',-1);
+	setCookie("remember_id",'',-1);
 }
 
 
