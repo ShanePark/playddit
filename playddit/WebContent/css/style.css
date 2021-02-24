@@ -22,7 +22,7 @@ body {
     position: relative;
     top: 120px;
 }
-#lnb .main {
+.main {
     display: inline-block;
     width: 100%;
     border-radius: 10px;
@@ -32,23 +32,26 @@ body {
     font-size: 1.05em;
     padding: 0 15px;
 }
-#lnb li:hover {
+#lnb li:hover,
+#mnav li:hover{
     background: #a1c4fd;
-}
-#lnb li:hover a {
     color: white;
 }
-#lnb li.active{
+#lnb li:hover a,
+#mnav li:hover a {
+    color: white;
+}
+#lnb li.active {
     background: #bed1f0;
 }
-#lnb li.active a{
+#lnb li.active a {
     color: white;
 }
-#lnb .main a {
+.main a {
     display: inline-block;
     width: 100%;
 }
-#lnb .main a i {
+.main a i {
     font-size: 1.5em;
     vertical-align: middle;
     display: inline-block;
@@ -73,37 +76,6 @@ body {
 }
 #contents header img {
     width: 100%;
-}
-
-#mheader {
-    display: none;
-}
-
-#ham {
-    width: 30px;
-    height: 30px;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    cursor: pointer;
-    float: left;
-}
-
-.patty {
-    width: 20px;
-    height: 4px;
-    background-color: #a1c4fd;
-    border-radius: 3px;
-    margin: 3px auto;
-    transition: all 0.5s;
-}
-
-.ex .p1 {
-    transform: translateY(7px) rotate(45deg);
-}
-.ex .p2 {opacity: 0;}
-.ex .p3 {
-    transform: translateY(-7px) rotate(-45deg);
 }
 
 #contents #search {
@@ -282,6 +254,134 @@ footer #copy {
 }
 /*컨텐츠 공통영역 끝*/
 
+/*테블릿, 모바일 용 스타일*/
+#mflexBox {
+    display: none;
+}
+
+#mheader, #mnav {
+    display: none;
+}
+
+#ham {
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    float: left;
+    position: absolute;
+    z-index: 500;
+    display: none;
+}
+
+.patty {
+    width: 20px;
+    height: 4px;
+    background-color: #a1c4fd;
+    border-radius: 3px;
+    margin: 3px auto;
+    transition: all 0.5s;
+}
+
+.ex .p1 {
+    transform: translateY(7px) rotate(45deg);
+}
+.ex .p2 {opacity: 0;}
+.ex .p3 {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+#back {
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+}
+
+#mnav {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 70%;
+    background-color: #f5f9ff;
+    margin-left: -120%;
+    transition: margin-left 0.5s;
+    z-index: 501;
+    position: absolute;
+    z-index: 100;
+    padding: 20% 12%;
+}
+#mnav .main a {
+    color: #a1c4fd;
+}
+
+#contents #mgnb {
+    float: right;
+    margin-top: 3px;
+}
+#contents #mgnb li {
+    float: left;
+    margin-right: 10px;
+}
+#contents #mgnb li:nth-of-type(4){
+    margin-right: 0;
+}
+#contents #mgnb li:last-of-type {
+    margin-right: 0;
+    padding: 2px;
+    margin-top: -5px
+}
+#contents #mgnb li a {
+    color : #a1c4fd;
+    display: inline-block;
+    font-size: 1.3em;
+}
+#contents #mgnb #cir {
+    box-shadow: 3px 3px 3px #dae7fc;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+#contents #mgnb #cir img {
+    width: 100%;
+}
+
+#contents #msearch {
+    flex: auto;
+    margin-top: 2px;
+}
+#contents #msearch form {
+    border: 1px solid #e9e7fb;
+    border-radius: 3px;
+    height: 25px;
+    width: 150px;
+    padding: 0 10px;
+    margin: auto;
+}
+#contents #msearch input {
+    width: 100px;
+    border: none;
+    height: 100%;
+}
+#contents #msearch button {
+    width: 20px;
+    border: none;
+    background: none;
+    padding-top: 3px;
+    text-align: center;
+    float: right;
+}
+#contents #msearch i {
+    font-size: 1.2em;
+    color : #a1c4fd;
+}
+
 /*여기부터 태블릿pc*/
 @media all and (max-width: 1020px) {
     /*컨텐츠 공통영역 시작*/
@@ -291,6 +391,8 @@ footer #copy {
     
     #contents {
         overflow: hidden;
+        position: relative;
+        width: 65%;
     }
     #contents header {
         display: none;
@@ -299,6 +401,10 @@ footer #copy {
     #mheader {
         display: block;
         overflow: hidden;
+    }
+    
+    #mnav, #ham {
+        display: block;
     }
     
     #mheaderTop {
@@ -321,6 +427,9 @@ footer #copy {
     #contents #mgnb li {
         margin-right: 12px;
     }
+    #contents #mgnb li:last-of-type {
+        display: none;
+    }
     #contents #mgnb li a {
         font-size: 1.1em;
     }
@@ -330,32 +439,108 @@ footer #copy {
         margin-top: 10px;
     }
     
-    #mnav {
-        width: 85%;
-        height: 800px;
-        background-color: white;
-        margin-left: -120%;
-        transition: margin-left 0.5s;
-    }
-    
     #lnb {
         display: none;
     }
     
-    #contents {
-        width: 70%;
+    #profile {
+        width: 35%;
+    }
+    #profile #userPic {
+        width: 45px;
+        height: 45px;
+        margin-right: 5px;
+    }
+    #profile #userBox {
+        margin-top: 5px;
+    }
+    #profile #userName {
+        font-size: 1.05em;
+    }
+    #profile #userMail {
+        font-size: 0.65em;
     }
     
-    #profile {
-        width: 30%;
+    #followBox .th {
+        font-size: 0.95em;
+    }
+    #followBox a {
+        font-size: 0.95em;
     }
     /*컨텐츠 공통영역 끝*/
 }
 
 /*여기부터 모바일버전*/
 @media all and (max-width:767px) {
+    #wrap {
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+    }
+    
     .cen {
         width: 100%!important;
+    }
+    
+    #contents {
+        width: 100%;
+        margin-right: 0;
+        border-radius: 0;
+        background-color: transparent;
+        height: 800px;
+        padding: 0;
+    }
+    
+    #mheaderTop #flexBox {
+        padding-left: 0;
+    }
+    #flexBox a img {
+        display: none;
+    }
+    #mflexBox {
+        display: block;
+        padding-top: 20px;
+        text-align: center;
+    }
+    #mflexBox a img {
+        width: 30%;
+    }
+    
+    #contents #msearch form {
+        border: 1px solid #b2c3e3;
+    }
+    
+    #mheader {
+        padding: 18px;
+    }
+    
+    #msearch input {
+        background-color: transparent;
+    }
+    
+    #contents #mgnb li:nth-of-type(4) {
+        margin-right: 12px;
+    }
+    #contents #mgnb li:last-of-type{
+        display: inline-block;
+    }
+    #mgnb i {
+        font-size: 1.2em;
+    }
+    
+    #profile {
+        display: none;
+    }
+    
+    #feed {
+        background: white;
+        width: 100%;
+        height: 100%;
+    }
+    
+    footer {
+        margin-top: 10px;
+        margin-bottom: 15%;
     }
 }
 
