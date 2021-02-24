@@ -8,8 +8,6 @@
 	{
 		"id" : "<%= vo.getUser_id() %>",
 		"name" : "<%= vo.getUser_name() %>",
-		"pw" : "<%= vo.getUser_password() %>",
-		"tel" : "<%= vo.getUser_tel() %>",
 		"nickname" : "<%= vo.getUser_nickname() %>"
 	}
 <% }else{
