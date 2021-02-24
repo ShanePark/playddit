@@ -61,6 +61,7 @@ body {
 #loginRight .fas {
     color: #898989;
     font-size: 1.4em;
+    pointer-events: none;
 }
 #loginRight .loginBox input {
     border: none;

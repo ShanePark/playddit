@@ -65,6 +65,7 @@ body {
 }
 #contents header {
     height: 100px;
+    display: flex;
 }
 #contents header>a {
     display: inline-block;
@@ -74,6 +75,71 @@ body {
     width: 100%;
 }
 
+#mheader {
+    display: none;
+}
+
+#ham {
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    float: left;
+}
+
+.patty {
+    width: 20px;
+    height: 4px;
+    background-color: #a1c4fd;
+    border-radius: 3px;
+    margin: 3px auto;
+    transition: all 0.5s;
+}
+
+.ex .p1 {
+    transform: translateY(7px) rotate(45deg);
+}
+.ex .p2 {opacity: 0;}
+.ex .p3 {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+#mnav {
+    display: none;
+}
+
+#contents #search {
+    flex: auto;
+    margin-top: 2px;
+}
+#contents #search form {
+    border: 1px solid #e9e7fb;
+    border-radius: 3px;
+    height: 25px;
+    width: 150px;
+    padding: 0 10px;
+    margin: auto;
+}
+#contents #search input {
+    width: 100px;
+    border: none;
+    height: 100%;
+}
+#contents #search button {
+    width: 20px;
+    border: none;
+    background: none;
+    padding-top: 3px;
+    text-align: center;
+    float: right;
+}
+#contents #search i {
+    font-size: 1.2em;
+    color : #a1c4fd;
+}
+
 #contents #gnb {
     float: right;
     margin-top: 3px;
@@ -81,6 +147,9 @@ body {
 #contents #gnb li {
     float: left;
     margin-right: 10px;
+}
+#contents #gnb li:last-of-type {
+    margin-right: 0;
 }
 #contents #gnb li a {
     color : #a1c4fd;
@@ -120,7 +189,7 @@ body {
     font-weight: 600;
 }
 #profile #userMail {
-    font-size: 0.9em;
+    font-size: 0.75em;
     font-weight: 500;
     color: #929292;
 }
@@ -133,7 +202,7 @@ body {
 }
 #profile li {
     display: inline-block;
-    width: calc(96% / 3);
+    width: calc(95% / 3);
     text-align: center;
     font-weight: bold;
     font-family: 'Nanum Gothic', sans-serif;
@@ -215,6 +284,116 @@ footer #copy {
     color : #b7b7b7;
     font-family: 'Nanum Gothic', sans-serif;
 }
+/*컨텐츠 공통영역 끝*/
+
+/*여기부터 태블릿pc*/
+@media all and (max-width: 1020px) {
+    /*컨텐츠 공통영역 시작*/
+    .cen {
+        width: 90%!important;
+    }
+    
+    #contents header {
+        display: none;
+    }
+    
+    #mheader {
+        display: block;
+    }
+    
+    #mheaderTop {
+        display: flex;
+    }
+    #mheaderTop #flexBox {
+        flex: auto;
+        text-align: center;
+        padding-left: 20px;
+    }
+    #mheaderTop #flexBox  a {
+        display: inline-block;
+        width: 100px;
+        margin: auto;
+    }
+    #mheaderTop #flexBox a img {
+        width: 100%;
+    }
+    
+    #contents #gnb li {
+        margin-right: 12px;
+    }
+    #contents #gnb li a {
+        font-size: 1.1em;
+    }
+    
+    #mheader #search {
+        float: right;
+        margin-top: 10px;
+    }
+    
+    #mnav {
+        display: block;
+    }
+    
+    #lnb {
+        display: none;
+    }
+    
+    #contents {
+        width: 70%;
+    }
+    
+    #profile {
+        width: 30%;
+    }
+    /*컨텐츠 공통영역 끝*/
+}
+
+/*여기부터 모바일버전*/
+@media all and (max-width:767px) {
+    .cen {
+        width: 100%!important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
