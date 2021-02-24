@@ -22,7 +22,7 @@ public interface IUsersService {
 	public int setNewPass(String user_id, String password);
 	
 	// 회원가입
-	public String insertUser(UsersVO UsersVO);
+	public UsersVO insertUser(UsersVO UsersVO);
 	
 
 }

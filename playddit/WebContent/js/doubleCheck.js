@@ -2,14 +2,22 @@
  * 
  */
 
-function nickCheck(){
+
+nickCheck = function(btn){
 	nickvalue = $('#nickname').val().trim();
 	$.ajax({
 		url : '/playddit/users/nicknameCheck.do',
 		type : 'post',
 		data : { 'user_nickname' : nickvalue },
 		success : function(res){
-			$('#nickDbtn').parents('.box').find('.msg').html(res.result);
+			if(res.result == '0'){
+				$(btn).addClass("active"); 			
+				alert("사용가능");
+				return true;
+			}else{
+				alert("사용 불가능");
+				return false;
+			}
 		},
 		error : function(xhr){
 			alert("상태 : " + xhr.status);
@@ -17,26 +25,9 @@ function nickCheck(){
 		dataType : 'json'
 	})
 }
-/*
-function idDcheck(){
-	idvalue = $('#id').val().trim();
-
-	$.ajax({
-		url : 'plyddit/users/idCheck.do',
-		type : 'post',
-		data : { 'user_id' : idvalue },
-		success : function(res){
-			$('#idDspan').html(res.result).css('color', 'green');
-		},
-		error : function(xhr){
-			alert("상태 : " + xhr.status);
-		},
-		dataType : 'json'
-	})
-}*/
 
 
-function idDcheck(btn){
+idDcheck = function(btn){
 	
 	idvalue = $('#mail').val().trim();
 			
@@ -52,9 +43,11 @@ function idDcheck(btn){
 			if(res.result == '0'){
 				$(btn).addClass("active"); 			
 				alert("사용가능");
+				return true;
 			}
 			else{
 				alert("사용 불가능");
+				return false;
 			}
 
 		},

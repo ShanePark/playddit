@@ -2,7 +2,7 @@
  * 
  */
 //document.domain = "naver.com";
-function wordchk(nickvalue){
+wordchk = function(nickvalue){
 	arrList = new Array();
 	arrList[arrList.length]  = "캐쉬스파이더";
 	arrList[arrList.length]  = "캐시스파이더";
@@ -1718,12 +1718,14 @@ function wordchk(nickvalue){
 	
 	for(i = 0; i < length; i++){
 		if(nickvalue.indexOf(arrList[i]) != -1){
-			$('#nickmsg').text('사용 불가능한 단어가 포함된 닉네임입니다.').css('color', 'red');
-			return
+			console.log(nickvalue);
+			$('#nickname').parents('.box').find('.msg').text('사용 불가능한 단어가 포함된 닉네임입니다.');
+			return false;
 		}
 	}
-		$('#nickmsg').text('사용가능한 닉네임입니다.').css('color', 'green');	
-		return
+			$('#nickname').parents('.box').find('.msg').empty();
+			return true;
+
 	
 	/*for(str in arrList){
 		if(nickvalue==str){

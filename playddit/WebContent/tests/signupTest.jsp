@@ -133,7 +133,7 @@
 </script>
 </head>
 <body >
-	 <form method="post" id="joinForm" action="/playddit/users/join.do">
+	 <form method="post" id="joinForm" action="<%= request.getContextPath() %>/users/join.do">
                    <div id="joinLeft" class="joinBox">
                         <div class="box">
                             <p><span class="red">*</span> Email<span class="msg"></span></p>

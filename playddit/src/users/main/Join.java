@@ -28,16 +28,14 @@ public class Join implements IAction{
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String user_id = request.getParameter("user_id");
-		String user_nickname = request.getParameter("user_nickname");
-		String user_password = request.getParameter("user_password");
-		String user_name = request.getParameter("user_name");
-		String user_tel = request.getParameter("user_tel");
-		String user_birth = request.getParameter("user_birth");
-		String user_class = request.getParameter("user_class");
-		int user_rating = Integer.parseInt(request.getParameter("user_rating"));
-		int user_theme = Integer.parseInt(request.getParameter("user_theme"));
-		
+		String user_id = request.getParameter("mail");
+		String user_nickname = request.getParameter("nickname");
+		String user_password = request.getParameter("pass");
+		String user_name = request.getParameter("name");
+		String user_tel = request.getParameter("phone");
+		String user_birth = request.getParameter("birth");
+	
+
 		UsersVO vo = new UsersVO();
 		vo.setUser_id(user_id);
 		vo.setUser_nickname(user_nickname);
@@ -45,13 +43,15 @@ public class Join implements IAction{
 		vo.setUser_name(user_name);
 		vo.setUser_tel(user_tel);
 		vo.setUser_birth(user_birth);
-		vo.setUser_class(user_class);
-		vo.setUser_rating(user_rating);
-		vo.setUser_theme(user_theme);
+
+
 		
 		IUsersService service = UsersServiceImpl.getService();
 		
-		service.insertUser(vo);
+		UsersVO insert = service.insertUser(vo);
+		
+		request.setAttribute("insert", insert);
+		
 		
 		return "/users/insertUser.jsp";
 		

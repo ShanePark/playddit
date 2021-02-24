@@ -24,6 +24,6 @@ public interface IUsersDao {
 	public int setNewPass(String user_id, String password) throws SQLException;
 	
 	// 회원가입
-	public String insertUser(UsersVO UsersVO) throws SQLException;	
+	public UsersVO insertUser(UsersVO UsersVO) throws SQLException;	
 }
 	

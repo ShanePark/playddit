@@ -103,8 +103,8 @@ public class UsersDaoImpl implements IUsersDao {
 	 * 회원가입
 	 */
 	@Override
-	public String insertUser(UsersVO UsersVO) throws SQLException {
-		return (String)client.insert("users.insertUser", UsersVO);
+	public UsersVO insertUser(UsersVO UsersVO) throws SQLException {
+		return (UsersVO)client.insert("users.insertUser", UsersVO);
 	}	
 	
 	
