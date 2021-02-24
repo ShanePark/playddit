@@ -8,13 +8,13 @@ import users.vo.UsersVO;
 
 public class UsersServiceImpl implements IUsersService {
 	private IUsersDao dao;
-	private static UsersServiceImpl service;
+	private static IUsersService service;
 	
 	public UsersServiceImpl() {
 		dao = UsersDaoImpl.getDao();
 	}
 	
-	public static UsersServiceImpl getService() {
+	public static IUsersService getService() {
 		if(service == null) service = new UsersServiceImpl();
 		
 		return service;
