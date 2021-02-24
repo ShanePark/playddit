@@ -69,8 +69,3 @@ where user_id = 'psh40963@naver.com';
 select * from users;
 commit;
 
-UPDATE users
-SET
-    user_bio = '뭐라도 써야되는데[ 3줄 써야되니까 길게 씁니다 아아아하하하하ㅏ가가가가가'
-WHERE
-    user_id = 'expedition1205@gmail.com';
