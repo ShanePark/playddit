@@ -9,13 +9,22 @@ $(function(){
             });
             $("#ham").addClass("ex");
             stat = false;
-            $("#msearch").slideUp(100);
-            $("#hsearch_btn").css("background-position","3px 3px");
         }else{
             $("#mnav").css({
-                marginLeft: "-85%"
+                marginLeft: "-120%"
             });
             $("#back").stop().fadeOut(200);
+            $("#ham").removeClass("ex");
+            stat = true;
+        }
+    });
+    
+    $(window).resize(function(){
+        var winW = $(window).width();
+        if(winW >= 1024){
+            $("#mnav, #back").removeAttr("style");
+        }else{
+            $("#mnav").css({marginLeft: "-120%"});
             $("#ham").removeClass("ex");
             stat = true;
         }

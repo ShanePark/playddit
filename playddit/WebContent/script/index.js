@@ -84,7 +84,7 @@ function idPassCheck(){
 				alert("아이디나 비밀번호를 확인해주세요.");
 			}else{
 				alert("접속완료 !!! 아이디 : " + res.id + "닉네임 : "+res.nickname);
-				location.href="./tests/maintest.html";
+				location.href="./main.html";
 			}
 		},
 		error : function(xhr){

@@ -66,5 +66,6 @@ from users
 where user_id = 'psh40963@naver.com';
 -----------------------------------------------------
 
-
+select * from users;
 commit;
+
