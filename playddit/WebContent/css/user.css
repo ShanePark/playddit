@@ -677,7 +677,7 @@ label[for='allchk'] h5 {
 }
 
 /*여기부터 태블릿pc*/
-@media all and (max-width: 1200px) {
+@media all and (max-width: 1020px) {
     /*로그인페이지*/
     #wrap {
         height: 80%;
@@ -853,6 +853,9 @@ label[for='allchk'] h5 {
         float: none;
         height: auto;
     }
+    .sky {
+        min-height: 1000px;
+    }
 
     #loginLeft {
         width: 100%;
@@ -983,7 +986,6 @@ label[for='allchk'] h5 {
     
     /*회원가입페이지*/
     .over {
-        min-height: 1100px;
         overflow: auto;
     }
     .over #wrap {
@@ -1081,7 +1083,6 @@ label[for='allchk'] h5 {
     }
 
     #class p {
-        width: 100%;
         padding-top: 20px;
     }
     #followBox .smallPic img {
