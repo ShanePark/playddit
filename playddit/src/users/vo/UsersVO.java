@@ -7,9 +7,7 @@ public class UsersVO {
 	private String user_name;
 	private String user_tel;
 	private String user_birth;
-	private String user_class;
-	private int user_rating;
-	private int user_theme;
+	private String class_id;
 	private String user_sign_date;
 	
 	
@@ -50,22 +48,10 @@ public class UsersVO {
 		this.user_birth = user_birth;
 	}
 	public String getUser_class() {
-		return user_class;
+		return class_id;
 	}
 	public void setUser_class(String user_class) {
-		this.user_class = user_class;
-	}
-	public int getUser_rating() {
-		return user_rating;
-	}
-	public void setUser_rating(int user_rating) {
-		this.user_rating = user_rating;
-	}
-	public int getUser_theme() {
-		return user_theme;
-	}
-	public void setUser_theme(int user_theme) {
-		this.user_theme = user_theme;
+		this.class_id = user_class;
 	}
 	public String getUser_sign_date() {
 		return user_sign_date;
