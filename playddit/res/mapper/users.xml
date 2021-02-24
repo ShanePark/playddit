@@ -45,4 +45,16 @@
 		where user_id = #email#
 	</update>
 	
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterClass="UsersVO">
+		 insert into users(user_id, user_nickname, user_password, user_name, user_tel, user_birth, user_theme, user_sign_date)
+		 values (#user_id#, #user_nickname#, #user_password#, #user_name#, #user_tel#, #user_birth#, 0, sysdate)
+		 
+		 <!-- insert가 되었는지 안되었는지 selectKey로 확인할 수 있다. -->
+ 		 <selectKey resultClass="UsersVO" type="post">
+		 	select user_id, user_nickname from users where user_id = #user_id#
+		 </selectKey>
+	</insert>
+	
 </sqlMap>
+

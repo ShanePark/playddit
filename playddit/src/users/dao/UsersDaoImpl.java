@@ -98,5 +98,15 @@ public class UsersDaoImpl implements IUsersDao {
 		map.put("password", password);
 		return client.update("users.setNewPass", map);
 	}
+	
+	/**
+	 * 회원가입
+	 */
+	@Override
+	public UsersVO insertUser(UsersVO UsersVO) throws SQLException {
+		return (UsersVO)client.insert("users.insertUser", UsersVO);
+	}	
+	
+	
 
 }
