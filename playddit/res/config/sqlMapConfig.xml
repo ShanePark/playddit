@@ -25,6 +25,7 @@
  	 	형식 : <typeAlias alias="alias명 type="클래스의 전체이름"/>
  	  -->
  	  <typeAlias alias = "UsersVO" type="users.vo.UsersVO"/>
+ 	  <typeAlias alias = "ProfileVO" type="login.vo.ProfileVO"/>
  	  
  	  <!-- DB와의 연결을 처리하는 부분 -->
  	  <transactionManager type="JDBC">
@@ -42,5 +43,6 @@
  	  		 형식: <sqlMap resource="경로명/파일명.xml"/>
  	   -->
   	  <sqlMap resource="mapper/users.xml"/>
+  	  <sqlMap resource="mapper/login.xml"/>
  	
  </sqlMapConfig>

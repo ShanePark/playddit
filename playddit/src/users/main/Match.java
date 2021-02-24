@@ -12,7 +12,13 @@ import javax.crypto.NoSuchPaddingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
+import login.service.ILoginService;
+import login.service.LoginServiceImpl;
+import login.vo.ProfileVO;
 import users.service.IUsersService;
 import users.service.UsersServiceImpl;
 import users.vo.UsersVO;
@@ -43,6 +49,16 @@ public class Match implements IAction {
 		IUsersService service = UsersServiceImpl.getService();
 
 		UsersVO vo = service.match(id, encryptedPass);
+		
+		if(vo != null) {	// 로그인 성공한경우 세선에 접속정보 저장합니다.
+			ILoginService loginService = LoginServiceImpl.getService();
+			ProfileVO profile = loginService.loadProfile(id);
+			
+			HttpSession session = request.getSession();
+			String profileJson = new Gson().toJson(profile);
+			session.setAttribute("profile", profileJson);
+			
+		}
 
 		request.setAttribute("match", vo);
 		return "/users/match.jsp";

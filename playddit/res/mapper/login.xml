@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace = "login">
+	<select id="loadProfile" parameterClass="String" resultClass="ProfileVO">
+		select user_id, user_nickname,
+		(select count(*) from follow where follower=users.user_id) as following,
+		(select count(*) from follow where followee=users.user_id) as follower,
+		(select class_title ||' '|| class_num || ' - ' || class_room
+		from class
+		where class_id = (select class_id from users where user_id=#user_id#)) as className,
+		(select count(*)
+		from feed
+		where feed.user_id = users.user_id) as allFeed,
+		user_bio
+		from users
+		where user_id = #user_id#
+	</select>
+	
+</sqlMap>
+
