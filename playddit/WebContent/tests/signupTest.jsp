@@ -60,17 +60,15 @@
 			if(nickvalue.length < 2 || nickvalue.length > 8){
 				$('#nickname').parents('.box').find('.msg').text("2글자 이상 8글자 이하로 입력하세요.");
 				return false;
-			}
-			
+			}		
 			wordchk(nickvalue);	
-
 		})
 		
 		// nickname doubleCheck
 		$('#nickDbtn').on('click', function(){
 			nickvalue = $('#nickname').val().trim();
 			if(nickvalue.length < 2 || nickvalue.length > 8){
-				$(this).parents('.box').find('.msg').text("2글자 이상 8글자 이하로 입력하세요.");
+				$(this).parents('.box').find('.msg').text("닉네임 형식을 확인해주세요.");
 			}else{	
 				nickCheck(this);
 			}
@@ -103,7 +101,7 @@
 		})
 		
 		// name check
-		$('#name').on('keyup', function(){
+		$('#name').on('keyup input change', function(){
 			namevalue = $('#name').val().trim();
 			
 			if(namevalue.length < 2 || namevalue.length > 5){
@@ -111,21 +109,53 @@
 			}else{
 				nameCheck();
 			}
+			
+			if(namevalue == ""){
+				$('#name').parents('.box').find('.msg').text("");
+			}		
 		})
+		
 		
 		// ph check
 		$('#phone').on('keyup', function(){
 			phCheck();
+			
+			if($('#phone').val().trim() == ""){
+				$('#phone').parents('.box').find('.msg').text("");
+			}
 		})
 		
 		// birth check
-		$('#birth').on('keyup', function(){
+		$('#birth').on('change', function(){
 			birthCheck();
+			
+			if($('#birth').val().trim() == ""){
+				$('#birth').parents('.box').find('.msg').text("");
+			}
 		})
 		
-		// 제출버튼 클릭 이벤트
-		$('#joinForm').on('submit', function(){
+		$('#joinBtn').on('click', function(){
 			
+			
+ 			if($('#mail').parents('.box').find('.msg').text().length > 1 || $('#mail').val() == ""){
+				alert("이메일을 입력해주세요.");
+				return false;
+			} else if(!$('#idDbtn').hasClass('active')){
+				alert("이메일 중복확인을 해주세요.");
+				return false;
+			}else if($('#nickname').parents('.box').find('.msg').text().length > 1 || $('#nickname').val() == ""){
+				alert("닉네임을 입력해주세요.");
+				return false;
+			}else if(!$('#nickDbtn').hasClass('active')){
+				alert("닉네임 중복확인을 해주세요.");
+			}else if($('#pass').parents('.box').find('.msg').text().length > 1 || $('#pass').val() == ""){
+				alert("비밀번호를 입력해주세요.");
+				return false;
+			}else if($('#passchk').parents('.box').find('.msg').text().legnth > 1 ||  $('#pass').val() != $('#passchk').val()){
+				alert("비밀번호 일치여부를 확인해주세요.");
+				return false;
+			}
+ 			
 		})
 		
 	})
@@ -133,7 +163,7 @@
 </script>
 </head>
 <body >
-	 <form method="post" id="joinForm" action="<%= request.getContextPath() %>/users/join.do">
+	 <form method="post" id="joinForm" action="<%= request.getContextPath()%>/users/join.do">
                    <div id="joinLeft" class="joinBox">
                         <div class="box">
                             <p><span class="red">*</span> Email<span class="msg"></span></p>
@@ -192,7 +222,7 @@
                         <div class="box">
                             <p>Birthday<span class="msg"></span></p>
                             <div class="item">
-                                <input type="date" name="birth" id="birth" date-placeholder="Choose your birthday" required aria-required="true"/>
+                                <input type="date" name="birth" id="birth" date-placeholder="Choose your birthday" />
                             </div> 
                         </div>
 

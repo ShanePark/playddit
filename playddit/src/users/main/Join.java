@@ -19,7 +19,7 @@ public class Join implements IAction{
 	@Override
 	public boolean isRedirect() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -35,6 +35,7 @@ public class Join implements IAction{
 		String user_tel = request.getParameter("phone");
 		String user_birth = request.getParameter("birth");
 	
+		System.out.println(user_id);
 
 		UsersVO vo = new UsersVO();
 		vo.setUser_id(user_id);
@@ -52,8 +53,7 @@ public class Join implements IAction{
 		
 		request.setAttribute("insert", insert);
 		
-		
-		return "/users/insertUser.jsp";
+		return "/play.html";
 		
 	}
 
