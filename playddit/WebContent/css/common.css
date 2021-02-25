@@ -76,6 +76,14 @@ input:-webkit-autofill:active {
 
 /*공통속성 끝*/
 
+/*스크롤 막기*/
+.scrollOff {
+    position:fixed;
+    overflow:hidden;
+    height:100%;
+    width: 100%;
+}
+
 /*여기부터 태블릿pc*/
 @media all and (max-width: 1020px) {
     .cen {
