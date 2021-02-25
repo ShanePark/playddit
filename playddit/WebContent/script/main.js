@@ -1,6 +1,21 @@
 $(function(){
 	loadProfile();
+	
+	$('#logout').on('click', function(){
+		logout();
+	})
+	
 })
+
+function logout(){
+	$.ajax({
+		url : '/playddit/login/logout.do',
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		}
+	})
+	location.href="./index.html";
+}
 
 function loadProfile(){
 	
