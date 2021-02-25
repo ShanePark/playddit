@@ -1,3 +1,7 @@
+$(function(){
+	loadProfile();
+})
+
 function loadProfile(){
 	
 	$.ajax({

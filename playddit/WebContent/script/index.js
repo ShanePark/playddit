@@ -1,3 +1,12 @@
+$(function(){
+	var idCookie = getCookie("remember_id");
+	if( idCookie !== undefined){
+		$('#idchk').attr("checked", true);
+		$('#idCheck').val(idCookie);
+	}
+	
+})
+
 function sendTempPass(){
 	
 	event.preventDefault(); // submit의 고유 기능 방지
