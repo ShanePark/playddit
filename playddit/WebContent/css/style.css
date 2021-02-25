@@ -255,6 +255,10 @@ footer #copy {
 /*컨텐츠 공통영역 끝*/
 
 /*테블릿, 모바일 용 스타일*/
+#mo {
+    display: none;
+}
+
 #mflexBox {
     display: none;
 }
@@ -263,7 +267,7 @@ footer #copy {
     display: none;
 }
 
-#ham {
+#ham ,#mham {
     width: 30px;
     height: 30px;
     border: none;
@@ -274,6 +278,12 @@ footer #copy {
     position: absolute;
     z-index: 500;
     display: none;
+}
+
+#mham {
+    position: fixed;
+    top: 8%;
+    left: 18px;
 }
 
 .patty {
@@ -381,6 +391,14 @@ footer #copy {
     font-size: 1.2em;
     color : #a1c4fd;
 }
+/*테블릿, 모바일 용 스타일 끝*/
+
+
+#feed {
+    background: white;
+    width: 100%;
+    height: 6000px;
+}
 
 /*여기부터 태블릿pc*/
 @media all and (max-width: 1020px) {
@@ -396,6 +414,10 @@ footer #copy {
     }
     #contents header {
         display: none;
+    }
+    
+    #mo {
+        display: block;
     }
     
     #mheader {
@@ -487,8 +509,20 @@ footer #copy {
         margin-right: 0;
         border-radius: 0;
         background-color: transparent;
-        height: 800px;
         padding: 0;
+    }
+    
+    #mo {
+        background-image: linear-gradient(45deg, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+        position: fixed;
+    }
+    
+    #mo #ham {
+        display: none;
+    }
+    
+    #mham {
+        display: block;
     }
     
     #mheaderTop #flexBox {
@@ -530,12 +564,6 @@ footer #copy {
     
     #profile {
         display: none;
-    }
-    
-    #feed {
-        background: white;
-        width: 100%;
-        height: 100%;
     }
     
     footer {

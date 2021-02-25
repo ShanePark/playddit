@@ -59,7 +59,100 @@
             
             <div id="contents">
                 <div id="back"></div>
-                 <!--햄버거 메뉴 리스트-->
+                
+                <header>
+                    <a href="#">
+                        <img src="images/logo1.png" alt="logo" />
+                    </a>
+                    
+                    <div id="search">
+                        <form>
+                            <input type="text" name="searchBox" placeholder="search"/>
+                            <button type="button" name="search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <ul id="gnb">
+                        <li>
+                            <a href="#"><i class="fas fa-home"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-pen-nib"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-bell"></i></a>
+                        </li>
+                    </ul>
+                </header>
+                
+                <!--테블릿, 모바일 용 header-->
+                <div id="mo">
+                    <div id="mflexBox">
+                        <a href="#">
+                            <img src="images/logo1.png" alt="logo" />
+                        </a>
+                    </div>
+
+                    <div id="mheader">
+                        <div id="mheaderTop">
+                            <button id="ham">
+                                <div class="patty p1"></div>
+                                <div class="patty p2"></div>
+                                <div class="patty p3"></div>
+                            </button>
+
+                            <div id="flexBox">
+                                <a href="#">
+                                    <img src="images/logo1.png" alt="logo" />
+                                </a>
+                            </div>
+
+
+                            <ul id="mgnb">
+                                <li>
+                                    <a href="#"><i class="fas fa-home"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fas fa-pen-nib"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fas fa-bell"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" id="cir">
+                                        <img src="images/default.png" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="msearch">
+                            <form>
+                                <input type="text" name="searchBox" placeholder="search"/>
+                                <button type="button" name="search">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!--햄버거 메뉴 리스트-->
+                <button id="mham">
+                    <div class="patty p1"></div>
+                    <div class="patty p2"></div>
+                    <div class="patty p3"></div>
+                </button>
+                
                 <nav id="mnav">
                     <ul>
                         <li class="main active">
@@ -94,89 +187,6 @@
                         </li>
                     </ul>
                 </nav>
-                   
-                <header>
-                    <a href="#">
-                        <img src="images/logo1.png" alt="logo" />
-                    </a>
-                    
-                    <div id="search">
-                        <form>
-                            <input type="text" name="searchBox" placeholder="search"/>
-                            <button type="button" name="search">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-                    
-                    <ul id="gnb">
-                        <li>
-                            <a href="#"><i class="fas fa-home"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-pen-nib"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-bell"></i></a>
-                        </li>
-                    </ul>
-                </header>
-                
-                <!--테블릿, 모바일 용 header-->
-                <div id="mflexBox">
-                    <a href="#">
-                        <img src="images/logo1.png" alt="logo" />
-                    </a>
-                </div>
-                
-                <div id="mheader">
-                    <div id="mheaderTop">
-                        <button id="ham">
-                            <div class="patty p1"></div>
-                            <div class="patty p2"></div>
-                            <div class="patty p3"></div>
-                        </button>
-                        
-                        <div id="flexBox">
-                            <a href="#">
-                                <img src="images/logo1.png" alt="logo" />
-                            </a>
-                        </div>
-
-
-                        <ul id="mgnb">
-                            <li>
-                                <a href="#"><i class="fas fa-home"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fas fa-pen-nib"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fas fa-bell"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" id="cir">
-                                    <img src="images/default.png" />
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div id="msearch">
-                        <form>
-                            <input type="text" name="searchBox" placeholder="search"/>
-                            <button type="button" name="search">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
             
                 <!--컨텐츠 영역이 들어갈 곳 -->
                 <div id="feed"></div>
