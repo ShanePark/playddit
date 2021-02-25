@@ -1,4 +1,5 @@
 $(function(){
+    /*모바일 메뉴*/
     var stat = true;
     
     $("#ham, #mham").click(function(){
