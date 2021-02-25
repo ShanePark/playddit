@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.5.1.min.js"></script>
+<style>
+input[type=text]{
+	width : 300px;
+}
+</style>
+<script>
+$(function(){
+	
+	$('#getMessage').on('click', function(){
+		getMessage();
+	})
+	
+})
+var getMessage = function(){
+	$('#result').empty();
+	var user = $('input[name=user]').val();
+	var audience = $('input[name=audience]').val();
+
+	$.ajax({
+		url : '/playddit/message/getMessage.do',
+		type : 'post',
+		data : {'user' : user, 'audience' : audience},
+		success : function(res){
+			var message = "";
+			$.each(res, function(i,v){
+				message += '<p>' + v.sender + '->' + v.receiver;
+				message += '<br>'+ v.content + '<br>' + v.sentdate;
+				message += '</p>';
+			})
+			$('#result').append(message);
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+		dataType : 'json'
+	})
+}
+
+</script>
+</head>
+<body>
+	<div>
+		예제 아이디<br>
+		psh40963@naver.com<br>expedition1205@gmail.com<br>chdnjs7610@gmail.com
+		<br>내 아이디<input type="text" name="user">
+		<br>상대 아이디<input type="text" name="audience">
+		<br><button id="getMessage">메시지받기</button>
+	</div>
+	<div id="result">
+	</div>
+</body>
+</html>
