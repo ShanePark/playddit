@@ -29,5 +29,11 @@
 		group by audience
 	</select>
 	
+	<insert id="insertMessage" parameterClass="map">
+		insert into message 
+		(MSG_NO, MSG_TARGET_ID, MSG_SENDER, MSG_CONTENT, MSG_SENDDATE)
+		values(msg_no_seq.nextval, #receiver#, #sender#, #content#, sysdate)
+	</insert>
+	
 </sqlMap>
 
