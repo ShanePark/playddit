@@ -92,4 +92,12 @@ $(function(){
         }
     });
     
+    //팔로우 목록 모달창
+    $(".followBtn").click(function(){
+        $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+            e.preventDefault();
+        });
+        $("#back2").fadeIn(200);
+		$(".followModal").delay(100).animate({top: "50%"},400);
+    });
 });
