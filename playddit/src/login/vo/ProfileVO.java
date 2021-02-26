@@ -5,6 +5,7 @@ public class ProfileVO {
 	private String user_nickname;
 	private String classname;
 	private String user_bio;
+	private String class_id;
 	private int following;
 	private int follower;
 	private int allfeed;
@@ -50,6 +51,12 @@ public class ProfileVO {
 	}
 	public void setAllfeed(int allfeed) {
 		this.allfeed = allfeed;
+	}
+	public String getClass_id() {
+		return class_id;
+	}
+	public void setClass_id(String class_id) {
+		this.class_id = class_id;
 	}
 
 }

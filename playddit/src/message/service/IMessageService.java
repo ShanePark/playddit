@@ -14,4 +14,7 @@ public interface IMessageService {
 	
 	// 메시지 전송하기. message 테이블에 관련 데이터 추가
 	public int insertMessage(String sender, String receiver, String content);
+	
+	// 특정 클래스의 단체 메시지를 리스트로 불러오기
+	public List<MessageVO> getClassMessage(String class_id);
 }

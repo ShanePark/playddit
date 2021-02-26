@@ -52,4 +52,14 @@ public class MessageServiceImpl implements IMessageService{
 		return 0;
 	}
 
+	@Override
+	public List<MessageVO> getClassMessage(String class_id) {
+		try {
+			return dao.getClassMessage(class_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }
