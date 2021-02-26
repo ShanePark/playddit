@@ -6,6 +6,7 @@ import java.util.List;
 import message.dao.IMessageDao;
 import message.dao.MessageDaoImpl;
 import message.vo.MessageVO;
+import users.vo.UsersVO;
 
 public class MessageServiceImpl implements IMessageService{
 	private IMessageDao dao;
@@ -25,6 +26,16 @@ public class MessageServiceImpl implements IMessageService{
 	public List<MessageVO> getMessage(String user, String audience) {
 		try {
 			return dao.getMessage(user, audience);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<UsersVO> getAudiences(String user_id) {
+		try {
+			return dao.getAudiences(user_id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
