@@ -5,7 +5,7 @@
 
 <sqlMap namespace = "login">
 	<select id="loadProfile" parameterClass="String" resultClass="ProfileVO">
-		select user_id, user_nickname,
+		select user_id, user_nickname,class_id,
 		(select count(*) from follow where follower=users.user_id) as following,
 		(select count(*) from follow where followee=users.user_id) as follower,
 		(select class_title ||' '|| class_num || ' - ' || class_room

@@ -52,7 +52,7 @@ VALUES ('chdnjs7610@gmail.com', '테스터스칼릿', '1234', '박초원', '1234
 -----------------------------------------------------
 --  login profile data loading
 -----------------------------------------------------
-select user_id, user_nickname,
+select user_id, user_nickname,class_id,
 (select count(*) from follow where follower=users.user_id) as following,
 (select count(*) from follow where followee=users.user_id) as follower,
 (select class_title ||' '|| class_num || ' - ' || class_room
@@ -83,5 +83,51 @@ or (msg_target_id = 'psh40963@naver.com' and msg_sender = 'expedition1205@gmail.
 and a.msg_target_id = b.user_id
 and a.msg_sender = c.user_id
 order by msg_no;
+
+-- load people who i message with order by recent msg_no
+
+select case when b.user_id='psh40963@naver.com' then c.user_id
+            else b.user_id end as audience_id,
+            a.msg_content, a.msg_senddate
+from message a, users b, users c
+where (msg_sender = 'psh40963@naver.com' or msg_target_id = 'psh40963@naver.com')
+and a.msg_target_id = b.user_id
+and a.msg_sender = c.user_id
+order by msg_no desc;
+
 -----------------------------------------------------
+-- distinct by user_nickname 
+
+select audience as user_nickname, (select user_id from users where user_nickname=audience) as user_id
+from
+(select case when (select user_nickname
+                    from users
+                    where user_id='psh40963@naver.com') = b.user_nickname then c.user_nickname
+            else b.user_nickname end as audience, a.msg_content, a.msg_senddate
+from message a, users b, users c
+where (msg_sender = 'psh40963@naver.com' or msg_target_id = 'psh40963@naver.com')
+and a.msg_target_id = b.user_id
+and a.msg_sender = c.user_id
+order by msg_no desc)
+group by audience;
+-----------------------------------------------------
+-- send message 'c' from a to b . in here a is psh40963@naver.com b is exp...
+insert into message 
+(MSG_NO, MSG_TARGET_ID, MSG_SENDER, MSG_CONTENT, MSG_SENDDATE)
+values(msg_no_seq.nextval,  'psh40963@naver.com','expedition1205@gmail.com', '과연 그럴까?', sysdate);
+-----------------------------------------------------
+-- getMessage(from specific group or class)
+select class_msg.class_id as receiver, user_nickname as sender, msg_cont as content, msg_senddate as sentdate
+from class_msg, users
+where class_msg.class_id = 'C202011302'
+and msg_sender = user_id;
+
+
 commit;
+
+
+
+
+
+
+

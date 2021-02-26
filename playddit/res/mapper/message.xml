@@ -4,6 +4,13 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace = "message">
+	<select id="getClassMessage" parameterClass="String" resultClass="MessageVO">
+		select class_msg.class_id as receiver, user_nickname as sender, msg_cont as content, msg_senddate as sentdate
+		from class_msg, users
+		where class_msg.class_id = #class_id#
+		and msg_sender = user_id
+	</select>
+	
 	<select id="getMessage" parameterClass="map" resultClass="MessageVO">
 		select b.user_nickname as receiver, c.user_nickname as sender, a.msg_content as content, to_char(a.msg_senddate,'yyyy-mm-dd hh24:mi:ss') as sentdate
 		from message a, users b, users c

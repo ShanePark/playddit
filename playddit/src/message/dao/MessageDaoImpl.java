@@ -50,4 +50,10 @@ public class MessageDaoImpl implements IMessageDao{
 		return client.update("message.insertMessage", map);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MessageVO> getClassMessage(String class_id) throws SQLException {
+		return client.queryForList("message.getClassMessage",class_id);
+	}
+
 }
