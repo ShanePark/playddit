@@ -26,7 +26,35 @@ $(function(){
 		getMessage(user,audience);
 	})
 	
+	$('#result').on('click', '.refresh', function(){
+		var user = $('input[name=user]').val();
+		var audience = $('#receiverInfo').val();
+		getMessage(user,audience);
+	})
+	
+	$('#result').on('click', '.send', function(){
+		sendMessage();
+	})
+	
 })
+
+sendMessage = function(){
+	var sender = $('input[name=user]').val();
+	var receiver = $('#receiverInfo').val();
+	var content = $('input[name=newMessage]').val();
+	$.ajax({
+		url : '/playddit/message/sendMessage.do',
+		type : 'post',
+		data : {'sender' : sender, 'receiver' : receiver, 'content' : content},
+		success : function(res){
+			getMessage(sender,receiver);
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		}
+		
+	})
+}
 
 getAudiences = function(){
 	var user_id = $('input[name=user]').val();
@@ -59,6 +87,7 @@ getMessage = function(user, audience){
 		type : 'post',
 		data : {'user' : user, 'audience' : audience},
 		success : function(res){
+			$('#result').append('<input id="receiverInfo" value='+audience+' disabled>')
 			var message = "";
 			$.each(res, function(i,v){
 				message += '<p>' + v.sender + '->' + v.receiver;
@@ -66,6 +95,10 @@ getMessage = function(user, audience){
 				message += '</p>';
 			})
 			$('#result').append(message);
+			
+			var sendArea = '<button class="refresh">새로고침</button><input type="text" name="newMessage"> <button class="send">전송</button>'
+			
+			$('#result').append(sendArea);
 		},
 		error : function(xhr){
 			alert("status : " + xhr.status);

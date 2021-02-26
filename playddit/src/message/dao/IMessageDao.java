@@ -12,4 +12,8 @@ public interface IMessageDao {
 
 	// 나와 메시지를 주고 받는 사람들의 목록을 불러오기
 	public List<UsersVO> getAudiences(String user_id) throws SQLException;
+	
+	// 메시지 전송하기. message 테이블에 관련 데이터 추가
+	public int insertMessage(String sender, String receiver, String content) throws SQLException;
+	
 }

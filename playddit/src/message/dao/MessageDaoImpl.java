@@ -40,4 +40,14 @@ public class MessageDaoImpl implements IMessageDao{
 		return (List<UsersVO>)client.queryForList("message.getAudiences",user_id);
 	}
 
+	@Override
+	public int insertMessage(String sender, String receiver, String content) throws SQLException {
+		Map<String, String> map = new HashMap<>();
+		map.put("sender", sender);
+		map.put("receiver", receiver);
+		map.put("content", content);
+		
+		return client.update("message.insertMessage", map);
+	}
+
 }

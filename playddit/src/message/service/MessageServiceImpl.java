@@ -42,4 +42,14 @@ public class MessageServiceImpl implements IMessageService{
 		return null;
 	}
 
+	@Override
+	public int insertMessage(String sender, String receiver, String content) {
+		try {
+			return dao.insertMessage(sender, receiver, content);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 }
