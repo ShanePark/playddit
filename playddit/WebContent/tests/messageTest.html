@@ -16,11 +16,42 @@ $(function(){
 		getMessage();
 	})
 	
+	$('#getAudiences').on('click', function(){
+		getAudiences();
+	})
+	
+	$('#audiences').on('click', '.btn', function(){
+		var user = $('input[name=user]').val();
+		var audience = $(this).attr('audience');
+		getMessage(user,audience);
+	})
+	
 })
-var getMessage = function(){
+
+getAudiences = function(){
+	var user_id = $('input[name=user]').val();
+	$('#audiences').empty();
+	
+	$.ajax({
+		url : '/playddit/message/getAudiences.do',
+		type : 'post',
+		data : {'user_id' : user_id},
+		success : function(res){
+			$.each(res, function(i,v){
+				var id = v.user_id;
+				var nickname = v.user_nickname;
+				$('#audiences').append('<button class="btn" audience='+id+'>'+nickname+'</button>');
+			})
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+		dataType : 'json'
+	})
+}
+
+getMessage = function(user, audience){
 	$('#result').empty();
-	var user = $('input[name=user]').val();
-	var audience = $('input[name=audience]').val();
 
 	$.ajax({
 		url : '/playddit/message/getMessage.do',
@@ -49,8 +80,9 @@ var getMessage = function(){
 		예제 아이디<br>
 		psh40963@naver.com<br>expedition1205@gmail.com<br>chdnjs7610@gmail.com
 		<br>내 아이디<input type="text" name="user">
-		<br>상대 아이디<input type="text" name="audience">
-		<br><button id="getMessage">메시지받기</button>
+		<br><button id="getAudiences">메시지 주고받은 사람들 불러오기</button>
+		<br><br>
+		<div id="audiences"></div>
 	</div>
 	<div id="result">
 	</div>
