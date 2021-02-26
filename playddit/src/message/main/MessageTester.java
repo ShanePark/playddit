@@ -6,24 +6,24 @@ import message.dao.IMessageDao;
 import message.dao.MessageDaoImpl;
 import message.service.IMessageService;
 import message.service.MessageServiceImpl;
-import message.vo.MessageVO;
+import users.vo.UsersVO;
 
 public class MessageTester {
 
 	public static void main(String[] args) {
 		IMessageDao dao = MessageDaoImpl.getDao();
 		IMessageService service = MessageServiceImpl.getService();
-		String user = "psh40963@naver.com";
-		String audience = "expedition1205@gmail.com";
-		List<MessageVO> list = null;
-		list = service.getMessage(user, audience);
+		String user_id = "psh40963@naver.com";
 		
-		for(MessageVO vo : list) {
-			System.out.print(vo.getSender() +" : ");
-			System.out.println(vo.getContent());
-			System.out.println(vo.getSentdate());
-			System.out.println();
+		List<UsersVO> list = null;
+		
+		list = service.getAudiences(user_id);
+		
+		for(UsersVO vo : list) {
+			System.out.println(vo.getUser_id());
+			System.out.println(vo.getUser_nickname());
 		}
+	
 
 	}
 
