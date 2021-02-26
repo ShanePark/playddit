@@ -26,7 +26,11 @@
  	  -->
  	  <typeAlias alias = "UsersVO" type="users.vo.UsersVO"/>
  	  <typeAlias alias = "ProfileVO" type="login.vo.ProfileVO"/>
+
  	  <typeAlias alias = "MessageVO" type="message.vo.MessageVO"/>
+
+ 	  <typeAlias alias = "termsVo" type="join.vo.TermsVO"/>
+
  	  
  	  <!-- DB와의 연결을 처리하는 부분 -->
  	  <transactionManager type="JDBC">
@@ -45,6 +49,10 @@
  	   -->
   	  <sqlMap resource="mapper/users.xml"/>
   	  <sqlMap resource="mapper/login.xml"/>
+
   	  <sqlMap resource="mapper/message.xml"/>
+
+  	  <sqlMap resource="mapper/join.xml"/>
+
  	
  </sqlMapConfig>

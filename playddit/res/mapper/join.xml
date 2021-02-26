@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="join">
+
+
+	
+	<!-- 필수약관 가져오기 -->
+	<select id="showTerm" resultClass="termsVo">
+		select * 
+		  from terms
+		 where terms_essen = '0'
+	</select>
+
+	<!-- 선택약관 가져오기 -->
+	<select id="showTerm2" resultClass="termsVo">
+		select *
+		  from terms
+		 where terms_essen = '1' 
+	</select>
+
+
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterClass="UsersVO">
+		 insert into users(user_id, user_nickname, user_password, user_name, user_tel, user_birth, user_theme, user_sign_date)
+		 values (#user_id#, #user_nickname#, #user_password#, #user_name#, #user_tel#, #user_birth#, 0, sysdate)
+		 
+		 <!-- insert가 되었는지 안되었는지 selectKey로 확인할 수 있다. -->
+ 		 <selectKey resultClass="UsersVO" type="post">
+		 	select user_id, user_nickname from users where user_id = #user_id#
+		 </selectKey>
+	</insert>
+	
+	
+</sqlMap>
