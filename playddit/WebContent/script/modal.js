@@ -7,12 +7,12 @@ $(document).ready(function(){
 		$("#modalBody").delay(100).animate({marginTop:0},400);
 	});
     
-    $("#condiLeft").on("click",".fas", function(){
+    $("#condition").on("click",".fas", function(){
 		$("#modal").fadeIn(200);
 		$("#modalBody, #condiModal").delay(100).animate({marginTop:0},400);
 	});
 	
-	$("#close").on("click", function(){
+	$("#condiModal").on("click","#close", function(){
 		$("#modalBody, #condiModal").animate({marginTop:"300px"},300);
 		$("#modal").delay(200).fadeOut(300);
         $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');

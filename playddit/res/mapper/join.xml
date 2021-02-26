@@ -20,6 +20,13 @@
 		  from terms
 		 where terms_essen = '1' 
 	</select>
+	
+	<!-- 약관 내용출력(모달) -->
+	<select id="termsCon" resultClass="termsVo" parameterClass="int">
+		select *
+		  from terms
+		 where terms_no = #terms_no# 
+	</select>
 
 
 	<!-- 회원가입 -->

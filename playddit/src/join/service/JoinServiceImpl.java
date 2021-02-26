@@ -64,6 +64,22 @@ public class JoinServiceImpl implements IJoinservice {
 		return list;
 	}
 
+	/**
+	 * 약관 내용 가져오기
+	 */
+	@Override
+	public TermsVO termsCon(int terms_no) {
+		TermsVO vo = null;
+		
+		try {
+			vo = dao.termsCon(terms_no);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
+	}
+
 
 
 		

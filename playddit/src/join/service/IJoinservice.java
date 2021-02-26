@@ -1,5 +1,6 @@
 package join.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import join.vo.TermsVO;
@@ -22,5 +23,11 @@ public interface IJoinservice {
 	 * @return
 	 */
 	public List<TermsVO> showTerm2();
+	
+	/**
+	 * 약관 내용 가져오기
+	 * @return
+	 */
+	public TermsVO termsCon(int terms_no);
 
 }
