@@ -26,3 +26,6 @@
 
 ### UI & UX
 >[Figma 사용하기 - shane](shane/front/figma/figma.md)<br>
+
+### 흐름이해하기
+>[흐름 이해하기 - summer](summer/흐름 이해하기/flow.md)<br>

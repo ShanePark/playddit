@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/*로그인페이지*/
+/*----------------------로그인페이지---------------------*/
 body {
     background-image: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
     height: 100vh;
@@ -135,7 +135,7 @@ body {
     top : 23%;
 }
 
-/*모달*/
+/*---------------------------모달------------------------*/
 #modal {
     position: fixed;
 	top: 0;
@@ -221,7 +221,7 @@ body {
     margin-top: 20px;
 }
 
-/*약관동의페이지*/
+/*-----------------------약관동의페이지------------------*/
 .sky {
     background: #e5f4fc;
     min-height: 960px;
@@ -344,7 +344,7 @@ label[for='allchk'] h5 {
     text-align: center;
 }
 
-/*이용약관 modal*/
+/*-------------------이용약관 modal-----------------------*/
 .fullModal {
     position: relative;
     top: 50%;
@@ -384,7 +384,7 @@ label[for='allchk'] h5 {
     height: 0;
 }
 
-/*회원가입 페이지*/
+/*-----------------------회원가입 페이지-------------------*/
 #joinForm {
     padding-top: 20px;
 }
@@ -456,7 +456,7 @@ label[for='allchk'] h5 {
     fill : #6884dd;
 }
 
-/*회원가입 인증코드 모달*/
+/*----------------회원가입 인증코드 모달---------------------*/
 #codeModal #closeBox {
     width: 100%;
 }
@@ -526,7 +526,7 @@ label[for='allchk'] h5 {
     background: #7093e0;
 }
 
-/*가입 완료 후 모달*/
+/*------------------가입 완료 후 모달---------------------*/
 #pink {
 	background-image: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
 }
@@ -698,9 +698,9 @@ label[for='allchk'] h5 {
     font-weight: 700;
 }
 
-/*여기부터 태블릿pc*/
+/*------------------여기부터 태블릿pc---------------------*/
 @media all and (max-width: 1020px) {
-    /*로그인페이지*/
+    /*----------------로그인페이지----------------------*/
     #wrap {
         height: 80%;
     }
@@ -759,7 +759,7 @@ label[for='allchk'] h5 {
         font-size: 0.85em;
     }
     
-    /*약관동의*/
+    /*------------------------약관동의---------------------*/
     #title {
         margin-bottom: 2em;
         margin-top: 7em; 
@@ -800,7 +800,7 @@ label[for='allchk'] h5 {
     font-size: 0.8em;
     }
     
-    /*회원가입 인증코드 모달*/
+    /*---------------------회원가입 인증코드 모달--------------*/
     #codeTop {
         position: relative;
     }
@@ -836,7 +836,7 @@ label[for='allchk'] h5 {
         width: 47%;
     }
     
-    /*가입 완료 후 페이지*/
+    /*-----------------가입 완료 후 페이지----------------*/
     #welcomTop {
         padding: 6%;
     }
@@ -861,7 +861,7 @@ label[for='allchk'] h5 {
     }
 }
 
-/*여기부터 모바일버전*/
+/*--------------------여기부터 모바일버전-----------------*/
 @media all and (max-width:767px) {
     body {
         overflow: auto;
@@ -960,7 +960,7 @@ label[for='allchk'] h5 {
         margin-top: 22px;
     }
     
-    /*약관동의*/
+    /*-------------------------약관동의------------------------*/
     .sky #wrap {
         background-image: none;
     }
@@ -993,7 +993,7 @@ label[for='allchk'] h5 {
         font-size: 0.80em;
     }
 
-    /*이용약관 modal*/
+    /*------------------이용약관 modal--------------------*/
     #condiModal {
         width: 97%;
         height: 94vh;
@@ -1006,7 +1006,7 @@ label[for='allchk'] h5 {
         height: 83%;
     }
     
-    /*회원가입페이지*/
+    /*-------------------회원가입페이지----------------*/
     .over {
         overflow: auto;
     }
@@ -1024,7 +1024,7 @@ label[for='allchk'] h5 {
         font-size: 0.9em;
     }
     
-    /*회원가입 인증코드 모달*/
+    /*-------------------회원가입 인증코드 모달-----------*/
     #codeModal {
         padding: 0;
         height: 94vh;
@@ -1076,7 +1076,7 @@ label[for='allchk'] h5 {
         box-shadow: none;
     }
     
-    /*가입 완료 후 페이지*/
+    /*--------------가입 완료 후 페이지--------------------*/
     #pink {
         min-height: none;
         overflow: auto;
