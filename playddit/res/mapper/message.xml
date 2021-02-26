@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace = "message">
+	<select id="getMessage" parameterClass="map" resultClass="MessageVO">
+		select b.user_nickname as receiver, c.user_nickname as sender, a.msg_content as content, to_char(a.msg_senddate,'yyyy-mm-dd hh24:mi:ss') as sentdate
+		from message a, users b, users c
+		where ((msg_sender = #user# and msg_target_id = #audience#)
+		or (msg_target_id = #user# and msg_sender = #audience#))
+		and a.msg_target_id = b.user_id
+		and a.msg_sender = c.user_id
+		order by msg_no
+	</select>
+	
+</sqlMap>
+

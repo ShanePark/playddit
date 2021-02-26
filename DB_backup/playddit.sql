@@ -20,7 +20,7 @@ where follower = 'a001';
 -----------------------------------------------------
 select * 
 from users
-where user_id = 'a004'
+where user_id = 'a004';
 
 -----------------------------------------------------
 
@@ -31,7 +31,7 @@ select *
 from users
 where user_id in (select followee
                 from follow
-                where follower = 'a001');
+                where follower = 'psh40963@naver.com');
 -----------------------------------------------------
 
 -----------------------------------------------------
@@ -66,6 +66,22 @@ from users
 where user_id = 'psh40963@naver.com';
 -----------------------------------------------------
 
-select * from users;
-commit;
 
+-----------------------------------------------------
+--  ALL the queries about MESSAGE 
+-----------------------------------------------------
+update message set msg_senddate = sysdate where msg_sender = 'psh40963@naver.com';
+
+-- get senddate with exact time
+select to_char(msg_senddate,'yyyy-mm-dd hh24:mi:ss') from message;
+
+-- getMessage(user,audicence)
+select b.user_nickname as receiver, c.user_nickname as sender, a.msg_content as content, to_char(a.msg_senddate,'yyyy-mm-dd hh24:mi:ss') as sentdate
+from message a, users b, users c
+where ((msg_sender = 'psh40963@naver.com' and msg_target_id = 'expedition1205@gmail.com')
+or (msg_target_id = 'psh40963@naver.com' and msg_sender = 'expedition1205@gmail.com'))
+and a.msg_target_id = b.user_id
+and a.msg_sender = c.user_id
+order by msg_no;
+-----------------------------------------------------
+commit;
