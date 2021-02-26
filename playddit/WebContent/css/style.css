@@ -329,7 +329,7 @@ footer #copy {
     left: 0;
     right: 0;
     display: none;
-    z-index: 100;
+    z-index: 505;
 }
 
 #mnav {
@@ -517,11 +517,11 @@ footer #copy {
     max-height: 50%;
     background: white;
     overflow: auto;
-    box-shadow: 1px 4px 10px #dbe3f0;
-    top: 50%;
+    top : -30%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 15px;
+    z-index: 505;
 }
 .followModal .followTitle {
     border-bottom: 1px solid #e9e7fb;
@@ -548,15 +548,39 @@ footer #copy {
     width: 100%;
 }
 .followList .followInfo {
-    position : relative;
-    top: 50%;
-    transform: translateY(-50%);
+    display: inline-block;
+    vertical-align: 12px;
+    margin-left: 10px;
 }
-/*--------------------------팔로워-----------------------*/
+.followList .followClass {
+    font-size: 0.9em;
+}
+.followList .f4f {
+    float: right;
+    width: 80px;
+    height: 30px;
+    border: none;
+    background-color: #b0cff5; 
+    color: white;
+    font-weight: bold;
+    font-size: 0.95em;
+    position: relative;
+    transform: translateY(50%);
+}
 
-/*--------------------------팔로잉------------------------*/
-#myFollowing {
-    display: none;
+.closeBox {
+    width: 100%;
+    padding: 2%;
+}
+.closeBox .close {
+    border: none;
+    background: none;
+    float: right;
+    padding: 2% 4%;
+}
+.closeBox .close .fas {
+    font-size: 2em;
+    color: #b0cff5; 
 }
 
 /*---------------------공통 영역 완료하고 지울것 -------*/
@@ -759,6 +783,12 @@ footer #copy {
         top: 128px;
         right: 10px;
         position: fixed;
+        z-index: 505;
+    }
+    
+    /*------------팔로워,팔로잉 목록 출력 모달---------------*/
+    .followModal {
+        display: none;
     }
 }
 
