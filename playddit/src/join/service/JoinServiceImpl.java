@@ -1,0 +1,70 @@
+package join.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import join.dao.IJoinDao;
+import join.dao.JoinDaoImpl;
+import join.vo.TermsVO;
+import users.vo.UsersVO;
+
+public class JoinServiceImpl implements IJoinservice {
+	private IJoinDao dao;
+	private static IJoinservice service;
+	
+	public JoinServiceImpl() {
+		dao = JoinDaoImpl.getDao();
+	}
+	
+	public static IJoinservice getService() {
+		if(service == null) service = new JoinServiceImpl();
+		
+		return service;
+	}
+	
+
+	/**
+	 * 회원가입
+	 */
+	@Override
+	public UsersVO insertUser(UsersVO UsersVO) {
+		UsersVO vo = null;
+		try {
+			vo = dao.insertUser(UsersVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
+	}
+
+	@Override
+	public List<TermsVO> showTerm() {
+		List<TermsVO> list = null;
+		
+		try {
+			list = dao.showTerm();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<TermsVO> showTerm2() {
+		List<TermsVO> list = null;
+		
+		try {
+			list = dao.showTerm2();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+
+
+		
+}
