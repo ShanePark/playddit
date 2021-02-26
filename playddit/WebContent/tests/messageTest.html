@@ -31,6 +31,7 @@ $(function(){
 getAudiences = function(){
 	var user_id = $('input[name=user]').val();
 	$('#audiences').empty();
+	$('#result').empty();
 	
 	$.ajax({
 		url : '/playddit/message/getAudiences.do',
