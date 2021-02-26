@@ -49,6 +49,15 @@ public class JoinDaoImpl implements IJoinDao {
 	public List<TermsVO> showTerm2() throws SQLException {
 		return (List<TermsVO>)client.queryForList("join.showTerm2");
 	}
+	
+	/**
+	 * 약관 내용 가져오기
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public TermsVO termsCon(int terms_no) throws SQLException {
+		return (TermsVO)client.queryForObject("join.termsCon", terms_no);
+	}
 
 
 }

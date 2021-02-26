@@ -28,4 +28,11 @@ public interface IJoinDao {
 	 * @return
 	 */
 	public List<TermsVO> showTerm2() throws SQLException;
+	
+	/**
+	 * 약관 내용 가져오기
+	 * @return
+	 * @throws SQLException
+	 */
+	public TermsVO termsCon(int terms_no) throws SQLException;
 }

@@ -2,6 +2,7 @@
  * 
  */
 
+// 필수 약관 제목 
 showTerm = function(){
 	$.ajax({
 		url : '/playddit/join/terms.do',
@@ -17,7 +18,7 @@ showTerm = function(){
             	code += "<span class='chk'></span>";
             	code += "<span> " + v.title + '(필수)' + "</span>";
             	code += "</label>";
-            	code += "<i class='fas fa-chevron-right'></i>";
+            	code += "<i  must=" + v.no+" class='fas fa-chevron-right'></i>";
             	code += "</li>";
 
             })    
@@ -34,7 +35,7 @@ showTerm = function(){
 
 }
 
-
+// 선택 약관 제목
 showTerm2 = function(){
 	$.ajax({
 		url : '/playddit/join/terms2.do',
@@ -45,12 +46,12 @@ showTerm2 = function(){
             code += "<ul class='conditions' id='pick'>";
             $.each(res, function(i, v){
             	code += "<li class='longbar'>";
-            	code += "<input type='checkbox' class='pickCondi' name='pick"+ (i + 1)+"' id='pick" + (i + 1) + "'/>";
-            	code += "<label for='must" + (i + 1) + "'>";
+            	code += "<input type='checkbox' class='pickCondi' name='pick"+ i+"' id='pick" + i  + "'/>";
+            	code += "<label for='pick" + i  + "'>";
             	code += "<span class='chk'></span>";
             	code += "<span> " + v.title + '(선택)' + "</span>";
             	code += "</label>";
-            	code += "<i class='fas fa-chevron-right'></i>";
+            	code += "<i  must=" + v.no+" class='fas fa-chevron-right'></i>";
             	code += "</li>";
 
             })    
@@ -62,4 +63,50 @@ showTerm2 = function(){
 		},
 		dataType : 'json'
 	})
+	
 }
+
+
+// 약관 내용 출력하기
+termsCon = function(terms_no){
+	$.ajax({
+		url : '/playddit/join/termsCon.do',
+		type : 'get',
+		data : { "no" : terms_no },
+		success : function(res){
+			code = '<div id="closeBox">';
+			code += '<button type="button" id="close" style="color : #A8CCFD;">';
+			code += '<i class="fas fa-times"></i>';
+			code += '</button>';
+			code += '</div>';
+			code += '<div style="clear: both;"></div>';
+			code += '<h2>' + res.title + '</h2>';
+			code += '<div class="longbar"></div>';
+			code += '<div id="condiTxt">';
+			code +=  res.cont;
+			code += '</div>';
+				
+			$('#condiModal').html(code);
+		},
+		error : function(xhr){
+			alert('상태 : ' + xhr.status);
+		},
+		dataType : 'json'
+	})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
