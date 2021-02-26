@@ -45,4 +45,51 @@ $(function(){
             stat = true;
         }
     });
+    
+    //알람
+    var visi = true;
+    $(".alarmBtn").click(function(){
+        if(visi){
+            $("#alarmEdge2 , #alarmEdge, #modal").show();
+            visi = false;
+        }else{
+            $("#alarmEdge2, #alarmEdge").hide();
+            $("#modal").fadeOut(300);
+            visi = true;
+        }
+    });
+    
+    //모바일 헤더 설정
+    $(window).scroll(function(evt) {
+        var winW = $(window).width();
+
+        var y = $(this).scrollTop();
+        
+        if(winW < 768){
+            if (y > 120) {
+                $('#mflexBox').css("display", "none");
+                $("#mham").css("top", "1.8%");
+                $("#alarmEdge").css("top", "52px");
+                $("#modal").css("top", "62px");
+
+            } else{
+                $('#mflexBox').css("display", "block");
+                $("#mham").css("top", "8%");
+                $("#alarmEdge").css("top", "120px");
+                $("#modal").css("top", "128px");
+            }
+        }else{
+            $('#mflexBox').css("display", "none");
+            $("#mham").css("top", "8%");
+            $("#alarmEdge").css("top", "120px");
+            $("#modal").css("top", "128px");
+        }
+        
+        if(y > 120){
+            $("#top").css("display", "block");
+        }else{
+            $("#top").css("display", "none");
+        }
+    });
+    
 });

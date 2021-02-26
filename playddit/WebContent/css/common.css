@@ -22,7 +22,7 @@
     unicode-range:U+0041-005A, U+0061-007A
 }
 
-/*공통속성 시작*/
+/*---------------공통속성 시작-----------------*/
 
 * {
 	margin: 0px;
@@ -74,9 +74,9 @@ input:-webkit-autofill:active {
     -webkit-text-fill-color: #3d3d3d !important;
 }
 
-/*공통속성 끝*/
+/*----------------------공통속성 끝---------------------*/
 
-/*스크롤 막기*/
+/*---------------------스크롤 막기----------------------*/
 .scrollOff {
     position:fixed;
     overflow:hidden;
@@ -84,14 +84,14 @@ input:-webkit-autofill:active {
     width: 100%;
 }
 
-/*여기부터 태블릿pc*/
+/*-----------------여기부터 태블릿pc---------------------*/
 @media all and (max-width: 1020px) {
     .cen {
         width: 85%;
     }
 }
 
-/*여기부터 모바일버전*/
+/*-----------------여기부터 모바일버전-------------------*/
 @media all and (max-width:767px) {
     .cen {
         width: 100%;
