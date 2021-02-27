@@ -18,4 +18,7 @@ public interface IMessageDao {
 	
 	// 특정 클래스의 단체 메시지를 리스트로 불러오기
 	public List<MessageVO> getClassMessage(String class_id) throws SQLException;
+	
+	// 학급에 단체 메시지 보내기
+	public int insertMessageClass(String sender, String receiver, String content) throws SQLException;
 }

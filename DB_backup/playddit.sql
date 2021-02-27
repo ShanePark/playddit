@@ -120,7 +120,14 @@ values(msg_no_seq.nextval,  'psh40963@naver.com','expedition1205@gmail.com', '�
 select class_msg.class_id as receiver, user_nickname as sender, msg_cont as content, msg_senddate as sentdate
 from class_msg, users
 where class_msg.class_id = 'C202011302'
-and msg_sender = user_id;
+and msg_sender = user_id
+order by class_msg.cmsg_no;
+-----------------------------------------------------
+-- send message 'c' from a to b . AND B is not a person but a group
+insert into class_msg 
+(cMSG_NO, class_id, MSG_SENDER, MSG_CONT, MSG_SENDDATE)
+values(cmsg_no_seq.nextval,'C202011302', 'psh40963@naver.com', '학급에 메시지 보내는 쿼리테스트.', sysdate);
+-----------------------------------------------------
 
 
 commit;

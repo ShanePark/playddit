@@ -56,4 +56,13 @@ public class MessageDaoImpl implements IMessageDao{
 		return client.queryForList("message.getClassMessage",class_id);
 	}
 
+	@Override
+	public int insertMessageClass(String sender, String receiver, String content) throws SQLException {
+		Map<String, String> map = new HashMap<>();
+		map.put("sender", sender);
+		map.put("receiver",receiver);
+		map.put("content", content);
+		return client.update("message.insertMessageClass", map);
+	}
+
 }

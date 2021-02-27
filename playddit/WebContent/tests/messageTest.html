@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>play ddit message test page</title>
 <script src="../js/jquery-3.5.1.min.js"></script>
 <style>
 input[type=text]{
@@ -21,28 +21,49 @@ $(function(){
 	})
 	
 	$('#getGroup').on('click', function(){
-		getGroup();
+		getClassMessage();
 	})
 	
 	$('#audiences').on('click', '.btn', function(){
-		var user = $('input[name=user]').val();
 		var audience = $(this).attr('audience');
-		getMessage(user,audience);
+		getMessage(audience);
 	})
 	
-	$('#result').on('click', '.refresh', function(){
-		var user = $('input[name=user]').val();
+	$('#result').on('click', '.refreshPerson', function(){
 		var audience = $('#receiverInfo').val();
-		getMessage(user,audience);
+		getMessage(audience);
 	})
 	
-	$('#result').on('click', '.send', function(){
+	$('#result').on('click', '.sendPerson', function(){
 		sendMessage();
+	})
+	$('#result').on('click', '.sendClass', function(){
+		sendMessageClass();
+	})
+	
+	$('#result').on('click', '.refreshClass', function(){
+		getClassMessage();
 	})
 	
 })
 
-getGroup = function(){
+sendMessageClass = function(){
+	var content = $('input[name=newMessage]').val();
+	$.ajax({
+		url : '/playddit/message/sendMessageClass.do',
+		type : 'post',
+		data : {'content' : content},
+		success : function(res){
+			getClassMessage();
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		}
+		
+	})
+}
+
+getClassMessage = function(){
 	$('#audiences').empty();
 	$('#result').empty();
 	
@@ -57,7 +78,7 @@ getGroup = function(){
 			})
 			$('#result').append(message);
 			
-			var sendArea = '<button class="refresh">새로고침</button><input type="text" name="newMessage"> <button class="send">전송</button>'
+			var sendArea = '<button class="refreshClass">새로고침</button><input type="text" name="newMessage"> <button class="sendClass">전송</button>'
 			
 			$('#result').append(sendArea);
 		},
@@ -69,15 +90,14 @@ getGroup = function(){
 }
 
 sendMessage = function(){
-	var sender = $('input[name=user]').val();
 	var receiver = $('#receiverInfo').val();
 	var content = $('input[name=newMessage]').val();
 	$.ajax({
 		url : '/playddit/message/sendMessage.do',
 		type : 'post',
-		data : {'sender' : sender, 'receiver' : receiver, 'content' : content},
+		data : {'receiver' : receiver, 'content' : content},
 		success : function(res){
-			getMessage(sender,receiver);
+			getMessage(receiver);
 		},
 		error : function(xhr){
 			alert("status : " + xhr.status);
@@ -87,14 +107,12 @@ sendMessage = function(){
 }
 
 getAudiences = function(){
-	var user_id = $('input[name=user]').val();
 	$('#audiences').empty();
 	$('#result').empty();
 	
 	$.ajax({
 		url : '/playddit/message/getAudiences.do',
 		type : 'post',
-		data : {'user_id' : user_id},
 		success : function(res){
 			$.each(res, function(i,v){
 				var id = v.user_id;
@@ -109,13 +127,13 @@ getAudiences = function(){
 	})
 }
 
-getMessage = function(user, audience){
+getMessage = function(audience){
 	$('#result').empty();
 
 	$.ajax({
 		url : '/playddit/message/getMessage.do',
 		type : 'post',
-		data : {'user' : user, 'audience' : audience},
+		data : {'audience' : audience},
 		success : function(res){
 			$('#result').append('<input id="receiverInfo" value='+audience+' disabled>')
 			var message = "";
@@ -126,7 +144,7 @@ getMessage = function(user, audience){
 			})
 			$('#result').append(message);
 			
-			var sendArea = '<button class="refresh">새로고침</button><input type="text" name="newMessage"> <button class="send">전송</button>'
+			var sendArea = '<button class="refreshPerson">새로고침</button><input type="text" name="newMessage"> <button class="sendPerson">전송</button>'
 			
 			$('#result').append(sendArea);
 		},
@@ -141,10 +159,7 @@ getMessage = function(user, audience){
 </head>
 <body>
 	<div>
-		<a href="../index.html">세션필요할때 로그인 하고오기</a><br>
-		예제 아이디<br>
-		psh40963@naver.com<br>expedition1205@gmail.com<br>chdnjs7610@gmail.com
-		<br>내 아이디<input type="text" name="user"><br>
+		<a href="../index.html">세션필요할때 로그인 하고오기</a><br><br><br>
 		<button id="getAudiences">메시지 주고받은 사람들 불러오기</button>
 		<button id="getGroup">내가속한 학급 채팅 불러오기</button>
 		<br><br>
