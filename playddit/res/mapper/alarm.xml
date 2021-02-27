@@ -11,6 +11,16 @@
 		order by alarm_no desc
 	</select>
 	
+	<delete id="deleteAlarm" parameterClass="alarmVo">
+		delete from alarm 
+		where user_id = #user# and alarm_cont = #cont# and alarm_type = #type#
+	</delete>
+	
+	<insert id="newAlarm" parameterClass="alarmVo">
+		insert into alarm 
+		(alarm_no, user_id, alarm_cont, alarm_type, alarm_date, alarm_chk)
+		values(alarm_no_seq.nextval,#user#,#cont#,#type#, sysdate, 0)
+	</insert>
 	
 </sqlMap>
 

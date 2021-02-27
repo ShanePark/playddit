@@ -1,5 +1,6 @@
 package alarm.main;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import alarm.dao.AlarmDaoImpl;
@@ -12,13 +13,12 @@ public class AlarmTester {
 	public static void main(String[] args) {
 		IAlarmDao dao = AlarmDaoImpl.getDao();
 		IAlarmService service = AlarmServiceImpl.getService();
+		
 		String user = "psh40963@naver.com";
-
-		List<AlarmVO> list = service.getAlarm(user);
-
-		for(AlarmVO vo : list)
-			System.out.println(vo.getType() + " " + vo.getCont() + " " + vo.getChk());
-
+		String content = "스칼렛";
+		int type = 12;
+		
+		service.renewAlarm(user, content, type);
 
 	}
 }

@@ -2,6 +2,7 @@ package alarm.vo;
 
 public class AlarmVO {
 	private String cont;
+	private String user;
 	private int type;
 	private int chk;
 	
@@ -22,5 +23,11 @@ public class AlarmVO {
 	}
 	public void setChk(int chk) {
 		this.chk = chk;
+	}
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
 	}
 }
