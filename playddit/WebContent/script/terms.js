@@ -46,7 +46,7 @@ showTerm2 = function(){
             code += "<ul class='conditions' id='pick'>";
             $.each(res, function(i, v){
             	code += "<li class='longbar'>";
-            	code += "<input type='checkbox' class='pickCondi' name='pick"+ i+"' id='pick" + i  + "'/>";
+            	code += "<input type='checkbox' class='pickCondi' name='pick"+ i+"' id='pick" + i  + "' value='pick" + i  + "'/>";
             	code += "<label for='pick" + i  + "'>";
             	code += "<span class='chk'></span>";
             	code += "<span> " + v.title + '(선택)' + "</span>";
