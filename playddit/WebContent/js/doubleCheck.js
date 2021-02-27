@@ -4,7 +4,7 @@
 
 
 nickCheck = function(btn){
-	nickvalue = $('#nickname').val().trim();
+	nickvalue = $('input[name=nickname]').val().trim();
 	$.ajax({
 		url : '/playddit/users/nicknameCheck.do',
 		type : 'post',
@@ -29,7 +29,7 @@ nickCheck = function(btn){
 
 idDcheck = function(btn){
 	
-	idvalue = $('#mail').val().trim();
+	idvalue = $('input[name=mail]').val().trim();
 			
 	if(idvalue.length < 1){
 		alert("아이디를 입력하세요.");

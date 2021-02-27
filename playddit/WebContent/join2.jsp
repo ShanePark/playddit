@@ -1,12 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="initial-scale=1, width=device-width" />
 		<meta name="author" content="playddit" />
-		<meta name="description" content="대덕인재개발원 학생들을 위한 스터디그룹, 소모임, 학급 공지사항, 주변 맛집 검색 등 다양한
-                                            커뮤니티 서비스를 제공합니다." />
-		<meta name="keywords" content="대덕인재개발원, 대전 중구 대덕인재개발원, 대덕인재, 개발자과정, 프로그래머, 자바" />
+		<meta name="description" content="ëëì¸ì¬ê°ë°ì íìë¤ì ìí ì¤í°ëê·¸ë£¹, ìëª¨ì, íê¸ ê³µì§ì¬í­, ì£¼ë³ ë§ì§ ê²ì ë± ë¤ìí
+                                            ì»¤ë®¤ëí° ìë¹ì¤ë¥¼ ì ê³µí©ëë¤." />
+		<meta name="keywords" content="ëëì¸ì¬ê°ë°ì, ëì  ì¤êµ¬ ëëì¸ì¬ê°ë°ì, ëëì¸ì¬, ê°ë°ìê³¼ì , íë¡ê·¸ëë¨¸, ìë°" />
 		<title>playddit</title>
 		<link href="favicon.ico" rel="icon shortcut" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -20,6 +22,12 @@
 		<script src="js/insertUser.js"></script>
 		<script src="js/jquery.serializejson.min.js"></script>
 	</head>
+<%
+	int pick0 = request.getParameter("pick0")!=null ? 1 : 0;
+	int pick1 = request.getParameter("pick1")!=null ? 1 : 0;
+	int pick2 = request.getParameter("pick2")!=null ? 1 : 0;
+%>	
+	
     <body class="sky over">
 	    <div id="wrap" class="cen">
             <div id="header">
@@ -34,12 +42,16 @@
                     <p class="subtitle">Please enter your registration details</p>
                 </div>
                 <form action="join.jsp" method="post" id="joinForm">
+                	<input type="hidden" name="pick0" value="<%=pick0 %>">
+                	<input type="hidden" name="pick1" value="<%=pick1 %>">
+                	<input type="hidden" name="pick2" value="<%=pick2 %>">
+                
                     <div id="joinLeft" class="joinBox">
                         <div class="box">
                             <p><span class="red">*</span> Email<span class="msg"></span></p>
                             <div class="item">
                                 <input type="text" name="mail" id="mail" placeholder="Please enter your email" />
-                                <span id="idDbtn" class="double" >중복확인</span>
+                                <span id="idDbtn" class="double" >ì¤ë³µíì¸</span>
                             </div>
                         </div>
                         
@@ -47,7 +59,7 @@
                             <p><span class="red">*</span> Nickname<span class="msg"></span></p>
                             <div class="item">
                                 <input type="text" name="nickname" id="nickname" placeholder="Please enter your nickname" />
-                                <span id="nickDbtn" class="double">중복확인</span>
+                                <span id="nickDbtn" class="double">ì¤ë³µíì¸</span>
                             </div>
                         </div>
                         
@@ -100,13 +112,13 @@
                         <div class="item">
                             <select name="class">
                                 <option>Choose your class</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 2기 - 401호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 3기 - 402호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 4기 - 403호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 5기 - 404호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 6기 - 302호</option>
-                                <option value="학급번호">AI 소프트웨어 엔지니어링 1기 - 405호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 7기 - 406호</option>
+                                <option value="íê¸ë²í¸">í-ì¤í ê°ë°ì ìì±ê³¼ì  2ê¸° - 401í¸</option>
+                                <option value="íê¸ë²í¸">í-ì¤í ê°ë°ì ìì±ê³¼ì  3ê¸° - 402í¸</option>
+                                <option value="íê¸ë²í¸">í-ì¤í ê°ë°ì ìì±ê³¼ì  4ê¸° - 403í¸</option>
+                                <option value="íê¸ë²í¸">í-ì¤í ê°ë°ì ìì±ê³¼ì  5ê¸° - 404í¸</option>
+                                <option value="íê¸ë²í¸">í-ì¤í ê°ë°ì ìì±ê³¼ì  6ê¸° - 302í¸</option>
+                                <option value="íê¸ë²í¸">AI ìíí¸ì¨ì´ ìì§ëì´ë§ 1ê¸° - 405í¸</option>
+                                <option value="íê¸ë²í¸">í-ì¤í ê°ë°ì ìì±ê³¼ì  7ê¸° - 406í¸</option>
                             </select>
                         </div>
                     </div>
@@ -132,7 +144,7 @@
                 <div style="clear: both;"></div>
                 
                 <div id="codeTop">
-                    <img src="images/code.png" alt="이메일인증" />
+                    <img src="images/code.png" alt="ì´ë©ì¼ì¸ì¦" />
                     <div class="title">
                         <h2>Welcome to playddit!</h2>
                         <p class="subtitle">
@@ -143,16 +155,16 @@
 
                 <div id="codeBottom">
                     <p class="cont">
-                    환영합니다! 회원가입 완료를 위한 이메일 인증을 진행 해 주세요.<br/><span id="codeMail">chdnjs7610@gmail.com</span> 메일함을 확인해주세요!
+                    íìí©ëë¤! íìê°ì ìë£ë¥¼ ìí ì´ë©ì¼ ì¸ì¦ì ì§í í´ ì£¼ì¸ì.<br/><span id="codeMail">chdnjs7610@gmail.com</span> ë©ì¼í¨ì íì¸í´ì£¼ì¸ì!
                     </p>
 
                     <form action="code.jsp" id="codeCont" method="post">
-                        <h2>인증 코드 입력</h2>
+                        <h2>ì¸ì¦ ì½ë ìë ¥</h2>
                         <input type="text" name="code" />
 
                         <br/>
-                        <button type="reset" id="remail">인증코드 재발송</button>
-                        <button type="submit" id="subCode">이메일 인증 확인</button>
+                        <button type="reset" id="remail">ì¸ì¦ì½ë ì¬ë°ì¡</button>
+                        <button type="submit" id="subCode">ì´ë©ì¼ ì¸ì¦ íì¸</button>
                     </form>
                 </div>
             </div>

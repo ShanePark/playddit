@@ -1718,12 +1718,11 @@ wordchk = function(nickvalue){
 	
 	for(i = 0; i < length; i++){
 		if(nickvalue.indexOf(arrList[i]) != -1){
-			console.log(nickvalue);
-			$('#nickname').parents('.box').find('.msg').text('사용 불가능한 단어가 포함된 닉네임입니다.');
+			$('input[name=nickname]').parents('.box').find('.msg').text('사용 불가능한 단어가 포함된 닉네임입니다.');
 			return false;
 		}
 	}
-			$('#nickname').parents('.box').find('.msg').empty();
+			$('input[name=nickname]').parents('.box').find('.msg').empty();
 			return true;
 
 	
