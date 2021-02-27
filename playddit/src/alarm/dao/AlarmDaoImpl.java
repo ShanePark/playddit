@@ -28,4 +28,24 @@ public class AlarmDaoImpl implements IAlarmDao {
 		return client.queryForList("alarm.getAlarm", user);
 	}
 
+	@Override
+	public int deleteAlarm(String user, String cont, int type) throws SQLException {
+		AlarmVO vo = new AlarmVO();
+		vo.setUser(user);
+		vo.setCont(cont);
+		vo.setType(type);
+		return client.delete("alarm.deleteAlarm", vo);
+	}
+
+	@Override
+	public int newAlarm(String user, String cont, int type) throws SQLException {
+		AlarmVO vo = new AlarmVO();
+		vo.setUser(user);
+		vo.setCont(cont);
+		vo.setType(type);
+		if(client.insert("alarm.newAlarm", vo) == null)
+			return 1;
+		else return 0;
+	}
+
 }

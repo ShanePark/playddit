@@ -139,9 +139,16 @@ select alarm_cont as cont, alarm_type as type, alarm_chk as chk
 from alarm
 where user_id = 'psh40963@naver.com'
 order by alarm_no desc;
-
-
-
+-----------------------------------------------------
+-- insert new message alarm 
+insert into alarm 
+(alarm_no, user_id, alarm_cont, alarm_type, alarm_date, alarm_chk)
+values(alarm_no_seq.nextval,'psh40963@naver.com', '스칼렛', 12, sysdate, 0);
+-----------------------------------------------------
+-- delete same message alarm before insert
+delete from alarm 
+where user_id = 'psh40963@naver.com' and alarm_cont = '스칼렛' and alarm_type = 12;
+-----------------------------------------------------
 
 commit;
 
