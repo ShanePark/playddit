@@ -78,7 +78,7 @@ input:-webkit-autofill:active {
 
 /*---------------------스크롤 막기----------------------*/
 .scrollOff {
-    position:fixed;
+    /*position:fixed;*/
     overflow:hidden;
     height:100%;
     width: 100%;

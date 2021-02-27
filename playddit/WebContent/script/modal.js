@@ -17,6 +17,12 @@ $(document).ready(function(){
 		$("#modal").delay(200).fadeOut(300);
         $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
 	});
+	
+	$("#modal").click(function(){
+		$("#modalBody, #condiModal").animate({marginTop:"300px"},300);
+		$("#modal").delay(200).fadeOut(300);
+        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+	});
     
     // 회원가입
     $("#joinBtn").on("click",function(){
