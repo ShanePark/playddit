@@ -26,10 +26,9 @@
  	  -->
  	  <typeAlias alias = "UsersVO" type="users.vo.UsersVO"/>
  	  <typeAlias alias = "ProfileVO" type="login.vo.ProfileVO"/>
-
  	  <typeAlias alias = "MessageVO" type="message.vo.MessageVO"/>
-
  	  <typeAlias alias = "termsVo" type="join.vo.TermsVO"/>
+ 	  <typeAlias alias = "alarmVO" type="alarm.vo.AlarmVO"/>
 
  	  
  	  <!-- DB와의 연결을 처리하는 부분 -->
@@ -49,10 +48,9 @@
  	   -->
   	  <sqlMap resource="mapper/users.xml"/>
   	  <sqlMap resource="mapper/login.xml"/>
-
   	  <sqlMap resource="mapper/message.xml"/>
-
   	  <sqlMap resource="mapper/join.xml"/>
+  	  <sqlMap resource="mapper/alarm.xml"/>
 
  	
  </sqlMapConfig>
