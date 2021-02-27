@@ -129,6 +129,19 @@ insert into class_msg
 values(cmsg_no_seq.nextval,'C202011302', 'psh40963@naver.com', '학급에 메시지 보내는 쿼리테스트.', sysdate);
 -----------------------------------------------------
 
+-----------------------------------------------------
+--  ALL the queries about ALARM 
+-----------------------------------------------------
+
+-----------------------------------------------------
+-- Get alarm list
+select alarm_cont as cont, alarm_type as type, alarm_chk as chk
+from alarm
+where user_id = 'psh40963@naver.com'
+order by alarm_no desc;
+
+
+
 
 commit;
 

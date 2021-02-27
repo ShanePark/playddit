@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace = "alarm">
+	<select id="getAlarm" parameterClass="String" resultClass="alarmVo">
+		select alarm_cont as cont, alarm_type as type, alarm_chk as chk
+		from alarm
+		where user_id = #user_id#
+		order by alarm_no desc
+	</select>
+	
+	
+</sqlMap>
+
