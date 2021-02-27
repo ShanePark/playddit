@@ -4,6 +4,10 @@ $(function(){
     
     $("#ham, #mham").click(function(){
         if(stat){
+            $("#alarmEdge2, #alarmEdge").hide();
+            $("#modal").fadeOut(300);
+            visi = true;
+            
             $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
                 e.preventDefault();
             });
@@ -44,6 +48,17 @@ $(function(){
             $("#ham, #mham").removeClass("ex");
             stat = true;
         }
+        
+        if(winW < 768){
+            if(follow){
+                $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                $(".followModal").delay(100).animate({top: "-30%"},400);
+                $("#back2").fadeOut(200);
+                follow = false;
+            }
+        }else{
+            $('#mflexBox').css("display", "none");
+        }
     });
     
     //알람
@@ -60,10 +75,11 @@ $(function(){
     });
     
     //모바일 헤더 설정
+    
     $(window).scroll(function(evt) {
-        var winW = $(window).width();
-
         var y = $(this).scrollTop();
+        var winW = $(window).width();
+        var flexVisi = $("#mflexBox").is(":visible");
         
         if(winW < 768){
             if (y > 120) {
@@ -71,18 +87,19 @@ $(function(){
                 $("#mham").css("top", "1.8%");
                 $("#alarmEdge").css("top", "52px");
                 $("#modal").css("top", "62px");
-
+                $("#mnav").css("top", "151px");
             } else{
                 $('#mflexBox').css("display", "block");
                 $("#mham").css("top", "8%");
                 $("#alarmEdge").css("top", "120px");
                 $("#modal").css("top", "128px");
+                $("#mnav").css("top", "0px");
             }
         }else{
             $('#mflexBox').css("display", "none");
             $("#mham").css("top", "8%");
-            $("#alarmEdge").css("top", "120px");
-            $("#modal").css("top", "128px");
+            $("#alarmEdge").css("top", "52px");
+            $("#modal").css("top", "62px");
         }
         
         if(y > 120){
@@ -93,11 +110,30 @@ $(function(){
     });
     
     //팔로우 목록 모달창
+    var follow = $("#back2").is(":visible");
+    
     $(".followBtn").click(function(){
-        $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
-            e.preventDefault();
-        });
-        $("#back2").fadeIn(200);
-		$(".followModal").delay(100).animate({top: "50%"},400);
+        if(!follow){
+            title = $(this).parent("li").children(".th").text();
+            $(".followTitle h6").text(title);
+            n = $(this).text();
+            $(".followTitle span").text(n);
+            
+            $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+                e.preventDefault();
+            });
+            $("#back2").fadeIn(200);
+            $(".followModal").delay(100).animate({top: "50%"},400);
+            follow = true;
+        }
+    });
+    
+    $(".close, #back2").on("click", function(){
+        if(follow){
+            $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+            $(".followModal").delay(100).animate({top: "-30%"},400);
+            $("#back2").fadeOut(200);
+            follow = false;
+        }
     });
 });
