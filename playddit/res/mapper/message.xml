@@ -9,6 +9,7 @@
 		from class_msg, users
 		where class_msg.class_id = #class_id#
 		and msg_sender = user_id
+		order by class_msg.cmsg_no
 	</select>
 	
 	<select id="getMessage" parameterClass="map" resultClass="MessageVO">
@@ -40,6 +41,12 @@
 		insert into message 
 		(MSG_NO, MSG_TARGET_ID, MSG_SENDER, MSG_CONTENT, MSG_SENDDATE)
 		values(msg_no_seq.nextval, #receiver#, #sender#, #content#, sysdate)
+	</insert>
+	
+	<insert id="insertMessageClass" parameterClass="map">
+		insert into class_msg 
+		(cMSG_NO, class_id, MSG_SENDER, MSG_CONT, MSG_SENDDATE)
+		values(cmsg_no_seq.nextval,#receiver#, #sender#, #content#, sysdate)
 	</insert>
 	
 </sqlMap>

@@ -62,4 +62,19 @@ public class MessageServiceImpl implements IMessageService{
 		return null;
 	}
 
+	@Override
+	public int insertMessageGroup(String sender, String receiver, String content, String groupType) {
+		try {
+			switch(groupType) {
+			case "class" :
+				return dao.insertMessageClass(sender, receiver, content);
+			default :
+				break;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 }

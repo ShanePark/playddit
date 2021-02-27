@@ -17,4 +17,7 @@ public interface IMessageService {
 	
 	// 특정 클래스의 단체 메시지를 리스트로 불러오기
 	public List<MessageVO> getClassMessage(String class_id);
+	
+	// 그룹에 메시지를 보내는 기능입니다. 재사용을 염두해 두고 작성했습니다.
+	public int insertMessageGroup(String sender, String receiver, String content, String groupType);
 }
