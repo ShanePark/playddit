@@ -27,5 +27,7 @@
 ### UI & UX
 >[Figma 사용하기 - shane](shane/front/figma/figma.md)<br>
 
+### playddit 기능 구현하기
+>[message 기능 구현하기-shane](shane/playddit/message/message.md)<br>
 ### 흐름이해하기
 >[흐름 이해하기 - summer](summer/flow/flow.md)<br>

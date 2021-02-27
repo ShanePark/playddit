@@ -2,11 +2,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>play ddit message test page</title>
+<title>play ddit message alarm test page</title>
 <script src="../js/jquery-3.5.1.min.js"></script>
 <style>
 input[type=text]{
 	width : 300px;
+}
+.alarm{
+	border : 1px solid red;
+	width : 600px;
 }
 </style>
 <script>
@@ -22,6 +26,10 @@ $(function(){
 	
 	$('#getGroup').on('click', function(){
 		getClassMessage();
+	})
+	
+	$('#getAlarm').on('click', function(){
+		getAlarm();
 	})
 	
 	$('#audiences').on('click', '.btn', function(){
@@ -155,13 +163,48 @@ getMessage = function(audience){
 	})
 }
 
+getAlarm = function(){
+	$('#result').empty();
+	$('#audiences').empty();
+	
+	$.ajax({
+		url : '/playddit/alarm/getAlarm.do',
+		success : function(res){
+			var alarm = '<div class="alarm">';
+			$.each(res, function(i,v){
+				alarm += '<p><b>'+ v.cont +'</b>'
+				switch(v.type){
+				case 11: alarm += '님이 나를 follow 하기 시작했습니다.'
+					break;
+				case 12: alarm += '님이 새로운 메시지를 보냈습니다.'
+					break;
+				case 21: alarm += '님이 내가 쓴 글을 좋아합니다.'
+					break;
+				case 22: alarm += '님이 내가 쓴 글에 댓글을 남겼습니다.'
+					break;
+				case 31: alarm += '에 새로운 공지사항이 올라왔습니다.'
+					break;
+				}
+				alarm += '</p>';
+			})
+			alarm += '</div>';
+			$('#result').append(alarm);
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+		dataType : 'json'
+	})
+}
+
 </script>
 </head>
 <body>
 	<div>
-		<a href="../index.html">세션필요할때 로그인 하고오기</a><br><br><br>
+		<a href="../index.html">세션필요할때(500에러) 로그인 하고오기</a><br><br><br>
 		<button id="getAudiences">메시지 주고받은 사람들 불러오기</button>
 		<button id="getGroup">내가속한 학급 채팅 불러오기</button>
+		<button id="getAlarm">알람 목록 불러오기</button>
 		<br><br>
 		<div id="audiences"></div>
 	</div>
