@@ -117,6 +117,26 @@ public class UsersServiceImpl implements IUsersService {
 		}
 		return null;
 	}
+
+	@Override
+	public int followUser(String follower, String followee) {
+		try {
+			return dao.followUser(follower, followee);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int unfollowUser(String follower, String followee) {
+		try {
+			return dao.unfollowUser(follower, followee);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 		
 	
 	

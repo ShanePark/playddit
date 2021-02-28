@@ -38,6 +38,18 @@
                 where followee = #user_id#)
 	</select>
 	
+	<insert id="followUser" parameterClass="map">
+		insert into follow 
+		(follow_no, follower, followee)
+		values(follow_no_seq.nextval, #follower#, #followee#)
+	</insert>
+	
+	<delete id="unfollowUser" parameterClass="map">
+		delete from follow
+		where follower = #follower#
+		and followee = #followee#
+	</delete>
+	
 	<!-- 아이디 & 비밀번호 일치 여부 -->
 	<select id="match" resultClass="UsersVO" parameterClass="map">
 		select user_id, user_password, user_nickname

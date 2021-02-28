@@ -24,7 +24,6 @@ public class IdCheck implements IAction {
 			throws ServletException, IOException {
 		
 		String user_id = request.getParameter("id");
-		System.out.println("user_id : " + user_id);
 		IUsersService service = UsersServiceImpl.getService();
 		String result = service.selectById(user_id);
 		request.setAttribute("resultvalue", result);
