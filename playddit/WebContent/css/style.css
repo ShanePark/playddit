@@ -63,7 +63,7 @@ body {
     background: white;
     border-radius: 35px;
     margin-right: 13px;
-    width: 58%;
+    width: 57%;
     padding: 22px;
     position: relative;
 }
@@ -263,7 +263,7 @@ footer #copy {
     height: 50px;
     line-height: 55px;
     background : white;
-    box-shadow: 1px 1px 5px #7088ad;
+    box-shadow: 2px 2px 5px #b3c0d4;
     display: none;
 }
 #top i  {
@@ -300,8 +300,9 @@ footer #copy {
 
 #mham {
     position: fixed;
-    top: 8%;
+    top: 58px;
     left: 18px;
+    z-index: 600;
 }
 
 .patty {
@@ -329,7 +330,10 @@ footer #copy {
     left: 0;
     right: 0;
     display: none;
-    z-index: 100;
+    z-index: 401;
+}
+#back2 {
+    z-index: 505;
 }
 #back, #mnav {
     border-top-left-radius: 35px;
@@ -345,7 +349,7 @@ footer #copy {
     transition: margin-left 0.5s;
     z-index: 501;
     position: absolute;
-    z-index: 100;
+    z-index: 440;
     padding: 20% 12%;
 }
 #mnav .main a {
@@ -448,7 +452,8 @@ footer #copy {
     top: 62px;
     right: -27%;
     border-radius: 10px;
-    box-shadow: 1px 4px 10px #dbe3f0;
+    box-shadow: 1px 4px 10px rgba(39, 39, 39, 0.4);
+    z-index: 100;
 }
 
 #alarmWrap {
@@ -707,6 +712,7 @@ footer #copy {
         position: fixed;
         right: 0;
         left : 0;
+        z-index: 400;
     }
     
     #mo #ham {
@@ -715,6 +721,10 @@ footer #copy {
     
     #back, #mnav {
     border-top-left-radius: 0;
+    }
+    
+    #mnav {
+        position: fixed;
     }
     
     #mham {
@@ -733,7 +743,7 @@ footer #copy {
         text-align: center;
     }
     #mflexBox a img {
-        width: 30%;
+        width: 100px;
     }
     
     #contents #msearch form {
@@ -741,7 +751,12 @@ footer #copy {
     }
     
     #mheader {
-        padding: 18px;
+        padding: 5px 18px;
+        position: relative;
+    }
+    #mheader #msearch {
+        margin-bottom: 5px;
+        margin-top: 5px;
     }
     
     #msearch input {
@@ -768,22 +783,23 @@ footer #copy {
     }
     
     /*-------------------알람 모달용-------------------------*/
-    #alarmEdge2 {
-        z-index: -1;
-    }
     #alarmEdge, #alarmEdge2 {
-        top: 120px;
+        top: 90px;
         right: 62px;
         position: fixed;
+        z-index: 599;
+    }
+    #alarmEdge2 {
+        z-index: -1;
     }
     
     #modal {
         width: 430px;
         height: 350px;
-        top: 128px;
+        top: 98px;
         right: 10px;
         position: fixed;
-        z-index: 505;
+        z-index: 600;
     }
     
     /*------------팔로워,팔로잉 목록 출력 모달---------------*/

@@ -1,0 +1,208 @@
+@charset "utf-8";
+/*-----------------feed 시작-------------------*/
+#feedWrap {
+    background: white;
+}
+
+#storyBox {
+	width : 100%;
+    height: 61px;
+    border: 1px solid #e9e7fb;
+    padding: 8px;
+}
+#storyBox .story {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    border-radius: 50%;
+    cursor: pointer;
+    vertical-align: top;
+    margin-right: 5px;
+}
+#storyBox .story:last-of-type {
+    margin-right: 0;
+}
+#storyBox .storyOn {
+    border: 3px solid #a1c4fd;    
+}
+#storyBox .story img {
+    width: 100%;
+}
+
+#feedBox {
+    margin-top: 20px;
+}
+
+.feed {
+    border: 1px solid #dfdfdf;
+    margin-bottom: 50px;
+}
+
+.proBox {
+    height: 61px;
+    padding: 8px;
+}
+.proBox .proCir {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+.proBox .proCir img {
+    width: 100%;
+}
+.proBox .proName {
+    display: inline-block;
+    font-weight: bold;
+    vertical-align: 17px;
+    padding-left: 5px;
+    cursor: pointer;
+}
+.proBox .proName .proClass {
+    font-weight: 200;
+    color: #929292;
+    font-size: 0.95em;
+    padding-left: 3px;
+}
+
+.feedPic {
+    width: 100%;
+    position: relative;
+}
+.feedPic .slider .slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.feedPic .slide img {
+    min-width: 100%;
+    height: auto;
+}
+.feedPic .txtCont {
+    padding: 10px 10px;
+    line-height: 1.45em;
+}
+
+.slideBtn {
+    border: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    font-size: 2em;
+    color: white;
+    opacity: 0.7;
+}
+.left {
+    left: 10px;
+    z-index: 100;
+}
+.right {
+    right: 10px;
+}
+.slideBtn:hover {
+    opacity: 1;
+}
+
+.slick-dots {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #aaa5d3;
+}
+.slick-dots li {
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 0.7em;
+}
+.slick-dots li:last-of-type {
+    margin-right: 0;
+}
+
+.icon {
+    width: 100%;
+    padding: 12px 10px 5px 10px;
+}
+.icon .report {
+    float: right;
+    margin-right: 0;
+    color: #bfbfbf;
+}
+.icon button {
+    border: none;
+    background: none;
+    font-size: 1.3em;
+    margin-right: 5px;
+    color: #3d3d3d;
+}
+
+.likeCount {
+    margin: 0 10px 10px 10px;
+    color: #b7b7b7;
+    font-weight: bold;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.txt {
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+.txt .proName {
+    font-weight: bold;
+}
+
+.txt .txtCont {
+    line-height: 1.4em;
+    font: 400 1rem/1.5rem 'Nanum Gothic';
+}
+.txt .more {
+    text-decoration: underline;
+    color: #b7b7b7;
+    font-size: 0.95em;
+}
+
+.countComm {
+    font-weight: bold;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: #b7b7b7;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.commentBox {
+    margin-top: 10px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}    
+.commentBox .comm {
+    margin-bottom: 5px;
+}
+.commentBox .commUser {
+    font-weight: 800;
+    font-family: 'Nanum Gothic', sans-serif;
+    margin-right: 5px;
+}
+/*------------------feed 끝--------------------*/
+
+/*-----------------여기부터 태블릿pc---------------------*/
+@media all and (max-width: 1020px) {
+    #storyBox {
+        margin-top: 28px;
+    }
+}
+
+/*-----------------여기부터 모바일버전-------------------*/
+@media all and (max-width:767px) {
+    #feedWrap {
+        position: relative;
+        top: 105px;
+    }
+    
+    footer {
+        margin-top: 73px;
+    }
+}

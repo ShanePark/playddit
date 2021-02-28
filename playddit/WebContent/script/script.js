@@ -56,8 +56,6 @@ $(function(){
                 $("#back2").fadeOut(200);
                 follow = false;
             }
-        }else{
-            $('#mflexBox').css("display", "none");
         }
     });
     
@@ -79,8 +77,7 @@ $(function(){
     $(window).scroll(function(evt) {
         var y = $(this).scrollTop();
         var winW = $(window).width();
-        var flexVisi = $("#mflexBox").is(":visible");
-        
+        /*
         if(winW < 768){
             if (y > 120) {
                 $('#mflexBox').css("display", "none");
@@ -100,7 +97,7 @@ $(function(){
             $("#mham").css("top", "8%");
             $("#alarmEdge").css("top", "52px");
             $("#modal").css("top", "62px");
-        }
+        }*/
         
         if(y > 120){
             $("#top").css("display", "block");
@@ -135,5 +132,17 @@ $(function(){
             $("#back2").fadeOut(200);
             follow = false;
         }
+    });
+    
+    //top
+    $("#top").click(function(){
+        $("html,body").animate({scrollTop: 0});
+    });
+    
+    
+    //nav 버튼
+    $("#lnb .main").click(function(){
+        $("#lnb .main").removeClass("active");
+        $(this).addClass("active");
     });
 });
