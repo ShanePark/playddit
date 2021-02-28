@@ -18,12 +18,10 @@
 $(function(){
 	$('.followList').on('click', '.followBtn', function(){
 		var targetId = this.getAttribute('follow');
-		alert(targetId + '님을 팔로우 합니다.');
 		follow(targetId);
 	})
 	$('.followList').on('click', '.unfollowBtn', function(){
 		var targetId = this.getAttribute('follow');
-		alert(targetId + '님을 언팔로우 합니다.');
 		unfollow(targetId);
 	})
 	$('#loadFollower').on('click', function(){
@@ -131,7 +129,7 @@ unfollow = function(targetId){
 </head>
 <body>
 <div id="buttons">
-	<a href="../index.html">세션필요할때(500에러) 로그인 하고오기</a><br><br><br>
+	<a style = "color : blue" href="../index.html">세션필요할때(500에러) 로그인 하고오기</a><br><br><br>
 	<button id="loadFollower">팔로워확인</button>
 	<button id="loadFollowing">팔로잉확인</button>
 </div>
