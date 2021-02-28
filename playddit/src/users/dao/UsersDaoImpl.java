@@ -111,6 +111,24 @@ public class UsersDaoImpl implements IUsersDao {
 	@Override
 	public List<FollowerVO> followerList(String user_id) throws SQLException {
 		return (List<FollowerVO>) client.queryForList("users.followerList", user_id);
+	}
+
+	@Override
+	public int followUser(String follower, String followee) throws SQLException {
+		Map<String, String> map = new HashMap<>();
+		map.put("follower", follower);
+		map.put("followee", followee);
+		if(client.insert("users.followUser", map) == null)
+			return 1;
+		else return 0;
+	}
+
+	@Override
+	public int unfollowUser(String follower, String followee) throws SQLException {
+		Map<String, String> map = new HashMap<>();
+		map.put("follower", follower);
+		map.put("followee", followee);
+		return client.delete("users.unfollowUser", map);
 	}	
 	
 	

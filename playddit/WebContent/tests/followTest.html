@@ -16,60 +16,117 @@
 </style>
 <script>
 $(function(){
+	$('.followList').on('click', '.followBtn', function(){
+		var targetId = this.getAttribute('follow');
+		alert(targetId + '님을 팔로우 합니다.');
+		follow(targetId);
+	})
+	$('.followList').on('click', '.unfollowBtn', function(){
+		var targetId = this.getAttribute('follow');
+		alert(targetId + '님을 언팔로우 합니다.');
+		unfollow(targetId);
+	})
 	$('#loadFollower').on('click', function(){
-		$('.followList').empty();
-		$.ajax({
-			url : '/playddit/users/followerList.do',
-			type : 'post',
-			success : function(res){
-				$.each(res, function(i,v){
-					var li = '<li>';
-					li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
-					li += '<img src="../images/'+v.profile+'.png" /></a>';
-					li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
-					li += '<p class="followName">'+v.nickname+'</p>';
-					li += '<span class="followClass">'+v.department+'</span></a></div>';
-					if(v.followback == 0){
-						li += '</div><button type="submit" class="f4f">Follow</button>'
-					}
-					li += '</li>';
-					$('.followList').append(li);
-				})
-			},
-			error : function(xhr){
-				alert("status : " + xhr.status);
-			},
-			dataType : 'json'
-		})
+		loadFollower();
 	})
 	$('#loadFollowing').on('click', function(){
-		$('.followList').empty();
-		$.ajax({
-			url : '/playddit/users/followingList.do',
-			type : 'post',
-			success : function(res){
-				$.each(res, function(i,v){
-					var li = '<li>';
-					li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
-					li += '<img src="../images/'+v.profile+'.png" /></a>';
-					li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
-					li += '<p class="followName">'+v.nickname+'</p>';
-					li += '<span class="followClass">'+v.department+'</span></a></div>';
-					if(v.followback == 0){
-						li += '</div><button type="submit" class="f4f">Follow</button>'
-					}
-					li += '</li>';
-					$('.followList').append(li);
-				})
-			},
-			error : function(xhr){
-				alert("status : " + xhr.status);
-			},
-			dataType : 'json'
-		})
+		loadFollowing();
 	})
 
 })
+
+loadFollower = function(){
+	$('.followList').empty();
+	$.ajax({
+		url : '/playddit/users/followerList.do',
+		type : 'post',
+		success : function(res){
+			$.each(res, function(i,v){
+				var li = '<li>';
+				li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
+				li += '<img src="../images/'+v.profile+'.png" /></a>';
+				li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
+				li += '<p class="followName">'+v.nickname+'</p>';
+				li += '<span class="followClass">'+v.department+'</span></a></div>';
+				if(v.followback == 0){
+					li += '</div><button type="button" follow="'+v.id+'" class="f4f followBtn">Follow</button>'
+				}else{
+					li += '</div><button type="button" follow="'+v.id+'" class="f4f unfollowBtn">unfollow</button>'
+					
+				}
+				li += '</li>';
+				$('.followList').append(li);
+			})
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+		dataType : 'json'
+	})
+}
+
+loadFollowing = function(){
+	$('.followList').empty();
+	$.ajax({
+		url : '/playddit/users/followingList.do',
+		type : 'post',
+		success : function(res){
+			$.each(res, function(i,v){
+				var li = '<li>';
+				li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
+				li += '<img src="../images/'+v.profile+'.png" /></a>';
+				li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
+				li += '<p class="followName">'+v.nickname+'</p>';
+				li += '<span class="followClass">'+v.department+'</span></a></div>';
+				if(v.followback == 0){
+					li += '</div><button type="button" follow="'+v.id+'" class="f4f followBtn">Follow</button>'
+				}else{
+					li += '</div><button type="button" follow="'+v.id+'" class="f4f unfollowBtn">unfollow</button>'
+					
+				}
+				li += '</li>';
+				$('.followList').append(li);
+			})
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+		dataType : 'json'
+	})
+}
+
+follow = function(targetId){
+	$.ajax({
+		url : '/playddit/users/followUser.do',
+		type : 'post',
+		data : {'targetId' : targetId},
+		success : function(res){
+			$('.followTitle').find('span').empty();
+			$('.followTitle').find('span').append(res);
+			loadFollowing();
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+		dataType : "text"
+	})
+}
+unfollow = function(targetId){
+	$.ajax({
+		url : '/playddit/users/unfollowUser.do',
+		type : 'post',
+		data : {'targetId' : targetId},
+		success : function(res){
+			$('.followTitle').find('span').empty();
+			$('.followTitle').find('span').append(res);
+			loadFollowing();
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+		dataType : "text"
+	})
+}
 </script>
 </head>
 <body>

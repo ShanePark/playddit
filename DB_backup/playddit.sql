@@ -6,7 +6,9 @@
 from cols
 where lower(table_name) = '테이블명'; 
 -----------------------------------------------------
-
+--
+--      ALL ABOUT FOLLOWING
+--
 -----------------------------------------------------
 -- users list who a001 is following 
 -----------------------------------------------------
@@ -26,7 +28,6 @@ where user_id = 'a004';
 
 -----------------------------------------------------
 -- users informations who a001 is following
------------------------------------------------------
 select * 
 from users
 where user_id in (select followee
@@ -47,7 +48,6 @@ where user_id in (select follower
 -----------------------------------------------------
 -----------------------------------------------------
 -- users list someone is following
------------------------------------------------------
 select user_id as id, user_nickname as nickname,
         (select class_num ||' - ' || class_room from class where class_id=users.class_id) as department,
         nvl(user_pic,'default') as profile,
@@ -57,6 +57,15 @@ where user_id in (select followee
                 from follow
                 where follower = 'psh40963@naver.com');
 -----------------------------------------------------
+-- insert following data
+insert into follow 
+(follow_no, follower, followee)
+values(follow_no_seq.nextval, 'psh40963@naver.com', 'bomik0614@gmail.com');
+
+-- delete following data
+delete from follow
+where follower = 'psh40963@naver.com'
+and followee = 'bomik0614@gmail.com';
 
 -----------------------------------------------------
 -- set new password 
