@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link href="css/common.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet" />
-        <link href="css/contents.css" rel="stylesheet" />
+        <link href="css/feed.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script src="script/script.js"></script>
@@ -168,7 +168,7 @@
                     </a>
                     
                     <div id="search">
-                        <form>
+                        <form action="" method="get">
                             <input type="text" name="searchBox" placeholder="search"/>
                             <button type="button" name="search">
                                 <i class="fas fa-search"></i>
@@ -237,7 +237,7 @@
                         </div>
 
                         <div id="msearch">
-                            <form>
+                            <form action="" method="get">
                                 <input type="text" name="searchBox" placeholder="search"/>
                                 <button type="button" name="search">
                                     <i class="fas fa-search"></i>
@@ -709,7 +709,107 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- 피드 검색 모달창 -->
+                <div id="mask"></div>
+                <div id="feedSearch">
+                    <div class="edge"></div>
+                    <div id="feedSearchModal">
+                        <div id="feedCount">
+                            <a href="#" class="feedCir">
+                                <i class="fas fa-hashtag"></i>
+                            </a>
+                            <a href="#" id="feedText">
+                                <p id="keyword">검색단어</p>
+                                <p id="count">
+                                    피드 <span>5,000</span>개
+                                </p>
+                            </a>
+                        </div>
+                        
+                        <ul id="searchUser">
+                            <li>
+                                <a href="#" user="scarlet" class="feedCir">
+                                    <img src="images/default.png" />
+                                </a>
+                                <a href="#" class="searchUserBox">
+                                    <span href="#" user="scarlet" class="userNick">
+                                        scarlett
+                                    </span>
+                                    <span class="userEmail">chdnjs7610@gmail.com</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" user="scarlet" class="feedCir">
+                                    <img src="images/default.png" />
+                                </a>
+                                <a href="#" class="searchUserBox">
+                                    <span href="#" user="scarlet" class="userNick">
+                                        scarlett
+                                    </span>
+                                    <span class="userEmail">chdnjs7610@gmail.com</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" user="scarlet" class="feedCir">
+                                    <img src="images/default.png" />
+                                </a>
+                                <a href="#" class="searchUserBox">
+                                    <span href="#" user="scarlet" class="userNick">
+                                        scarlett
+                                    </span>
+                                    <span class="userEmail">chdnjs7610@gmail.com</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" user="scarlet" class="feedCir">
+                                    <img src="images/default.png" />
+                                </a>
+                                <a href="#" class="searchUserBox">
+                                    <span href="#" user="scarlet" class="userNick">
+                                        scarlett
+                                    </span>
+                                    <span class="userEmail">chdnjs7610@gmail.com</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" user="scarlet" class="feedCir">
+                                    <img src="images/default.png" />
+                                </a>
+                                <a href="#" class="searchUserBox">
+                                    <span href="#" user="scarlet" class="userNick">
+                                        scarlett
+                                    </span>
+                                    <span class="userEmail">chdnjs7610@gmail.com</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" user="scarlet" class="feedCir">
+                                    <img src="images/default.png" />
+                                </a>
+                                <a href="#" class="searchUserBox">
+                                    <span href="#" user="scarlet" class="userNick">
+                                        scarlett
+                                    </span>
+                                    <span class="userEmail">chdnjs7610@gmail.com</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" user="scarlet" class="feedCir">
+                                    <img src="images/default.png" />
+                                </a>
+                                <a href="#" class="searchUserBox">
+                                    <span href="#" user="scarlet" class="userNick">
+                                        scarlett
+                                    </span>
+                                    <span class="userEmail">chdnjs7610@gmail.com</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <!--컨텐츠 끝-->
             
             <div id="profile">
                 <div id="infoBox">
@@ -729,11 +829,11 @@
                         </li>
                         <li>
                             <span class="th">팔로워</span><br/>
-                            <a class="followBtn" id="Follower"></a>
+                            <a class="followBtn" id="Follower">10</a>
                         </li>
                         <li>
                             <span class="th">팔로잉</span><br/>
-                            <a class="followBtn" id="Following"></a>
+                            <a class="followBtn" id="Following">15</a>
                         </li>
                     </ul>
                 </div>
@@ -887,6 +987,39 @@
 
                         }
                     }
+                });
+                
+                var visi = false;
+
+                $(".alarmBtn").click(function(){
+                    if(!visi){
+                        $("#alarmEdge2 , #alarmEdge, #modal").show();
+                        visi = true;
+                    }else{
+                        $("#alarmEdge2, #alarmEdge").hide();
+                        $("#modal").fadeOut(300);
+                        visi = false;
+                    }
+                });
+                
+                //feed Search
+                $("#search button, #msearch button").on("click", function(){
+                    
+                    if(visi){
+                        $("#alarmEdge2, #alarmEdge").hide();
+                        $("#modal").fadeOut(300);
+                        visi = false;
+                    }
+                    
+                    $("#mask").show();
+                    $("#feedSearch").show();
+                    $("#feedSearchModal").slideDown(500);
+                });
+                
+                $("#mask").click(function(){
+                    $(this).hide();
+                    $("#feedSearchModal").slideUp(300);
+                    $("#feedSearch").hide();
                 });
             });
         </script>

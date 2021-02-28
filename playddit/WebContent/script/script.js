@@ -60,15 +60,15 @@ $(function(){
     });
     
     //알람
-    var visi = true;
+    var visi = false;
     $(".alarmBtn").click(function(){
-        if(visi){
+        if(!visi){
             $("#alarmEdge2 , #alarmEdge, #modal").show();
-            visi = false;
+            visi = true;
         }else{
             $("#alarmEdge2, #alarmEdge").hide();
             $("#modal").fadeOut(300);
-            visi = true;
+            visi = false;
         }
     });
     
