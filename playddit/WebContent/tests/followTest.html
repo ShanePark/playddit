@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>play ddit message alarm test page</title>
+<link href="favicon.ico" rel="icon shortcut" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link href="../css/common.css" rel="stylesheet" />
+<link href="../css/style.css" rel="stylesheet" />
+<script src="../js/jquery-3.5.1.min.js"></script>
+<style>
+#buttons{
+	padding-top : 50px;
+	padding-left : 50px;
+}
+</style>
+<script>
+$(function(){
+	$('#loadFollower').on('click', function(){
+		$('.followList').empty();
+		$.ajax({
+			url : '/playddit/users/followerList.do',
+			type : 'post',
+			success : function(res){
+				$.each(res, function(i,v){
+					var li = '<li>';
+					li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
+					li += '<img src="../images/'+v.profile+'.png" /></a>';
+					li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
+					li += '<p class="followName">'+v.nickname+'</p>';
+					li += '<span class="followClass">'+v.department+'</span></a></div>';
+					if(v.followback == 0){
+						li += '</div><button type="submit" class="f4f">Follow</button>'
+					}
+					li += '</li>';
+					$('.followList').append(li);
+				})
+			},
+			error : function(xhr){
+				alert("status : " + xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+	$('#loadFollowing').on('click', function(){
+		$('.followList').empty();
+		$.ajax({
+			url : '/playddit/users/followingList.do',
+			type : 'post',
+			success : function(res){
+				$.each(res, function(i,v){
+					var li = '<li>';
+					li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
+					li += '<img src="../images/'+v.profile+'.png" /></a>';
+					li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
+					li += '<p class="followName">'+v.nickname+'</p>';
+					li += '<span class="followClass">'+v.department+'</span></a></div>';
+					if(v.followback == 0){
+						li += '</div><button type="submit" class="f4f">Follow</button>'
+					}
+					li += '</li>';
+					$('.followList').append(li);
+				})
+			},
+			error : function(xhr){
+				alert("status : " + xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+
+})
+</script>
+</head>
+<body>
+<div id="buttons">
+	<a href="../index.html">세션필요할때(500에러) 로그인 하고오기</a><br><br><br>
+	<button id="loadFollower">팔로워확인</button>
+	<button id="loadFollowing">팔로잉확인</button>
+</div>
+    <div class="closeBox">
+        <button type="button" class="close" style="color : #a0a0cf;">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="followTitle">
+        <h6></h6>
+        <span></span>명
+    </div>
+    <ul class="followList">
+
+    </ul>
+</body>
+</html>

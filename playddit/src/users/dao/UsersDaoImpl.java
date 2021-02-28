@@ -9,6 +9,7 @@ import java.util.Map;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import config.SqlMapClientFactory;
+import users.vo.FollowerVO;
 import users.vo.UsersVO;
 
 public class UsersDaoImpl implements IUsersDao {
@@ -63,19 +64,6 @@ public class UsersDaoImpl implements IUsersDao {
 		return (String) client.queryForObject("users.selectByNick", user_nickname);
 	}
 	
-	/**
-	 * 팔로잉 목록 출력
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<UsersVO> followingList(String user_id) throws SQLException {
-		List<UsersVO> following = null;
-		
-		// sql문의 수행 결과를 리턴받음
-		following = (List<UsersVO>) client.queryForList("users.followingList", user_id);
-		
-		return following;
-	}
 
 	/**
 	 * 아이디 비밀번호 일치여부
@@ -105,6 +93,24 @@ public class UsersDaoImpl implements IUsersDao {
 	@Override
 	public UsersVO insertUser(UsersVO UsersVO) throws SQLException {
 		return (UsersVO)client.insert("users.insertUser", UsersVO);
+	}
+	
+	/**
+	 * 팔로잉 목록 출력
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<FollowerVO> followingList(String user_id) throws SQLException {
+		return (List<FollowerVO>) client.queryForList("users.followingList", user_id);
+	}
+	
+	/**
+	 * 팔로워 목록 출력
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<FollowerVO> followerList(String user_id) throws SQLException {
+		return (List<FollowerVO>) client.queryForList("users.followerList", user_id);
 	}	
 	
 	

@@ -29,6 +29,7 @@
  	  <typeAlias alias = "MessageVO" type="message.vo.MessageVO"/>
  	  <typeAlias alias = "termsVo" type="join.vo.TermsVO"/>
  	  <typeAlias alias = "alarmVO" type="alarm.vo.AlarmVO"/>
+ 	  <typeAlias alias = "followerVO" type="users.vo.FollowerVO"/>
 
  	  
  	  <!-- DB와의 연결을 처리하는 부분 -->

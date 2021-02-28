@@ -16,7 +16,7 @@ import users.service.UsersServiceImpl;
 import users.vo.FollowerVO;
 import web.IAction;
 
-public class FollowingList implements IAction{
+public class FollowerList implements IAction{
 	
 	@Override
 	public boolean isRedirect() {
@@ -35,7 +35,7 @@ public class FollowingList implements IAction{
 		
 		// 2. 접속정보를 이용해 팔로잉 목록 받아오기
 		IUsersService service = UsersServiceImpl.getService();
-		List<FollowerVO> list = service.followingList(id);
+		List<FollowerVO> list = service.followerList(id);
 		
 		// 3. Json 형태로 변환해 보내주기
 		String listJson = new Gson().toJson(list);
