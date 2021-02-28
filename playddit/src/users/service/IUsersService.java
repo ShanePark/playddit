@@ -1,6 +1,8 @@
 package users.service;
 
 import java.util.List;
+
+import users.vo.FollowerVO;
 import users.vo.UsersVO;
 
 public interface IUsersService {
@@ -13,7 +15,10 @@ public interface IUsersService {
 	public String selectByNick(String user_nickname);
 	
 	// 팔로잉 목록 출력
-	public List<UsersVO> followingList(String user_id); 
+	public List<FollowerVO> followingList(String user_id);
+	
+	// 팔로워 목록 출력
+	public List<FollowerVO> followerList(String user_id);
 	
 	// 아이디 비밀번호 일치여부
 	public UsersVO match(String user_id, String user_pw);

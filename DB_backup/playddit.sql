@@ -25,9 +25,33 @@ where user_id = 'a004';
 -----------------------------------------------------
 
 -----------------------------------------------------
--- user informations which a001 is following
+-- users informations who a001 is following
 -----------------------------------------------------
 select * 
+from users
+where user_id in (select followee
+                from follow
+                where follower = 'psh40963@naver.com');
+-----------------------------------------------------
+-----------------------------------------------------
+-- users informations who are following specific person
+-----------------------------------------------------
+select user_id as id, user_nickname as nickname,
+        (select class_num ||' - ' || class_room from class where class_id=users.class_id) as department,
+        nvl(user_pic,'default') as profile,
+        (select count(*) from follow where follower = 'psh40963@naver.com' and followee = users.user_id) as followback
+from users
+where user_id in (select follower
+                from follow
+                where followee = 'psh40963@naver.com');
+-----------------------------------------------------
+-----------------------------------------------------
+-- users list someone is following
+-----------------------------------------------------
+select user_id as id, user_nickname as nickname,
+        (select class_num ||' - ' || class_room from class where class_id=users.class_id) as department,
+        nvl(user_pic,'default') as profile,
+        (select count(*) from follow where follower = 'psh40963@naver.com' and followee = users.user_id) as followback
 from users
 where user_id in (select followee
                 from follow

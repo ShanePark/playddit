@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import users.dao.IUsersDao;
 import users.dao.UsersDaoImpl;
+import users.vo.FollowerVO;
 import users.vo.UsersVO;
 
 public class UsersServiceImpl implements IUsersService {
@@ -55,20 +56,6 @@ public class UsersServiceImpl implements IUsersService {
 		return resNick;
 	}
 
-	/**
-	 * 팔로잉 목록 출력
-	 */
-	@Override
-	public List<UsersVO> followingList(String user_id) {
-		List<UsersVO> following = null;
-		
-		try {
-			following = dao.followingList(user_id);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return following;
-	}
 
 	/**
 	 * 아이디 비밀번호 일치 여부
@@ -109,6 +96,26 @@ public class UsersServiceImpl implements IUsersService {
 			e.printStackTrace();
 		}
 		return vo;
+	}
+
+	@Override
+	public List<FollowerVO> followingList(String user_id) {
+		try {
+			return dao.followingList(user_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<FollowerVO> followerList(String user_id) {
+		try {
+			return dao.followerList(user_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 		
 	

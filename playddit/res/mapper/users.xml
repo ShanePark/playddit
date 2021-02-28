@@ -16,12 +16,26 @@
 	</select>
 	
 	<!-- 팔로잉 목록 출력 -->
-	<select id="followingList" resultClass="UsersVO" parameterClass="String">
-		select user_id, user_nickname, user_name
+	<select id="followingList" resultClass="followerVO" parameterClass="String">
+		select user_id as id, user_nickname as nickname,
+        (select class_num ||' - ' || class_room from class where class_id=users.class_id) as department,
+        nvl(user_pic,'default') as profile,
+        (select count(*) from follow where follower = #user_id# and followee = users.user_id) as followback
 		from users
 		where user_id in (select followee
-         			       from follow
-                			where follower = #user_id#)
+                from follow
+                where follower = #user_id#)
+	</select>
+	<!-- 팔로워 목록 출력 -->
+	<select id="followerList" resultClass="followerVO" parameterClass="String">
+		select user_id as id, user_nickname as nickname,
+        (select class_num ||' - ' || class_room from class where class_id=users.class_id) as department,
+        nvl(user_pic,'default') as profile,
+        (select count(*) from follow where follower = #user_id# and followee = users.user_id) as followback
+		from users
+		where user_id in (select follower
+                from follow
+                where followee = #user_id#)
 	</select>
 	
 	<!-- 아이디 & 비밀번호 일치 여부 -->
