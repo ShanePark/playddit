@@ -3,32 +3,32 @@
 <nav id="lnb">
     <ul>
         <li class="main active">
-            <a href="#">
+            <a href="feed.jsp">
                 <i class="fas fa-comment-dots"></i>Feed
             </a>
         </li>
         <li class="main">
-            <a href="#">
+            <a href="news.jsp">
                 <i class="far fa-newspaper"></i>News
             </a>
         </li>
         <li class="main">
-            <a href="#">
+            <a href="study.jsp">
                 <i class="fas fa-users"></i>Study
             </a>
         </li>
         <li class="main">
-            <a href="#">
+            <a href="food.jsp">
                 <i class="fas fa-utensils"></i>Food
             </a>
         </li>
         <li class="main">
-            <a href="#">
+            <a href="store.jsp">
                 <i class="fas fa-store"></i>Store
             </a>
         </li>
         <li class="main">
-            <a href="#">
+            <a href="setting.jsp">
                 <i class="fas fa-cog"></i>Setting
             </a>
         </li>
@@ -148,7 +148,7 @@
         </a>
         
         <div id="search">
-            <form>
+            <form class="searchs">
                 <input type="text" name="searchBox" placeholder="search"/>
                 <button type="button" name="search">
                     <i class="fas fa-search"></i>
@@ -217,7 +217,7 @@
             </div>
 
             <div id="msearch">
-                <form>
+                <form class="searchs">
                     <input type="text" name="searchBox" placeholder="search"/>
                     <button type="button" name="search">
                         <i class="fas fa-search"></i>
@@ -238,32 +238,32 @@
     <nav id="mnav">
         <ul>
             <li class="main active">
-                <a href="#">
+                <a href="feed.jsp">
                     <i class="fas fa-comment-dots"></i>Feed
                 </a>
             </li>
             <li class="main">
-                <a href="#">
+                <a href="news.jsp">
                     <i class="far fa-newspaper"></i>News
                 </a>
             </li>
             <li class="main">
-                <a href="#">
+                <a href="study.jsp">
                     <i class="fas fa-users"></i>Study
                 </a>
             </li>
             <li class="main">
-                <a href="#">
+                <a href="food.jsp">
                     <i class="fas fa-utensils"></i>Food
                 </a>
             </li>
             <li class="main">
-                <a href="#">
+                <a href="store.jsp">
                     <i class="fas fa-store"></i>Store
                 </a>
             </li>
             <li class="main">
-                <a href="#">
+                <a href="setting">
                     <i class="fas fa-cog"></i>Setting
                 </a>
             </li>
