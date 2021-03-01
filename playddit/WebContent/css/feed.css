@@ -304,7 +304,7 @@
     bottom: 0;
     left:0;
     top:0;
-    z-index: 100;  
+    z-index: 800;  
     background-color: #000;
     opacity: 0.2;
     display: none;
@@ -312,6 +312,7 @@
 
 #reportWrap {
     display: none;
+    z-index: 900;
 }
 
 #reportModal {
