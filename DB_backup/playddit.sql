@@ -39,7 +39,7 @@ where user_id in (select followee
 -----------------------------------------------------
 select user_id as id, user_nickname as nickname,
         (select class_num ||' - ' || class_room from class where class_id=users.class_id) as department,
-        nvl(user_pic,'default') as profile,
+        nvl(user_pic,'default.png') as profile,
         (select count(*) from follow where follower = 'psh40963@naver.com' and followee = users.user_id) as followback
 from users
 where user_id in (select follower
@@ -50,7 +50,7 @@ where user_id in (select follower
 -- users list someone is following
 select user_id as id, user_nickname as nickname,
         (select class_num ||' - ' || class_room from class where class_id=users.class_id) as department,
-        nvl(user_pic,'default') as profile,
+        nvl(user_pic,'default.png') as profile,
         (select count(*) from follow where follower = 'psh40963@naver.com' and followee = users.user_id) as followback
 from users
 where user_id in (select followee
@@ -68,13 +68,19 @@ where follower = 'psh40963@naver.com'
 and followee = 'bomik0614@gmail.com';
 
 -----------------------------------------------------
--- set new password 
+--      ALL ABOUT
+--              USER INFORMATION
 -----------------------------------------------------
+-- set new password 
 update users
 set user_password = 'mU5ocy1vmV5+EMhXMRBDOw=='
 where user_id = 'psh40963@naver.com';
 -----------------------------------------------------
-
+-- set new profile
+update users
+set user_pic = 'zzz.png'
+where user_id = 'psh40963@naver.com';
+commit;
 -----------------------------------------------------
 -- insert new user
 -----------------------------------------------------
@@ -85,7 +91,7 @@ VALUES ('chdnjs7610@gmail.com', '테스터스칼릿', '1234', '박초원', '1234
 -----------------------------------------------------
 --  login profile data loading
 -----------------------------------------------------
-select user_id, user_nickname,class_id,
+select user_id, user_nickname,class_id, nvl(user_pic, 'default.png') as user_pic,
 (select count(*) from follow where follower=users.user_id) as following,
 (select count(*) from follow where followee=users.user_id) as follower,
 (select class_title ||' '|| class_num || ' - ' || class_room

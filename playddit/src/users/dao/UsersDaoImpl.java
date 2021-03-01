@@ -121,6 +121,14 @@ public class UsersDaoImpl implements IUsersDao {
 		map.put("follower", follower);
 		map.put("followee", followee);
 		return client.delete("users.unfollowUser", map);
+	}
+
+	@Override
+	public int setUserPic(String user_id, String user_pic) throws SQLException {
+		Map<String, String> map = new HashMap<>();
+		map.put("user_id", user_id);
+		map.put("user_pic", user_pic);
+		return client.update("users.setUserPic", map);
 	}	
 	
 	

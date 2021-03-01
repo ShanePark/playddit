@@ -19,7 +19,7 @@
 	<select id="followingList" resultClass="followerVO" parameterClass="String">
 		select user_id as id, user_nickname as nickname,
         (select class_num ||' - ' || class_room from class where class_id=users.class_id) as department,
-        nvl(user_pic,'default') as profile,
+        nvl(user_pic,'default.png') as profile,
         (select count(*) from follow where follower = #user_id# and followee = users.user_id) as followback
 		from users
 		where user_id in (select followee
@@ -30,7 +30,7 @@
 	<select id="followerList" resultClass="followerVO" parameterClass="String">
 		select user_id as id, user_nickname as nickname,
         (select class_num ||' - ' || class_room from class where class_id=users.class_id) as department,
-        nvl(user_pic,'default') as profile,
+        nvl(user_pic,'default.png') as profile,
         (select count(*) from follow where follower = #user_id# and followee = users.user_id) as followback
 		from users
 		where user_id in (select follower
@@ -70,7 +70,24 @@
 		set user_password = #password#
 		where user_id = #email#
 	</update>
-
+	
+	<!-- 프로필 사진 변경 -->
+	<update id="setUserPic" parameterClass="map">
+		update users
+		set user_pic = #user_pic#
+		where user_id = #user_id#
+	</update>
+	
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterClass="UsersVO">
+		 insert into users(user_id, user_nickname, user_password, user_name, user_tel, user_birth, user_theme, user_sign_date)
+		 values (#user_id#, #user_nickname#, #user_password#, #user_name#, #user_tel#, #user_birth#, 0, sysdate)
+		 
+		 <!-- insert가 되었는지 안되었는지 selectKey로 확인할 수 있다. -->
+ 		 <selectKey resultClass="UsersVO" type="post">
+		 	select user_id, user_nickname from users where user_id = #user_id#
+		 </selectKey>
+	</insert>
 	
 </sqlMap>
 

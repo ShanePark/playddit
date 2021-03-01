@@ -123,6 +123,16 @@ public class UsersServiceImpl implements IUsersService {
 		}
 		return 0;
 	}
+
+	@Override
+	public int setUserPic(String user_id, String user_pic) {
+		try {
+			return dao.setUserPic(user_id, user_pic);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 		
 	
 	
