@@ -29,15 +29,14 @@
 				})
 				
 				$('#condiBtn').on('click', function(){
-					console.log( "===> "+ $(".mustCondi:checked").length);
 					if($(".mustCondi:checked").length!=3){
 						alert("필수 약관은 반드시 선택해야 합니다.");
 						return;
 					}
 					var form = $("#condition").get(0);
-					form.action = "join2.jsp";
+					form.action = "joinTest.jsp";
 					form.submit();
-				})
+				})		
 			})
 
 		</script>

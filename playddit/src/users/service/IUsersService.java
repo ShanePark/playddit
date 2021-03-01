@@ -31,7 +31,7 @@ public interface IUsersService {
 	
 	// 암호 변경하기
 	public int setNewPass(String user_id, String password);
-	
+
 	// 프로필 변경하기
 	public int setUserPic(String user_id, String user_pic);
 	

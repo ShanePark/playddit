@@ -19,8 +19,7 @@
 	crossorigin="anonymous">
 <link href="css/common.css" rel="stylesheet" />
 <link href="css/user.css" rel="stylesheet" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="script/modal.js"></script>
 <script src="js/signupTest.js"></script>
 <script src="js/badwords.js"></script>
@@ -30,16 +29,18 @@
 <script>
 		
 		$(function(){
+			alert(document.cookie);
+		
 			
-		// id(email) check
-		$('input[name=mail]').on('keyup', function() {
-			idCheck();
-		})
-
-		//id(email) doubleCheck
-		$('#nickDbtn').on('click', function() {
-			if (idCheck()) {
-				idDcheck(this);
+			// id(email) check
+			$('input[name=mail]').on('keyup', function() {
+				idCheck();
+			})
+	
+			//id(email) doubleCheck
+			$('#nickDbtn').on('click', function() {
+				if (idCheck()) {
+					idDcheck(this);
 			} else {
 				//msg에 이메일 형식에 맞게 입력하세요. 출력 해주세요.
 				$('input[name=mail]').parents('.box').find('.msg').text("이메일 형식에 맞게 입력하세요.");
@@ -53,13 +54,13 @@
 		})
 
 		// nickname check
-		$('#nickname').on(
+		$('input[name=nickname]').on(
 				'keyup',
 				function() {
-					nickvalue = $('#nickname').val().trim();
+					nickvalue = $('input[name=nickname]').val().trim();
 
 					if (nickvalue.length < 2 || nickvalue.length > 8) {
-						$('#nickname').parents('.box').find('.msg').text(
+						$('input[name=nickname]').parents('.box').find('.msg').text(
 								"2글자 이상 8글자 이하로 입력하세요.");
 						return false;
 					}
@@ -68,7 +69,7 @@
 
 		// nickname doubleCheck
 		$('#nickDbtn').on('click', function() {
-			nickvalue = $('#nickname').val().trim();
+			nickvalue = $('input[name=nickname]').val().trim();
 			if (nickvalue.length < 2 || nickvalue.length > 8) {
 				$(this).parents('.box').find('.msg').text("닉네임 형식을 확인해주세요.");
 			} else {
@@ -76,90 +77,83 @@
 			}
 		})
 
-		$('#nickname').change(function() {
+		$('input[name=nickname]').change(function() {
 			$('#nickDbtn').removeClass("active");
 		})
 
 		// password check
-		$('#pass').on('keyup', function() {
-			pwvalue = $('#pass').val().trim();
+		$('input[name=pass]').on('keyup', function() {
+			pwvalue = $('input[name=pass]').val().trim();
 			if (pwvalue.length < 8 || pwvalue.length > 12) {
-				$('#pass').parents('.box').find('.msg').text("8글자 이상 12글자 이하로 입력하세요.");
+				$('input[name=pass]').parents('.box').find('.msg').text("8글자 이상 12글자 이하로 입력하세요.");
 			} else {
 				pwCheck();
 			}
 		})
 
 		// password recheck
-		$('#passchk').on(
-				'keyup',
-				function() {
-					pwChkvalue = $('#passchk').val().trim();
-					if (pwvalue != pwChkvalue) {
-						$('#passchk').parents('.box').find('.msg').text(
-								"비밀번호가 일치하지 않습니다.").css('color', 'red');
-					} else {
-						$('#passchk').parents('.box').find('.msg').empty();
-					}
-				})
+		$('input[name=passchk]').on('keyup', function() {
+			pwChkvalue = $('input[name=passchk]').val().trim();
+			if (pwvalue != pwChkvalue) {
+				$('input[name=passchk]').parents('.box').find('.msg').text("비밀번호가 일치하지 않습니다.");
+			} else {
+				$('input[name=passchk]').parents('.box').find('.msg').empty();
+			}
+		})
 
 		// name check
-		$('#name').on('keyup input change', function() {
-			namevalue = $('#name').val().trim();
+		$('input[name=name]').on('keyup input change', function() {
+			namevalue = $('input[name=name]').val().trim();
 
 			if (namevalue.length < 2 || namevalue.length > 5) {
-				$('#name').parents('.box').find('.msg').text("한글 2자 이상 5자 이하로 입력하세요.");
+				$('input[name=name]').parents('.box').find('.msg').text("한글 2자 이상 5자 이하로 입력하세요.");
 			} else {
 				nameCheck();
 			}
 
 			if (namevalue == "") {
-				$('#name').parents('.box').find('.msg').text("");
+				$('input[name=name]').parents('.box').find('.msg').text("");
 			}
 		})
 
 		// ph check
-		$('#phone').on('keyup', function() {
+		$('input[name=phone]').on('keyup', function() {
 			phCheck();
 
-			if ($('#phone').val().trim() == "") {
-				$('#phone').parents('.box').find('.msg').text("");
+			if ($('input[name=phone]').val().trim() == "") {
+				$('input[name=phone]').parents('.box').find('.msg').text("");
 			}
 		})
 
 		// birth check
-		$('#birth').on('change', function() {
+		$('input[name=birth]').on('change', function() {
 			birthCheck();
 
-			if ($('#birth').val().trim() == "") {
-				$('#birth').parents('.box').find('.msg').text("");
+			if ($('input[name=birth]').val().trim() == "") {
+				$('input[name=birth]').parents('.box').find('.msg').text("");
 			}
 		})
 
 		$('#joinBtn').on('click', function() {	
 			
-			if ($('#mail').parents('.box').find('.msg').text().length > 1 || $('#mail').val() == "") {
+			if ($('input[name=mail]').parents('.box').find('.msg').text().length > 1 || $('input[name=mail]').val() == "") {
 				alert("이메일을 입력해주세요.");
 				return false;
 		 	} else if (!$('#idDbtn').hasClass('active')) {
 				alert("이메일 중복확인을 해주세요.");
 				return false;
-			} else if ($('#nickname').parents('.box').find('.msg').text().length > 1 || $('#nickname').val() == "") {
+			} else if ($('input[name=nickname]').parents('.box').find('.msg').text().length > 1 || $('input[name=nickname]').val() == "") {
 				alert("닉네임을 입력해주세요.");
 				return false;
 			} else if (!$('#nickDbtn').hasClass('active')) {
 				alert("닉네임 중복확인을 해주세요.");
-			} else if ($('#pass').parents('.box').find('.msg').text().length > 1 || $('#pass').val() == "") {
+			} else if ($('input[name=pass]').parents('.box').find('.msg').text().length > 1 || $('input[name=pass]').val() == "") {
 				alert("비밀번호를 입력해주세요.");
 				return false;
-			} else if ($('#passchk').parents('.box').find('.msg').text().legnth > 1 || $('#pass').val() != $('#passchk').val()) {
+			} else if ($('input[name=passchk]').parents('.box').find('.msg').text().legnth > 1 || $('#pass').val() != $('input[name=passchk]').val()) {
 				alert("비밀번호 일치여부를 확인해주세요.");
 				return false;
-			}
-			
-			$('#joinBtn').removeAttr('disabled');
-				
-			
+			}		
 		})
 	})
 		</script>
@@ -181,7 +175,7 @@
 				<h2>SIGN UP</h2>
 				<p class="subtitle">Please enter your registration details</p>
 			</div>
-			<form action="<%= request.getContextPath()%>/users/join.do" method="post" id="joinForm">
+			<form action="<%= request.getContextPath()%>/join/join.do" method="post" id="joinForm">
 				<input type="hidden" name="pick0" value="<%=pick0%>"> <input
 					type="hidden" name="pick1" value="<%=pick1%>"> <input
 					type="hidden" name="pick2" value="<%=pick2%>">
@@ -281,7 +275,7 @@
 
 				<div style="clear: both;"></div>
 
-				<button type="submit" id="joinBtn" class="skyBtn" disabled="disabled">SIGN UP</button>
+				<button type="submit" id="joinBtn" class="skyBtn">SIGN UP</button>
 			</form>
 		</div>
 	</div>
@@ -333,10 +327,10 @@
                         $(this).prev("input").attr("type", "password");
                     }
                 });
-                
+/*                 
                 $(".double").on("click", function(){
                    $(this).toggleClass("active"); 
-                });
+                }); */
             });
         </script>
 </body>

@@ -80,6 +80,21 @@ public class JoinServiceImpl implements IJoinservice {
 		return vo;
 	}
 
+	/**
+	 * 인증코드 insert
+	 */
+	@Override
+	public int insertCode(String code, String mail) {
+		int result = 0;
+		try {
+			result = dao.insertCode(code, mail);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 
 
 		

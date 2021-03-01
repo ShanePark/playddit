@@ -88,14 +88,6 @@ public class UsersDaoImpl implements IUsersDao {
 	}
 	
 	/**
-	 * 회원가입
-	 */
-	@Override
-	public UsersVO insertUser(UsersVO UsersVO) throws SQLException {
-		return (UsersVO)client.insert("users.insertUser", UsersVO);
-	}
-	
-	/**
 	 * 팔로잉 목록 출력
 	 */
 	@SuppressWarnings("unchecked")

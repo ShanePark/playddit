@@ -35,4 +35,13 @@ public interface IJoinDao {
 	 * @throws SQLException
 	 */
 	public TermsVO termsCon(int terms_no) throws SQLException;
+	
+	/**
+	 * 인증코드 insert하기
+	 * @param code
+	 * @param mail
+	 * @return
+	 * @throws SQLException
+	 */
+	public int insertCode(String code, String mail) throws SQLException;
 }
