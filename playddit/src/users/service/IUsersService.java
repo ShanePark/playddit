@@ -35,8 +35,4 @@ public interface IUsersService {
 	// 프로필 변경하기
 	public int setUserPic(String user_id, String user_pic);
 	
-	// 회원가입
-	public UsersVO insertUser(UsersVO UsersVO);
-	
-
 }
