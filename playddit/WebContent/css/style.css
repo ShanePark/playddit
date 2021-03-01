@@ -334,6 +334,7 @@ footer #copy {
 }
 #back2 {
     z-index: 505;
+    position: fixed;
 }
 #back, #mnav {
     border-top-left-radius: 35px;
