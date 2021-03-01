@@ -29,5 +29,14 @@ public interface IJoinservice {
 	 * @return
 	 */
 	public TermsVO termsCon(int terms_no);
+	
+	
+	/**
+	 * 인증코드 insert하기
+	 * @param code
+	 * @param mail
+	 * @return
+	 */
+	public int insertCode(String code, String mail);
 
 }

@@ -82,21 +82,7 @@ public class UsersServiceImpl implements IUsersService {
 		}
 		return result;
 	}
-	
-	/**
-	 * 회원가입
-	 */
-	@Override
-	public UsersVO insertUser(UsersVO UsersVO) {
-		UsersVO vo = null;
-		try {
-			vo = dao.insertUser(UsersVO);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return vo;
-	}
+
 
 	@Override
 	public List<FollowerVO> followingList(String user_id) {
