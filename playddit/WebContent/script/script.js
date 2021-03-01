@@ -76,7 +76,7 @@ $(function(){
     
     $(window).scroll(function(evt) {
         var y = $(this).scrollTop();
-        var winW = $(window).width();
+        /*var winW = $(window).width();*/
         /*
         if(winW < 768){
             if (y > 120) {

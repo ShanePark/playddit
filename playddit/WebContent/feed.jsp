@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="txt">
-                                <p class="proName">Scarl-ett</p>
+                                <a href="#" class="proName">Scarl-ett</a>
                                 <p class="txtCont">
                                     프로그래머스 문제풀이 중..ㅠ<br /> 어떤 경우에 틀렸는지 좀 알려주세요...ㅠㅠ
                                 </p>
@@ -167,7 +167,7 @@
                             </div>
                             
                             <div class="txt" style="display: none;">
-                                <p class="proName">Scarl-ett</p>
+                                <a href="#" class="proName">Scarl-ett</a>
                                 <p class="txtCont">
                                     안되나용 왜 나는 안되나용
                                     그놈은 되고 왜 나는 안되나용
@@ -253,7 +253,7 @@
                             </div>
 
                             <div class="txt">
-                                <p class="proName">Scarl-ett</p>
+                                <a href="#" class="proName">Scarl-ett</a>
                                 <p class="txtCont">
                                     안되나용 왜 나는 안되나용
                                     그놈은 되고 왜 나는 안되나용
@@ -336,7 +336,7 @@
                             </div>
                             
                             <div class="txt">
-                                <p class="proName">Scarl-ett</p>
+                                <a href="#" class="proName">Scarl-ett</a>
                                 <p class="txtCont">
                                     놀러가고싶다...
                                 </p>
@@ -456,6 +456,30 @@
                     </div>
                 </div>
             </div>
+            
+            <!--신고 모달-->
+            <div id="reportBack"></div>
+            <div id="reportWrap">
+                <div id="reportModal">
+                    <div id="reporUserBox">
+                        <a href="#" id="reportCir">
+                            <img src="images/default.png" />
+                        </a>
+                        <a href="#" id="reportInfo">
+                            <p>scarlettdddd</p>
+                            <span>6기 - 302호</span>
+                        </a>
+                    </div>
+                    
+                    <p id="reportTxt">피드를 신고하시겠습니까?</p>
+
+                    <div id="reportBtn">
+                        <button type="button" id="goUser">프로필보기</button>
+                        <button type="button" id="goReport">신고</button>
+                        <button type="button" id="cencel">취소</button>
+                    </div>
+                </div>
+            </div>
             <!--컨텐츠 끝-->
             
             <!-- footer.jsp include -->
@@ -552,7 +576,6 @@
                             $(this).html('접기');
                             content.html(content_txt);
                             $(this).addClass('short');
-
                         }
                     }
                 });
@@ -587,7 +610,32 @@
                 $("#mask").click(function(){
                     $(this).hide();
                     $("#feedSearchModal").slideUp(300);
-                    $("#feedSearch").hide();
+                    $("#feedSearch").delay(200).hide();
+                });
+                
+                //신고 모달
+                $(".report").each(function(){
+                    var modal = true;
+                    
+                    $(this).click(function(){
+                        if(modal){
+                            $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+                                e.preventDefault();
+                            });
+                            $("#reportBack").show();
+                            $("#reportWrap").show();
+                            $("#reportModal").slideDown(500);
+                            modalVisi = false;
+                        }
+                    });
+                });
+                
+                $("#reportBack, #cencel").click(function(){
+                    $("#reportModal").slideUp(500);
+                    $("#reportWrap").delay(200).hide();
+                    $("#reportBack").hide();
+                    modalVisi = false;
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
                 });
             });
         </script>

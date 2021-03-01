@@ -186,7 +186,7 @@
     margin-right: 5px;
 }
 
-/*-----------------feed modal-----------------------------*/
+/*-----------------feed 검색 modal-----------------------------*/
 #mask {
     position:fixed;
     right: 0;
@@ -296,6 +296,100 @@
     font-size: 0.9em;
     color: #a0a0a0;
 }
+
+/*----------------------피드 신고 모달----------------------*/
+#reportBack {
+    position:fixed;
+    right: 0;
+    bottom: 0;
+    left:0;
+    top:0;
+    z-index: 100;  
+    background-color: #000;
+    opacity: 0.2;
+    display: none;
+}
+
+#reportWrap {
+    display: none;
+}
+
+#reportModal {
+    display: none;
+    width: 400px;
+    height: 300px;
+    background: white;
+    position: fixed;
+    border-radius: 10px;
+    box-shadow: 1px 4px 10px rgba(39, 39, 39, 0.4);
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+#reporUserBox {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 60px;
+}
+
+#reportCir {
+    width : 70px;
+    height: 70px;
+    display: inline-block;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px #b3c0d4;
+    float: left;
+    margin-right: 13px;
+}
+#reportCir img {
+    width: 100%;
+}
+
+#reportInfo{
+    float: left;
+    margin-top: 15px;
+}
+#reportInfo p {
+    font-size: 1.1em;
+    margin-bottom: 2px;
+}
+#reportInfo span {
+    color: #b7b7b7;
+    font-size: 0.95em;
+}
+
+#reportTxt {
+    font-size: 0.95em;
+    margin-top: 40px;
+    text-align: center;
+}
+
+#reportBtn {
+    height: 70px;
+    background: #ebeeff;
+    margin-top: 40px;
+    padding: 10px 0;
+}
+#reportBtn button {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 1.05em;
+    color: #676767;
+    text-align: center;
+    width: calc(97% / 3);
+    border-left: 1px solid rgba(150, 150, 150, 0.4);
+    font-weight: bold;
+}
+#reportBtn button:first-of-type {
+    border: none;
+}
+
 /*-----------------여기부터 태블릿pc---------------------*/
 @media all and (max-width: 1020px) {
     #storyBox {
