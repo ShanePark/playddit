@@ -10,7 +10,7 @@ import java.io.File;
 public class FileUtil {
 	
 	public static final String WIN_PROJECT_PATH = "D:\\A_TeachingMaterial\\playddit\\playddit";
-	public static final String MAC_PROJECT_PATH = "/Users/shane/Documents/GitHub/playddit/playddit";
+	public static final String MAC_PROJECT_PATH = System.getProperty("user.home")+"/Documents/GitHub/playddit/playddit";
 	public static final String SEP = File.separator;
 	
 	/**

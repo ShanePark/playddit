@@ -42,7 +42,7 @@ loadFollower = function(){
 			$.each(res, function(i,v){
 				var li = '<li>';
 				li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
-				li += '<img src="../images/'+v.profile+'.png" /></a>';
+				li += '<img src="../images/profile/'+v.profile+'" /></a>';
 				li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
 				li += '<p class="followName">'+v.nickname+'</p>';
 				li += '<span class="followClass">'+v.department+'</span></a></div>';
@@ -72,7 +72,7 @@ loadFollowing = function(){
 			$.each(res, function(i,v){
 				var li = '<li>';
 				li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
-				li += '<img src="../images/'+v.profile+'.png" /></a>';
+				li += '<img src="../images/profile/'+v.profile+'" /></a>';
 				li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
 				li += '<p class="followName">'+v.nickname+'</p>';
 				li += '<span class="followClass">'+v.department+'</span></a></div>';
