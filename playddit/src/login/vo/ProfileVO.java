@@ -6,6 +6,7 @@ public class ProfileVO {
 	private String classname;
 	private String user_bio;
 	private String class_id;
+	private String user_pic;
 	private int following;
 	private int follower;
 	private int allfeed;
@@ -57,6 +58,12 @@ public class ProfileVO {
 	}
 	public void setClass_id(String class_id) {
 		this.class_id = class_id;
+	}
+	public String getUser_pic() {
+		return user_pic;
+	}
+	public void setUser_pic(String user_pic) {
+		this.user_pic = user_pic;
 	}
 
 }
