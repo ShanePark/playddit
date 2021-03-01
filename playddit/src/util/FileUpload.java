@@ -27,7 +27,7 @@ public class FileUpload implements IAction {
 	public String process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		final String DIR = "/Users/shane/Desktop/attaches";
+		final String DIR = FileUtil.getProfilePath();
 		
 		final int LIMIT_SIZE_BYTES = 2 * 1024 * 1024;
 		final String CHARSET = "utf-8";
