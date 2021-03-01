@@ -1,7 +1,9 @@
 package join.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -57,6 +59,17 @@ public class JoinDaoImpl implements IJoinDao {
 	@Override
 	public TermsVO termsCon(int terms_no) throws SQLException {
 		return (TermsVO)client.queryForObject("join.termsCon", terms_no);
+	}
+	
+	/**
+	 * 인증코드 insert
+	 */
+	@Override
+	public int insertCode(String code, String mail) throws SQLException {
+		Map<String, String> map = new HashMap<>();
+		map.put("code", code);
+		map.put("user_id", mail);
+		return (int) client.insert("join.insertCode", map);
 	}
 
 

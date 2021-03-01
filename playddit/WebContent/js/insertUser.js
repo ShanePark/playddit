@@ -5,10 +5,10 @@
 function insert(){
 	event.preventDefault();
 	
-	idvalue = $('#id').val().trim();
+	idvalue = $('input[name=mail').val().trim();
 	
 	$.ajax({
-		url : '/playddit/users/join.do',
+		url : '/playddit//join.do',
 		type : 'post',
 		data : $('#insert').serializeJSON(),
 		success : function(res){

@@ -4,8 +4,6 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="join">
-
-
 	
 	<!-- 필수약관 가져오기 -->
 	<select id="showTerm" resultClass="termsVo">
@@ -40,5 +38,10 @@
 		 </selectKey>
 	</insert>
 	
+	<!-- 인증코드 insert -->
+	<insert id="insertCode" parameterClass="map">
+		insert into email_check (email_chk_no, email_chk_date, email_chk_cont, email_chk_addr)
+  	    values (email_chk_no_seq.nextval, sysdate, #code#, #mail#)
+	</insert>
 	
 </sqlMap>
