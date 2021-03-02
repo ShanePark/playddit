@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>약관 동의 테스트 하기</title>
+<script src="../js/jquery-3.5.1.min.js"></script>
+<script>
+	$(function(){
+		$('#termsCookie').on('click', function(){
+			if($('.must:checked').length != 3){
+				alert('필수약관은 반드시 선택해야 합니다.');
+				return;
+			}
+			termsCookie();
+		});
+		
+		$('#termsCookieCheck').on('click', function(){
+			var cookie = "선택사항 1은" + getCookie("pick1") + "<br>";
+			cookie += "선택사항 2은" + getCookie("pick2") + "<br>";
+			cookie += "선택사항 3은" + getCookie("pick3") + "<br>";
+			
+			$('#check').html(cookie);
+		})
+	});
+	
+	
+	termsCookie = function(){
+		var pick1 = $('#pick1:checked').val() == 'on';
+		var pick2 = $('#pick2:checked').val() == 'on';
+		var pick3 = $('#pick3:checked').val() == 'on';
+		
+		setCookie("pick1", pick1, 1);
+		setCookie("pick2", pick2, 1);
+		setCookie("pick3", pick3, 1);
+	}
+	
+	// 쿠키 저장
+	function setCookie(name, value, exp){
+		var date = new Date();
+		date.setTime(date.getTime() + exp*24*60*60*1000);
+		document.cookie = name+'='+escape(value)+';expires='+date.toUTCString()+';path=1';
+	}
+	
+	// 저장한 쿠키 가져오기
+	function getCookie(name) {
+	  const value = `; ${document.cookie}`;
+	  const parts = value.split(`; ${name}=`);
+	  if (parts.length === 2) return unescape(parts.pop()).split(';').shift();
+	}
+</script>
+
+</head>
+<body>
+약관 동의 테스트 하기 
+<br><br>
+<input type="checkbox" class="must"> 필수1
+<input type="checkbox" class="must"> 필수2
+<input type="checkbox" class="must"> 필수3
+<br><br>
+<input type="checkbox" id="pick1"> 선택1
+<input type="checkbox" id="pick2"> 선택2
+<input type="checkbox" id="pick3"> 선택3
+<br><br>
+<button id="termsCookie">쿠키 저장</button>
+<button id="termsCookieCheck">쿠키 저장 확인</button><br>
+<span id="check"></span>
+</body>
+</html>

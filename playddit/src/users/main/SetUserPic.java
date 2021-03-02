@@ -89,7 +89,7 @@ public class SetUserPic implements IAction {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("/playddit/tests/fileUploadTest.html");
+		response.sendRedirect("/playddit/tests/profileEditTest.html");
 		
 		return null;
 	

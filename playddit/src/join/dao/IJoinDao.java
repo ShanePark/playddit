@@ -14,7 +14,7 @@ public interface IJoinDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public UsersVO insertUser(UsersVO UsersVO) throws SQLException; 
+	public int insertUser(UsersVO UsersVO) throws SQLException; 
 
 	
 	/**
@@ -44,4 +44,13 @@ public interface IJoinDao {
 	 * @throws SQLException
 	 */
 	public int insertCode(String code, String mail) throws SQLException;
+	
+	/**
+	 * 인증코드 일치검사
+	 * @param code
+	 * @param mail
+	 * @return
+	 * @throws SQLException
+	 */
+	public String codeCheck(String mail) throws SQLException;
 }

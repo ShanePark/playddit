@@ -27,15 +27,15 @@ public class JoinServiceImpl implements IJoinservice {
 	 * 회원가입
 	 */
 	@Override
-	public UsersVO insertUser(UsersVO UsersVO) {
-		UsersVO vo = null;
+	public int insertUser(UsersVO UsersVO) {
+		int result = 0;
 		try {
-			vo = dao.insertUser(UsersVO);
+			result = dao.insertUser(UsersVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return vo;
+		return result;
 	}
 
 	@Override
@@ -93,6 +93,21 @@ public class JoinServiceImpl implements IJoinservice {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	/**
+	 * 인증코드 일치검사
+	 */
+	@Override
+	public String codeCheck(String mail) {
+		String code = null;
+		try {
+			code = dao.codeCheck(mail);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return code;
 	}
 
 
