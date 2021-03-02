@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+	<sqlMap namespace = "feed">
+	
+	<select id = "getFeed" resultClass ="feedVO" parameterClass="String">
+	
+	select a.feed_no as feedno, a.user_id as id, a.feed_cont as cont,
+			nvl(b.user_pic,'default.png') as profile, 
+			nvl(a.feed_pic,'none') as feedpic,
+			b.user_nickname as nickname, 
+			c.class_num ||' - '|| c.class_room as classname,
+        (select count(*) 
+         from likes 
+         where user_id = #user_id#
+            and feed_no = a.feed_no) as islike,
+            (select count(*)
+                from likes 
+                where feed_no = a.feed_no) as countlike,
+                (select count(*)
+                   from blame
+                   where feed_no = a.feed_no) as reportcount,   
+                     (select count(*)
+                        from blame
+                        where feed_no = a.feed_no
+                          and user_id = #user_id#) as isreport,
+                           (select count(*)
+                         	   from feed_comment
+                          	   where feed_no = a.feed_no) as comcount
+                   
+    from feed a, users b, class c  
+    where a.user_id = b.user_id 
+      and b.class_id = c.class_id   
+      
+    order by a.feed_no desc
+			
+	</select>
+		
+	
+	<select id = "getCom" resultClass="comVO" parameterClass="int">
+   
+    select a.feed_com_no as comno, a.user_id as id, 
+            a.feed_com_cont as comcont, b.user_nickname as nickname,
+             to_char(a.feed_com_date,'yyyy-mm-dd hh24:mi:ss') as time
+        from feed_comment a, users b
+        where a.user_id = b.user_id
+          and feed_no = #feed_no#
+
+	</select>
+	
+	
+	<insert id = "insertFeed" parameterClass="map">
+	
+	insert into feed (feed_no, user_id, feed_cont,feed_date,feed_pic)
+        values(feed_no_seq.nextval, #id#, #cont#, sysdate, #feedpic#)
+    	
+	</insert>
+	
+	
+	</sqlMap>

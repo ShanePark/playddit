@@ -30,7 +30,8 @@
  	  <typeAlias alias = "termsVo" type="join.vo.TermsVO"/>
  	  <typeAlias alias = "alarmVO" type="alarm.vo.AlarmVO"/>
  	  <typeAlias alias = "followerVO" type="users.vo.FollowerVO"/>
-      <typeAlias alias = "FeedTestVO" type="feedtest.vo.FeedTestVO"/>
+      <typeAlias alias = "feedVO" type="feed.vo.FeedVO"/>
+      <typeAlias alias = "comVO" type="feed.vo.ComVO"/>
  	  
  	  <!-- DB와의 연결을 처리하는 부분 -->
  	  <transactionManager type="JDBC">
@@ -52,7 +53,8 @@
   	  <sqlMap resource="mapper/message.xml"/>
   	  <sqlMap resource="mapper/join.xml"/>
   	  <sqlMap resource="mapper/alarm.xml"/>
-  	  <sqlMap resource="mapper/FeedTest.xml"/>
+  	  <sqlMap resource="mapper/feed.xml"/>
+  	 
 
  	
  </sqlMapConfig>
