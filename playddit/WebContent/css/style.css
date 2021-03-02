@@ -433,7 +433,7 @@ footer #copy {
     height: 20px;
     background: white;
     position: absolute;
-    top: 55px;
+    top: 120px;
     right: 21px;
     transform: rotate(45deg);
     border-radius: 3px;
@@ -450,7 +450,7 @@ footer #copy {
     height: 350px;
     background: white;
     position: absolute;
-    top: 62px;
+    top: 128px;
     right: -27%;
     border-radius: 10px;
     box-shadow: 1px 4px 10px rgba(39, 39, 39, 0.4);
@@ -518,6 +518,22 @@ footer #copy {
     font-weight: bold;
 }
 
+.classMoniter button {
+    float: right;
+    position: relative;
+    top: -1em;
+    border: none;
+    font-size: 1.3em;
+    margin-right: 15px;
+    background-color: transparent;
+}
+.classMoniter button:first-of-type {
+    margin-right: 5px;
+}
+.classMoniter button:last-of-type i {
+    color: #a1c4fd;
+}
+
 /*------------팔로워,팔로잉 목록 출력 모달---------------*/
 .followModal {
     position: fixed;
@@ -542,6 +558,16 @@ footer #copy {
     display: inline-block;
 }
 
+.followList {
+    border-bottom: 1px solid #e9e7fb;
+}
+.followList:last-of-type {
+    border-bottom: none;
+}
+.followList h5 {
+    font-size: 1.0em;
+    margin: 15px 15px 3px;
+}
 .followList li {
     width: 100%;
     display: inline-block;

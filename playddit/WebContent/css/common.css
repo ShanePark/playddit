@@ -84,6 +84,22 @@ input:-webkit-autofill:active {
     width: 100%;
 }
 
+.scrollStyle::-webkit-scrollbar {
+    width: 6px;
+}
+.scrollStyle::-webkit-scrollbar-track {
+    background-color: transparent;
+    padding: 10px;
+}
+.scrollStyle::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #b0cff5; 
+}
+.scrollStyle::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
 /*-----------------여기부터 태블릿pc---------------------*/
 @media all and (max-width: 1020px) {
     .cen {
