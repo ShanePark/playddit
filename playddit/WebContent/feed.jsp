@@ -167,7 +167,7 @@
                             </div>
                             
                             <div class="txt" style="display: none;">
-                                <a href="#" class="proName">Scarl-ett</a>
+                                <p class="proName">Scarl-ett</p>
                                 <p class="txtCont">
                                     안되나용 왜 나는 안되나용
                                     그놈은 되고 왜 나는 안되나용
@@ -219,6 +219,8 @@
                                     Scarl-ett
                                     <span class="proClass">6기 - 302호</span>
                                 </p>
+                                <!--내 피드라면 출력될 버튼-->
+                                <button type="button" class="myFeed"><i class="fas fa-ellipsis-h"></i></button>
                             </div>
 
                             <div class="feedPic">
@@ -476,7 +478,19 @@
                     <div id="reportBtn">
                         <button type="button" id="goUser">프로필보기</button>
                         <button type="button" id="goReport">신고</button>
-                        <button type="button" id="cencel">취소</button>
+                        <button type="button" id="cancel">취소</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!--본인 글 삭제 확인 모달-->
+            <div id="feedDel">
+                <div id="feedDelModal">
+                    <p>피드를 삭제 하시겠습니까?</p>
+                    <div id="feedDelBtn">
+                        <button type="button" id="goDel">삭제</button>
+                        <button type="button" id="goModi">수정</button>
+                        <button type="button" id="goCancel">취소</button>
                     </div>
                 </div>
             </div>
@@ -489,7 +503,7 @@
         <script>
             $(function(){
                 //feed 이미지박스 크기
-                $(window).resize(function(){
+                /*$(window).resize(function(){
                     var squareW = $(".square").width();
                     $(".square").height(squareW);
                     $(".square .slide").height(squareW);
@@ -497,7 +511,7 @@
                     var rectW = $(".rect").width();
                     $(".rect").height(4 * rectW / 3);
                     $(".rect .slide").height(4 * rectW / 3);
-                });
+                });*/
                 
                 //feed slick
                 $(".feedPic .slider").slick({
@@ -547,7 +561,7 @@
                     }
                 });
                 
-                //feed text
+                //feed text 더보기
                 $('.txt').each(function(){
                     var content = $(this).children('.txtCont');
                     var index = content.width();
@@ -576,6 +590,7 @@
                             $(this).html('접기');
                             content.html(content_txt);
                             $(this).addClass('short');
+
                         }
                     }
                 });
@@ -625,16 +640,41 @@
                             $("#reportBack").show();
                             $("#reportWrap").show();
                             $("#reportModal").slideDown(500);
-                            modalVisi = false;
+                            modal = true;
                         }
                     });
                 });
                 
-                $("#reportBack, #cencel").click(function(){
+                $("#reportBack, #cancel").click(function(){
                     $("#reportModal").slideUp(500);
                     $("#reportWrap").delay(200).hide();
                     $("#reportBack").hide();
-                    modalVisi = false;
+                    modal = false;
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                });
+                
+                //내 피드 삭제하기 모달
+                $(".myFeed").each(function(){
+                    var modal2 = true;
+                    
+                    $(this).click(function(){
+                        if(modal2){
+                            $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+                                e.preventDefault();
+                            });
+                            $("#reportBack").show();
+                            $("#feedDel").show();
+                            $("#feedDelModal").slideDown(500);
+                            modal2 = true;
+                        }
+                    });
+                });
+                
+                $("#reportBack, #goCancel").click(function(){
+                    $("#feedDelModal").slideUp(500);
+                    $("#feedDel").delay(200).hide();
+                    $("#reportBack").hide();
+                    modal2 = true;
                     $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
                 });
             });

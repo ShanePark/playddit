@@ -1,4 +1,9 @@
 @charset "utf-8";
+/*-------------------------피드 공통 스타일-----------------------------*/
+body {
+    background-image: linear-gradient(80deg, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+
 #feedWrap {
     background: white;
 }
@@ -64,6 +69,15 @@
     color: #929292;
     font-size: 0.95em;
     padding-left: 3px;
+}
+.proBox .myFeed {
+    border: none;
+    background-color: transparent;
+    font-size: 1.2em;
+    color: #3d3d3d;
+    float: right;
+    margin-top: 15px;
+    margin-right: 10px;
 }
 
 .feedPic {
@@ -195,6 +209,7 @@
     top:0;
     z-index: 100;  
     background-color: transparent;
+	display: none;
 }
 #feedSearch {
     display: none;
@@ -208,11 +223,14 @@
     border-radius: 10px;
     box-shadow: 1px 4px 10px rgba(39, 39, 39, 0.4);
     z-index: 100;
-    top: 66px;
+    top: 73px;
     left: 50%;
     transform: translateX(-50%);
     overflow: auto;
     padding: 12px 15px 12px 12px;
+}
+.feedSearch2 #feedSearchModal {
+	top : 57PX;
 }
 #feedSearchModal::-webkit-scrollbar {
     width: 6px;
@@ -239,7 +257,7 @@
     box-shadow: 1px 2px 5px #b2b2b2;
     transform: rotate(45deg)!important;
     z-index: 0;
-    top: 58px;
+    top: 65px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -313,6 +331,7 @@
 #reportWrap {
     display: none;
     z-index: 900;
+	position: relative;
 }
 
 #reportModal {
@@ -391,12 +410,382 @@
     border: none;
 }
 
+
+/*-----------------내 피드 삭제하기 --------------*/
+#feedDel {
+    display: none;
+    z-index: 900;
+}
+
+#feedDelModal {
+    display: none;
+    width: 350px;
+    height: 220px;
+    background: white;
+    position: fixed;
+    border-radius: 10px;
+    box-shadow: 1px 4px 10px rgba(39, 39, 39, 0.4);
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+#feedDelModal p {
+    text-align: center;
+    padding: 65px;
+}
+
+#feedDelBtn {
+    height: 70px;
+    background: #ebeeff;
+    padding: 10px 0;
+    display: flex;
+}
+#feedDelBtn button {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 1.05em;
+    color: #676767;
+    text-align: center;
+    width: 50%;
+    border-left: 1px solid rgba(150, 150, 150, 0.4);
+    font-weight: bold;
+}
+#feedDelBtn button:first-of-type {
+    border: none;
+}
+
+/*-----------------feed view -------------------*/
+#wrap {
+    display: flex;
+}
+.feedView {
+	width: 90%;	
+}
+
+#viewLeft {
+    float: left;
+    width: 60%;
+}
+#viewLeft #slider {
+    width: 100%;
+}
+#viewLeft .slide {
+    width: 100%;
+}
+#viewLeft .slide img {
+    width: 100%;
+}
+
+#viewRight {
+    float: right;
+    width: 40%;
+    background: white;
+    overflow: hidden;
+}
+
+#userProfile {
+    padding: 10px;
+    border-bottom: 1px solid #e9e7fb;
+}
+#userProfile #userPic {
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 1px solid #e9e7fb;
+}
+#userProfile #userPic img {
+    width: 100%;
+}
+#userProfile #userInfo {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: 9px;
+}
+#userProfile #userInfo p {
+    font-size: 1.2em;
+}
+#userProfile #userInfo span {
+    font-size: 0.95em;
+    color: #808080;
+}
+
+#cont {
+	height: calc(100% - 149px);
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+#cont #contTxt {
+	line-height: 1.5em;
+	margin: 13px 13px 0 13px;
+}
+#cont #contTxt > img {
+	vertical-align: middle;
+}
+
+#contIcon {
+	margin-bottom: 4px;
+	margin-top: 13px;
+	padding: 0 13px 0 13px;
+}
+#contIcon button { 
+    border: none;
+    background-color: transparent;
+    font-size: 1.3em;
+    margin-right: 3px;
+	color: #3d3d3d;
+}
+#contIcon .report {
+	margin-right: 0;
+	float: right;
+	color: #bfbfbf;
+}
+
+#likeBtn {
+	color: #8e8e8e;
+	margin: 0 13px;
+	padding-bottom: 20px;
+}
+
+#feedComm {
+	padding: 0 13px;
+}
+.comment > a,
+.reply > a {
+	display: inline-block;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	border: 1px solid #e9e7fb;
+	margin-right: 7px;
+}
+.comment p {
+    vertical-align: top;
+    display: flex;
+    width: 83%;
+    position: relative;
+    top: -41px;
+    right: -65px;
+}
+.comment p a {
+	font-weight: bold;
+}
+.comment p span {
+	width: 100%;
+	display: inline-block;
+	word-break: break-all;
+	margin-left: 10px;
+}
+.comment p span > img {
+	vertical-align: middle;
+}
+
+.comment > a img,
+.reply > a img {
+	width: 100%;
+}
+.comment button {
+	border: none;
+	background-color: transparent;
+	color: #8e8e8e;
+	text-decoration: underline;
+	font-size: 0.95em;
+	position: relative;
+	top: -32px;
+	left: 62px;
+	margin-right: 10px;
+}
+.comment .replyBtn {
+	text-decoration: none;
+}
+
+.replyList {
+	position: relative;
+	top: -7px;
+	left: 62px;
+	display: none;
+	width: 85%;
+}
+
+.reply span > img {
+	vertical-align: middle;
+}
+
+.myComm {
+	border: none;
+	background-color: transparent;
+	position: relative;
+	top: -16px!important;
+    left: 10px!important;
+	font-size: 1.1em;
+	margin-left: 3px;
+	color: #a1c4fd!important;
+	display: block;
+}
+.reply .myComm {
+    top: 0px!important;
+}
+
+#commentInputBox {
+	height: 70px;
+	background: white;
+	border-top: 1px solid #e9e7fb;
+	padding-top: 12px;
+	position: relative;
+}
+
+footer {
+    clear: both;
+    margin-top: 50px;
+}
+footer p {
+    text-align: center;
+    padding-bottom: 80px;
+	color: #6f6f6f;
+	font-weight: 100;
+}
+
+/*-----------------이모지------------------------*/
+#input_area{
+  border: 1px #CECEF6 solid;
+  width: 70%;
+  height: 35px;
+  overflow: auto;
+  margin-top: 5px;
+  margin-left: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  float: left;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+#input_area:focus{
+  outline: none;
+  margin-top: 5px;
+  margin-left: 5px;
+  padding-left: 3px;
+  padding-top: 5px;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+#input_area img {
+	vertical-align: middle;
+}
+
+.row {
+	display: flex;
+	width: 100%;
+}
+
+.col-lg-2 {
+	width: 15%;
+}
+
+.emoji_pickup{
+  cursor: pointer;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+#emoji_pickup_before{
+  margin-top: 5px;
+  margin-right: 10px
+}
+
+#emoji_pickup_after{
+  margin-top: 2px;
+  margin-right: 10px;
+  display: none;
+}
+
+#emoji_popup{
+  display: none;
+  position: absolute;
+  border: 1px #CECEF6 solid;
+  width: 100%;
+  height: 200px;
+  overflow: auto;
+  padding: 5px;
+}
+
+#emoji_navigator{
+  border-bottom: 1px #CECEF6 solid;
+}
+
+#emoji_tooltip{
+  display: none;
+  border: 1px #CECEF6 solid;
+}
+
+.navigator{
+  border: 1px #FFFFFF solid;
+  cursor: pointer;
+  margin: 1px;
+  width: 32px;
+  height: 32px
+}
+
+.navigator:hover{
+  border: 1px #CECEF6 solid;
+  cursor: pointer;
+  margin: 1px;
+  width: 32px;
+  height: 32px
+}
+
+.emoji_list{
+  border: 1px #FFFFFF solid;
+  cursor: pointer;
+  margin: 1px;
+  width: 32px;
+  height: 32px
+}
+
+.emoji_list:hover{
+  border: 1px #CECEF6 solid;
+  cursor: pointer;
+  margin: 1px;
+  width: 32px;
+  height: 32px
+}
+
+#commentSend {
+	width: 15%;
+	border: none;
+	background-color: transparent;
+	font-size: 1.1em;
+	color: #5998ff;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+/* Scroll Bar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 /*-----------------여기부터 태블릿pc---------------------*/
 @media all and (max-width: 1020px) {
-    #storyBox {
-        margin-top: 28px;
-    }
-    
     .edge {
         top: 98px;
         left: 75%;
@@ -406,25 +795,30 @@
         top: 105px;
     }
 }
-
 /*-----------------여기부터 모바일버전-------------------*/
 @media all and (max-width:767px) {
-    #feedWrap {
-        position: relative;
-        top: 105px;
-    }
-    
-    footer {
-        margin-top: 73px;
-    }
-    
     .edge {
         display: none;
     }
+	
     #feedSearchModal {
         top: 134px;
         width: 100%;
         overflow: auto;
         border-radius: 20px;
     }
+	
+	header {
+		margin-bottom: 0;
+	}
+	header .cen {
+		width: 100%;
+	}
+	header .cen > a {
+		display: none;
+	}
+	
+	#gnb {
+    	margin-top: 1px;
+	}
 }

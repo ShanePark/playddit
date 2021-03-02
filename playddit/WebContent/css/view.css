@@ -1,0 +1,242 @@
+/*-----------------feed view -------------------*/
+header {
+    background-color: rgba(255, 255, 255, 0.6);
+    height: 60px;
+    display: flex;
+    padding: 10px 0;
+    margin-bottom: 40px;
+}
+header .cen {
+	padding: 0 13px;
+	width: 90%;
+}
+header .cen > a {
+    display: inline-block;
+    width: 43%;
+    vertical-align: middle;
+}
+header .cen > a img {
+    width: 120px;
+}
+
+#search {
+    display: inline-block;
+    flex: auto;
+}
+#search form {
+    border: 1px solid #e9e7fb;
+    border-radius: 3px;
+    height: 25px;
+    width: 150px;
+    padding: 0 10px;
+    margin: auto;
+}
+#search form input {
+    width: 100px;
+    border: none;
+    height: 100%;
+    background-color: transparent;
+}
+#search button {
+    width: 20px;
+    border: none;
+    background: none;
+    padding-top: 3px;
+    text-align: center;
+    float: right;
+}
+#search i {
+    font-size: 1.2em;
+    color : #a1c4fd;
+}
+
+#gnb {
+    float: right;
+    margin-top: 8px;
+	position: relative;
+}
+#gnb li {
+    float: left;
+    margin-right: 10px;
+}
+#gnb li:last-of-type {
+    margin-right: 0;
+}
+#gnb li a {
+    color : #a1c4fd;
+    display: inline-block;
+    font-size: 1.3em;
+}
+#gnb li:last-of-type a {
+    cursor: pointer;
+}
+
+
+/*------------------search modal------------*/
+.feedSearch2 {
+	top: 57px!important;
+}
+
+.edge2 {
+	top : 48px!important;
+}
+
+/*-------------------알람 모달용-------------------------*/
+.alarmBtn {
+    cursor: pointer;
+}
+
+#modal, #alarmEdge, #alarmEdge2 {
+    display: none;
+}
+#alarmEdge, #alarmEdge2 {
+    width: 20px;
+    height: 20px;
+    background: white;
+    position: absolute;
+    top: 64px;
+    right: 20px;
+    transform: rotate(45deg);
+    border-radius: 3px;
+}
+.alarmEdge, .alarmEdge2 {
+	top: 32px!important;
+	right: -1px!important;
+}
+#alarmEdge {
+    box-shadow: 1px 4px 10px #d8dce3;
+}
+#alarmEdge2 {
+    z-index: 1;
+}
+
+#modal {
+    width: 430px;
+    height: 350px;
+    background: white;
+    position: absolute;
+    top: 70px;
+    right: -27%;
+    border-radius: 10px;
+    box-shadow: 1px 4px 10px rgba(39, 39, 39, 0.4);
+    z-index: 100;
+}
+.alarmModal {
+	top : 40px!important;
+}
+
+#alarmWrap {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: 12px;
+}
+#alarmWrap::-webkit-scrollbar,
+.followModal::-webkit-scrollbar {
+    width: 6px;
+}
+#alarmWrap::-webkit-scrollbar-track,
+.followModal::-webkit-scrollbar-track {
+    background-color: transparent;
+    padding: 10px;
+}
+#alarmWrap::-webkit-scrollbar-thumb,
+.followModal::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #b0cff5; 
+}
+#alarmWrap::-webkit-scrollbar-button,
+.followModal::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+.alarm {
+    width: 100%;
+    height: 70px;
+    margin-bottom: 8px;
+    background: #eff3fb;
+    border-radius: 10px;
+    padding: 5px 12px;
+    z-index: 50;
+    position: relative;
+}
+.alarm:last-of-type {
+    margin-bottom: 0;
+}
+.alarm .alarmUser {
+    float: left;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    border-radius: 50%;
+}
+.alarm .alarmUser img {
+    width: 100%;
+}
+.alarm .alarmCont {
+    width: 320px;
+    padding: 10px;
+    float: right;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.alarm .alarmNick {
+    font-weight: bold;
+}
+
+.classMoniter button {
+    float: right;
+    position: relative;
+    top: -1em;
+    border: none;
+    font-size: 1.3em;
+    margin-right: 15px;
+    background-color: transparent;
+}
+.classMoniter button:first-of-type {
+    margin-right: 5px;
+}
+.classMoniter button:last-of-type i {
+    color: #a1c4fd;
+}
+
+/*-----------------여기부터 태블릿pc---------------------*/
+@media all and (max-width: 1020px) {
+    .edge {
+        top: 98px;
+        left: 75%;
+    }
+    
+    #feedSearchModal {
+        top: 105px;
+    }
+
+/*-----------------여기부터 모바일버전-------------------*/
+@media all and (max-width:767px) {
+    .edge {
+        display: none;
+    }
+	
+    #feedSearchModal {
+        top: 134px;
+        width: 100%;
+        overflow: auto;
+        border-radius: 20px;
+    }
+	
+	header {
+		margin-bottom: 0;
+	}
+	header .cen {
+		width: 100%;
+	}
+	header .cen > a {
+		display: none;
+	}
+	
+	#gnb {
+    	margin-top: 1px;
+	}
+}
