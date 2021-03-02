@@ -30,8 +30,8 @@ public class JoinDaoImpl implements IJoinDao {
 	 * 회원가입
 	 */
 	@Override
-	public UsersVO insertUser(UsersVO UsersVO) throws SQLException {
-		return (UsersVO)client.insert("users.insertUser", UsersVO);
+	public int insertUser(UsersVO UsersVO) throws SQLException {
+		return (int) client.insert("users.insertUser", UsersVO);
 	}
 
 	/**
@@ -55,7 +55,6 @@ public class JoinDaoImpl implements IJoinDao {
 	/**
 	 * 약관 내용 가져오기
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public TermsVO termsCon(int terms_no) throws SQLException {
 		return (TermsVO)client.queryForObject("join.termsCon", terms_no);
@@ -68,8 +67,14 @@ public class JoinDaoImpl implements IJoinDao {
 	public int insertCode(String code, String mail) throws SQLException {
 		Map<String, String> map = new HashMap<>();
 		map.put("code", code);
-		map.put("user_id", mail);
-		return (int) client.insert("join.insertCode", map);
+		map.put("mail", mail);
+		
+		if(client.insert("join.insertCode", map) == null) {
+			return 1;
+		}else {
+			return 0;
+		}
+		
 	}
 
 
