@@ -14,5 +14,8 @@ public interface IFeedService {
 	// 댓글 목록 불러오기
 	public List<ComVO> getCom(int feed_no);
 	
+	// 피드 작성 하기 
+	public int insertFeed(String id, String cont, String feedpic);
+	
 	
 }

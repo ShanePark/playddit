@@ -39,17 +39,17 @@ public class GetFeed implements IAction {
 		
 		String user_id = profile.getUser_id();
 	
-		// 3. 해당 변수들을 parameter로 service에 넘겨서 메시지 주고받은 리스트를 받아온다.
+		// 2. 해당 변수들을 parameter로 service에 넘겨서 메시지 주고받은 리스트를 받아온다.
 		IFeedService service = FeedServiceImpl.getService();
 		List<FeedVO> list = service.getFeed(user_id);
 		
-		// 3-1. 
+		// 2-1. 
 		
 		
-		// 4. 받아온 리스트를 json 데이터로 변경한다.
+		// 3. 받아온 리스트를 json 데이터로 변경한다.
 		String listJson = new Gson().toJson(list);
 				
-		// 5. 해당 리스트(json으로 변경된 것)를 ajax 로 보낸다.
+		// 4. 해당 리스트(json으로 변경된 것)를 ajax 로 보낸다.
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().write(listJson);
 		
