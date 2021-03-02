@@ -46,103 +46,110 @@
 			success : function(res) {
 				var feeds = "";
 				$.each(res, function(i, v) {
-				
-					var feed = "";
-					                                                                                                
-				   feed += '<div class="feed">'
-				   feed +=  '<div class="proBox" action="'+v.id+'">'
-				   feed +=   '  <div class="proCir">'
-				   feed +=    '        <img src="../images/profile/'+v.profile+'" alt="프로필사진" />'
-				   feed += '   </div>'
-			       feed += '              <p class="proName">'
-		           feed += 		v.nickname
-		           feed += '                  <span class="proClass"> ' + v.classname +' </span>'
-		           feed += '              </p>'
-		           feed += '          </div>'
-		        
-		        	   if(v.feedpic != "none") {
-			        	 
-		        		   	   feed += '          <div class="feedPic">'
-		    		           feed += '              <div class="slider">'
-		    		           feed += '                  <div class="slide">'
-		    		           feed += '                      <img src="../images/feed/'+v.feedpic+'" />'
-		    		           feed += '                  </div>'
-		    		           feed += '              </div>'
-		    		           feed += '          </div>'
-		        		   
-		        		  }else {
-		        			  
-		        			 	   feed += '          <div class="txt">'
-		       
-		        		           feed += '              <p class="txtCont">'
-		        		           feed +=                 v.cont  
-		        		           feed += '              </p>'
-		        		           feed += '          </div>'
-		        		        
-		        			 
-		        		  }
-		           
-		           
-		           
-		                                                                                         
-		    
-		           feed += '          <div class="icon">'
-		           
-		           if(v.islike == 0){
-		        	  	   feed += '              <button type="submit" class="like">'
-				           feed += '                  <i class="far fa-heart"></i>'
-				           feed += '              </button>'
-		           }else {
-		        		   feed += '              <button type="submit" class="like on">'
-				           feed += '                  <i class="fas fa-heart"></i>'
-				           feed += '              </button>'
-		        	   
-		           }						
-		                                                                                    
-		           
-		           feed += '              <button type="button" class="comment">'
-		           feed += '                  <i class="far fa-comment-dots"></i>'
-		           feed += '              </button>'
-		           feed += '              <button type="button" class="dm">'
-		           feed += '                  <i class="fas fa-paper-plane"></i>'
-		           feed += '              </button>'
-		           feed += '                                                                                                 '
-		           feed += '              <button type="button" class="report">'
-		           feed += '                  <i class="fas fa-exclamation-circle"></i>'
-		           feed += '              </button>'
-		           feed += '          </div>'
-		           feed += '                                                                                                 '
-		           feed += '          <div class="likeCount">'
-		           feed += '              좋아요 <span>' +v.countlike +' </span>개 '
-		           feed += '          </div>'
-		           feed += '                                                                                                 '
-		          
-		           if(v.feedpic != "none") {
-		           feed += '          <div class="txt">'
-		           feed += '              <a href="#" class="proName"> '+v.nickname+' </a>'
-		           feed += '              <p class="txtCont">'
-		           feed +=                 v.cont  
-		           feed += '              </p>'
-		           feed += '          </div>'
-		         
-		           }
-		           
-		           
-		           feed += '                                                                                                 '
-		          
-		           feed += '          <div class="countComm">'
-		           feed += '              댓글 <span class="count"> '+v.comcount+'</span>개'
-		           feed += '          </div>'
-		           feed += '                                                                                                 '
-		           feed += '          <div class="commentBox">'
-		           feed += '              <ul>'
-		           feed += '                  <li class="comm"><a href="#" class="commUser">summer</a> <span>프로그래머스'
-		           feed += '                          언제 다하죠?ㅠ</span>'
-		           feed += '                  <li class="comm"><a href="#" class="commUser">홍길동</a> <span>화이팅~!</span>'
-		           feed += '                  </li>'
-		           feed += '              </ul>'
-		           feed += '          </div>'
-		           feed += '      </div>'
+			
+				var feed = "";
+				                                                                                                
+			feed += '<div class="feed">'
+			feed +=  '<div class="proBox" action="'+v.id+'">'
+			feed +=   '  <div class="proCir">'
+			feed +=    '        <img src="../images/profile/'+v.profile+'" alt="프로필사진" />'
+			feed += '   </div>'
+			feed += '              <p class="proName">'
+			feed += 		v.nickname
+			feed += '                  <span class="proClass"> ' + v.classname +' </span>'
+			feed += '              </p>'
+			feed += '          </div>'
+			
+				   if(v.feedpic != "none") {
+			 	 
+					   	   feed += '          <div class="feedPic">'
+				           feed += '              <div class="slider">'
+				           feed += '                  <div class="slide">'
+				           feed += '                      <img src="../images/feed/'+v.feedpic+'" />'
+				           feed += '                  </div>'
+				           feed += '              </div>'
+				           feed += '          </div>'
+					   
+					  }else {
+						  
+						 	   feed += '          <div class="txt">'
+			
+					           feed += '              <p class="txtCont">'
+					           feed +=                 v.cont  
+					           feed += '              </p>'
+					           feed += '          </div>'
+					        
+						 
+					  }
+			
+			
+			
+			                                                                              
+			
+			feed += '          <div class="icon">'
+			
+			if(v.islike == 0){
+				  	   feed += '              <button type="submit" class="like">'
+			        feed += '                  <i class="far fa-heart"></i>'
+			        feed += '              </button>'
+			}else {
+					   feed += '              <button type="submit" class="like on">'
+			        feed += '                  <i class="fas fa-heart"></i>'
+			        feed += '              </button>'
+				   
+			}						
+			                                                                         
+			
+			feed += '              <button type="button" class="comment">'
+			feed += '                  <i class="far fa-comment-dots"></i>'
+			feed += '              </button>'
+			feed += '              <button type="button" class="dm">'
+			feed += '                  <i class="fas fa-paper-plane"></i>'
+			feed += '              </button>'
+			feed += '                                                                                                 '
+			feed += '              <button type="button" class="report">'
+			feed += '                  <i class="fas fa-exclamation-circle"></i>'
+			feed += '              </button>'
+			feed += '          </div>'
+			feed += '                                                                                                 '
+			feed += '          <div class="likeCount">'
+			feed += '              좋아요 <span>' +v.countlike +' </span>개 '
+			feed += '          </div>'
+			feed += '                                                                                                 '
+			
+			if(v.feedpic != "none") {
+			feed += '          <div class="txt">'
+			feed += '              <a href="#" class="proName"> '+v.nickname+' </a>'
+			feed += '              <p class="txtCont">'
+			feed +=                 v.cont  
+			feed += '              </p>'
+			feed += '          </div>'
+			
+			}
+			
+			
+			feed += '                                                                                                 '
+			
+			feed += '          <div class="countComm">'
+			feed += '              댓글 <span class="count"> '+v.comcount+'</span>개'
+			feed += '          </div>'
+			feed += '                                                                                                 '
+				           
+			feed += '          <div class="commentBox">'
+			feed += '<ul>';
+			
+			$.each(v.replyList, function(i,v){
+				   		
+				   
+				feed +=   '<li class="comm"><a href="#" class="commUser">'+v.nickname+'</a> <span>' +v.comcont
+				feed += '</span></li>'
+				   
+			})
+			
+			
+			
+			feed += '       </ul></div>'
+			feed += '      </div>'
 					
 							
 					
@@ -174,6 +181,19 @@
 		})
 
 	}
+	
+var getreply = function(feedno){
+	 	 reply = "";
+		 reply += '<ul><li class="comm"><a href="#" class="commUser">abce4</a> <span>프로그래머스'
+	 	 reply += '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</span></li></ul>'
+	 	 //alert(feedno);
+	 	 //alert(reply);
+
+			
+	 	 $('.commentBox').after(reply);
+}
+
+
 </script>
 
 
@@ -189,9 +209,6 @@
 	<br><br>
 	
 	<div id="showfeed">
-
-
-	
 
 	</div>
 	

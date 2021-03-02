@@ -56,9 +56,7 @@
 	
 	insert into feed (feed_no, user_id, feed_cont,feed_date,feed_pic)
         values(feed_no_seq.nextval, #id#, #cont#, sysdate, #feedpic#)
-                
-                
-	
+    	
 	</insert>
 	
 	

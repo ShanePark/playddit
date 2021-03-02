@@ -1,5 +1,7 @@
 package feed.vo;
 
+import java.util.List;
+
 public class FeedVO {
 	
 	private int feedno;
@@ -14,10 +16,20 @@ public class FeedVO {
 	private int isreport;
 	private String cont;
 	private int comcount;
+	private List<ComVO> replyList;
 	
 	
 	
-	
+	public List<ComVO> getReplyList() {
+		return replyList;
+	}
+
+
+	public void setReplyList(List<ComVO> replyList) {
+		this.replyList = replyList;
+	}
+
+
 	public int getComcount() {
 		return comcount;
 	}
@@ -136,7 +148,8 @@ public class FeedVO {
 	public void setIsreport(int isreport) {
 		this.isreport = isreport;
 	}
-	
+
+
 	
 	
 }              

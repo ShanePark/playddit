@@ -27,13 +27,24 @@ public class FeedServiceImpl implements IFeedService {
 
 	@Override
 	public List<FeedVO> getFeed(String user_id) {
-		
+		List<FeedVO> list = null;
 		try {
-			return dao.getFeed(user_id);
+			list= dao.getFeed(user_id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		
+		for(FeedVO vo : list) {
+			try {
+				int feedNo = vo.getFeedno();
+				List<ComVO> replyList = dao.getCom(feedNo);
+				vo.setReplyList(replyList);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
 	}
 
 	@Override

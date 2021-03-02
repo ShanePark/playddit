@@ -13,5 +13,6 @@ public interface IFeedService {
 	
 	// 댓글 목록 불러오기
 	public List<ComVO> getCom(int feed_no);
-
+	
+	
 }
