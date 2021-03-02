@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+		<link href="favicon.ico" rel="icon shortcut" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link href="../css/common.css" rel="stylesheet" />
+        <link href="../css/style.css" rel="stylesheet" />
+        <link href="../css/feed.css" rel="stylesheet" />
+
+
+<title>Feed Test here!!</title>
+<script src="../js/jquery-3.5.1.min.js"></script>
+<style>
+#showfeed {
+	width: 500px;
+	height: 500px;
+	border: 1px solid black;
+}
+
+#showcom {
+	width: 450px;
+	height: 100px;
+	margin-top: 100px;
+	border: 1px solid black;
+}
+</style>
+
+<script type="text/javascript">
+	$(function() {
+		$('#getfeed').on('click', function() {
+			getfeed();
+
+		})
+
+	})
+
+	// function 생성
+	var getfeed = function() {
+		//alert("피드불러오기")
+		$('#showfeed').empty();
+		$.ajax({
+			url : '/playddit/feed/getFeed.do',
+			dataType : 'json',
+			success : function(res) {
+				var feeds = "";
+				$.each(res, function(i, v) {
+				
+					var feed = "";
+					                                                                                                
+				   feed += '<div class="feed">'
+				   feed +=  '<div class="proBox" action="'+v.id+'">'
+				   feed +=   '  <div class="proCir">'
+				   feed +=    '        <img src="../images/profile/'+v.profile+'" alt="프로필사진" />'
+				   feed += '   </div>'
+			       feed += '              <p class="proName">'
+		           feed += 		v.nickname
+		           feed += '                  <span class="proClass"> ' + v.classname +' </span>'
+		           feed += '              </p>'
+		           feed += '          </div>'
+		        
+		        	   if(v.feedpic != "none") {
+			        	 
+		        		   	   feed += '          <div class="feedPic">'
+		    		           feed += '              <div class="slider">'
+		    		           feed += '                  <div class="slide">'
+		    		           feed += '                      <img src="../images/feed/'+v.feedpic+'" />'
+		    		           feed += '                  </div>'
+		    		           feed += '              </div>'
+		    		           feed += '          </div>'
+		        		   
+		        		  }else {
+		        			  
+		        			 	   feed += '          <div class="txt">'
+		       
+		        		           feed += '              <p class="txtCont">'
+		        		           feed +=                 v.cont  
+		        		           feed += '              </p>'
+		        		           feed += '          </div>'
+		        		        
+		        			 
+		        		  }
+		           
+		           
+		           
+		                                                                                         
+		    
+		           feed += '          <div class="icon">'
+		           
+		           if(v.islike == 0){
+		        	  	   feed += '              <button type="submit" class="like">'
+				           feed += '                  <i class="far fa-heart"></i>'
+				           feed += '              </button>'
+		           }else {
+		        		   feed += '              <button type="submit" class="like on">'
+				           feed += '                  <i class="fas fa-heart"></i>'
+				           feed += '              </button>'
+		        	   
+		           }						
+		                                                                                    
+		           
+		           feed += '              <button type="button" class="comment">'
+		           feed += '                  <i class="far fa-comment-dots"></i>'
+		           feed += '              </button>'
+		           feed += '              <button type="button" class="dm">'
+		           feed += '                  <i class="fas fa-paper-plane"></i>'
+		           feed += '              </button>'
+		           feed += '                                                                                                 '
+		           feed += '              <button type="button" class="report">'
+		           feed += '                  <i class="fas fa-exclamation-circle"></i>'
+		           feed += '              </button>'
+		           feed += '          </div>'
+		           feed += '                                                                                                 '
+		           feed += '          <div class="likeCount">'
+		           feed += '              좋아요 <span>' +v.countlike +' </span>개 '
+		           feed += '          </div>'
+		           feed += '                                                                                                 '
+		          
+		           if(v.feedpic != "none") {
+		           feed += '          <div class="txt">'
+		           feed += '              <a href="#" class="proName"> '+v.nickname+' </a>'
+		           feed += '              <p class="txtCont">'
+		           feed +=                 v.cont  
+		           feed += '              </p>'
+		           feed += '          </div>'
+		         
+		           }
+		           
+		           
+		           feed += '                                                                                                 '
+		          
+		           feed += '          <div class="countComm">'
+		           feed += '              댓글 <span class="count"> '+v.comcount+'</span>개'
+		           feed += '          </div>'
+		           feed += '                                                                                                 '
+		           feed += '          <div class="commentBox">'
+		           feed += '              <ul>'
+		           feed += '                  <li class="comm"><a href="#" class="commUser">summer</a> <span>프로그래머스'
+		           feed += '                          언제 다하죠?ㅠ</span>'
+		           feed += '                  <li class="comm"><a href="#" class="commUser">홍길동</a> <span>화이팅~!</span>'
+		           feed += '                  </li>'
+		           feed += '              </ul>'
+		           feed += '          </div>'
+		           feed += '      </div>'
+					
+							
+					
+					
+					
+			/* 		feed += '<p>' + "피드번호 : " + v.feedno + '</p>';
+					feed += '<p>' + "아이디 : " + v.id + '</p>';
+					feed += '<p>' + "프로필사진 : " + v.profile + '</p>';
+					feed += '<p>' + "피드사진 : " + v.feedpic + '</p>';
+					feed += '<p>' + "학급번호 : " + v.classname + '</p>';
+					feed += '<p>' + "좋아요 수 : " + v.countlike + '</p>';
+					feed += '<p>' + "좋아요 유무 : " + v.islike + '</p>';
+					feed += '<p>' + "신고유무 : " + v.isreport + '</p>';
+					feed += '<p>' + "닉네임 : " + v.nickname + '</p>';
+					feed += '<p>' + "피드 신고 수 : " + v.reportcount + '</p>';
+					feed += '<br><br>';	 */
+				
+					
+					feeds += feed;
+				
+				})
+				$('#showfeed').append(feeds);
+
+			},
+			error : function(xhr) {
+				alert("status : " + xhr.status);
+
+			}
+		})
+
+	}
+</script>
+
+
+
+</head>
+<body>
+	<h2>FEED</h2>
+<a href="../index.html">세션필요할때(500에러) 로그인 하고오기</a>
+	<hr>
+	<button type="button" name="getfeed" id="getfeed">피드불러오기</button>
+	<button type="button" name="newfeed" id="newfeed">새로운피드작성</button>
+	
+	<br><br>
+	
+	<div id="showfeed">
+
+
+	
+
+	</div>
+	
+
+</body>
+</html>
