@@ -76,6 +76,14 @@ public class JoinDaoImpl implements IJoinDao {
 		}
 		
 	}
+	
+	/**
+	 * 인증코드 일치검사
+	 */
+	@Override
+	public String codeCheck(String mail) throws SQLException {
+		return (String)client.queryForObject("join.codeCheck", mail);
+	}
 
 
 }

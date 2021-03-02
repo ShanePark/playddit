@@ -67,6 +67,7 @@ public class JoinSessionAdd implements IAction{
 		// 해당 데이터를 ajax로 보낸다.
 		response.setContentType("text/html; charset=UTF-8"); 
 		response.getWriter().write(resultJson);
+		
 		return null;
 		
 	}

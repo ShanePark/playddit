@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>play ddit message code test page</title>
+<script src="../js/jquery-3.5.1.min.js"></script>
+<script src="../js/insertUser.js"></script>
+<style>
+input[type=text]{
+	width : 300px;
+}
+.alarm{
+	border : 1px solid red;
+	width : 600px;
+}
+</style>
+<script>
+	
+	$(function(){
+		$('#subCode').on('click', function(){
+			event.preventDefault();
+			codeCheck();
+		})
+		
+		$('#remail').on('click', function(){
+			$('#remail').prop('disabled', true);
+			setTimeout(code, 0);
+		})
+	})
+	
+	codeCheck = function(){
+		
+		code = $('input[name=code]').val().trim();
+		
+		$.ajax({
+			url : '/playddit/join/codeCheck.do',
+			type : 'post',
+			data : { 'code' : code},
+			success : function(res){
+				alert("res = " + res);
+				if(code == res){
+					alert("코드가 일치합니다. 회원가입 성공");
+				}else{
+					alert("코드가 일치하지 않습니다. 올바른 코드를 입력해주세요.");
+				}
+			},
+			error : function(xhr){
+				alert("status : " + xhr.status);
+			},
+			dataType : 'text'
+		})
+	
+	}
+	
+	function code(){
+		
+		mail = "vhvhglgl@naver.com"; // 임시로 넣어둔 데이터입니다.
+		$.ajax({
+			url : '/playddit/join/joinSessionAdd.do',
+			type : 'post',
+			data : {'mail' : mail},
+			success : function(res){
+				if(res == '1'){
+					alert(mail +"로 인증코드가 전송되었습니다. 메일을 확인해주세요.");
+				}else
+					alert("인증코드 전송에 실패했습니다.");
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+		})
+
+		ts1 = new Date().getTime() + 3000;
+		do { ts2 = new Date().getTime(); } while(ts2 < ts1);
+		// 버튼 활성화
+		$('#remail').prop('disabled', false);
+	}
+	
+</script>
+</head>
+<body>
+        <div id="modal" class="code">
+            <div id="codeModal" class="cen fullModal">
+                <div id="closeBox">
+                    <button type="button" id="close" style="color : #a8ccfd;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div style="clear: both;"></div>
+                
+                <div id="codeTop">
+                    <img src="images/code.png" alt="이메일인증" />
+                    <div class="title">
+                        <h2>Welcome to playddit!</h2>
+                        <p class="subtitle">
+                            Email authentication is required
+                        </p>
+                    </div>
+                </div>
+
+                <div id="codeBottom">
+                    <p class="cont">
+                    환영합니다! 회원가입 완료를 위한 이메일 인증을 진행 해 주세요.<br/><span id="codeMail"></span> 메일함을 확인해주세요!
+                    </p>
+
+                    <form action="code.jsp" id="codeCont" method="post">
+                        <h2>인증 코드 입력</h2>
+                        <input type="text" name="code" />
+
+                        <br/>
+                        <button type="reset" id="remail">인증코드 재발송</button>
+                        <button type="submit" id="subCode">이메일 인증 확인</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
