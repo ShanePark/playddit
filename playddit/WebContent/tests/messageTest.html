@@ -3,14 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>play ddit message alarm test page</title>
+<link href="favicon.ico" rel="icon shortcut" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link href="../css/common.css" rel="stylesheet" />
+<link href="../css/style.css" rel="stylesheet" />
 <script src="../js/jquery-3.5.1.min.js"></script>
 <style>
 input[type=text]{
 	width : 300px;
 }
-.alarm{
-	border : 1px solid red;
-	width : 600px;
+#alarmWrap{
+	width : 500px;
 }
 </style>
 <script>
@@ -170,9 +173,11 @@ getAlarm = function(){
 	$.ajax({
 		url : '/playddit/alarm/getAlarm.do',
 		success : function(res){
-			var alarm = '<div class="alarm">';
+			var alarm = '<div id="alarmWrap">'
 			$.each(res, function(i,v){
-				alarm += '<p><b>'+ v.cont +'</b>'
+				alarm += '<div class="alarm">';
+				alarm += '<a class="alarmUser" href="#"><img src="../images/default.png" /></a>'
+				alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
 				switch(v.type){
 				case 11: alarm += '님이 나를 follow 하기 시작했습니다.'
 					break;
@@ -185,9 +190,9 @@ getAlarm = function(){
 				case 31: alarm += '에 새로운 공지사항이 올라왔습니다.'
 					break;
 				}
-				alarm += '</p>';
+				alarm += '</a></div>';
 			})
-			alarm += '</div>';
+			alarm +='</div>';
 			$('#result').append(alarm);
 		},
 		error : function(xhr){
