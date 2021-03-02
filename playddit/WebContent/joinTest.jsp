@@ -27,8 +27,8 @@
 <script src="js/insertUser.js"></script>
 <script src="js/jquery.serializejson.min.js"></script>
 <script>
-		
-		$(function(){
+	
+		$(function(){		
 			
 			// id(email) check
 			$('input[name=mail]').on('keyup', function() {
@@ -159,11 +159,6 @@
 		</script>
 </head>
 
-<%
-	int pick0 = request.getParameter("pick0") != null ? 1 : 0;
-	int pick1 = request.getParameter("pick1") != null ? 1 : 0;
-	int pick2 = request.getParameter("pick2") != null ? 1 : 0;
-%>
 <body class="sky over">
 	<div id="wrap" class="cen">
 		<div id="header">
@@ -176,9 +171,6 @@
 				<p class="subtitle">Please enter your registration details</p>
 			</div>
 			<form action="<%= request.getContextPath()%>/join/join.do" method="post" id="joinForm">
-				<input type="hidden" name="pick0" value="<%=pick0%>"> <input
-					type="hidden" name="pick1" value="<%=pick1%>"> <input
-					type="hidden" name="pick2" value="<%=pick2%>">
 
 				<div id="joinLeft" class="joinBox">
 					<div class="box">

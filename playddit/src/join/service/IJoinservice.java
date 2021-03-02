@@ -47,4 +47,13 @@ public interface IJoinservice {
 	 * @throws SQLException
 	 */
 	public String codeCheck(String mail);
+	
+	/**
+	 * 선택약관 insert
+	 * @param no
+	 * @param mail
+	 * @return
+	 * @throws SQLException
+	 */
+	public int pickConInsert(int no, String mail);
 }
