@@ -22,9 +22,25 @@ public class FeedTest {
 
 		String user_id = "psh40963@naver.com";
 		int feed_no = 10;
+		
+		
+		System.out.println("==========================");
+		
+		String id = "psh40963@naver.com";
+		String cont = "피드 내용 테스트 입니다.";
+		String feedpic = "피드 사진 테스트용 입니다. 사진으로 저장해야함.";
+		
+		
+		System.out.println("service.insertfeed : "+ service.insertFeed(id, cont, feedpic));
 
-
-
+		try {
+			System.out.println("dao.insertFeed : " + dao.insertFeed(id, cont, feedpic));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		List<FeedVO> list = service.getFeed(user_id);
 
 		for(FeedVO vo : list) {

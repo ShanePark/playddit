@@ -1,7 +1,9 @@
 package feed.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -41,6 +43,15 @@ public class FeedDaoImpl implements IFeedDao {
 	public List<ComVO> getCom(int feed_no) throws SQLException {
 		// TODO Auto-generated method stub
 		return (List<ComVO>)client.queryForList("feed.getCom",feed_no);
+	}
+	@Override
+	public int insertFeed(String id, String cont, String feedpic) throws SQLException {
+		Map<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("cont", cont);
+		map.put("feedpic", feedpic);
+		
+		return client.update("feed.insertFeed", map);
 	}
 
 }

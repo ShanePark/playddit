@@ -15,7 +15,7 @@ public interface IFeedDao {
 	public List<ComVO> getCom(int feed_no) throws SQLException;
 	
 	// 피드 작성 하기 
-	
+	public int insertFeed(String id, String cont, String feedpic) throws SQLException;
 	
 	// 피드 삭제 하기 (내 피드만)
 	

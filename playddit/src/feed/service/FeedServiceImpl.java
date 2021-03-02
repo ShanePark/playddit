@@ -58,6 +58,19 @@ public class FeedServiceImpl implements IFeedService {
 		return null;
 	}
 
+	@Override
+	public int insertFeed(String id, String cont, String feedpic) {
+		
+		try {
+			return dao.insertFeed(id, cont, feedpic);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
 	
 
 
