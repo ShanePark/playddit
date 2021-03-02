@@ -9,7 +9,7 @@ import users.vo.UsersVO;
 public interface IJoinservice {
 	
 	// 회원가입
-	public UsersVO insertUser(UsersVO UsersVO); 
+	public int insertUser(UsersVO UsersVO); 
 	
 	
 	/**
@@ -39,4 +39,12 @@ public interface IJoinservice {
 	 */
 	public int insertCode(String code, String mail);
 
+	
+	/**
+	 * 인증코드 일치검사
+	 * @param mail
+	 * @return
+	 * @throws SQLException
+	 */
+	public String codeCheck(String mail);
 }

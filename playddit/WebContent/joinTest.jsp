@@ -29,8 +29,6 @@
 <script>
 		
 		$(function(){
-			alert(document.cookie);
-		
 			
 			// id(email) check
 			$('input[name=mail]').on('keyup', function() {
@@ -38,7 +36,7 @@
 			})
 	
 			//id(email) doubleCheck
-			$('#nickDbtn').on('click', function() {
+			$('#idDbtn').on('click', function() {
 				if (idCheck()) {
 					idDcheck(this);
 			} else {
@@ -150,10 +148,12 @@
 			} else if ($('input[name=pass]').parents('.box').find('.msg').text().length > 1 || $('input[name=pass]').val() == "") {
 				alert("비밀번호를 입력해주세요.");
 				return false;
-			} else if ($('input[name=passchk]').parents('.box').find('.msg').text().legnth > 1 || $('#pass').val() != $('input[name=passchk]').val()) {
+			} else if ($('input[name=passchk]').parents('.box').find('.msg').text().legnth > 1 || $('input[name=pass]').val() != $('input[name=passchk]').val()) {
 				alert("비밀번호 일치여부를 확인해주세요.");
 				return false;
-			}		
+			}	
+			
+			code();
 		})
 	})
 		</script>
