@@ -2,8 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	UsersVO vo = (UsersVO)request.getAttribute("insert");
-	if(vo != null){
+	int result = (int)request.getAttribute("insert");
+	if(result != 0){
 %>	
 	{
 		"result" : "1"

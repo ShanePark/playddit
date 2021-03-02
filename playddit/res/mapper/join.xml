@@ -48,4 +48,10 @@
            and rownum = 1
          order by email_chk_no desc
 	</select>
+	
+	<!-- 선택한 약관 insert -->
+	<insert id="pickConInsert" parameterClass="termsVo">
+		insert into terms_his (terms_no, user_id, terms_agree)
+        values (#terms_no#, #terms_title#, 1)
+	</insert>
 </sqlMap>

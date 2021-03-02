@@ -32,7 +32,13 @@ function code(){
 	$.ajax({
 		url : '/playddit/join/joinSessionAdd.do',
 		type : 'post',
-		data : { 'mail' : mail},
+		data : { 'mail' : mail,
+				 'nickname' : nickname,
+				 'pass' : pass,
+				 'name' : name,
+				 'phone' : phone,
+				 'birth' : birth
+		},
 		success : function(res){
 			if(res == '1'){
 				alert(mail +"로 인증코드가 전송되었습니다. 메일을 확인해주세요.");

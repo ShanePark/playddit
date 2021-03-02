@@ -17,20 +17,33 @@ input[type=text]{
 <script>
 	
 	$(function(){
+		
+		var resentTime = new Date();
+		
+			
 		$('#subCode').on('click', function(){
 			event.preventDefault();
 			codeCheck();
 		})
 		
 		$('#remail').on('click', function(){
-			$('#remail').prop('disabled', true);
-			setTimeout(code, 0);
+			var waitTime = 10;
+			if((new Date() - resentTime) < 10 * 1000){
+				alert("인증코드를 재발송하려면" + waitTime + "초를 기다려야합니다." + (Math.round((waitTime * 1000 - (new Date() - resentTime))/1000)) + "초 남음");
+				
+				return false;
+			}
+			
+			resentTime = new Date();
+			sendCode();
 		})
+		
 	})
+	
 	
 	codeCheck = function(){
 		
-		code = $('input[name=code]').val().trim();
+		const code = $('input[name=code]').val().trim();
 		
 		$.ajax({
 			url : '/playddit/join/codeCheck.do',
@@ -39,7 +52,8 @@ input[type=text]{
 			success : function(res){
 				alert("res = " + res);
 				if(code == res){
-					alert("코드가 일치합니다. 회원가입 성공");
+					alert("코드가 일치합니다.");
+					join();
 				}else{
 					alert("코드가 일치하지 않습니다. 올바른 코드를 입력해주세요.");
 				}
@@ -52,16 +66,14 @@ input[type=text]{
 	
 	}
 	
-	function code(){
+	function sendCode(){
 		
-		mail = "vhvhglgl@naver.com"; // 임시로 넣어둔 데이터입니다.
 		$.ajax({
-			url : '/playddit/join/joinSessionAdd.do',
+			url : '/playddit/join/sendCode.do',
 			type : 'post',
-			data : {'mail' : mail},
 			success : function(res){
 				if(res == '1'){
-					alert(mail +"로 인증코드가 전송되었습니다. 메일을 확인해주세요.");
+					alert("인증코드가 전송되었습니다. 메일을 확인해주세요.");
 				}else
 					alert("인증코드 전송에 실패했습니다.");
 			},
@@ -70,11 +82,48 @@ input[type=text]{
 			},
 			dataType : 'json'
 		})
-
-		ts1 = new Date().getTime() + 3000;
-		do { ts2 = new Date().getTime(); } while(ts2 < ts1);
-		// 버튼 활성화
-		$('#remail').prop('disabled', false);
+	}
+	
+	function join(){
+		var pick1 = getCookie("pick1");
+		var pick2 = getCookie("pick2");
+		var pick3 = getCookie("pick3");
+		alert("pick1 = " + pick1 + "pick2 = " + pick2 + "pick3 = " + pick3);
+		
+		
+		$.ajax({
+			url : '/playddit/join/join.do',
+			type : 'post',
+			data : { 'pick1' : pick1,
+					 'pick2' : pick2,
+					 'pick3' : pick3
+			},
+			success : function(res){
+				if(res == '1'){
+					alert("회원 가입 성공");
+				}else{
+					alert("회원 가입 실패");
+				}
+			},
+			error : function(xhr){
+				alert('상태 : ' + xhr.status);
+			},
+			dataType : 'json'
+		})
+	}
+	
+	// 쿠키 저장
+	function setCookie(name, value, exp){
+		var date = new Date();
+		date.setTime(date.getTime() + exp*24*60*60*1000);
+		document.cookie = name+'='+escape(value)+';expires='+date.toUTCString()+';path=1';
+	}
+	
+	// 저장한 쿠키 가져오기
+	function getCookie(name) {
+	  const value = `; ${document.cookie}`;
+	  const parts = value.split(`; ${name}=`);
+	  if (parts.length === 2) return unescape(parts.pop()).split(';').shift();
 	}
 	
 </script>
@@ -110,7 +159,7 @@ input[type=text]{
                         <input type="text" name="code" />
 
                         <br/>
-                        <button type="reset" id="remail">인증코드 재발송</button>
+                        <button type="reset" id="remail" >인증코드 재발송</button>
                         <button type="submit" id="subCode">이메일 인증 확인</button>
                     </form>
                 </div>

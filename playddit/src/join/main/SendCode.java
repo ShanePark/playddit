@@ -1,13 +1,7 @@
 package join.main;
 
 import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,11 +12,10 @@ import com.google.gson.Gson;
 import join.service.IJoinservice;
 import join.service.JoinServiceImpl;
 import users.vo.UsersVO;
-import util.CryptoUtil;
 import util.EmailUtil;
 import web.IAction;
 
-public class JoinSessionAdd implements IAction{
+public class SendCode implements IAction {
 
 	@Override
 	public boolean isRedirect() {
@@ -34,40 +27,17 @@ public class JoinSessionAdd implements IAction{
 	public String process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// 세션으로 저장하기
 		HttpSession session = request.getSession();
+		UsersVO vo = null;
 		
-		String mail = request.getParameter("mail");
-		String nickname = request.getParameter("nickname");
-		String pass = request.getParameter("pass");
-		String name = request.getParameter("name");
-		String tel = request.getParameter("phone");
-		String birth = request.getParameter("birth");
+		UsersVO usersVo = (UsersVO)session.getAttribute("insertVo");
 		
-		// 비밀번호 암호화
-		String key = "playddit"+mail+pass;
-		try {
-			pass = CryptoUtil.encryptAES256(pass, key);
-		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException
-				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
-			e.printStackTrace();
-		}
-
-		UsersVO insertVo = new UsersVO();
-		insertVo.setUser_id(mail);
-		insertVo.setUser_nickname(nickname);
-		insertVo.setUser_password(pass);
-		insertVo.setUser_name(name);
-		insertVo.setUser_tel(tel);
-		insertVo.setUser_birth(birth);
-
-		session.setAttribute("insertVo", insertVo);	
-
 		// 세션 테스트
-		System.out.println(mail);
-		System.out.println(nickname);
-		System.out.println(session.getAttribute("insertVo"));
+			System.out.println(usersVo);
+			System.out.println(usersVo.getUser_id());
 		// 세션 테스트 끝
+		String mail = usersVo.getUser_id();
+		
 		
 		// 인증 코드 생성 & 발송
 		String code = "";
@@ -91,7 +61,6 @@ public class JoinSessionAdd implements IAction{
 		response.getWriter().write(resultJson);
 		
 		return null;
-		
 	}
 
 }

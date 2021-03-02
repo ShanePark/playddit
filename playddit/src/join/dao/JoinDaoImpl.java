@@ -31,7 +31,12 @@ public class JoinDaoImpl implements IJoinDao {
 	 */
 	@Override
 	public int insertUser(UsersVO UsersVO) throws SQLException {
-		return (int) client.insert("users.insertUser", UsersVO);
+		
+		if(client.insert("join.insertUser", UsersVO) == null) {
+			return 1;
+		}else {
+			return 0;
+		}
 	}
 
 	/**
@@ -83,6 +88,29 @@ public class JoinDaoImpl implements IJoinDao {
 	@Override
 	public String codeCheck(String mail) throws SQLException {
 		return (String)client.queryForObject("join.codeCheck", mail);
+	}
+
+	/**
+	 * 선택약관 저장
+	 */
+	@Override
+	public int pickConInsert(int no, String mail) throws SQLException {
+		
+		/**
+		 * vo객체는 String과 number를 쓰기위해 빌려 썼습니다 죄송함다 ㅜ
+		 * Terms_no = 선택약관번호
+		 * Terms_title = 회원아이디
+		 */
+		TermsVO vo = new TermsVO();
+		vo.setTerms_no(no);
+		vo.setTerms_title(mail);
+
+		
+		if(client.insert("join.pickConInsert", vo) == null) {
+			return 1;
+		}else {
+			return 0;
+		}
 	}
 
 

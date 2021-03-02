@@ -110,6 +110,21 @@ public class JoinServiceImpl implements IJoinservice {
 		return code;
 	}
 
+	/**
+	 * 선택약관 insert
+	 */
+	@Override
+	public int pickConInsert(int no, String mail) {
+		int cnt = 0;
+		try {
+			cnt = dao.pickConInsert(no, mail);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
 
 
 		
