@@ -63,4 +63,14 @@ public class FeedDaoImpl implements IFeedDao {
 
 	}
 
+	@Override
+	public FeedVO getOneFeed(String user_id, int feed_no) throws SQLException {
+		FeedVO vo = new FeedVO();
+		vo.setId(user_id);
+		vo.setFeedno(feed_no);
+		return (FeedVO) client.queryForObject("feed.getOneFeed", vo);
+	}
+
+	
+
 }

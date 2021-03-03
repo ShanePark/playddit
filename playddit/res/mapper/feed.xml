@@ -6,6 +6,38 @@
 	
 	<sqlMap namespace = "feed">
 	
+	<select id= "getOneFeed" resultClass="feedVO" parameterClass="feedVO">
+		select feed_no as feedno, b.user_id as id,
+        b.user_pic as profile,
+        feed_pic as feedpic,
+        b.user_nickname as nickname,
+        c.class_num ||' - '|| c.class_room as classname,
+        (select count(*) 
+           from likes 
+          where user_id = #id#
+            and feed_no = a.feed_no) as islike,
+        (select count(*)
+            from likes 
+            where feed_no = a.feed_no) as countlike,
+        (select count(*)
+                   from blame
+                   where feed_no = a.feed_no) as reportcount,
+        (select count(*)
+                        from blame
+                        where feed_no = a.feed_no
+                          and user_id = #id#) as isreport,
+        a.feed_cont as cont,
+        (select count(*)
+           from feed_comment
+          where feed_no = a.feed_no) as comcount,
+        (CASE WHEN a.user_id = #id# THEN 'true'
+                      ELSE 'false' END)as ismine
+		from feed a, users b, class c
+		where a.user_id = b.user_id
+		and b.class_id = c.class_id
+		and feed_no = #feedno#
+	</select>
+	
 	<select id = "getFeed" resultClass ="feedVO" parameterClass="String">
 	
 	select a.feed_no as feedno, a.user_id as id, a.feed_cont as cont,(CASE WHEN a.user_id = #user_id# THEN 'true'
