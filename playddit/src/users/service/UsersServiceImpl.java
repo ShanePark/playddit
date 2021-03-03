@@ -1,10 +1,13 @@
 package users.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+
 import users.dao.IUsersDao;
 import users.dao.UsersDaoImpl;
 import users.vo.FollowerVO;
+import users.vo.GroupVO;
 import users.vo.UsersVO;
 
 public class UsersServiceImpl implements IUsersService {
@@ -132,6 +135,19 @@ public class UsersServiceImpl implements IUsersService {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public List<GroupVO> getGroups(String user_id) {
+		List<GroupVO> list = new ArrayList<>();
+		try {
+			GroupVO classVo = dao.getGroupInfo_class(user_id);
+			classVo.setType("class");
+			list.add(classVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 		
 	

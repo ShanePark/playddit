@@ -10,6 +10,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 import config.SqlMapClientFactory;
 import users.vo.FollowerVO;
+import users.vo.GroupVO;
 import users.vo.UsersVO;
 
 public class UsersDaoImpl implements IUsersDao {
@@ -129,6 +130,11 @@ public class UsersDaoImpl implements IUsersDao {
 		map.put("user_id", user_id);
 		map.put("user_pic", user_pic);
 		return client.update("users.setUserPic", map);
+	}
+
+	@Override
+	public GroupVO getGroupInfo_class(String user_id) throws SQLException {
+		return (GroupVO) client.queryForObject("users.getGroupInfo_class",user_id);
 	}	
 	
 	

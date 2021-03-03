@@ -25,39 +25,6 @@
         </div>
         <div id="myGroup">
             <ul>
-                <li class="group">
-                    <a href="#">
-                        <div class="groupCir">
-                            <img src="images/default.png"/>
-                        </div>
-                        <div class="groupInfo">
-                            <p class="groupName">6기 - 302호</p>
-                            <span class="mem">소속인원 25</span>
-                        </div>
-                    </a>
-                </li>
-                 <li class="group">
-                    <a href="#">
-                        <div class="groupCir">
-                            <img src="images/default.png"/>
-                        </div>
-                        <div class="groupInfo">
-                            <p class="groupName">정보처리기사</p>
-                            <span class="mem">스터디원 6</span>
-                        </div>
-                    </a>
-                </li>
-                 <li class="group">
-                    <a href="#">
-                        <div class="groupCir">
-                            <img src="images/default.png"/>
-                        </div>
-                        <div class="groupInfo">
-                            <p class="groupName">프로그래머스 스터디</p>
-                            <span class="mem">스터디원 20</span>
-                        </div>
-                    </a>
-                </li>
             </ul>
         </div>
 

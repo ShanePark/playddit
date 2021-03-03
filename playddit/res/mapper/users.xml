@@ -38,6 +38,14 @@
                 where followee = #user_id#)
 	</select>
 	
+	<select id="getGroupInfo_class" resultClass="groupVO" parameterClass="String">
+		select class_num ||' - '|| class_room as name, a.class_id as groupId,
+		    (select count(*) from users where class_id =a.class_id) as num
+		from class a, users b
+		where a.class_id = b.class_id
+		and b.user_id = #user_id#
+	</select>
+	
 	<insert id="followUser" parameterClass="map">
 		insert into follow 
 		(follow_no, follower, followee)
