@@ -25,6 +25,7 @@
  	 	형식 : <typeAlias alias="alias명 type="클래스의 전체이름"/>
  	  -->
  	  <typeAlias alias = "UsersVO" type="users.vo.UsersVO"/>
+ 	  <typeAlias alias = "groupVO" type="users.vo.GroupVO"/>
  	  <typeAlias alias = "ProfileVO" type="login.vo.ProfileVO"/>
  	  <typeAlias alias = "MessageVO" type="message.vo.MessageVO"/>
  	  <typeAlias alias = "termsVo" type="join.vo.TermsVO"/>

@@ -3,6 +3,7 @@ package users.service;
 import java.util.List;
 
 import users.vo.FollowerVO;
+import users.vo.GroupVO;
 import users.vo.UsersVO;
 
 public interface IUsersService {
@@ -19,6 +20,9 @@ public interface IUsersService {
 	
 	// 팔로워 목록 출력
 	public List<FollowerVO> followerList(String user_id);
+	
+	// 소속 그룹 목록 출력
+	public List<GroupVO> getGroups(String user_id);
 	
 	// 팔로우 데이터 추가
 	public int followUser(String follower, String followee);

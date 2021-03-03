@@ -1,4 +1,7 @@
 $(function(){
+	loadProfile();
+	getAlarm();
+	loadGroup();
 	
 	 $(".followBtn").click(function(){
         title = $(this).parent("li").children(".th").text();
@@ -9,14 +12,10 @@ $(function(){
 			loadFollowing();
 		}
     });
-
-	loadProfile();
-	getAlarm();
 		
 	$('#logout').on('click', function(){
 		logout();
 	})
-	
 
 	$('.followList').on('click', '.followBtn', function(){
 		var targetId = this.getAttribute('follow');
@@ -28,6 +27,33 @@ $(function(){
 	})
 	
 })
+
+function loadGroup(){
+	$.ajax({
+		url : '/playddit/users/getGroup.do',
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+		success : function(res){
+			
+			$.each(res, function(i,v){
+				var li = '<li class="group"><a href="'+v.groupId+'">'
+                    li += '<div class="groupCir"><img src="images/default.png"/></div>'
+                    li += '<div class="groupInfo"><p class="groupName">'+v.name+'</p>'
+                    if(v.type == 'class'){
+						li += '<span class="mem">소속인원 '+v.num+'</span>'
+					}else{
+						li += '<span class="mem">스터디원 '+v.num+'</span>'
+					}
+						
+                    li += '</div> </a> </li>'
+				$('#myGroup').find('ul').append(li);
+			})
+			
+		},
+		dataType : 'json'
+	})
+}
 
 function logout(){
 	$.ajax({

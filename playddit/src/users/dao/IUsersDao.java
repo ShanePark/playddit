@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import users.vo.FollowerVO;
+import users.vo.GroupVO;
 import users.vo.UsersVO;
 
 public interface IUsersDao {
@@ -20,6 +21,9 @@ public interface IUsersDao {
 	
 	// 팔로워 목록 출력
 	public List<FollowerVO> followerList(String user_id) throws SQLException;
+	
+	// 소속 학급 출력
+	public GroupVO getGroupInfo_class(String user_id) throws SQLException;
 	
 	// 팔로우 데이터 추가
 	public int followUser(String follower, String followee) throws SQLException;

@@ -87,8 +87,6 @@ commit;
 INSERT INTO "PLAYDDIT"."USERS" (USER_ID, USER_NICKNAME, USER_PASSWORD, USER_NAME, USER_TEL, USER_BIRTH, USER_CLASS, USER_RATING, USER_SIGN_DATE) 
 VALUES ('chdnjs7610@gmail.com', '테스터스칼릿', '1234', '박초원', '1234', TO_DATE('2005-01-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '202011_302', '1', TO_DATE('2021-02-16 00:00:00', 'YYYY-MM-DD HH24:MI:SS'));
 -----------------------------------------------------
-
------------------------------------------------------
 --  login profile data loading
 -----------------------------------------------------
 select user_id, user_nickname,class_id, nvl(user_pic, 'default.png') as user_pic,
@@ -104,10 +102,20 @@ user_bio
 from users
 where user_id = 'psh40963@naver.com';
 -----------------------------------------------------
-
+-- load group lists where the user is in
+--          need to add PIC ( on db first)
+-----------------------------------------------------
+select class_num ||' - '|| class_room as name, a.class_id as groupId,
+    (select count(*) from users where class_id =a.class_id) as num
+from class a, users b
+where a.class_id = b.class_id
+and b.user_id = 'psh40963@naver.com';
 
 -----------------------------------------------------
---  ALL the queries about MESSAGE 
+
+--  ALL the queries
+--          about MESSAGE 
+
 -----------------------------------------------------
 update message set msg_senddate = sysdate where msg_sender = 'psh40963@naver.com';
 
@@ -175,7 +183,7 @@ select * from alarm;
 -----------------------------------------------------
 -- Get alarm list
 select alarm.alarm_cont as cont, alarm.alarm_type as type, alarm.alarm_chk as chk,
-        users.user_id as sender, users.user_pic as profile
+        users.user_id as sender, users.user_pic as sender_pic
 from alarm, users
 where alarm.user_id = 'psh40963@naver.com'
         and alarm.alarm_cont = users.user_nickname
