@@ -5,7 +5,7 @@
 
 selectClass = function(){
 	$.ajax({
-		url : '/playddit/join/selectList.do',
+		url : '/playddit/join/getClassLit.do',
 		type : 'get',
 		success : function(res){
 			code = "";

@@ -14,7 +14,7 @@ import join.service.JoinServiceImpl;
 import join.vo.ClassVO;
 import web.IAction;
 
-public class SelectList implements IAction {
+public class GetClassList implements IAction {
 
 	@Override
 	public boolean isRedirect() {
