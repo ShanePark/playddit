@@ -17,6 +17,10 @@ public interface IFeedService {
 	// 피드 작성 하기 
 	public int insertFeed(String id, String cont, String feedpic);
 	
+	// 단일 피드 정보 불러오기
+	public FeedVO getOneFeed(String user_id, int feed_no);
+
 	// 피드 삭제 하기 (내 피드만)
 	public int deleteFeed(int feedno);
+
 }

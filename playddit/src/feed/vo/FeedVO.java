@@ -14,6 +14,15 @@ public class FeedVO {
 	private int countlike;
 	private int reportcount;
 	private int isreport;
+	@Override
+	public String toString() {
+		return "FeedVO [feedno=" + feedno + ", id=" + id + ", profile=" + profile + ", feedpic=" + feedpic
+				+ ", nickname=" + nickname + ", classname=" + classname + ", islike=" + islike + ", countlike="
+				+ countlike + ", reportcount=" + reportcount + ", isreport=" + isreport + ", cont=" + cont
+				+ ", comcount=" + comcount + ", replyList=" + replyList + ", ismine=" + ismine + "]";
+	}
+
+
 	private String cont;
 	private int comcount;
 	private List<ComVO> replyList;

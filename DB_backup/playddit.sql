@@ -112,10 +112,15 @@ where a.class_id = b.class_id
 and b.user_id = 'psh40963@naver.com';
 
 -----------------------------------------------------
-
+--
+--
+--
 --  ALL the queries
 --          about MESSAGE 
-
+--
+--
+--
+--
 -----------------------------------------------------
 update message set msg_senddate = sysdate where msg_sender = 'psh40963@naver.com';
 
@@ -177,7 +182,16 @@ values(cmsg_no_seq.nextval,'C202011302', 'psh40963@naver.com', '학급에 메시
 -----------------------------------------------------
 
 -----------------------------------------------------
---  ALL the queries about ALARM 
+
+
+
+
+--  ALL the queries
+--                  about ALARM 
+
+
+
+
 -----------------------------------------------------
 select * from alarm;
 -----------------------------------------------------
@@ -199,10 +213,81 @@ delete from alarm
 where user_id = 'psh40963@naver.com' and alarm_cont = '스칼렛' and alarm_type = 12;
 -----------------------------------------------------
 
-commit;
 
+-----------------------------------------------------
 
+--
+--   ALL the queries
+--                   about FEED
 
+-----------------------------------------------------
+
+-----------------------------------------------------
+--  Load feeds on main 
+-----------------------------------------------------
+select a.feed_no as feedno, a.user_id as id, a.feed_cont as cont,(CASE WHEN a.user_id = 'psh40963@naver.com' THEN 'true'
+                      ELSE 'false' END)as ismine,
+			nvl(b.user_pic,'default.png') as profile, 
+			nvl(a.feed_pic,'none') as feedpic,
+			b.user_nickname as nickname, 
+			c.class_num ||' - '|| c.class_room as classname,
+        (select count(*) 
+         from likes 
+         where user_id = 'psh40963@naver.com'
+            and feed_no = a.feed_no) as islike,
+            (select count(*)
+                from likes 
+                where feed_no = a.feed_no) as countlike,
+                (select count(*)
+                   from blame
+                   where feed_no = a.feed_no) as reportcount,   
+                     (select count(*)
+                        from blame
+                        where feed_no = a.feed_no
+                          and user_id = 'psh40963@naver.com') as isreport,
+                           (select count(*)
+                         	   from feed_comment
+                          	   where feed_no = a.feed_no) as comcount
+                   
+    from feed a, users b, class c  
+    where a.user_id = b.user_id 
+      and b.class_id = c.class_id   
+      
+    order by a.feed_no desc;
+
+-----------------------------------------------------
+-- Feed view page  // getOneFeed
+-----------------------------------------------------
+select feed_no as feedno, b.user_id as id,
+        b.user_pic as profile,
+        feed_pic as feedpic,
+        b.user_nickname as nickname,
+        c.class_num ||' - '|| c.class_room as classname,
+        (select count(*) 
+           from likes 
+          where user_id = 'psh40963@naver.com'
+            and feed_no = a.feed_no) as islike,
+        (select count(*)
+            from likes 
+            where feed_no = a.feed_no) as countlike,
+        (select count(*)
+                   from blame
+                   where feed_no = a.feed_no) as reportcount,
+        (select count(*)
+                        from blame
+                        where feed_no = a.feed_no
+                          and user_id = 'psh40963@naver.com') as isreport,
+        a.feed_cont as cont,
+        (select count(*)
+           from feed_comment
+          where feed_no = a.feed_no) as comcount,
+        (CASE WHEN a.user_id = 'psh40963@naver.com' THEN 'true'
+                      ELSE 'false' END)as ismine
+from feed a, users b, class c
+where a.user_id = b.user_id
+and b.class_id = c.class_id
+and feed_no = 50;
+-----------------------------------------------------
 
 
 

@@ -72,6 +72,17 @@ public class FeedServiceImpl implements IFeedService {
 	}
 
 	@Override
+	public FeedVO getOneFeed(String user_id, int feed_no) {
+		FeedVO vo = null;
+		try {
+			vo= dao.getOneFeed(user_id, feed_no);
+			vo.setReplyList(dao.getCom(feed_no));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return vo;
+    
+  @Override
 	public int deleteFeed(int feedno) {
 	
 			try {
@@ -83,7 +94,5 @@ public class FeedServiceImpl implements IFeedService {
 		return 0;
 	}
 
-	
-
-
+    
 }
