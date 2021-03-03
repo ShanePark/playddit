@@ -63,4 +63,11 @@ public class FeedDaoImpl implements IFeedDao {
 
 	}
 
+	@Override
+	public int deleteFeed(int feedno) throws SQLException {
+		
+		return client.delete("feed.deleteFeed",feedno);
+	}
+
+
 }
