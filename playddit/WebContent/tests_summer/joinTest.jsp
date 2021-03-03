@@ -133,8 +133,7 @@
 				$('input[name=birth]').parents('.box').find('.msg').text("");
 			}
 		})
-		
-		
+
 		$('#joinBtn').on('click', function() {	
 			if ($('input[name=mail]').parents('.box').find('.msg').text().length > 1 || $('input[name=mail]').val() == "") {
 				alert("이메일을 입력해주세요.");
@@ -158,6 +157,8 @@
 		        $("#codeModal").delay(100).animate({marginTop:0},400);
 			}	
 			
+			mail = $('input[name=mail]').val();
+			$('#codeMail').text(mail);
 			codeSubmit();
 			
 		})		
@@ -293,7 +294,7 @@
 
 			<div id="codeBottom">
 				<p class="cont">
-					환영합니다! 회원가입 완료를 위한 이메일 인증을 진행 해 주세요.<br /> <span id="codeMail">chdnjs7610@gmail.com</span>
+					환영합니다! 회원가입 완료를 위한 이메일 인증을 진행 해 주세요.<br /> <span id="codeMail"></span>
 					메일함을 확인해주세요!
 				</p>
 
