@@ -42,11 +42,11 @@
 	
 	<!-- 인증코드 가져오기 -->
 	<select id="codeCheck" resultClass="String" parameterClass="String">
-		select email_chk_cont as code
+		select * from (select email_chk_cont as code
 		  from email_check
          where email_chk_addr = #mail#
-           and rownum = 1
-         order by email_chk_no desc
+         order by email_chk_no desc)
+        where rownum = 1 
 	</select>
 	
 	<!-- 선택한 약관 insert -->

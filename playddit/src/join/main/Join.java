@@ -55,7 +55,7 @@ public class Join implements IAction {
 		  String insertJson = new Gson().toJson(insert);
 		  
 		  // 해당 데이터를 ajax로 보낸다.
-		  response.setContentType("text/html; charset=UTF-8");
+		  response.setContentType("application/json; charset=UTF-8");
 		  response.getWriter().write(insertJson);
 		
 		  return null;
