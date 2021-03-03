@@ -138,8 +138,14 @@ $(function(){
             $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
                 e.preventDefault();
             });
+			
             $("#back2").fadeIn(200);
-            $(".followModal").delay(100).animate({top: "50%"},400);
+			
+			if(title == "팔로워"){
+				$("#myFollower").delay(100).animate({top: "50%"},400);
+			}else{
+				$("#myFollowing").delay(100).animate({top: "50%"},400);
+			}
             follow = true;
         }
     });
