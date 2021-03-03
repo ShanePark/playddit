@@ -50,10 +50,7 @@ public class Join implements IAction {
 		  }
 		  if("true".equals(pick3)) {
 			  service.pickConInsert(6, mail);
-		  }
-		  
-
-		  
+		  }		  
 		  
 		  String insertJson = new Gson().toJson(insert);
 		  

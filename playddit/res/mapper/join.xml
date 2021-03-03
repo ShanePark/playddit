@@ -29,8 +29,8 @@
 
 	<!-- 회원가입 -->
 	<insert id="insertUser" parameterClass="UsersVO">
-		 insert into users(user_id, user_nickname, user_password, user_name, user_tel, user_birth, user_theme, user_sign_date)
-		 values (#user_id#, #user_nickname#, #user_password#, #user_name#, #user_tel#, #user_birth#, 0, sysdate)
+		 insert into users(user_id, user_nickname, user_password, user_name, user_tel, user_birth, user_theme, user_sign_date, class_id)
+		 values (#user_id#, #user_nickname#, #user_password#, #user_name#, #user_tel#, #user_birth#, 0, sysdate, #class_id#)
 	</insert>
 	
 	
@@ -54,4 +54,11 @@
 		insert into terms_his (terms_no, user_id, terms_agree)
         values (#terms_no#, #terms_title#, 1)
 	</insert>
+	
+	<!-- class정보 가져오기 -->
+	<select id="selectClass" resultClass="classVo">		
+		select class_id, class_title ||' '|| class_num ||' - '|| class_room as classname
+ 	      from class
+        <![CDATA[  where class_id != 'DEFAULT' and sysdate < class_end ]]>
+	</select>
 </sqlMap>

@@ -1,8 +1,8 @@
 eclipse.preferences.version=1
-encoding//WebContent/conditionsTest.jsp=UTF-8
 encoding//WebContent/feedView.jsp=UTF-8
-encoding//WebContent/join2.jsp=UTF-8
 encoding//WebContent/main.html=UTF-8
+encoding//WebContent/tests_summer/conditions2.jsp=UTF-8
+encoding//WebContent/tests_summer/conditionsTest.jsp=UTF-8
 encoding//WebContent/viewFooter.jsp=UTF-8
 encoding//WebContent/viewHeader.jsp=UTF-8
 encoding//res/config/dbinfo.properties=UTF-8

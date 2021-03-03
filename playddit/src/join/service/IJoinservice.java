@@ -3,6 +3,7 @@ package join.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import join.vo.ClassVO;
 import join.vo.TermsVO;
 import users.vo.UsersVO;
 
@@ -56,4 +57,10 @@ public interface IJoinservice {
 	 * @throws SQLException
 	 */
 	public int pickConInsert(int no, String mail);
+	
+	/**
+	 * class정보 출력하기
+	 * @return
+	 */
+	public List<ClassVO> selectClass();
 }

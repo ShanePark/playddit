@@ -17,18 +17,20 @@
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
-<link href="css/common.css" rel="stylesheet" />
-<link href="css/user.css" rel="stylesheet" />
+<link href="../css/common.css" rel="stylesheet" />
+<link href="../css/user.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="script/modal.js"></script>
-<script src="js/signupTest.js"></script>
-<script src="js/badwords.js"></script>
-<script src="js/doubleCheck.js"></script>
-<script src="js/insertUser.js"></script>
-<script src="js/jquery.serializejson.min.js"></script>
+<script src="../script/modal.js"></script>
+<script src="../js/signupTest.js"></script>
+<script src="../js/badwords.js"></script>
+<script src="../js/doubleCheck.js"></script>
+<script src="../js/insertUser.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
 <script>
 	
 		$(function(){		
+			// class정보 출력
+			selectClass();
 			
 			// id(email) check
 			$('input[name=mail]').on('keyup', function() {
@@ -131,9 +133,9 @@
 				$('input[name=birth]').parents('.box').find('.msg').text("");
 			}
 		})
-
+		
+		
 		$('#joinBtn').on('click', function() {	
-			
 			if ($('input[name=mail]').parents('.box').find('.msg').text().length > 1 || $('input[name=mail]').val() == "") {
 				alert("이메일을 입력해주세요.");
 				return false;
@@ -151,10 +153,14 @@
 			} else if ($('input[name=passchk]').parents('.box').find('.msg').text().legnth > 1 || $('input[name=pass]').val() != $('input[name=passchk]').val()) {
 				alert("비밀번호 일치여부를 확인해주세요.");
 				return false;
+			}else{
+				$("#modal").fadeIn(200);
+		        $("#codeModal").delay(100).animate({marginTop:0},400);
 			}	
 			
-			code();
-		})
+			codeSubmit();
+			
+		})		
 	})
 		</script>
 </head>
@@ -163,14 +169,14 @@
 	<div id="wrap" class="cen">
 		<div id="header">
 			<a href="index.html" id="back"> <i class="fas fa-arrow-left"></i>
-			</a> <img src="images/logo1.png" alt="logo" />
+			</a> <img src="../images/logo1.png" alt="logo" />
 		</div>
 		<div id="content">
 			<div class="title">
 				<h2>SIGN UP</h2>
 				<p class="subtitle">Please enter your registration details</p>
 			</div>
-			<form action="<%= request.getContextPath()%>/join/join.do" method="post" id="joinForm">
+			<form onsubmit="return false;" action="<%= request.getContextPath()%>/join/join.do" method="post" id="joinForm">
 
 				<div id="joinLeft" class="joinBox">
 					<div class="box">
@@ -252,22 +258,14 @@
 						&nbsp;&nbsp;Class<span class="msg"></span>
 					</p>
 					<div class="item">
-						<select name="class">
-							<option>Choose your class</option>
-							<option value="학급번호">풀-스택 개발자 양성과정 2기 - 401호</option>
-							<option value="학급번호">풀-스택 개발자 양성과정 3기 - 402호</option>
-							<option value="학급번호">풀-스택 개발자 양성과정 4기 - 403호</option>
-							<option value="학급번호">풀-스택 개발자 양성과정 5기 - 404호</option>
-							<option value="학급번호">풀-스택 개발자 양성과정 6기 - 302호</option>
-							<option value="학급번호">AI 소프트웨어 엔지니어링 1기 - 405호</option>
-							<option value="학급번호">풀-스택 개발자 양성과정 7기 - 406호</option>
+						<select name="itemclass">
 						</select>
 					</div>
 				</div>
 
 				<div style="clear: both;"></div>
 
-				<button type="submit" id="joinBtn" class="skyBtn">SIGN UP</button>
+				<button type="button" id="joinBtn" class="skyBtn">SIGN UP</button>
 			</form>
 		</div>
 	</div>
@@ -286,7 +284,7 @@
 			<div style="clear: both;"></div>
 
 			<div id="codeTop">
-				<img src="images/code.png" alt="이메일인증" />
+				<img src="../images/code.png" alt="이메일인증" />
 				<div class="title">
 					<h2>Welcome to playddit!</h2>
 					<p class="subtitle">Email authentication is required</p>

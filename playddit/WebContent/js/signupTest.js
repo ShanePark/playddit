@@ -1,6 +1,27 @@
 /**
  * 
  */
+// class 정보 출력하기
+
+selectClass = function(){
+	$.ajax({
+		url : '/playddit/join/selectList.do',
+		type : 'get',
+		success : function(res){
+			code = "";
+			code += "<option value='default'>Choose your class</option>";
+			code += "<option value='default'>소속 학급 없음</option>";
+			$.each(res, function(i, v){
+				code += "<option value=" + v.class_id +"> " + v.classname + "</option>"; 
+			})
+			$('.item').find('select').append(code);
+		},
+		error : function(xhr){
+			alert('상태 : ' + xhr.status);
+		},
+		dataType : 'json'
+	})
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 

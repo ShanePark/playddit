@@ -43,7 +43,9 @@ public class JoinSessionAdd implements IAction{
 		String name = request.getParameter("name");
 		String tel = request.getParameter("phone");
 		String birth = request.getParameter("birth");
+		String class_id = request.getParameter("class_id");
 		
+		System.out.println(class_id);
 		// 비밀번호 암호화
 		String key = "playddit"+mail+pass;
 		try {
@@ -60,14 +62,9 @@ public class JoinSessionAdd implements IAction{
 		insertVo.setUser_name(name);
 		insertVo.setUser_tel(tel);
 		insertVo.setUser_birth(birth);
+		insertVo.setUser_class(class_id);
 
 		session.setAttribute("insertVo", insertVo);	
-
-		// 세션 테스트
-		System.out.println(mail);
-		System.out.println(nickname);
-		System.out.println(session.getAttribute("insertVo"));
-		// 세션 테스트 끝
 		
 		// 인증 코드 생성 & 발송
 		String code = "";
