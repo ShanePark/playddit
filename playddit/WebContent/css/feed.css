@@ -29,9 +29,14 @@ body {
 }
 #storyBox .storyOn {
     border: 3px solid #a1c4fd;    
+    overflow: hidden;
 }
 #storyBox .story img {
-    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #feedBox {
@@ -53,9 +58,14 @@ body {
     border-radius: 50%;
     display: inline-block;
     cursor: pointer;
+    overflow: hidden;
 }
 .proBox .proCir img {
-    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .proBox .proName {
     display: inline-block;
@@ -224,7 +234,7 @@ body {
     border-radius: 10px;
     box-shadow: 1px 4px 10px rgba(39, 39, 39, 0.4);
     z-index: 100;
-    top: 73px;
+    top: 65px;
     left: 50%;
     transform: translateX(-50%);
     overflow: auto;
@@ -258,7 +268,7 @@ body {
     box-shadow: 1px 2px 5px #b2b2b2;
     transform: rotate(45deg)!important;
     z-index: 0;
-    top: 65px;
+    top: 56px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -271,9 +281,14 @@ body {
     display: inline-block;
     border: 1px solid #dfdfdf;
     margin-right: 8px;
+    overflow: hidden;
 }
 .feedCir img {
-    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #feedCount .feedCir {
@@ -498,9 +513,14 @@ body {
     height: 55px;
     border-radius: 50%;
     border: 1px solid #e9e7fb;
+    overflow: hidden;
 }
 #userProfile #userPic img {
-    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 #userProfile #userInfo {
     display: inline-block;
@@ -563,6 +583,7 @@ body {
 	height: 50px;
 	border: 1px solid #e9e7fb;
 	margin-right: 7px;
+	overflow: hidden;
 }
 .comment p {
     vertical-align: top;
@@ -587,7 +608,11 @@ body {
 
 .comment > a img,
 .reply > a img {
-	width: 100%;
+	max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .comment button {
 	border: none;
