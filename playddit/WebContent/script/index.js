@@ -92,8 +92,7 @@ function idPassCheck(){
 			if( res.id == 'null' ){
 				alert("아이디나 비밀번호를 확인해주세요.");
 			}else{
-				alert("접속완료 !!! 아이디 : " + res.id + "닉네임 : "+res.nickname);
-				location.href="./main.html";
+				location.href="./feed.jsp";
 			}
 		},
 		error : function(xhr){
