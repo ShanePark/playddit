@@ -3,6 +3,7 @@ package join.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import join.vo.ClassVO;
 import join.vo.TermsVO;
 import users.vo.UsersVO;
 
@@ -63,4 +64,11 @@ public interface IJoinDao {
 	 * @throws SQLException
 	 */
 	public int pickConInsert(int no, String mail) throws SQLException;
+	
+	/**
+	 * class 정보 출력
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<ClassVO> selectClass() throws SQLException;	
 }

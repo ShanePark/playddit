@@ -8,6 +8,7 @@ import java.util.Map;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import config.SqlMapClientFactory;
+import join.vo.ClassVO;
 import join.vo.TermsVO;
 import users.vo.UsersVO;
 
@@ -54,7 +55,7 @@ public class JoinDaoImpl implements IJoinDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<TermsVO> showTerm2() throws SQLException {
-		return (List<TermsVO>)client.queryForList("join.showTerm2");
+		return client.queryForList("join.showTerm2");
 	}
 	
 	/**
@@ -111,6 +112,15 @@ public class JoinDaoImpl implements IJoinDao {
 		}else {
 			return 0;
 		}
+	}
+	
+	/**
+	 * class 정보 출력
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ClassVO> selectClass() throws SQLException {
+		return client.queryForList("join.selectClass");
 	}
 
 

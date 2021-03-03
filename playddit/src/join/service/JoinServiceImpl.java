@@ -5,6 +5,7 @@ import java.util.List;
 
 import join.dao.IJoinDao;
 import join.dao.JoinDaoImpl;
+import join.vo.ClassVO;
 import join.vo.TermsVO;
 import users.vo.UsersVO;
 
@@ -123,6 +124,21 @@ public class JoinServiceImpl implements IJoinservice {
 			e.printStackTrace();
 		}
 		return cnt;
+	}
+
+	/**
+	 * class 정보 출력
+	 */
+	@Override
+	public List<ClassVO> selectClass() {
+		List<ClassVO> list = null;
+		try {
+			list = dao.selectClass();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 

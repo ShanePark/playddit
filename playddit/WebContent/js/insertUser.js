@@ -21,23 +21,28 @@ function insert(){
 	})
 }
 
-function code(){
-	event.preventDefault();
-	mail = $('input[name=mail').val().trim();
+function codeSubmit(){
+	//event.preventDefault();
+	mail = $('input[name=mail]').val().trim();
 	nickname = $('input[name=nickname]').val().trim();
 	pass = $('input[name=pass]').val().trim();
 	name = $('input[name=name]').val().trim();
-	phone = $('input[name=phone').val().trim();
-	birth = $('input[name=birth').val().trim();
+	phone = $('input[name=phone]').val().trim();
+	birth = $('input[name=birth]').val().trim();
+	class_id = $('select[name=itemclass]').val();
+	alert(class_id);
+	
 	$.ajax({
 		url : '/playddit/join/joinSessionAdd.do',
 		type : 'post',
-		data : { 'mail' : mail,
+		data : { 
+				 'mail' : mail,
 				 'nickname' : nickname,
 				 'pass' : pass,
 				 'name' : name,
 				 'phone' : phone,
-				 'birth' : birth
+				 'birth' : birth,
+				 'class_id' : class_id
 		},
 		success : function(res){
 			if(res == '1'){
@@ -51,3 +56,4 @@ function code(){
 		dataType : 'json'	
 	})
 }
+
