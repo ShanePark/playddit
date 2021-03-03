@@ -22,9 +22,10 @@ public class Login implements IAction {
 		HttpSession session = request.getSession();
 		String profile = (String)session.getAttribute("profile");
 		
-		request.setAttribute("profile", profile);
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().write(profile);
 		
-		return "/login/profile.jsp";
+		return null;
 	
 	}
 
