@@ -135,14 +135,15 @@ follow = function(button, targetId){
 		type : 'post',
 		data : {'targetId' : targetId},
 		success : function(res){
-			// 모달창 숫자 바꾸기 
-			$('.followTitle').find('span').empty();
-			$('.followTitle').find('span').append(res);
 			
 			// 프로필 쪽 숫자 바꾸기
+			$('#Following').empty();
+			$('#Following').append(res);
+				
 			if(title == "팔로잉"){
-				$('#Following').empty();
-				$('#Following').append(res);	
+				// 모달창 숫자 바꾸기 
+				$('.followTitle').find('span').empty();
+				$('.followTitle').find('span').append(res);
 				loadFollowing();
 			}else{
 				// 팔로워 보는 모달일경우 follow 버튼만 삭제한다.
