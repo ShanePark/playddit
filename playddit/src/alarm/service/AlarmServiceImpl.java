@@ -42,4 +42,14 @@ public class AlarmServiceImpl implements IAlarmService{
 		return 0;
 	}
 
+	@Override
+	public int deleteAlarm(String user, String cont, int type) {
+		try {
+			return dao.deleteAlarm(user, cont, type);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 }

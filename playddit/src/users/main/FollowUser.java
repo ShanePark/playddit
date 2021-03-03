@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import alarm.service.AlarmServiceImpl;
+import alarm.service.IAlarmService;
 import login.vo.ProfileVO;
 import users.service.IUsersService;
 import users.service.UsersServiceImpl;
@@ -32,11 +34,17 @@ public class FollowUser implements IAction {
 		Gson gson = new Gson();
 		ProfileVO profile = gson.fromJson(profileJson, ProfileVO.class);
 		String id = profile.getUser_id();
+		String nickname = profile.getUser_nickname();
 		
 		String targetId = request.getParameter("targetId");
 		// 2. 팔로우 데이터 insert 
 		IUsersService service = UsersServiceImpl.getService();
 		service.followUser(id, targetId);
+		
+		// 알람 서비스에서 기존 해당하는 알람 삭제하기 + 새로운 알람 보내는 서비스 실행 
+		// 팔로우 한다는 알람 타입 넘버는 11 입니다.
+		IAlarmService alarmService = AlarmServiceImpl.getService();
+		alarmService.renewAlarm(targetId, nickname, 11);
 		
 		// 3. 세션에 팔로잉 넘버 정보를 + 1 해서 새로 저장한다.
 		profile.setFollowing(profile.getFollowing() + 1 );

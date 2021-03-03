@@ -9,4 +9,6 @@ public interface IAlarmService {
 	public List<AlarmVO> getAlarm(String user);
 	// user에게 있는 특정 cont 와 type 이 일치하는 알람을 제거한 뒤, 새로운 알람으로 갈음
 	public int renewAlarm(String user, String cont, int type);
+	// user에게 있는 특정 cont 와 type 이 일치하는 알람을 제거한다.
+	public int deleteAlarm(String user, String cont, int type);
 }
