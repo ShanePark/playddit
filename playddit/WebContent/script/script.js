@@ -140,12 +140,7 @@ $(function(){
             });
 			
             $("#back2").fadeIn(200);
-			
-			if(title == "팔로워"){
-				$("#myFollower").delay(100).animate({top: "50%"},400);
-			}else{
-				$("#myFollowing").delay(100).animate({top: "50%"},400);
-			}
+			$(".followModal").delay(100).animate({top: "50%"},400);
             follow = true;
         }
     });
