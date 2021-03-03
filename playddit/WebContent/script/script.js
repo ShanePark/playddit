@@ -60,8 +60,8 @@ $(function(){
     });
     
     //알람
-    var visi = false;
 	//feed Search
+    var visi = false;
 	$("#search button, #msearch button").on("click", function(){
 		if(visi){
 			$("#alarmEdge2, #alarmEdge").hide();
@@ -72,27 +72,34 @@ $(function(){
 		$("#mask").show();
 		$("#feedSearch").show();
 		$("#feedSearchModal").slideDown(500);
+		visi = true;
 	});
 
 	$("#mask").click(function(){
 		$(this).hide();
-		$("#feedSearchModal").slideUp(300);
-		$("#feedSearch").delay(200).hide();
+		
+		if(visi){
+			$("#alarmEdge2, #alarmEdge").hide();
+			$("#modal").fadeOut(300);
+		}else{
+			$("#feedSearchModal").slideUp(300);
+			$("#feedSearch").delay(200).hide();
+		}
 	});
     
     $(".alarmBtn").click(function(){
         if(!visi){
-            $("#alarmEdge2 , #alarmEdge, #modal").show();
+			$("#feedSearchModal").slideUp(300);
+			$("#feedSearch").delay(200).hide();
             visi = true;
-        }else{
-            $("#alarmEdge2, #alarmEdge").hide();
-            $("#modal").fadeOut(300);
-            visi = false;
         }
+		
+		$("#mask").show();
+		$("#alarmEdge2 , #alarmEdge, #modal").show();
+		visi = true;
     });
-
+	
     //모바일 헤더 설정
-    
     $(window).scroll(function(evt) {
         var y = $(this).scrollTop();
         /*var winW = $(window).width();*/
