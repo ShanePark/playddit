@@ -19,6 +19,7 @@
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script src="script/script.js"></script>
 		<script src="script/emoji_jk.js"></script>
+		<script src="script/view.js"></script>
 	</head>
     <body>
        <!-- header.jsp include -->
@@ -46,6 +47,9 @@
                         <p>scarlett</p>
                         <span>6기 - 302호</span>
                     </a>
+                    
+                    <!--내 피드라면 출력될 버튼-->
+					<button type="button" class="myFeed"><i class="fas fa-ellipsis-h"></i></button>
                 </div>
                 <div id="cont" class="scrollStyle">
                     <p id="contTxt">
@@ -161,7 +165,7 @@
                                             <span>
                                                 피드 대댓글입니다. 댓글 좋아요~!
                                             </span>
-                                            <button type="button" class="myComm"><i class="fas fa-ellipsis-h"></i></button>
+                                            <button type="button" class="myReply"><i class="fas fa-ellipsis-h"></i></button>
                                         </p>
                                     </li>
                                     <li class="reply">
@@ -580,20 +584,30 @@
 				</div>
 			</div>
 		</div>
+      
+        <!--본인 글, 댓글, 대댓글 삭제 모달-->
+		<div id="feedDel">
+			<div id="feedDelModal">
+				<p>피드를 삭제 하시겠습니까?</p>
+				<div id="feedDelBtn">
+					<button type="button" id="goModi">수정</button>
+					<button type="button" id="goDel">삭제</button>
+					<button type="button" id="goCancel">취소</button>
+				</div>
+			</div>
+		</div>
   		
    		<!-- footer.jsp include -->
 	    <jsp:include page="/viewFooter.jsp"></jsp:include>
 	    
 	    <script>
+			var slideH = $(".slide img").height();
+			$("#viewRight").height(slideH);
+
             $(function(){
-				var slideH = $(".slide img").height();
-				$("#viewRight").height(slideH);
-				
                 $(window).resize(function(){
                     var slideH = $(".slide img").height();
 					$("#viewRight").height(slideH);
-					
-					$("")
                 });
                 
                 //feed slick
@@ -629,64 +643,6 @@
                     }); 
                 }); 
 				
-				var visi = false;
-
-                $(".alarmBtn").click(function(){
-                    if(!visi){
-                        $("#alarmEdge2 , #alarmEdge, #modal").show();
-                        visi = true;
-                    }else{
-                        $("#alarmEdge2, #alarmEdge").hide();
-                        $("#modal").fadeOut(300);
-                        visi = false;
-                    }
-                });
-                
-                //feed Search
-                $("#search button, #msearch button").on("click", function(){
-                    
-                    if(visi){
-                        $("#alarmEdge2, #alarmEdge").hide();
-                        $("#modal").fadeOut(300);
-                        visi = false;
-                    }
-                    
-                    $("#mask").show();
-                    $("#feedSearch").show();
-                    $("#feedSearchModal").slideDown(500);
-                });
-                
-                $("#mask").click(function(){
-                    $(this).hide();
-                    $("#feedSearchModal").slideUp(300);
-                    $("#feedSearch").delay(200).hide();
-                });
-                
-                //신고 모달
-                $(".report").each(function(){
-                    var modal = true;
-                    
-                    $(this).click(function(){
-                        if(modal){
-                            $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
-                                e.preventDefault();
-                            });
-                            $("#reportBack").show();
-                            $("#reportWrap").show();
-                            $("#reportModal").slideDown(500);
-                            modal = true;
-                        }
-                    });
-                });
-                
-                $("#reportBack, #cancel").click(function(){
-                    $("#reportModal").slideUp(500);
-                    $("#reportWrap").delay(200).hide();
-                    $("#reportBack").hide();
-                    modal = false;
-                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-                });
-				
 				//like button
                 $(".like").on("click", function(){
                     var like = $(this).hasClass("on");
@@ -720,6 +676,63 @@
 				$(".comment").click(function(){
 					$("#input_area").focus();	
 				});
+				
+				//내 피드 삭제하기 모달
+				var modal2 = true;
+
+				$(".myFeed").click(function(){
+					if(modal2){
+						$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+							e.preventDefault();
+						});
+						
+						$("#feedDelModal p").text("피드를 삭제하시겠습니까?");
+						
+						$("#reportBack").show();
+						$("#feedDel").show();
+						$("#feedDelModal").slideDown(500);
+						modal2 = true;
+					}
+				});
+				
+				//내 댓글, 대댓글 삭제하기 모달
+				$(".myComm").click(function(){
+					if(modal2){
+						$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+							e.preventDefault();
+						});
+						
+						$("#feedDelModal p").text("댓글을 삭제하시겠습니까?");
+						
+						$("#reportBack").show();
+						$("#feedDel").show();
+						$("#feedDelModal").slideDown(500);
+						modal2 = true;
+					}
+				});
+				
+				$(".myReply").click(function(){
+					if(modal2){
+						$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+							e.preventDefault();
+						});
+						
+						$("#feedDelModal p").text("대댓글을 삭제하시겠습니까?");
+						
+						$("#reportBack").show();
+						$("#feedDel").show();
+						$("#feedDelModal").slideDown(500);
+						modal2 = true;
+					}
+				});
+				
+				$("#reportBack, #goCancel").click(function(){
+                    $("#feedDelModal").slideUp(500);
+                    $("#feedDel").delay(200).hide();
+                    $("#reportBack").hide();
+                    modal2 = true;
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                });
             });
         </script>
     </body>
