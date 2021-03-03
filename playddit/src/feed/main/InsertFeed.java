@@ -37,7 +37,7 @@ public class InsertFeed implements IAction {
 		// feed 의 cont를 저장 
 		String cont = request.getParameter("cont");
 		
-		// feed 의 feedpic 저장 . 사진으로 저장해야하는데 방법 좀더 알아보기
+		// feed 의 feedpic 저장 . 사진으로 저장해야하는데 방법 좀 더 알아보기
 		
 		String feedpic = request.getParameter("feedpic");
 		
