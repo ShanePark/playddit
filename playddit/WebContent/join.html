@@ -14,6 +14,12 @@
         <link href="css/user.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/modal.js"></script>
+		<script src="script/join.js"></script>
+		<script src="js/badwords.js"></script>
+		<script src="js/doubleCheck.js"></script>
+		<script src="js/insertUser.js"></script>
+		<script src="js/jquery.serializejson.min.js"></script>
+		<script src="js/signupTest.js"></script>
 	</head>
     <body class="sky over">
 	    <div id="wrap" class="cen">
@@ -31,10 +37,10 @@
                 <form action="join.jsp" method="post" id="joinForm">
                     <div id="joinLeft" class="joinBox">
                         <div class="box">
-                            <p><span class="red">*</span> Email<span class="msg">이메일 형식이 올바르지 않습니다.</span></p>
+                            <p><span class="red">*</span> Email<span class="msg"></span></p>
                             <div class="item">
                                 <input type="text" name="mail" placeholder="Please enter your email" />
-                                <span class="double">중복확인</span>
+                                <span id="idDbtn" class="double">중복확인</span>
                             </div>
                         </div>
                         
@@ -42,7 +48,7 @@
                             <p><span class="red">*</span> Nickname<span class="msg"></span></p>
                             <div class="item">
                                 <input type="text" name="nickname" placeholder="Please enter your nickname" />
-                                <span class="double">중복확인</span>
+                                <span id="nickDbtn" class="double">중복확인</span>
                             </div>
                         </div>
                         
@@ -92,23 +98,14 @@
                         </div>
 
                         <p>&nbsp;&nbsp;Class<span class="msg"></span></p>
-                        <div class="item">
-                            <select name="class">
-                                <option>Choose your class</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 2기 - 401호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 3기 - 402호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 4기 - 403호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 5기 - 404호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 6기 - 302호</option>
-                                <option value="학급번호">AI 소프트웨어 엔지니어링 1기 - 405호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 7기 - 406호</option>
-                            </select>
-                        </div>
+							<div id="tagChange" class="item">
+								<input name="itemclass" type="text" placeholder="Choose your class">
+							</div>
                     </div>
                     
                     <div style="clear: both;"></div>
                     
-                    <button type="submit" id="joinBtn" class="skyBtn">SIGN UP</button>
+                    <button type="button" id="joinBtn" class="skyBtn">SIGN UP</button>
                 </form>
             </div>
         </div>
@@ -144,7 +141,6 @@
                     <form action="code.jsp" id="codeCont" method="post">
                         <h2>인증 코드 입력</h2>
                         <input type="text" name="code" />
-
                         <br/>
                         <button type="reset" id="remail">인증코드 재발송</button>
                         <button type="submit" id="subCode">이메일 인증 확인</button>
@@ -163,35 +159,8 @@
                         $(this).prev("input").attr("type", "password");
                     }
                 });
-                
-                $(".double").on("click", function(){
-                   $(this).toggleClass("active"); 
-                });
             });
         </script>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

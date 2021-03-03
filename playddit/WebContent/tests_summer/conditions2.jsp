@@ -44,8 +44,7 @@
                     <p class="subtitle">Terms and conditions</p>
                     <p class="cont">
                         playddit에 오신것을 환영합니다.<br/>
-                        좀더 좋은 서비
-                        스를 위해 아래의 약관에 동의해주세요.
+                        좀더 좋은 서비스를 위해 아래의 약관에 동의해주세요.
                     </p>
                 </div>
                 

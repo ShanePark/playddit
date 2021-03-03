@@ -33,9 +33,7 @@
 						alert("필수 약관은 반드시 선택해야 합니다.");
 						return;
 					}
-					var form = $("#condition").get(0);
-					form.action = "joinTest.jsp";
-					form.submit();
+					location.href="../join.html";
 				})		
 			})
 
@@ -47,7 +45,7 @@
                 <a href="index.html" id="back">
                     <i class="fas fa-arrow-left"></i>
                 </a>
-                <img src="images/logo1.png" alt="logo" />
+                <img src="../images/logo1.png" alt="logo" />
             </div>
             <div id="content">
                 <div class="title">
@@ -67,7 +65,7 @@
                 
                 <div class="longbar"></div>
                 
-                <form id="condition" action="condition.jsp" method="get">
+                <form id="condition" method="get">
                     <div id="condiLeft">
                        
                     </div>
@@ -86,16 +84,7 @@
 	    <!-- 이용약관 Modal -->
 	    <div id="modal">
             <div id="condiModal" class="cen fullModal">
-                <div id="closeBox">
-                    <button type="button" id="close" style="color : #a8ccfd;">
-                        <i class="fas fa-times"></i>
-                    </button>
-                    </div>
-                    <div style="clear: both;"></div>
-                    <h2></h2>
-                    <div class="longbar"></div>
-                    <div id="condiTxt">
-                </div>
+                
             </div>
         </div>
         <script>

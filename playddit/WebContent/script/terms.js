@@ -1,43 +1,100 @@
 /**
  * 
  */
+/*$(function(){
+	$('#condition').on('click', function(){
 
-// 쿠키로 선택사항 저장하기
+			
+		if(!(must1 && must2 && must3)){
+			alert('필수약관은 반드시 선택해야 합니다.');
+			return;
+		}
+			termsCookie();
+		});
+
+});*/
 
 $(function(){
-	var PickCookie1 = getCookie("id1");
-	var PickCookie2 = getCookie("id2");
-	var PickCookie3 = getCookie("id3");
-	
-	if( PickCookie1 != undefined){
-		$('#pick0').attr("checked", true);
-	}
-	
-})
+		showTerm();
+		showTerm2();
 
+		$("#condition").on("click",".fas", function(){
+			no = $(this).attr('must');
+			termsCon(no);				
+		})
+		
+		$('#condiBtn').on('click', function(){			
+			if($(".mustCondi:checked").length!=3){
+				alert("필수 약관은 반드시 선택해야 합니다.");
+				return;
+			}
+			
+			termsCookie();
+			
+			location.href="join.html";
+		})		
+	})
+
+
+
+termsCookie = function(){
+	var pick1 = $('#pick0:checked').val() == 'on';
+	var pick2 = $('#pick1:checked').val() == 'on';
+	var pick3 = $('#pick2:checked').val() == 'on';
+	
+	alert(pick1);
+	
+	setCookie("pick1", pick1, 1);
+	setCookie("pick2", pick2, 1);
+	setCookie("pick3", pick3, 1);
+}
+
+
+// 쿠키로 선택사항 저장하기
+//
+//$(function(){
+//	var PickCookie1 = getCookie("id1");
+//	var PickCookie2 = getCookie("id2");
+//	var PickCookie3 = getCookie("id3");
+//	
+//	if( PickCookie1 != undefined){
+//		$('#pick0').attr("checked", true);
+//	}
+//	
+//	if(PickCookie2 != undefined){
+//		$('#pick1').attr("checked", true);
+//	}
+//	
+//	if(PickCookie3 != undefined){
+//		$('#pick2').attr("checked", true);
+//	}
+//	
+//})
+
+// 쿠키저장
 function setCookie(name, value, exp){
 	var date = new Date();
 	date.setTime(date.getTime() + exp*24*60*60*1000);
 	document.cookie = name+'='+escape(value)+';expires='+date.toUTCString()+';path=1'; 
 }
 
+// 저장한 쿠키 가져오기
 function getCookie(name){
 	const value = `;${document.cookie}`;
 	const parts = value.split(`; ${name}=`);
 	if (parts.length === 2) return unescape(parts.pop()).split(';').shift();
 }
 
-
 function remeberPick(){
 	id1 = $('#pick0').val().trim();
 	id2 = $('#pick1').val().trim();
 	id3 = $('#pick2').val().trim();
 	
+	
 	setCookie("id1", id1, 30);
 	setCookie("id2", id2, 30);
 	setCookie("id3", id3, 30);
 }
-
 
 
 // 필수 약관 제목 
@@ -134,17 +191,19 @@ termsCon = function(terms_no){
 }
 
 
+// 쿠키 저장
+function setCookie(name, value, exp){
+	var date = new Date();
+	date.setTime(date.getTime() + exp*24*60*60*1000);
+	document.cookie = name+'='+escape(value)+';expires='+date.toUTCString()+';path=1';
+}
 
-
-
-
-
-
-
-
-
-
-
-
+// 저장한 쿠키 가져오기
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return unescape(parts.pop()).split(';').shift();
+  
+}
 
 
