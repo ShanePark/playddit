@@ -83,7 +83,7 @@ function phCheck() {
 	reghp = /^\d{3}\d{3,4}\d{4}$/;
 
 	if (!reghp.test(phonevalue)) {
-		$('input[name=phone]').parents('.box').find('.msg').text("올바른 형식이 아닙니다.");
+		$('input[name=phone]').parents('.box').find('.msg').text("올바른 형식(-없이 입력해주세요.)이 아닙니다.");
 	} else {
 		$('input[name=phone]').parents('.box').find('.msg').empty();
 

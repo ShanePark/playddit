@@ -43,7 +43,7 @@
 					alert("이름 형식을 확인해주세요");
 					return false;
 				}else if(phoneSpan > 1){
-					alert("전화번호 형식을 확인해주세요");
+					alert("전화번호 형식(-없이 숫자만 입력해주세요)을 확인해주세요");
 				}else if(birthSpan > 1){
 					alert("생년월일을 확인해주세요.");
 				}else if(multiValue == 0){
