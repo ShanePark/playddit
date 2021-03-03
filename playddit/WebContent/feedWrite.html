@@ -246,6 +246,10 @@
         
         <!--컨텐츠 시작-->
 		<div class="cen feedWrite" id="wrap">
+            <div id="mainTitle">
+                <h2>Upload your feed</h2>
+                <p class="subtitle">Please write down your story.</p>
+            </div>
 		    <form>
 				<!--반장 또는 선생님만 보이는 체크박스-->
 				<div id="moniterCho">
@@ -296,7 +300,7 @@
         <script>
             $(function(){
 				$('#content').on('keyup', function() {
-					$('#bytes').html("("+$(this).val().length+"자 / 최대 500자)");
+					$('#bytes').html("("+$(this).val().length+"자 / 최대 700자)");
 
 					if($(this).val().length > 700) {
 						$(this).val($(this).val().substring(0, 700));
