@@ -30,7 +30,6 @@ function codeSubmit(){
 	phone = $('input[name=phone]').val().trim();
 	birth = $('input[name=birth]').val().trim();
 	class_id = $('select[name=itemclass]').val();
-	alert(class_id);
 	
 	$.ajax({
 		url : '/playddit/join/joinSessionAdd.do',
