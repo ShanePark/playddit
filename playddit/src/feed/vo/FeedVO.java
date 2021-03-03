@@ -17,9 +17,22 @@ public class FeedVO {
 	private String cont;
 	private int comcount;
 	private List<ComVO> replyList;
+	private String ismine;
 	
 	
 	
+	
+	
+	public String getIsmine() {
+		return ismine;
+	}
+
+
+	public void setIsmine(String ismine) {
+		this.ismine = ismine;
+	}
+
+
 	public List<ComVO> getReplyList() {
 		return replyList;
 	}

@@ -8,7 +8,8 @@
 	
 	<select id = "getFeed" resultClass ="feedVO" parameterClass="String">
 	
-	select a.feed_no as feedno, a.user_id as id, a.feed_cont as cont,
+	select a.feed_no as feedno, a.user_id as id, a.feed_cont as cont,(CASE WHEN a.user_id = #user_id# THEN 'true'
+                      ELSE 'false' END)as ismine,
 			nvl(b.user_pic,'default.png') as profile, 
 			nvl(a.feed_pic,'none') as feedpic,
 			b.user_nickname as nickname, 
@@ -58,6 +59,14 @@
         values(feed_no_seq.nextval, #id#, #cont#, sysdate, #feedpic#)
     	
 	</insert>
+	
+	
+	<delete id ="deleteFeed" parameterClass="int">
+	
+	delete from feed
+		where feed_no = #feedno#
+	
+	</delete>
 	
 	
 	</sqlMap>
