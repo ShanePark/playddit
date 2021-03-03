@@ -51,7 +51,7 @@ public class FeedDaoImpl implements IFeedDao {
 		map.put("cont", cont);
 		map.put("feedpic", feedpic);
 		
-		return client.update("feed.insertFeed", map);
+		return (int) client.insert("feed.insertFeed", map);
 	}
 
 }
