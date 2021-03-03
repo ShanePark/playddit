@@ -2,15 +2,33 @@ package alarm.vo;
 
 public class AlarmVO {
 	private String cont;
-	private String user;
+	private String receiver;
+	private String sender;
+	private String sender_pic;
 	private int type;
-	private int chk;
-	
 	public String getCont() {
 		return cont;
 	}
 	public void setCont(String cont) {
 		this.cont = cont;
+	}
+	public String getReceiver() {
+		return receiver;
+	}
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
+	}
+	public String getSender() {
+		return sender;
+	}
+	public void setSender(String sender) {
+		this.sender = sender;
+	}
+	public String getSender_pic() {
+		return sender_pic;
+	}
+	public void setSender_pic(String sender_pic) {
+		this.sender_pic = sender_pic;
 	}
 	public int getType() {
 		return type;
@@ -24,10 +42,7 @@ public class AlarmVO {
 	public void setChk(int chk) {
 		this.chk = chk;
 	}
-	public String getUser() {
-		return user;
-	}
-	public void setUser(String user) {
-		this.user = user;
-	}
+	private int chk;
+	
+	
 }

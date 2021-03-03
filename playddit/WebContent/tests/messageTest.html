@@ -176,7 +176,7 @@ getAlarm = function(){
 			var alarm = '<div id="alarmWrap">'
 			$.each(res, function(i,v){
 				alarm += '<div class="alarm">';
-				alarm += '<a class="alarmUser" href="#"><img src="../images/default.png" /></a>'
+				alarm += '<a class="alarmUser" href="'+v.sender+'"><img src="../images/profile/'+ v.sender_pic +'" /></a>'
 				alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
 				switch(v.type){
 				case 11: alarm += '님이 나를 follow 하기 시작했습니다.'

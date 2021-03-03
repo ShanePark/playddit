@@ -171,12 +171,14 @@ values(cmsg_no_seq.nextval,'C202011302', 'psh40963@naver.com', '학급에 메시
 -----------------------------------------------------
 --  ALL the queries about ALARM 
 -----------------------------------------------------
-
+select * from alarm;
 -----------------------------------------------------
 -- Get alarm list
-select alarm_cont as cont, alarm_type as type, alarm_chk as chk
-from alarm
-where user_id = 'psh40963@naver.com'
+select alarm.alarm_cont as cont, alarm.alarm_type as type, alarm.alarm_chk as chk,
+        users.user_id as sender, users.user_pic as profile
+from alarm, users
+where alarm.user_id = 'psh40963@naver.com'
+        and alarm.alarm_cont = users.user_nickname
 order by alarm_no desc;
 -----------------------------------------------------
 -- insert new message alarm 
