@@ -9,12 +9,14 @@ selectClass = function(){
 		type : 'get',
 		success : function(res){
 			code = "";
+			code += "<select name='itemclass'>";
 			code += "<option value='default'>Choose your class</option>";
 			code += "<option value='default'>소속 학급 없음</option>";
 			$.each(res, function(i, v){
 				code += "<option value=" + v.class_id +"> " + v.classname + "</option>"; 
 			})
-			$('.item').find('select').append(code);
+			code += "</select>";
+			$('#tagChange').html(code);
 		},
 		error : function(xhr){
 			alert('상태 : ' + xhr.status);

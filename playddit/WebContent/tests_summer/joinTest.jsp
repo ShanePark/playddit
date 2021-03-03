@@ -28,9 +28,31 @@
 <script src="../js/jquery.serializejson.min.js"></script>
 <script>
 	
-		$(function(){		
-			// class정보 출력
-			selectClass();
+		$(function(){			
+			$('input[name=itemclass]').on('click', function(){
+				var nameLength = $('input[name=name]').val().length;
+				var phoneLength = $('input[name=phone]').val().length;
+				var birthLength = $('input[name=birth]').val().length;
+				var multiValue = nameLength * phoneLength * birthLength;
+				
+				var nameSpan = $('input[name=name]').parents('.box').find('.msg').text().length;
+				var phoneSpan = $('input[name=phone]').parents('.box').find('.msg').text().length;
+				var birthSpan = $('input[name=birth]').parents('.box').find('.msg').text().length;
+				
+				if(nameSpan > 1){
+					alert("이름 형식을 확인해주세요");
+					return false;
+				}else if(phoneSpan > 1){
+					alert("전화번호 형식을 확인해주세요");
+				}else if(birthSpan > 1){
+					alert("생년월일을 확인해주세요.");
+				}else if(multiValue == 0){
+					alert("학급을 선택하기 위해서는 이름, 전화번호, 생년월일을 입력해야 합니다.");
+					return false;
+				}else{
+					selectClass();
+				}				
+			})
 			
 			// id(email) check
 			$('input[name=mail]').on('keyup', function() {
@@ -133,6 +155,8 @@
 				$('input[name=birth]').parents('.box').find('.msg').text("");
 			}
 		})
+		
+		// 선택입력사항 입력해야 학급 선택 가능하게
 
 		$('#joinBtn').on('click', function() {	
 			if ($('input[name=mail]').parents('.box').find('.msg').text().length > 1 || $('input[name=mail]').val() == "") {
@@ -258,9 +282,8 @@
 					<p>
 						&nbsp;&nbsp;Class<span class="msg"></span>
 					</p>
-					<div class="item">
-						<select name="itemclass">
-						</select>
+					<div id="tagChange" class="item">
+						<input name="itemclass" type="text" placeholder="Choose your class">
 					</div>
 				</div>
 
