@@ -32,7 +32,7 @@ public class FeedTest {
 		
 		
 		System.out.println("service.insertfeed : "+ service.insertFeed(id, cont, feedpic));
-
+		
 		try {
 			System.out.println("dao.insertFeed : " + dao.insertFeed(id, cont, feedpic));
 		} catch (SQLException e) {
