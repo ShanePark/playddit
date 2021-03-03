@@ -81,7 +81,7 @@ public class FeedServiceImpl implements IFeedService {
 			e.printStackTrace();
 		}
 		return vo;
-    
+	}
   @Override
 	public int deleteFeed(int feedno) {
 	
