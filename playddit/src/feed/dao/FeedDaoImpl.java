@@ -70,7 +70,10 @@ public class FeedDaoImpl implements IFeedDao {
 		vo.setFeedno(feed_no);
 		return (FeedVO) client.queryForObject("feed.getOneFeed", vo);
 	}
-
-	
+  
+  @Override
+	public int deleteFeed(int feedno) throws SQLException {
+		return client.delete("feed.deleteFeed",feedno);
+	}
 
 }

@@ -18,6 +18,7 @@ public interface IFeedDao {
 	public int insertFeed(String id, String cont, String feedpic) throws SQLException;
 	
 	// 피드 삭제 하기 (내 피드만)
+	public int deleteFeed(int feedno) throws SQLException;
 	
 	
 	// 피드 수정 하기 (내 피드만)
