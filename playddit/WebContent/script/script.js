@@ -61,6 +61,25 @@ $(function(){
     
     //알람
     var visi = false;
+	//feed Search
+	$("#search button, #msearch button").on("click", function(){
+		if(visi){
+			$("#alarmEdge2, #alarmEdge").hide();
+			$("#modal").fadeOut(300);
+			visi = false;
+		}
+
+		$("#mask").show();
+		$("#feedSearch").show();
+		$("#feedSearchModal").slideDown(500);
+	});
+
+	$("#mask").click(function(){
+		$(this).hide();
+		$("#feedSearchModal").slideUp(300);
+		$("#feedSearch").delay(200).hide();
+	});
+    
     $(".alarmBtn").click(function(){
         if(!visi){
             $("#alarmEdge2 , #alarmEdge, #modal").show();
@@ -71,7 +90,7 @@ $(function(){
             visi = false;
         }
     });
-    
+
     //모바일 헤더 설정
     
     $(window).scroll(function(evt) {

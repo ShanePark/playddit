@@ -488,8 +488,8 @@
                 <div id="feedDelModal">
                     <p>피드를 삭제 하시겠습니까?</p>
                     <div id="feedDelBtn">
-                        <button type="button" id="goDel">삭제</button>
                         <button type="button" id="goModi">수정</button>
+                        <button type="button" id="goDel">삭제</button>
                         <button type="button" id="goCancel">취소</button>
                     </div>
                 </div>

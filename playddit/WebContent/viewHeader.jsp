@@ -15,7 +15,7 @@
 		</div>
 		<ul id="gnb">
 			<li>
-				<a href="/WebContent/feed.jsp"><i class="fas fa-home"></i></a>
+				<a href="feed.jsp"><i class="fas fa-home"></i></a>
 			</li>
 			<li>
 				<a href="#"><i class="fas fa-envelope"></i></a>

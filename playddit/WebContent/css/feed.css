@@ -70,7 +70,8 @@ body {
     font-size: 0.95em;
     padding-left: 3px;
 }
-.proBox .myFeed {
+
+.myFeed {
     border: none;
     background-color: transparent;
     font-size: 1.2em;
@@ -430,6 +431,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
+	z-index: 905;
 }
 #feedDelModal p {
     text-align: center;
@@ -625,8 +627,10 @@ body {
 	color: #a1c4fd!important;
 	display: block;
 }
-.reply .myComm {
-    top: 0px!important;
+.reply .myReply {
+    top: 1px!important;
+	left: 3px!important;
+	color: #a1c4fd!important;
 }
 
 #commentInputBox {
@@ -783,6 +787,8 @@ footer p {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+/*-----------------feed write--------------------------*/
 
 /*-----------------여기부터 태블릿pc---------------------*/
 @media all and (max-width: 1020px) {
