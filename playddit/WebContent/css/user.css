@@ -557,7 +557,8 @@ label[for='allchk'] h5 {
     cursor: pointer;
 }
 #myPic #cir img {
-    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
 }
 #myPic #modiPic {
     cursor: pointer;
@@ -611,6 +612,9 @@ label[for='allchk'] h5 {
     border-radius: 23px;
     padding: 0 20px;
 }
+#class .item select:focus {
+    outline: none;
+}
 #class #txt {
     margin-bottom: 40px;
     margin-top: 12px;
@@ -640,9 +644,11 @@ label[for='allchk'] h5 {
     height: 70px;
     border-radius: 50%;
     margin: auto;
+    overflow: hidden;
 }
 #followBox .smallPic img {
-    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
 }
 #followBox .followName {
     color:  #7795d8;

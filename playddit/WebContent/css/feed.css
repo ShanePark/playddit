@@ -218,7 +218,7 @@ body {
     bottom: 0;
     left:0;
     top:0;
-    z-index: 100;  
+    z-index: 50;  
     background-color: transparent;
 	display: none;
 }
@@ -816,10 +816,32 @@ footer p {
 /*-----------------feed write--------------------------*/
 .feedWrite {
 	width: 90%;
-	background-color: white;
 	border-radius: 30px;
-	padding: 50px;
 	color: #3d3d3d;
+    display: block!important;
+}
+
+#mainTitle {
+    text-align: right;
+    margin-bottom: 20px;
+    padding: 10px;
+    color: #5392d1
+}
+#mainTitle h2  {
+    margin-bottom: 8px;
+    font-size: 2em;
+}
+
+.feedWrite form {
+	width: 100%;
+    background: white;
+    padding: 60px 50px;
+    border-radius: 30px;
+    box-shadow: 2px 5px 15px #b1abc4;
+}
+.feedWrite h3 {
+	margin-bottom: 10px;
+	font-size : 1.3em;
 }
 
 #moniterCho input[type="checkbox"] {
@@ -847,15 +869,6 @@ input[type="checkbox"]:checked + label .chk {
 	font-weight: bold;
 	font-family : 'Nanum Gothic', sans-serif;
 	margin-right: 20px;
-}
-
-.feedWrite form {
-	width: 100%;
-}
-.feedWrite h3 {
-	margin-bottom: 8px;
-	font-size : 1.3em;
-	color: #93b8ff;
 }
 
 #picup {
@@ -913,7 +926,7 @@ input[type="checkbox"]:checked + label .chk {
 	border: 1px solid #90bdde;
 }
 #textup textarea:focus {
-	border: 1px solid #90bdde;
+    outline: none;
 }
 
 #feedUploadBtn {
@@ -968,4 +981,18 @@ input[type="checkbox"]:checked + label .chk {
 	#gnb {
     	margin-top: 1px;
 	}
+    
+    /*----------feedWrite----------------*/
+    .feedWrite {
+        width: 100%;
+        padding-bottom: 20px;
+    }
+    
+    .feedWrite form {
+        border-radius: 0;
+    }
+    
+    #mainTitle {
+        margin-top: 20px;
+    }
 }

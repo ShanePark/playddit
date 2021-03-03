@@ -78,13 +78,11 @@ $(function(){
 	$("#mask").click(function(){
 		$(this).hide();
 		
-		if(visi){
 			$("#alarmEdge2, #alarmEdge").hide();
 			$("#modal").fadeOut(300);
-		}else{
+        
 			$("#feedSearchModal").slideUp(300);
 			$("#feedSearch").delay(200).hide();
-		}
 	});
     
     $(".alarmBtn").click(function(){
@@ -96,7 +94,7 @@ $(function(){
 		
 		$("#mask").show();
 		$("#alarmEdge2 , #alarmEdge, #modal").show();
-		visi = true;
+        visi = false;
     });
 	
     //모바일 헤더 설정
