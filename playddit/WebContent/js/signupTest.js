@@ -9,12 +9,14 @@ selectClass = function(){
 		type : 'get',
 		success : function(res){
 			code = "";
+			code += "<select name='itemclass'>";
 			code += "<option value='default'>Choose your class</option>";
 			code += "<option value='default'>소속 학급 없음</option>";
 			$.each(res, function(i, v){
 				code += "<option value=" + v.class_id +"> " + v.classname + "</option>"; 
 			})
-			$('.item').find('select').append(code);
+			code += "</select>";
+			$('#tagChange').html(code);
 		},
 		error : function(xhr){
 			alert('상태 : ' + xhr.status);
@@ -81,7 +83,7 @@ function phCheck() {
 	reghp = /^\d{3}\d{3,4}\d{4}$/;
 
 	if (!reghp.test(phonevalue)) {
-		$('input[name=phone]').parents('.box').find('.msg').text("올바른 형식이 아닙니다.");
+		$('input[name=phone]').parents('.box').find('.msg').text("올바른 형식(-없이 입력해주세요.)이 아닙니다.");
 	} else {
 		$('input[name=phone]').parents('.box').find('.msg').empty();
 
