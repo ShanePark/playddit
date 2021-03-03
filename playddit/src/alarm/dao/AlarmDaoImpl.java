@@ -43,9 +43,9 @@ public class AlarmDaoImpl implements IAlarmDao {
 		vo.setReceiver(user);
 		vo.setCont(cont);
 		vo.setType(type);
-		if(client.insert("alarm.newAlarm", vo) == null)
+		if(client.insert("alarm.newAlarm", vo) == null) {
 			return 1;
-		else return 0;
+		}else return 0;
 	}
 
 }
