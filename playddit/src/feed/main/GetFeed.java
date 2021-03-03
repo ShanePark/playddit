@@ -48,10 +48,13 @@ public class GetFeed implements IAction {
 		
 		// 3. 받아온 리스트를 json 데이터로 변경한다.
 		String listJson = new Gson().toJson(list);
+		
 				
 		// 4. 해당 리스트(json으로 변경된 것)를 ajax 로 보낸다.
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().write(listJson);
+		
+		
 		
 		
 		return null;
