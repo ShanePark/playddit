@@ -143,9 +143,14 @@ body {
     display: inline-block;
     margin-right: 10px;
     box-shadow: 2px 3px 3px #dae7fc;
+    overflow: hidden;;
 }
 #profile #userPic img {
-    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #profile #userBox {
@@ -216,9 +221,15 @@ body {
     border-radius: 50%;
     box-shadow: 2px 3px 3px #dae7fc;
     display: inline-block;
+    overflow: hidden;
 }
 #myGroup .groupCir img {
     width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 #myGroup .groupInfo {
     width: calc(100% - 58px);
@@ -433,7 +444,7 @@ footer #copy {
     height: 20px;
     background: white;
     position: absolute;
-    top: 120px;
+    top: 56px;
     right: 21px;
     transform: rotate(45deg);
     border-radius: 3px;
@@ -450,7 +461,7 @@ footer #copy {
     height: 350px;
     background: white;
     position: absolute;
-    top: 128px;
+    top: 64px;
     right: -27%;
     border-radius: 10px;
     box-shadow: 1px 4px 10px rgba(39, 39, 39, 0.4);
@@ -502,9 +513,14 @@ footer #copy {
     height: 55px;
     line-height: 55px;
     border-radius: 50%;
+    overflow: hidden;
 }
 .alarm .alarmUser img {
-    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .alarm .alarmCont {
     width: 320px;
@@ -578,9 +594,15 @@ footer #copy {
     width: 55px;
     height: 55px;
     border-radius: 50%;
+    overflow: hidden;
 }
 .followList .followPic img {
     width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .followList .followInfo {
     display: inline-block;

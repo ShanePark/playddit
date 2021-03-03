@@ -170,9 +170,14 @@ header .cen > a img {
     height: 55px;
     line-height: 55px;
     border-radius: 50%;
+    overflow: hidden;
 }
 .alarm .alarmUser img {
-    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .alarm .alarmCont {
     width: 320px;
