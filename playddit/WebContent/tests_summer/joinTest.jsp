@@ -183,6 +183,7 @@
 			
 			mail = $('input[name=mail]').val();
 			$('#codeMail').text(mail);
+			
 			codeSubmit();
 			
 		})		
@@ -341,10 +342,7 @@
                         $(this).prev("input").attr("type", "password");
                     }
                 });
-/*                 
-                $(".double").on("click", function(){
-                   $(this).toggleClass("active"); 
-                }); */
+
             });
         </script>
 </body>

@@ -218,7 +218,7 @@ body {
     bottom: 0;
     left:0;
     top:0;
-    z-index: 100;  
+    z-index: 50;  
     background-color: transparent;
 	display: none;
 }
@@ -814,6 +814,135 @@ footer p {
 }
 
 /*-----------------feed write--------------------------*/
+.feedWrite {
+	width: 90%;
+	border-radius: 30px;
+	color: #3d3d3d;
+    display: block!important;
+}
+
+#mainTitle {
+    text-align: right;
+    margin-bottom: 20px;
+    padding: 10px;
+    color: #5392d1
+}
+#mainTitle h2  {
+    margin-bottom: 8px;
+    font-size: 2em;
+}
+
+.feedWrite form {
+	width: 100%;
+    background: white;
+    padding: 60px 50px;
+    border-radius: 30px;
+    box-shadow: 2px 5px 15px #b1abc4;
+}
+.feedWrite h3 {
+	margin-bottom: 10px;
+	font-size : 1.3em;
+}
+
+#moniterCho input[type="checkbox"] {
+    display: none;
+}
+input[type="checkbox"] + label .chk {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: -2px 4px 0 0;
+    vertical-align: middle;
+    background: url(../images/checkbox.svg) left top no-repeat;
+    cursor: pointer;
+    background-size: cover;
+}
+input[type="checkbox"]:checked + label .chk {
+    background:url(../images/checkbox.svg)  -26px top no-repeat;
+    background-size: cover;
+}
+
+#moniterCho {
+	margin-bottom: 80px;
+}
+#moniterCho label span:last-of-type {
+	font-weight: bold;
+	font-family : 'Nanum Gothic', sans-serif;
+	margin-right: 20px;
+}
+
+#picup {
+	margin-bottom: 80px;	
+}
+#picup #fileBox{
+	width: 100%;
+	margin-top: 15px;
+}
+#picup .file {
+	display: inline-block;
+	overflow: hidden;
+	width: 150px;
+	height: 150px;
+	margin-right: 10px;
+}
+
+#picup #uploadBox {
+	border: 1px solid #90bdde;
+}
+#picup #uploadBox #fileBtn {
+	width: 100%;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	cursor: pointer;
+	text-align: center;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 1.2em;
+	border-radius: 50%;
+	border: 1px solid #90bdde;
+}
+#picup #uploadBox #fileBtn i {
+	color: #90bdde;
+}
+
+#picup .file img {
+	min-width: 100%;
+	max-height: 100%;
+}
+
+#textup #bytes {
+	display: block;
+	margin-bottom: 10px;
+}
+#textup textarea {
+	width: 100%;
+	height: 500px;
+	overflow: auto;
+	padding: 20px;
+	font-size: 1.5em;
+	border: 1px solid #90bdde;
+}
+#textup textarea:focus {
+    outline: none;
+}
+
+#feedUploadBtn {
+	border: none;
+	background : #90bdde;
+	color: white;
+	font-size: 1.2em;
+	font-weight: bold;
+	width: 150px;
+	height: 50px;
+	border-radius: 10px;
+	margin-top: 30px;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
 
 /*-----------------여기부터 태블릿pc---------------------*/
 @media all and (max-width: 1020px) {
@@ -852,4 +981,18 @@ footer p {
 	#gnb {
     	margin-top: 1px;
 	}
+    
+    /*----------feedWrite----------------*/
+    .feedWrite {
+        width: 100%;
+        padding-bottom: 20px;
+    }
+    
+    .feedWrite form {
+        border-radius: 0;
+    }
+    
+    #mainTitle {
+        margin-top: 20px;
+    }
 }

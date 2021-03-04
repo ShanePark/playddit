@@ -81,8 +81,10 @@ public class FeedServiceImpl implements IFeedService {
 			e.printStackTrace();
 		}
 		return vo;
-    
-  	@Override
+	}
+  
+  @Override
+
 	public int deleteFeed(int feedno) {
 	
 		try {
@@ -106,8 +108,5 @@ public class FeedServiceImpl implements IFeedService {
 		return 0;
 	}
 
-	
 
-
->>>>>>> Stashed changes
 }

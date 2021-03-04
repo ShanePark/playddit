@@ -14,6 +14,7 @@
         <link href="css/user.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/modal.js"></script>
+		<script src="script/terms.js"></script>
 	</head>
 	<body class="sky">
 	    <div id="wrap" class="cen">
@@ -43,63 +44,9 @@
                 
                 <form id="condition" action="condition.jsp" method="get">
                     <div id="condiLeft">
-                        <p><span class="red">*</span> 필수약관</p>
-                        <ul class="conditions" id="must">
-                            <li class="longbar">
-                                <input type="checkbox" class="mustCondi" name="must1" id="must1"/>
-                                <label for="must1">
-                                    <span class="chk"></span>
-                                    <span list="1">서비스 이용약관(필수)</span>
-                                </label>
-                                <i class="fas fa-chevron-right"></i>
-                            </li>
-                            <li class="longbar">
-                                <input type="checkbox" class="mustCondi" name="must2" id="must2"/>
-                                <label for="must2">
-                                    <span class="chk"></span>
-                                    <span list="2">개인정보 수집 및 이용동의(필수)</span>
-                                </label>
-                                <i class="fas fa-chevron-right"></i>
-                            </li>
-                            <li class="longbar">
-                                <input type="checkbox" class="mustCondi" name="must3" id="must3"/>
-                                <label for="must3">
-                                    <span class="chk"></span>
-                                    <span list="3">개인정보의 제3자 제공 동의(필수)</span>
-                                </label>
-                                <i class="fas fa-chevron-right"></i>
-                            </li>
-                        </ul>
                     </div>
                     
                     <div id="condiRight">
-                        <p>선택약관</p>
-                        <ul class="conditions" id="pick">
-                            <li class="longbar">
-                                <input type="checkbox" class="pickCondi" name="pick1" id="pick1"/>
-                                <label for="pick1">
-                                    <span class="chk"></span>
-                                    <span list="1">위치기반서비스 이용약관 동의(선택)</span>
-                                </label>
-                                <i class="fas fa-chevron-right"></i>
-                            </li>
-                            <li class="longbar"> 
-                                <input type="checkbox" class="pickCondi" name="pick2" id="pick2"/>
-                                <label for="pick2">
-                                    <span class="chk"></span>
-                                    <span list="2">선택적인 수집/이용 동의(선택)</span>
-                                </label>
-                                <i class="fas fa-chevron-right"></i>
-                            </li>
-                            <li class="longbar">
-                                <input type="checkbox" class="pickCondi" name="pick3" id="pick3"/>
-                                <label for="pick3">
-                                    <span class="chk"></span>
-                                    <span list="3">프로모션 등 정보 이메일 수신 동의(선택)</span>
-                                </label>
-                                <i class="fas fa-chevron-right"></i>
-                            </li>
-                        </ul>
                     </div>
                     <div style="clear : both;"></div>
                     <button type="button" id="condiBtn" class="skyBtn">NEXT</button>

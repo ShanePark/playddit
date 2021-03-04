@@ -4,12 +4,12 @@ $(document).ready(function(){
 		$("#modalBody").delay(100).animate({marginTop:0},400);
 	});
     
-    $(".fas").click(function(){
+	$("#condition").on("click",".fas", function(){
 		$("#modal").fadeIn(200);
 		$("#modalBody, #condiModal").delay(100).animate({marginTop:0},400);
 	});
 	
-	$("#close").click(function(){
+	$("#condiModal, #modalBody").on("click", '#close', function(){
 		$("#modalBody, #condiModal").animate({marginTop:"300px"},300);
 		$("#modal").delay(100).fadeOut(300);
 	});
