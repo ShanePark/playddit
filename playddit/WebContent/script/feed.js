@@ -56,6 +56,7 @@ function loadGroup(){
 }
 
 function logout(){
+	setCookie("user_id",'',-1);
 	$.ajax({
 		url : '/playddit/login/logout.do',
 		error : function(xhr){
@@ -237,4 +238,16 @@ getAlarm = function(){
 		},
 		dataType : 'json'
 	})
+}
+
+function setCookie(name, value, exp){
+	var date = new Date();
+	date.setTime(date.getTime() + exp*24*60*60*1000);
+	document.cookie = name+'='+escape(value)+';expires='+date.toUTCString()+';path=1';
+}
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return unescape(parts.pop()).split(';').shift();
 }

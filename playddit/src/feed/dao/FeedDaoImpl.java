@@ -33,15 +33,15 @@ public class FeedDaoImpl implements IFeedDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<FeedVO> getFeed(String user_id) throws SQLException {
-		// TODO Auto-generated method stub
 		return (List<FeedVO>) client.queryForList("feed.getFeed", user_id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<ComVO> getCom(int feed_no) throws SQLException {
-		// TODO Auto-generated method stub
 		return (List<ComVO>) client.queryForList("feed.getCom", feed_no);
 	}
 
