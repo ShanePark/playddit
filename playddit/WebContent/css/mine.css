@@ -2,30 +2,218 @@
 /*-----------------------my page--------------------------*/
 #myPage {
     border-radius: 45px;
-    background: rgba(255, 255, 255, 0.3);
     margin: 4% auto 1% auto;
-    padding: 18px;
     display: flex;
     justify-content: space-between;
     box-shadow: 5px 5px 25px #c9bcd0;
-	min-height: 850px;
+	min-height: 750px;
+    height: 70vh;
+    overflow: hidden;
+    background: #f5f2f5;
 }
 
 #myLeft {
 	width: 25%;
-	padding-top: 60px;
+	padding: 30px;
+    background: #ffff;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
 }
-#myLeft #myProfile {
-	width: 150px;
-	height: 150px;
+
+#my {
+    display: flex;
+    margin-top: 60px;
+}
+#my #myProfile {
+	width: 100px;
+	height: 100px;
 	border-radius: 50%;
-	box-shadow: 4px 4px 20px #dacee0;
+	box-shadow: 1px 3px 10px #bebebe;
 	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center;
-	margin: auto;
+	background-size: cover;
+	background-position: top;
+}
+#my #myText {
+    margin-left: 15px;
+    margin-top: 30px;
+}
+
+#myText li {
+    width: 100%;
+    text-align: center;
+}
+
+#myName {
+    font-size: 1.02em;
+    font-weight: bold;
+    color: #6395e6;
+}
+#myClass {
+    font-size: 0.9em;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+#myIntro {
+    margin-top: 25px;
+    line-height: 1.4em;
+    text-align: left!important;
+    margin-bottom: 25px;
+}
+
+#myFollow {
+    border-top: 1px solid #e9e7fb;
+    padding-top: 25px;
+    margin-bottom: 40px;
+}
+#myFollow li {
+    display: inline-block;
+    width: calc((96% - 30px) / 3);
+    margin-right: 15px;
+    text-align: center;
+}
+#myFollow li:last-of-type {
+    margin-right: 0;
+}
+#myFollow li p {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+}
+#myFollow li span {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#btnBox {
+    display: flex;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.myIcon {
+    width: 50%;
+    margin-right: 10px;
+    text-align: center;
+}
+.myIcon:last-of-type {
+    margin-right: 0;
+}
+.myIcon i {
+    font-size: 2.2em;
+    color: #c9deff;
+    margin-bottom: 10px;
 }
 
 #myRight {
 	width: 75%;
+}
+
+
+/*---------------------버튼------------------*/
+.button_su{
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  border-radius: 28px;
+  margin-bottom: 30px;
+    width: 100%;
+}
+
+.su_button_circle{
+  background-color: red;
+  border-radius: 10000px;
+  position: absolute;
+  left:0;
+  top:0;
+  width: 0px;
+  height: 0px;
+  margin-left: 0px;
+  margin-top: 0px;
+  pointer-events: none;
+  /*animation-timing-function: ease-in-out; */
+}
+
+.button_su_inner{
+    display: inline-block;
+    background: #90bbff;
+    color: #F4F4F4;
+    font-size: 0.9em;
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+    border-radius: 3px;
+    transition: 400ms;
+    text-decoration: none;
+    padding: 15px;
+    z-index: 100000;
+}
+
+.button_text_container{
+   position:relative;
+   z-index: 10000;
+}
+
+.explode-circle {
+   animation: explode 0.5s forwards;
+
+}
+
+.desplode-circle{
+   animation: desplode 0.5s forwards;
+}
+
+@keyframes explode {
+  0% {
+    width: 0px;
+    height: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    background-color: rgba(42, 53, 80,0.2);
+  }
+  100% {
+    width: 400px;
+    height: 400px;
+    margin-left: -200px;
+    margin-top: -200px;
+    background-color: rgba(90, 160, 242, 0.8);
+  }
+}
+
+@keyframes desplode {
+  0% {
+    width: 400px;
+    height: 400px;
+    margin-left: -200px;
+    margin-top: -200px;
+    background-color: rgba(45, 125, 204, 0.8);
+  }
+  100% {
+    width: 0px;
+    height: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    background-color: rgba(108, 80, 129, 0.6);
+  }
+}
+
+#setBtn {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+ }
+
+#setBtn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+
+#setBtn {
+  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
 }
