@@ -57,7 +57,7 @@
    		
   
 		 $("#showfeed").on("click",".like", function(){
-			  
+			 var likeCount = parseInt($(this).parents('.feed').find('.likeCount').children('span').text()); 
 			 var like = $(this).hasClass("on");
 			 
 			 feedno = $(this).parents(".feed").attr("idx");
@@ -66,13 +66,22 @@
                   $(this).removeClass("on");
                   $(this).html('<i class="far fa-heart"></i>');
                   like = false;
+                  
+                  $(this).parents('.feed').find('.likeCount').html(  '좋아요 <span>'+ (likeCount-1) +' </span>개 ');
+                  
+          	     
              	
                    deleteLike(feedno);
               }else{
                   $(this).addClass("on");
                   $(this).html('<i class="fas fa-heart"></i>');
                   like = true;
+                  
+                  $(this).parents('.feed').find('.likeCount').html(  '좋아요 <span>'+ (likeCount+1) +' </span>개 ');
+                  
                   insertLike(feedno);
+               
+                  
               }
 			 
 			
@@ -199,7 +208,8 @@
 				   }
 			
 			feed += '          </div>'
-				   if(v.feedpic != "none") {
+				
+			if(v.feedpic != "feedpictest") {
 					   
 					   		word = (v.feedpic).split(",");
 					   		for(i = 0; i < word.length; i++){
