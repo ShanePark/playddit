@@ -13,6 +13,9 @@ public interface IFeedDao {
 
 	// 댓글 목록 불러오기
 	public List<ComVO> getCom(int feed_no) throws SQLException;
+
+	// 대댓글 목록 불러오기
+	public List<ComVO> getComReplies(int feed_com_no) throws SQLException;
 	
 	// 피드 작성 하기 
 	public int insertFeed(String id, String cont, String feedpic) throws SQLException;

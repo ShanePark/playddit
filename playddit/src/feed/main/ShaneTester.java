@@ -1,12 +1,13 @@
 package feed.main;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import feed.dao.FeedDaoImpl;
 import feed.dao.IFeedDao;
 import feed.service.FeedServiceImpl;
 import feed.service.IFeedService;
-import feed.vo.FeedVO;
+import feed.vo.ComVO;
 
 public class ShaneTester {
 	public static void main(String[] args) {
@@ -17,8 +18,12 @@ public class ShaneTester {
 		String user_id = "psh40963@naver.com";
 		int feed_no = 50;
 
-		FeedVO vo = service.getOneFeed(user_id,feed_no);
-		
-		System.out.println(vo);
+		try {
+			List<ComVO> list = dao.getComReplies(1);
+			System.out.println(list);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

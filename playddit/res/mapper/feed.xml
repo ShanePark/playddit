@@ -85,6 +85,15 @@
        order by comno
 	</select>
 	
+	<select id = "getComReplies" resultClass="comVO" parameterClass="int">
+		select a.f_com_re_no as comno, a.user_id as id, b.user_pic as profile,
+        a.f_com_re_cont as comcont, b.user_nickname as nickname,
+         to_char(a.f_com_re_date,'yyyy-mm-dd hh24:mi:ss') as time
+		from feed_com_re a, users b
+		where a.user_id = b.user_id
+		      and feed_com_no = #feed_com_no#
+		order by comno
+	</select>
 	
 	<insert id = "insertFeed" parameterClass="map">
 	
