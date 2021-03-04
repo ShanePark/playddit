@@ -24,6 +24,7 @@ public interface IFeedService {
 	public int deleteFeed(int feedno);
 	
 	// 피드 수정 하기 (내 피드만)
+	public int updateFeed(String feed_cont, String feed_pic, int feed_no);
 	
 	// 피드 좋아요 입력
 	public int insertLike(String id, int feedno);

@@ -126,6 +126,14 @@
 	</delete>
 	
 	
+	<update id = "updateFeed" parameterClass="map">
 	
+	update feed set 
+          feed_cont = #feed_cont#,
+          feed_date = sysdate,
+          feed_pic = #feed_pic#
+          where feed_no = #feed_no#
+	
+	</update>
 	
 	</sqlMap>
