@@ -35,7 +35,8 @@ function loadFeed(feedno){
 			
 			if(res.feedpic=== undefined){	// 사진이 없는경우
 			
-				$('#viewLeft').append(res.cont);
+				var contText = '<div class="textOnly"><p id="contTxt">'+res.cont+'</p></div>'
+				$('#viewLeft').append(contText);
 
 			}else{	// 사진이 첨부된 피드일 경우 
 			
