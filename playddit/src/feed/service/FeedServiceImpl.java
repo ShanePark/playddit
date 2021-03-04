@@ -47,6 +47,28 @@ public class FeedServiceImpl implements IFeedService {
 		return list;
 	}
 
+	
+	@Override
+	public FeedVO getOneFeed(String user_id, int feed_no) {
+		FeedVO vo = null;
+		try {
+			vo= dao.getOneFeed(user_id, feed_no);
+			List<ComVO> replyList = dao.getCom(feed_no);
+			
+			for(ComVO comVo : replyList) {	// comVo 들에 대댓글 정보 넣어주기
+				int comNo = comVo.getComno();
+				List<ComVO> comRepList = dao.getComReplies(comNo);
+				comVo.setReplyList(comRepList);
+			}
+			
+			vo.setReplyList(replyList);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	
 	@Override
 	public List<ComVO> getCom(int feed_no) {
 		
@@ -71,27 +93,15 @@ public class FeedServiceImpl implements IFeedService {
 		return 0;
 	}
 
-	@Override
-	public FeedVO getOneFeed(String user_id, int feed_no) {
-		FeedVO vo = null;
-		try {
-			vo= dao.getOneFeed(user_id, feed_no);
-			vo.setReplyList(dao.getCom(feed_no));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return vo;
-	}
-  
   @Override
 
 	public int deleteFeed(int feedno) {
-	
+	  	
 		try {
 			return dao.deleteFeed(feedno);
+					
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				e.printStackTrace();
 		}
 		return 0;
 	}

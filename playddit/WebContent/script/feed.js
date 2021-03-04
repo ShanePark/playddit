@@ -1,253 +1,94 @@
 $(function(){
-	loadProfile();
-	getAlarm();
-	loadGroup();
-	
-	 $(".followBtn").click(function(){
-        title = $(this).parent("li").children(".th").text();
-	
-		if(title == "팔로워"){
-			loadFollower();
-		}else{
-			loadFollowing();
-		}
-    });
-		
-	$('#logout').on('click', function(){
-		logout();
-	})
-
-	$('.followList').on('click', '.followBtn', function(){
-		var targetId = this.getAttribute('follow');
-		follow(this, targetId);
-	})
-	$('.followList').on('click', '.unfollowBtn', function(){
-		var targetId = this.getAttribute('follow');
-		unfollow(this, targetId);
-	})
-	
+	loadFeed();
 })
 
-function loadGroup(){
+var loadFeed = function(){
 	$.ajax({
-		url : '/playddit/users/getGroup.do',
-		error : function(xhr){
-			alert("status : " + xhr.status);
-		},
-		success : function(res){
+		url : '/playddit/feed/getFeed.do',
+		dataType : 'json',
+		success : function(res) {
 			
 			$.each(res, function(i,v){
-				var li = '<li class="group"><a href="'+v.groupId+'">'
-                    li += '<div class="groupCir"><img src="images/default.png"/></div>'
-                    li += '<div class="groupInfo"><p class="groupName">'+v.name+'</p>'
-                    if(v.type == 'class'){
-						li += '<span class="mem">소속인원 '+v.num+'</span>'
-					}else{
-						li += '<span class="mem">스터디원 '+v.num+'</span>'
-					}
-						
-                    li += '</div> </a> </li>'
-				$('#myGroup').find('ul').append(li);
+				
+				var feed = '<div class="feed">';
+				v.cont = v.cont.replace(/\n/g,"<br>");
+				
+				feed += '<div class="proBox" action="'+v.id+'">'
+				   	 + '<div class="proCir"><img src="images/profile/'+v.profile+'" alt="프로필사진" /></div>'
+                     + '<p class="proName">'+v.nickname
+                     + '<span class="proClass">6기 - 302호</span></p>';
+				
+				 if(v.ismine == "true"){	// 내가 쓴 글이면 출력될 버튼
+				    feed += '<button type="button" class="myFeed"><i class="fas fa-ellipsis-h"></i></button>';
+				   }
+				
+				feed += '</div>'
+				
+				if(v.feedpic != "none") {	// feedpic이 null 이면 none이 반환되도록 쿼리를 짰음.
+					
+					// 이미지 경로를 ',' 를 기준으로 쪼갠다음 반복문을 돌리며 넣어준다.
+					var images = v.feedpic.split(",");
+			   		feed += '<div class="feedPic"><div class="slider">'
+			   		for(j = 0; j < images.length; j++){
+						var img = '<div class="slide">';
+								+ '<img src="../images/feed/'+images[j]+'"/></div>';
+			   		}
+			        feed += '</div> </div>'
+				}else{	// 이미지가 없을 경우에는 그 자리에 본문을 찍습니다.
+					feed += '<div class="txt"><p class="txtCont">'+v.cont+'</p></div>'
+				}
+				
+
+                            <div class="icon">
+                                <button type="submit" class="like">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button type="button" class="comment">
+                                    <i class="far fa-comment-dots"></i>
+                                </button>
+                                <button type="button" class="dm">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+
+                                <button type="button" class="report">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="likeCount">
+                                좋아요 <span>100</span>개
+                            </div>
+
+                            <div class="txt">
+                                <a href="#" class="proName">Scarl-ett</a>
+                                <p class="txtCont">
+                                    프로그래머스 문제풀이 중..ㅠ<br /> 어떤 경우에 틀렸는지 좀 알려주세요...ㅠㅠ
+                                </p>
+                            </div>
+
+                            <div class="countComm">
+                                댓글 <span class="count">13</span>개
+                            </div>
+
+                            <div class="commentBox">
+                                <ul>
+                                    <li class="comm"><a href="#" class="commUser">summer</a> <span>프로그래머스
+                                            언제 다하죠?ㅠ</span>
+                                    <li class="comm"><a href="#" class="commUser">홍길동</a> <span>화이팅~!</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+				
+				
+				
+				$('#feedBox').append(feed);
 			})
 			
 		},
-		dataType : 'json'
-	})
-}
-
-function logout(){
-	setCookie("user_id",'',-1);
-	$.ajax({
-		url : '/playddit/login/logout.do',
-		error : function(xhr){
+		error : function(xhr) {
 			alert("status : " + xhr.status);
 		}
 	})
-	location.href="./index.html";
-}
-
-function loadProfile(){
-	$.ajax({
-		url : '/playddit/login/login.do',
-		type : 'post',
-		success : function(res){
-			$('#allFeed').append(res.allfeed);	
-			$('#Follower').append(res.follower);	
-			$('#Following').append(res.following);	
-			$('#className').append(res.className);	
-			$('#self').append(res.user_bio);
-			
-			if(res.user_pic == null){
-				res.user_pic = 'default.png';
-			}
-			
-			var profile = '<a href="#" id="userPic">'
-			+'<img src="images/profile/'+res.user_pic+'"+ /></a>'
-			+'<div id="userBox">'
-			+' <a href="#" id="userName">'+res.user_nickname+'</a><br/>'
-			+'<span id="userMail">'+res.user_id+'</span></div>'
-				
-			$('#infoBox').append(profile);
-			
-		},
-		error : function(xhr){
-			alert("상태 : " + xhr.status);
-		},
-		dataType : 'json'
-	})
-
-}
-
-
-loadFollower = function(){
-	$('.followList').empty();
-	$.ajax({
-		url : '/playddit/users/followerList.do',
-		type : 'post',
-		success : function(res){
-			$.each(res, function(i,v){
-				var li = '<li>';
-				li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
-				li += '<img src="images/profile/'+v.profile+'" /></a>';
-				li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
-				li += '<p class="followName">'+v.nickname+'</p>';
-				li += '<span class="followClass">'+v.department+'</span></a></div>';
-				if(v.followback == 0){
-					li += '</div><button type="button" follow="'+v.id+'" class="f4f followBtn">Follow</button>'
-				}
-				li += '</li>';
-				$('.followList').append(li);
-			})
-		},
-		error : function(xhr){
-			alert("status : " + xhr.status);
-		},
-		dataType : 'json'
-	})
-}
-
-loadFollowing = function(){
-	$('.followList').empty();
-	$.ajax({
-		url : '/playddit/users/followingList.do',
-		type : 'post',
-		success : function(res){
-			$.each(res, function(i,v){
-				var li = '<li>';
-				li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
-				li += '<img src="images/profile/'+v.profile+'" /></a>';
-				li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
-				li += '<p class="followName">'+v.nickname+'</p>';
-				li += '<span class="followClass">'+v.department+'</span></a></div>';
-				if(v.followback == 0){
-					li += '</div><button type="button" follow="'+v.id+'" class="f4f followBtn">Follow</button>'
-				}else{
-					li += '</div><button type="button" follow="'+v.id+'" class="f4f unfollowBtn">unfollow</button>'
-					
-				}
-				li += '</li>';
-				$('.followList').append(li);
-			})
-		},
-		error : function(xhr){
-			alert("status : " + xhr.status);
-		},
-		dataType : 'json'
-	})
-}
-
-follow = function(button, targetId){
-	$.ajax({
-		url : '/playddit/users/followUser.do',
-		type : 'post',
-		data : {'targetId' : targetId},
-		success : function(res){
-			
-			// 프로필 쪽 숫자 바꾸기
-			$('#Following').empty();
-			$('#Following').append(res);
-				
-			if(title == "팔로잉"){
-				// 모달창 숫자 바꾸기 
-				$('.followTitle').find('span').empty();
-				$('.followTitle').find('span').append(res);
-				loadFollowing();
-			}else{
-				// 팔로워 보는 모달일경우 follow 버튼만 삭제한다.
-				button.remove();
-			}
-		},
-		error : function(xhr){
-			alert("status : " + xhr.status);
-		},
-		dataType : "text"
-	})
-}
-unfollow = function(button, targetId){
-	$.ajax({
-		url : '/playddit/users/unfollowUser.do',
-		type : 'post',
-		data : {'targetId' : targetId},
-		success : function(res){
-			// 모달창 숫자 바꾸기 
-			$('.followTitle').find('span').empty();
-			$('.followTitle').find('span').append(res);
-			
-			// 프로필쪽 숫자 바꾸기
-			$('#Following').empty();
-			$('#Following').append(res);	
-			
-			// unfollow는 어차피 following 목록에서만 가능하다.
-			loadFollowing();
-		},
-		error : function(xhr){
-			alert("status : " + xhr.status);
-		},
-		dataType : "text"
-	})
-}
-
-getAlarm = function(){
-	
-	$.ajax({
-		url : '/playddit/alarm/getAlarm.do',
-		success : function(res){
-			var alarm = '';
-			$.each(res, function(i,v){
-				alarm += '<div class="alarm">';
-				alarm += '<a class="alarmUser" href="'+v.sender+'"><img src="images/profile/'+ v.sender_pic +'" /></a>'
-				alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
-				switch(v.type){
-				case 11: alarm += '님이 나를 follow 하기 시작했습니다.'
-					break;
-				case 12: alarm += '님이 새로운 메시지를 보냈습니다.'
-					break;
-				case 21: alarm += '님이 내가 쓴 글을 좋아합니다.'
-					break;
-				case 22: alarm += '님이 내가 쓴 글에 댓글을 남겼습니다.'
-					break;
-				case 31: alarm += '에 새로운 공지사항이 올라왔습니다.'
-					break;
-				}
-				alarm += '</a></div>';
-			})
-			$('#alarmWrap').append(alarm);
-		},
-		error : function(xhr){
-			alert("status : " + xhr.status);
-		},
-		dataType : 'json'
-	})
-}
-
-function setCookie(name, value, exp){
-	var date = new Date();
-	date.setTime(date.getTime() + exp*24*60*60*1000);
-	document.cookie = name+'='+escape(value)+';expires='+date.toUTCString()+';path=1';
-}
-
-function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return unescape(parts.pop()).split(';').shift();
+		
 }

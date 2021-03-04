@@ -22,7 +22,7 @@
 <script type="text/javascript">
 	$(function() {
 		
-		//delete feed 내 피드 삭제하기 모달
+		//내 피드 삭제하기 모달
 
         var modal2 = true;
         
@@ -57,7 +57,7 @@
    		
   
 		 $("#showfeed").on("click",".like", function(){
-			 var likeCount = parseInt($(this).parents('.feed').find('.likeCount').children('span').text()); 
+			  
 			 var like = $(this).hasClass("on");
 			 
 			 feedno = $(this).parents(".feed").attr("idx");
@@ -66,22 +66,13 @@
                   $(this).removeClass("on");
                   $(this).html('<i class="far fa-heart"></i>');
                   like = false;
-                  
-                  $(this).parents('.feed').find('.likeCount').html(  '좋아요 <span>'+ (likeCount-1) +' </span>개 ');
-                  
-          	     
              	
                    deleteLike(feedno);
               }else{
                   $(this).addClass("on");
                   $(this).html('<i class="fas fa-heart"></i>');
                   like = true;
-                  
-                  $(this).parents('.feed').find('.likeCount').html(  '좋아요 <span>'+ (likeCount+1) +' </span>개 ');
-                  
                   insertLike(feedno);
-               
-                  
               }
 			 
 			
@@ -141,14 +132,14 @@
 		
 	// 피드 삭제 function 생성
 	var goDel = function(feedno) {
-		alert("TEST1");
+		
 		$.ajax({
 			url : '/playddit/feed/deleteFeed.do',
 			type : 'post',
 			data : {'feedno' : feedno},
 			
 			success : function(res) {
-				alert(feedno + "피드삭제")
+				
 				$("#feedDelModal").slideUp(500);
 	            $("#feedDel").delay(200).hide();
 	            $("#reportBack").hide();
@@ -207,8 +198,7 @@
 				   }
 			
 			feed += '          </div>'
-				
-			if(v.feedpic != "feedpictest") {
+				   if(v.feedpic != "none") {
 					   
 					   		word = (v.feedpic).split(",");
 					   		for(i = 0; i < word.length; i++){
@@ -270,7 +260,7 @@
 			feed += '          </div>'
 			feed += '                                                                                                 '
 			
-			if(v.feedpic != "feedpictest") {
+			if(v.feedpic != "none") {
 			feed += '          <div class="txt">'
 			feed += '              <a href="#" class="proName"> '+v.nickname+' </a>'
 			feed += '              <p class="txtCont">'
@@ -278,15 +268,6 @@
 			feed += '              </p>'
 			feed += '          </div>'
 			
-			}else {
-				
-					feed += '          <div class="txt" style="display:none">'
-					feed += '              <a href="#" class="proName"> '+v.nickname+' </a>'
-					feed += '              <p class="txtCont">'
-					feed +=                 v.cont  
-					feed += '              </p>'
-					feed += '          </div>'
-				
 			}
 			
 			
@@ -313,63 +294,14 @@
 			feed += '       </ul></div>'
 			feed += '      </div>'
 					
-							
-			
-			
-		
-			
-			
-			
-					
-					
-			/* 		feed += '<p>' + "피드번호 : " + v.feedno + '</p>';
-					feed += '<p>' + "아이디 : " + v.id + '</p>';
-					feed += '<p>' + "프로필사진 : " + v.profile + '</p>';
-					feed += '<p>' + "피드사진 : " + v.feedpic + '</p>';
-					feed += '<p>' + "학급번호 : " + v.classname + '</p>';
-					feed += '<p>' + "좋아요 수 : " + v.countlike + '</p>';
-					feed += '<p>' + "좋아요 유무 : " + v.islike + '</p>';
-					feed += '<p>' + "신고유무 : " + v.isreport + '</p>';
-					feed += '<p>' + "닉네임 : " + v.nickname + '</p>';
-					feed += '<p>' + "피드 신고 수 : " + v.reportcount + '</p>';
-					feed += '<br><br>';	 */
-				
+
 					
 					feeds += feed;
 				
 				})
 				$('#showfeed').append(feeds);
 				
-				$("#showfeed").find('.txt').each(function(){
-				    var content = $(this).children('.txtCont');
-				    var index = content.width();
-				    var content_txt = content.text();
-				    var content_txt_short = content_txt.substring(0,200)+"...";
-				    var btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
-				    $(this).append(btn_more);
-				    if(content_txt.length >= 200){
-				        content.html(content_txt_short);
-				    }else{
-				        btn_more.hide();
-				    }
-				    btn_more.click(toggle_content);
-				    function toggle_content(){
-				        if($(this).hasClass('short')){
-				            // 접기 상태
-				            $(this).html('더보기');
-				            content.html(content_txt_short)
-				            $(this).removeClass('short');
-				        }else{
-				            // 더보기 상태
-				            $(this).html('접기');
-				            content.html(content_txt);
-				            $(this).addClass('short');
-				        }
-				    }
-				});	
-				
-				
-			
+
 			},
 			error : function(xhr) {
 				alert("status : " + xhr.status);
@@ -379,17 +311,6 @@
 
 	}
 	
-var getreply = function(feedno){
-	 	 reply = "";
-		 reply += '<ul><li class="comm"><a href="#" class="commUser">abce4</a> <span>프로그래머스'
-	 	 reply += '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</span></li></ul>'
-	 	 //alert(feedno);
-	 	 //alert(reply);
-
-			
-	 	 $('.commentBox').after(reply);
-}
-
 
 </script>
 
