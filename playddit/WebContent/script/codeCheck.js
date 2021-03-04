@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>play ddit message code test page</title>
-<script src="../js/jquery-3.5.1.min.js"></script>
-<script src="../js/insertUser.js"></script>
-<style>
-
-</style>
-<script>
-	
+/**
+ * 
+ */
 $(function(){	
 	var resentTime = new Date();
 			
@@ -116,45 +107,3 @@ function setCookie(name, value, exp){
 	  const parts = value.split(`; ${name}=`);
 	  if (parts.length === 2) return unescape(parts.pop()).split(';').shift();
 }
-	
-</script>
-</head>
-<body>
-        <div id="modal" class="code">
-            <div id="codeModal" class="cen fullModal">
-                <div id="closeBox">
-                    <button type="button" id="close" style="color : #a8ccfd;">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                
-                <div style="clear: both;"></div>
-                
-                <div id="codeTop">
-                    <img src="images/code.png" alt="이메일인증" />
-                    <div class="title">
-                        <h2>Welcome to playddit!</h2>
-                        <p class="subtitle">
-                            Email authentication is required
-                        </p>
-                    </div>
-                </div>
-
-                <div id="codeBottom">
-                    <p class="cont">
-                    환영합니다! 회원가입 완료를 위한 이메일 인증을 진행 해 주세요.<br/><span id="codeMail"></span> 메일함을 확인해주세요!
-                    </p>
-
-                    <form action="code.jsp" id="codeCont" method="post">
-                        <h2>인증 코드 입력</h2>
-                        <input type="text" name="code"/>
-
-                        <br/>
-                        <button type="reset" id="remail" >인증코드 재발송</button>
-                        <button type="submit" id="subCode">이메일 인증 확인</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-</body>
-</html>

@@ -45,6 +45,11 @@ public class JoinSessionAdd implements IAction{
 		String birth = request.getParameter("birth");
 		String class_id = request.getParameter("class_id");
 		
+		if(class_id == null || class_id == "") {
+			class_id = "'default'";
+		}
+		
+		
 		// 비밀번호 암호화
 		String key = "playddit"+mail+pass;
 		try {

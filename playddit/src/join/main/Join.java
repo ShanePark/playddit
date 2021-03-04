@@ -29,17 +29,21 @@ public class Join implements IAction {
 		
 		  // 세션 값 가져오기
 		  HttpSession session = request.getSession(); 
-		  
 		  UsersVO vo = (UsersVO)session.getAttribute("insertVo");
 		  String mail = vo.getUser_id();
 
+		  
+		  IJoinservice service = JoinServiceImpl.getService();
+		  int insert = service.insertUser(vo);
+		  
+		  
+		  String insertJson = new Gson().toJson(insert);
+		  
 		  // 쿠키 값 가져오기
 		  String pick1 = request.getParameter("pick1");
 		  String pick2 = request.getParameter("pick2");
 		  String pick3 = request.getParameter("pick3");
 		  
-		  IJoinservice service = JoinServiceImpl.getService();
-		  int insert = service.insertUser(vo);
 		  
 		  if("true".equals(pick1)) {
 			  service.pickConInsert(4, mail);
@@ -51,9 +55,6 @@ public class Join implements IAction {
 		  if("true".equals(pick3)) {
 			  service.pickConInsert(6, mail);
 		  }		  
-		  
-		  String insertJson = new Gson().toJson(insert);
-		  
 		  // 해당 데이터를 ajax로 보낸다.
 		  response.setContentType("application/json; charset=UTF-8");
 		  response.getWriter().write(insertJson);
