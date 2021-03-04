@@ -46,7 +46,7 @@ public class JoinSessionAdd implements IAction{
 		String class_id = request.getParameter("class_id");
 		
 		if(class_id == null || class_id == "") {
-			class_id = "'default'";
+			class_id = "'C000'";
 		}
 		
 		

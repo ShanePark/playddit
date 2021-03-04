@@ -20,7 +20,7 @@
 			}else if(birthSpan > 1){
 				alert("생년월일을 확인해주세요.");
 			}else if(multiValue == 0){
-				alert("학급을 선택하기 위해서는 이름, 전화번호, 생년월일을 입력해야 합니다.");
+				alert("학급을 선택하기 위해서는 \n이름, 전화번호, 생년월일을 입력해야 합니다.");
 				return false;
 			}else{
 				selectClass();

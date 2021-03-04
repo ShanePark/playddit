@@ -33,12 +33,13 @@ codeCheck = function(){
 		type : 'post',
 		data : { 'code' : code},
 		success : function(res){
-			alert("res = " + res);
 			if(code == res){
 				alert("코드가 일치합니다.");
+				$('input[name=code]').val('');
 				join();
 			}else{
 				alert("코드가 일치하지 않습니다. 올바른 코드를 입력해주세요.");
+				$('input[name=code]').val('');
 			}
 		},
 		error : function(xhr){
@@ -82,9 +83,22 @@ function join(){
 		},
 		success : function(res){
 			if(res == '1'){
-				alert("회원 가입 성공");
-			}else{
+				alert("회원 가입 성공");	
+	
+				$("#codeModal").animate({marginTop:"300px"},300);
+				$("#modal").delay(100).fadeOut(300);
+
+				location.href="/playddit/play.html";
+
+			}else if(res == '0'){
 				alert("회원 가입 실패");
+				
+				$("#codeModal").animate({marginTop:"300px"},300);
+				$("#modal").delay(100).fadeOut(300);
+				
+				location.href="/playddit/conditions.html";
+			}else{
+				location.href = "/playddit/index.html";		
 			}
 		},
 		error : function(xhr){
