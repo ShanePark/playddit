@@ -28,4 +28,7 @@ public interface IFeedService {
 	// 피드 좋아요 입력
 	public int insertLike(String id, int feedno);
 	
+	// 피드 좋아요 삭제
+	public int deleteLike(String id, int feedno);
+	
 }

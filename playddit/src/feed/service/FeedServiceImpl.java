@@ -108,5 +108,19 @@ public class FeedServiceImpl implements IFeedService {
 		return 0;
 	}
 
+	@Override
+	public int deleteLike(String id, int feedno) {
+
+			try {
+				return dao.deleteLike(id, feedno);
+			} catch (SQLException e) {
+			
+				e.printStackTrace();
+			}
+		
+			
+			return 0;
+	}
+
 
 }
