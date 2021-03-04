@@ -33,15 +33,15 @@ public class FeedDaoImpl implements IFeedDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<FeedVO> getFeed(String user_id) throws SQLException {
-		// TODO Auto-generated method stub
 		return (List<FeedVO>) client.queryForList("feed.getFeed", user_id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<ComVO> getCom(int feed_no) throws SQLException {
-		// TODO Auto-generated method stub
 		return (List<ComVO>) client.queryForList("feed.getCom", feed_no);
 	}
 
@@ -101,6 +101,12 @@ public class FeedDaoImpl implements IFeedDao {
 		
 		return client.delete("feed.deleteLike", map);
 	
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ComVO> getComReplies(int feed_com_no) throws SQLException {
+		return client.queryForList("feed.getComReplies", feed_com_no);
 	}
 
 }

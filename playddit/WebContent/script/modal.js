@@ -9,8 +9,8 @@ $(document).ready(function(){
 		$("#modalBody, #condiModal").delay(100).animate({marginTop:0},400);
 	});
 	
-	$("#condiModal, #modalBody").on("click", '#close', function(){
-		$("#modalBody, #condiModal").animate({marginTop:"300px"},300);
+	$("#condiModal, #modalBody, #codeModal").on("click", '#close', function(){
+		$("#modalBody, #codeModal, #condiModal").animate({marginTop:"300px"},300);
 		$("#modal").delay(100).fadeOut(300);
 	});
 });

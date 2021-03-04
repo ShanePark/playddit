@@ -20,6 +20,7 @@
 		<script src="script/script.js"></script>
 		<script src="script/emoji_jk.js"></script>
 		<script src="script/view.js"></script>
+		<script src="script/feedView.js"></script>
 	</head>
     <body>
        <!-- header.jsp include -->
@@ -27,219 +28,28 @@
         
         <div class="cen feedView" id="wrap">
             <div id="viewLeft">
-               <!--사진이 없는 피드면 아래 div#slider를 다 지우시고 viewLeft 안에는 contTxt를 넣어주세요!-->
-               <!--viewLeft안에 contTxt를 넣었다면 #cont안에 #contTxt를 지워주시면 됩니다.-->
-                <div id="slider">
-                    <div class="slide">
-                        <img src="images/feed2.png" />
-                    </div>
-                    <div class="slide">
-                        <img src="images/feed3.jpg" />
-                    </div>
-                </div>
+	            <div id="slider">
+	            </div>
             </div>
             <div id="viewRight">
                 <div id="userProfile">
-                    <a href="#" id="userPic">
-                        <img src="images/default.png" />
-                    </a>
-                    <a href="#" id="userInfo">
-                        <p>scarlett</p>
-                        <span>6기 - 302호</span>
-                    </a>
-                    
-                    <!--내 피드라면 출력될 버튼-->
-					<button type="button" class="myFeed"><i class="fas fa-ellipsis-h"></i></button>
+                    <!--내 피드라면 버튼이 여기에 출력-->
                 </div>
                 <div id="cont" class="scrollStyle">
                     <p id="contTxt">
-                        안되나용 왜 나는 안되나용
-                        그놈은 되고 왜 나는 안되나용
-
-                        사랑 때문에 너무 아프다
-                        너무 아파서 술 한잔 때렸다
-                        모질게 나를 버리고 가면
-                        남겨진 나는 어떡하라고
-                        사느냐 죽느냐 그것이 문제로다
-
-                        안되나용 왜 나는 안되나용
-                        그놈은 되고 왜 나는 안되나용
-                        얼굴이니 아니면 입방정이니
-                        그러면 나는 누구를 만나나용
-
-                        그놈 때문에 뚜껑 열렸다
-                        뚜껑 열려서 술 한잔 때렸다
-                        그렇게 그녈 데리고 가면
-                        남겨진 나는 어떡하라고
-                        썸한번 못 타고 이렇게 끝나나용
-
-                        안되나용 왜 나는 안되나용
-                        그놈은 되고 왜 나는 안되나용
-                        얼굴이니 아니면 그냥 아니니
-                        그러면 나는 영원히 안되나용
-                        <img src="images/emoji/002a.png" />
                     </p>
                     <div id="contIcon">
-                        <button type="submit" class="like">
-                            <i class="far fa-heart"></i>
-                        </button>
                         <button type="button" class="comment">
                             <i class="far fa-comment-dots"></i>
                         </button>
                         <button type="button" class="dm">
                             <i class="fas fa-paper-plane"></i>
                         </button>
-
-                        <button type="button" class="report">
-                            <i class="fas fa-exclamation-circle"></i>
-                        </button>
+                        
                     </div>
-                    <p id="likeBtn">좋아요 <span>100</span>개</p>
+                    <p id="likeBtn"></p>
                     <div id="feedComm">
                         <ul>
-                            <li class="comment">
-                                <a href="#">
-                                    <img src="images/default.png" />
-                                </a>
-                                <p>
-                                    <a href="#">josh</a>
-                                    <span>
-                                        피드 댓글입니다. 좋아요~!! 퍼가요~!! 어쩌구 저쩌구 adgadsgasdggsdgasdgasdgasdgasdgasdgasdgasdgasdasdgasdg
-                                        댓글 다는중...
-                                    </span>
-                                </p>
-                                <button type="button" class="replyBtn">댓글달기</button>
-                                <button type="button" class="replyBtnView">
-                                    댓글보기&#40;<span>2</span>개&#41;
-                                </button>
-                                <ul class="replyList">
-                                    <li class="reply">
-                                        <a href="#">
-                                            <img src="images/default.png" />
-                                        </a>
-                                        <p>
-                                            <a href="#">josh</a>
-                                            <span>
-                                                피드 대댓글입니다. 댓글 좋아요~!
-                                            </span>
-                                        </p>
-                                    </li>
-                                    <li class="reply">
-                                        <a href="#">
-                                            <img src="images/default.png" />
-                                        </a>
-                                        <p>
-                                            <a href="#">josh</a>
-                                            <span>
-                                                피드 대댓글입니다. 댓글 좋아요~!
-                                                <img src="images/emoji/1f192.png" />
-                                            </span>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="comment">
-                                <a href="#">
-                                    <img src="images/default.png" />
-                                </a>
-                                <p>
-                                    <a href="#">josh</a>
-                                    <span>
-                                        피드 댓글입니다. 좋아요~!! 퍼가요~!! 어쩌구 저쩌구 
-                                        댓글 다는중...<img src="images/emoji/002a-20e3.png" />
-                                    </span>
-                                    <!--내가 쓴 댓글일때만 나타나는 버튼-->
-                                    <button type="button" class="myComm"><i class="fas fa-ellipsis-h"></i></button>
-                                </p>
-                                <button type="button" class="replyBtn">댓글달기</button>
-                                <button type="button" class="replyBtnView">
-                                    댓글보기&#40;<span>2</span>개&#41;
-                                </button>
-                                <ul class="replyList">
-                                    <li class="reply">
-                                        <a href="#">
-                                            <img src="images/default.png" />
-                                        </a>
-                                        <p>
-                                            <a href="#">josh</a>
-                                            <span>
-                                                피드 대댓글입니다. 댓글 좋아요~!
-                                            </span>
-                                            <button type="button" class="myReply"><i class="fas fa-ellipsis-h"></i></button>
-                                        </p>
-                                    </li>
-                                    <li class="reply">
-                                        <a href="#">
-                                            <img src="images/default.png" />
-                                        </a>
-                                        <p>
-                                            <a href="#">josh</a>
-                                            <span>
-                                                피드 대댓글입니다. 댓글 좋아요~!
-                                                <img src="images/emoji/1f195.png" />
-                                            </span>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="comment">
-                                <a href="#">
-                                    <img src="images/default.png" />
-                                </a>
-                                <p>
-                                    <a href="#">josh</a>
-                                    <span>
-                                        피드 댓글입니다. 좋아요~!! 퍼가요~!! 어쩌구 저쩌구 
-                                        댓글 다는중...
-                                    </span>
-                                </p>
-                                <button type="button" class="replyBtn">댓글달기</button>
-                                <button type="button" class="replyBtnView">
-                                    댓글보기&#40;<span>2</span>개&#41;
-                                </button>
-                                <ul class="replyList">
-                                    <li class="reply">
-                                        <a href="#">
-                                            <img src="images/default.png" />
-                                        </a>
-                                        <p>
-                                            <a href="#">josh</a>
-                                            <span>
-                                                피드 대댓글입니다. 댓글 좋아요~!
-                                            </span>
-                                        </p>
-                                    </li>
-                                    <li class="reply">
-                                        <a href="#">
-                                            <img src="images/default.png" />
-                                        </a>
-                                        <p>
-                                            <a href="#">josh</a>
-                                            <span>
-                                                피드 대댓글입니다. 댓글 좋아요~!
-                                            </span>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="comment">
-                                <a href="#">
-                                    <img src="images/default.png" />
-                                </a>
-                                <p>
-                                    <a href="#">josh</a>
-                                    <span>
-                                        피드 댓글입니다. 좋아요~!! 퍼가요~!! 어쩌구 저쩌구 
-                                        댓글 다는중...
-                                    </span>
-                                </p>
-                                <button type="button" class="replyBtn">댓글달기</button>
-                                <button type="button" class="replyBtnView">
-                                    댓글보기&#40;<span>0</span>개&#41;
-                                </button>
-                                <ul class="replyList">                                    
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -658,12 +468,10 @@
                     }
                 });
 				
-				//대댓글 보기 버튼
-				$(".replyBtnView").each(function(){
-					$(this).click(function(){
-						$(this).parent(".comment").children(".replyList").slideToggle(300);
-					});
-				});
+            	//대댓글 보기 버튼 동적으로 만들기
+            	$('#viewRight').on('click', '.replyBtnView', function(){
+            		$(this).parent(".comment").children('.replyList').slideToggle(300);
+            	})
 				
 				//대댓글 달기 버튼
 				$(".replyBtn").each(function(){

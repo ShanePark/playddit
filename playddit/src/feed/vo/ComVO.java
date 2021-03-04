@@ -1,12 +1,17 @@
 package feed.vo;
 
+import java.util.List;
+
 public class ComVO {
 			private int comno;
 			private String id;
 			private String comcont;
 			private String nickname;
 			private String time;
+			private String profile;
 			
+			private int repcount;
+			private List<ComVO> replyList;
 			
 			public int getComno() {
 				return comno;
@@ -37,6 +42,24 @@ public class ComVO {
 			}
 			public void setTime(String time) {
 				this.time = time;
+			}
+			public int getRepcount() {
+				return repcount;
+			}
+			public void setRepcount(int repcount) {
+				this.repcount = repcount;
+			}
+			public String getProfile() {
+				return profile;
+			}
+			public void setProfile(String profile) {
+				this.profile = profile;
+			}
+			public List<ComVO> getReplyList() {
+				return replyList;
+			}
+			public void setReplyList(List<ComVO> replyList) {
+				this.replyList = replyList;
 			}
 			
 			

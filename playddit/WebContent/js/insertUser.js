@@ -2,25 +2,6 @@
  * 
  */
 
-function insert(){
-	event.preventDefault();
-	
-	idvalue = $('input[name=mail').val().trim();
-	
-	$.ajax({
-		url : '/playddit/join.do',
-		type : 'post',
-		data : $('#insert').serializeJSON(),
-		success : function(res){
-			$('#insertspan').html(res.result);
-		},
-		error : function(xhr){
-			alert("상태 : " + xhr.status);
-		},
-		dataType : 'json'
-	})
-}
-
 function codeSubmit(){
 	//event.preventDefault();
 	mail = $('input[name=mail]').val().trim();
@@ -30,7 +11,11 @@ function codeSubmit(){
 	phone = $('input[name=phone]').val().trim();
 	birth = $('input[name=birth]').val().trim();
 	class_id = $('select[name=itemclass]').val();
-	
+
+	if(class_id === undefined){
+		class_id = 'C000';
+	}
+
 	$.ajax({
 		url : '/playddit/join/joinSessionAdd.do',
 		type : 'post',
@@ -55,4 +40,3 @@ function codeSubmit(){
 		dataType : 'json'	
 	})
 }
-
