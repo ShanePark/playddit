@@ -89,7 +89,6 @@ showTerm2 = function(){
             	code += "</label>";
             	code += "<i  must=" + v.no+" class='fas fa-chevron-right'></i>";
             	code += "</li>";
-
             })    
             code += "</ul>";
             $('#condiRight').html(code);
