@@ -22,7 +22,7 @@
 <script type="text/javascript">
 	$(function() {
 		
-		//내 피드 삭제하기 모달
+		//delete feed 내 피드 삭제하기 모달
 
         var modal2 = true;
         
@@ -141,14 +141,14 @@
 		
 	// 피드 삭제 function 생성
 	var goDel = function(feedno) {
-		
+		alert("TEST1");
 		$.ajax({
 			url : '/playddit/feed/deleteFeed.do',
 			type : 'post',
 			data : {'feedno' : feedno},
 			
 			success : function(res) {
-				
+				alert(feedno + "피드삭제")
 				$("#feedDelModal").slideUp(500);
 	            $("#feedDel").delay(200).hide();
 	            $("#reportBack").hide();
