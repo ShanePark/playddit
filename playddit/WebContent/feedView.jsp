@@ -28,8 +28,10 @@
         
         <div class="cen feedView" id="wrap">
             <div id="viewLeft">
+
 	            <div id="slider">
 	            </div>
+
             </div>
             <div id="viewRight">
                 <div id="userProfile">

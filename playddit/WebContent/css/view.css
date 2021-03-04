@@ -1,4 +1,8 @@
-/*-----------------feed view -------------------*/
+@charset "utf-8";
+body {
+    background-image: linear-gradient(80deg, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+
 header {
     background-color: rgba(255, 255, 255, 0.6);
     height: 60px;
@@ -205,6 +209,234 @@ header .cen > a img {
 }
 .classMoniter button:last-of-type i {
     color: #a1c4fd;
+}
+
+
+/*-----------------feed 검색 modal-----------------------------*/
+#mask {
+    position:fixed;
+    right: 0;
+    bottom: 0;
+    left:0;
+    top:0;
+    z-index: 50;  
+    background-color: transparent;
+	display: none;
+}
+#feedSearch {
+    display: none;
+}
+#feedSearchModal {
+    display: none;
+    width: 400px;
+    height: 335px;
+    background: white;
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: 1px 4px 10px rgba(39, 39, 39, 0.4);
+    z-index: 100;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: auto;
+    padding: 12px 15px 12px 12px;
+}
+.feedSearch2 #feedSearchModal {
+	top : 57PX;
+}
+#feedSearchModal::-webkit-scrollbar {
+    width: 6px;
+}
+#feedSearchModal::-webkit-scrollbar-track {
+    background-color: transparent;
+    padding: 10px;
+}
+#feedSearchModal::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #b0cff5; 
+}
+#feedSearchModal::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+.edge {
+    width: 18px;
+    height: 18px;
+    background: white;
+    position: absolute;
+    border-radius: 2px;
+    box-shadow: 1px 2px 5px #b2b2b2;
+    transform: rotate(45deg)!important;
+    z-index: 0;
+    top: 56px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.feedCir {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: white;
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    margin-right: 8px;
+    overflow: hidden;
+}
+.feedCir img {
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#feedCount .feedCir {
+    line-height: 55px;
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+#feedCount #feedText {
+    display: inline-block;
+    vertical-align: middle;
+}
+#feedCount #keyword {
+    font-weight: 800;
+    font-family: 'Nanum Gothic', sans-serif;
+    margin-bottom: 3px;
+}
+#feedCount #count {
+    font-size: 0.93em;
+    color: #a0a0a0;
+}
+
+#searchUser li {
+    margin-bottom: 10px;
+    display: flex;
+    z-index: 300;
+}
+#searchUser li:last-of-type {
+    margin-bottom: 0;
+}
+#searchUser .searchUserBox {
+    margin-top: 10px;
+}
+#searchUser .userNick {
+    display: block;
+    font-weight: 800;
+}
+#searchUser .userEmail {
+    font-size: 0.9em;
+    color: #a0a0a0;
+}
+
+/*----------------------피드 신고 모달----------------------*/
+#reportBack {
+    position:fixed;
+    right: 0;
+    bottom: 0;
+    left:0;
+    top:0;
+    z-index: 800;  
+    background-color: #000;
+    opacity: 0.2;
+    display: none;
+}
+
+#reportWrap {
+    display: none;
+    z-index: 900;
+	position: relative;
+}
+
+#reportModal {
+    display: none;
+    width: 400px;
+    height: 300px;
+    background: white;
+    position: fixed;
+    border-radius: 10px;
+    box-shadow: 1px 4px 10px rgba(39, 39, 39, 0.4);
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+#reporUserBox {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 60px;
+}
+
+#reportCir {
+    width : 70px;
+    height: 70px;
+    display: inline-block;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px #b3c0d4;
+    float: left;
+    margin-right: 13px;
+}
+#reportCir img {
+    width: 100%;
+}
+
+#reportInfo{
+    float: left;
+    margin-top: 15px;
+}
+#reportInfo p {
+    font-size: 1.1em;
+    margin-bottom: 2px;
+}
+#reportInfo span {
+    color: #b7b7b7;
+    font-size: 0.95em;
+}
+
+#reportTxt {
+    font-size: 0.95em;
+    margin-top: 40px;
+    text-align: center;
+}
+
+#reportBtn {
+    height: 70px;
+    background: #ebeeff;
+    margin-top: 40px;
+    padding: 10px 0;
+}
+#reportBtn button {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 1.05em;
+    color: #676767;
+    text-align: center;
+    width: calc(97% / 3);
+    border-left: 1px solid rgba(150, 150, 150, 0.4);
+    font-weight: bold;
+}
+#reportBtn button:first-of-type {
+    border: none;
+}
+
+/*------------------footer-------------------------*/
+footer {
+    clear: both;
+    margin-top: 50px;
+}
+footer p {
+    text-align: center;
+    padding-bottom: 80px;
+	color: #6f6f6f;
+	font-weight: 100;
 }
 
 /*-----------------여기부터 태블릿pc---------------------*/
