@@ -288,7 +288,27 @@ where a.user_id = b.user_id
 and b.class_id = c.class_id
 and feed_no = 50;
 -----------------------------------------------------
+-- getComments
+select a.feed_com_no as comno, a.user_id as id, b.user_pic as profile,
+        (select count(*) from feed_com_re where feed_com_no = a.feed_com_no) as repcount,
+        a.feed_com_cont as comcont, b.user_nickname as nickname,
+         to_char(a.feed_com_date,'yyyy-mm-dd hh24:mi:ss') as time
+from feed_comment a, users b
+where a.user_id = b.user_id
+      and feed_no = 50
+order by comno;
+          
+-----------------------------------------------------         
+-- get coment's reply
 
+select a.f_com_re_no as comno, a.user_id as id, b.user_pic as profile,
+        a.f_com_re_cont as comcont, b.user_nickname as nickname,
+         to_char(a.f_com_re_date,'yyyy-mm-dd hh24:mi:ss') as time
+from feed_com_re a, users b
+where a.user_id = b.user_id
+      and feed_com_no = 1
+order by comno;
 
+-----------------------------------------------------
 
 

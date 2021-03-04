@@ -1,7 +1,7 @@
 $(function(){
-	
+	user_id = getCookie("user_id");
 	var feedno = getParameterByName('feedno');
-	//loadFeed(feedno);
+	loadFeed(feedno);
 	
 })
 
@@ -21,228 +21,94 @@ function loadFeed(feedno){
 		},
 		data : {"feed_no" : feedno},
 		success : function(res){
-			var result = '';
-			
 			// 사진이 없는 피드면 아래 div#slider를 다 지우시고 viewLeft 안에는 contTxt를 넣어주세요!-->
             // viewLeft안에 contTxt를 넣었다면 #cont안에 #contTxt를 지워주시면 됩니다.-->
 			
-			if(res.feedpic=== undefined){
-				result+= '<div id="viewLeft">'+res.cont+'</div>'
-	            result+= '<div id="viewRight"> <div id="userProfile">'
-	            result+= '<a href="#" id="userPic">'
-	            result += '<img src="images/profile/'+res.profile+'"+ /></a>'
-	            result+= '<a href="#" id="userInfo">'
-	            result+= '<p>'+res.nickname+'</p>'
-	            result+= '<span>'+res.classname+'</span></a>'
-	            
-				if(res.ismine == 'true'){
-					result+='<button type="button" class="myFeed"><i class="fas fa-ellipsis-h"></i></button>'
-				}	              
-  				result+='</div><div id="cont" class="scrollStyle">'
-
-			}else{
-				result += '<div id="viewLeft">'
-              	result += '<div id="slider">'
-                result += '<div class="slide"> <img src="images/feed2.png" /></div>'
-                result += '<div class="slide"> <img src="images/feed3.jpg" /></div>'
-                result += '<div class="slide"> <img src="images/feed3.jpg" /></div>'
-                result += '</div></div>'
-            	result += '<div id="viewRight"><div id="userProfile">'
-            	result += '<a href="#" id="userPic">'
-                result += '<img src="images/profile/'+res.profile+'"+ /></a>'
-                result += '<a href="#" id="userInfo">'
-                result+= '<p>'+res.nickname+'</p>'
-	            result+= '<span>'+res.classname+'</span></a>'
-                    
-                if(res.ismine == 'true'){
-					result+='<button type="button" class="myFeed"><i class="fas fa-ellipsis-h"></i></button>'
-				}
-				result += '</div><div id="cont" class="scrollStyle">'
-                result += '<p id="contTxt">'+res.cont+' </p>'
-			}
-				
-			result+='        <div id="contIcon">'
-          result+='            <button type="submit" class="like">'
-          result+='                <i class="far fa-heart"></i>'
-          result+='            </button>'
-          result+='            <button type="button" class="comment">'
-          result+='                <i class="far fa-comment-dots"></i>'
-          result+='            </button>'
-          result+='            <button type="button" class="dm">'
-          result+='                <i class="fas fa-paper-plane"></i>'
-          result+='            </button>'
-          result+='            <button type="button" class="report">'
-          result+='                <i class="fas fa-exclamation-circle"></i>'
-          result+='            </button></div>'
-          result+='        <p id="likeBtn">좋아요 <span>100</span>개</p>'
-          result+='        <div id="feedComm"><ul>'
-          result+='                <li class="comment"><a href="#"><img src="images/default.png" />'
-          result+='                    </a>'
-          result+='                        <a href="#">josh</a>'
-          result+='                        <span>                                                                                                '
-          result+='                            피드 댓글입니다. 좋아요~!! 퍼가요~!! 어쩌구 저쩌구 adgadsgasdggsdgasdgasdgasdgasdgasdgasdgasdgasda'
-          result+='                            댓글 다는중...                                                                                    '
-          result+='                        </span>                                                                                               '
-          result+='                    </p>                                                                                                      '
-          result+='                    <button type="button" class="replyBtn">댓글달기</button>                                                  '
-          result+='                    <button type="button" class="replyBtnView">                                                               '
-          result+='                        댓글보기&#40;<span>2</span>개&#41;                                                                    '
-          result+='                    </button>                                                                                                 '
-          result+='                    <ul class="replyList">                                                                                    '
-          result+='                        <li class="reply">                                                                                    '
-          result+='                            <a href="#">                                                                                      '
-          result+='                                <img src="images/default.png" />                                                              '
-          result+='                            </a>                                                                                              '
-          result+='                            <p>                                                                                               '
-          result+='                                <a href="#">josh</a>                                                                          '
-          result+='                                <span>                                                                                        '
-          result+='                                    피드 대댓글입니다. 댓글 좋아요~!                                                          '
-          result+='                                </span>                                                                                       '
-          result+='                            </p>                                                                                              '
-          result+='                        </li>                                                                                                 '
-          result+='                        <li class="reply">                                                                                    '
-          result+='                            <a href="#">                                                                                      '
-          result+='                                <img src="images/default.png" />                                                              '
-          result+='                            </a>                                                                                              '
-          result+='                            <p>                                                                                               '
-          result+='                                <a href="#">josh</a>                                                                          '
-          result+='                                <span>                                                                                        '
-          result+='                                    피드 대댓글입니다. 댓글 좋아요~!                                                          '
-          result+='                                    <img src="images/emoji/1f192.png" />                                                      '
-          result+='                                </span>                                                                                       '
-          result+='                            </p>                                                                                              '
-          result+='                        </li>                                                                                                 '
-          result+='                    </ul>                                                                                                     '
-          result+='                </li>                                                                                                         '
-          result+='                <li class="comment">                                                                                          '
-          result+='                    <a href="#">                                                                                              '
-          result+='                        <img src="images/default.png" />                                                                      '
-          result+='                    </a>                                                                                                      '
-          result+='                    <p>                                                                                                       '
-          result+='                        <a href="#">josh</a>                                                                                  '
-          result+='                        <span>                                                                                                '
-          result+='                            피드 댓글입니다. 좋아요~!! 퍼가요~!! 어쩌구 저쩌구                                                '
-          result+='                            댓글 다는중...<img src="images/emoji/002a-20e3.png" />                                            '
-          result+='                        </span>                                                                                               '
-          result+='                        <!--내가 쓴 댓글일때만 나타나는 버튼-->                                                               '
-          result+='                        <button type="button" class="myComm"><i class="fas fa-ellipsis-h"></i></button>                       '
-          result+='                    </p>                                                                                                      '
-          result+='                    <button type="button" class="replyBtn">댓글달기</button>                                                  '
-          result+='                    <button type="button" class="replyBtnView">                                                               '
-          result+='                        댓글보기&#40;<span>2</span>개&#41;                                                                    '
-          result+='                    </button>                                                                                                 '
-          result+='                    <ul class="replyList">                                                                                    '
-          result+='                        <li class="reply">                                                                                    '
-          result+='                            <a href="#">                                                                                      '
-          result+='                                <img src="images/default.png" />                                                              '
-          result+='                            </a>                                                                                              '
-          result+='                            <p>                                                                                               '
-          result+='                                <a href="#">josh</a>                                                                          '
-          result+='                                <span>                                                                                        '
-          result+='                                    피드 대댓글입니다. 댓글 좋아요~!                                                          '
-          result+='                                </span>                                                                                       '
-          result+='                                <button type="button" class="myReply"><i class="fas fa-ellipsis-h"></i></button>              '
-          result+='                            </p>                                                                                              '
-          result+='                        </li>                                                                                                 '
-          result+='                        <li class="reply">                                                                                    '
-          result+='                            <a href="#">                                                                                      '
-          result+='                                <img src="images/default.png" />                                                              '
-          result+='                            </a>                                                                                              '
-          result+='                            <p>                                                                                               '
-          result+='                                <a href="#">josh</a>                                                                          '
-          result+='                                <span>                                                                                        '
-          result+='                                    피드 대댓글입니다. 댓글 좋아요~!                                                          '
-          result+='                                    <img src="images/emoji/1f195.png" />                                                      '
-          result+='                                </span>                                                                                       '
-          result+='                            </p>                                                                                              '
-          result+='                        </li>                                                                                                 '
-          result+='                    </ul>                                                                                                     '
-          result+='                </li>                                                                                                         '
-          result+='                <li class="comment">                                                                                          '
-          result+='                    <a href="#">                                                                                              '
-          result+='                        <img src="images/default.png" />                                                                      '
-          result+='                    </a>                                                                                                      '
-          result+='                    <p>                                                                                                       '
-          result+='                        <a href="#">josh</a>                                                                                  '
-          result+='                        <span>                                                                                                '
-          result+='                            피드 댓글입니다. 좋아요~!! 퍼가요~!! 어쩌구 저쩌구                                                '
-          result+='                            댓글 다는중...                                                                                    '
-          result+='                        </span>                                                                                               '
-          result+='                    </p>                                                                                                      '
-          result+='                    <button type="button" class="replyBtn">댓글달기</button>                                                  '
-          result+='                    <button type="button" class="replyBtnView">                                                               '
-          result+='                        댓글보기&#40;<span>2</span>개&#41;                                                                    '
-          result+='                    </button>                                                                                                 '
-          result+='                    <ul class="replyList">                                                                                    '
-          result+='                        <li class="reply">                                                                                    '
-          result+='                            <a href="#">                                                                                      '
-          result+='                                <img src="images/default.png" />                                                              '
-          result+='                            </a>                                                                                              '
-          result+='                            <p>                                                                                               '
-          result+='                                <a href="#">josh</a>                                                                          '
-          result+='                                <span>                                                                                        '
-          result+='                                    피드 대댓글입니다. 댓글 좋아요~!                                                          '
-          result+='                                </span>                                                                                       '
-          result+='                            </p>                                                                                              '
-          result+='                        </li>                                                                                                 '
-          result+='                        <li class="reply">                                                                                    '
-          result+='                            <a href="#">                                                                                      '
-          result+='                                <img src="images/default.png" />                                                              '
-          result+='                            </a>                                                                                              '
-          result+='                            <p>                                                                                               '
-          result+='                                <a href="#">josh</a>                                                                          '
-          result+='                                <span>                                                                                        '
-          result+='                                    피드 대댓글입니다. 댓글 좋아요~!                                                          '
-          result+='                                </span>                                                                                       '
-          result+='                            </p>                                                                                              '
-          result+='                        </li>                                                                                                 '
-          result+='                    </ul>                                                                                                     '
-          result+='                </li>                                                                                                         '
-          result+='                <li class="comment">                                                                                          '
-          result+='                    <a href="#">                                                                                              '
-          result+='                        <img src="images/default.png" />                                                                      '
-          result+='                    </a>                                                                                                      '
-          result+='                    <p>                                                                                                       '
-          result+='                        <a href="#">josh</a>                                                                                  '
-          result+='                        <span>                                                                                                '
-          result+='                            피드 댓글입니다. 좋아요~!! 퍼가요~!! 어쩌구 저쩌구                                                '
-          result+='                            댓글 다는중...                                                                                    '
-          result+='                        </span>                                                                                               '
-          result+='                    </p>                                                                                                      '
-          result+='                    <button type="button" class="replyBtn">댓글달기</button>                                                  '
-          result+='                    <button type="button" class="replyBtnView">                                                               '
-          result+='                        댓글보기&#40;<span>0</span>개&#41;                                                                    '
-          result+='                    </button>                                                                                                 '
-          result+='                    <ul class="replyList">                                                                                    '
-          result+='                    </ul>                                                                                                     '
-          result+='                </li>                                                                                                         '
-          result+='            </ul>                                                                                                             '
-          result+='        </div>                                                                                                                '
-          result+='    </div>                                                                                                                    '
-		result+= '<div id="commentInputBox">                                                                                                      '
-		result+='	<div class = "row">                                                                                                          '
-		result+='		<div class = "col-lg-2">                                                                                                 '
-		result+='		  <img class="emoji_pickup" id="emoji_pickup_before" src="images/emoji/1f642.png">                                       '
-		result+='		  <img class="emoji_pickup" id="emoji_pickup_after" src="images/emoji/1f600.png">                                        '
-		result+='		  <div id="emoji_popup">                                                                                                 '
-		result+='			<div id="emoji_navigator">                                                                                           '
-		result+='			  <a href="#people"><img style="margin-left: 6px" class="navigator" id="nav_people" src="images/emoji/nav_people.png" /></a>'
-		result+='			  <a href="#flag"><img class="navigator" id="nav_flag" src="images/emoji/nav_flag.png" /></a>'
-		result+='			  <a href="#activity"><img class="navigator" id="nav_activity" src="images/emoji/nav_activity.png" /></a>'
-		result+='			  <a href="#food"><img class="navigator" id="nav_food" src="images/emoji/nav_food.png" /></a>'
-		result+='			  <a href="#plant"><img class="navigator" id="nav_plant" src="images/emoji/nav_plant.png" /></a>'
-		result+='			  <a href="#animal"><img class="navigator" id="nav_animal" src="images/emoji/nav_animal.png" /></a>'
-		result+='			  <a href="#tool"><img class="navigator" id="nav_tools" src="images/emoji/nav_tools.png" /></a>'
-		result+='			</div>'
-		result+='			</div>'
-		result+='	  </div>'
-		result+='	  <div id="input_area" contenteditable="true" class="scrollStyle"></div>'
-		result+='	  <button type="button" id="commentSend">게시</button>'
-		result+='	</div>'
-		result+='</div></div>'
+			if(res.feedpic=== undefined){	// 사진이 없는경우
 			
-			$('#wrap').append(result);
+				$('#viewLeft').append(res.cont);
+
+			}else{	// 사진이 첨부된 피드일 경우 
+			
+				var slides = '';
+                slides += '<div class="slide"> <img src="images/feed2.png" /></div>'
+                slides += '<div class="slide"> <img src="images/feed3.jpg" /></div>'
+                slides += '<div class="slide"> <img src="images/feed3.jpg" /></div>'
+				$('#slider').html(slides);
+				
+				$('#contTxt').html(res.cont);
+
+			}
+			
+			if(res.ismine == 'true'){	// 피드가 내 글일때 붙일 내용들
+				var mybutton='<button type="button" class="myFeed"><i class="fas fa-ellipsis-h"></i></button>'
+				$('#userProfile').append(mybutton);
+			}else{	// 피드가 내 글이 아닐떄 붙일 내용들
+				var reportIcon = '<button type="button" class="report">'
+                            +'<i class="fas fa-exclamation-circle"></i></button>';
+				$('#contIcon').append(reportIcon);
+			}
+			
+			if(res.islike == 1){
+				var likeIcon = '<button type="submit" class="like on">'
+                       		  + '<i class="fas fa-heart"></i></button>';
+			}else{
+				var likeIcon = '<button type="submit" class="like">'
+                       		  + '<i class="far fa-heart"></i></button>';
+			}
+			$('#contIcon').prepend(likeIcon)	
+			
+			
+			var userprofile ='<a href="'+res.id+'" id="userPic">'
+						+ '<img src="images/profile/'+res.profile+'"+ /></a>'
+						+ '<a href="'+res.id+'" id="userInfo"><p>'+res.nickname+'</p>'
+						+ '<span>'+res.classname+'</span></a>';
+			$('#userProfile').append(userprofile);
+			$('#likeBtn').append('좋아요 <span>'+res.countlike+'</span>개');
+			
+			// 댓글들 출력
+			$.each(res.replyList, function(i,v){
+				var replyli = '<li class="comment">'
+                            +'<a href="#"><img src="images/profile/'+v.profile+'" /></a>'
+                            +'<p><a href="#">'+v.nickname+'</a>'
+                            +'<span>'+v.comcont+'</span>'
+				
+				if(v.id == user_id){ //내가 쓴 댓글일때만 나타나는 버튼
+					replyli+= '<button type="button" class="myComm"><i class="fas fa-ellipsis-h"></i></button>'	
+				}
+						
+                replyli += '</p><button type="button" class="replyBtn">댓글달기</button>';
+
+				if(v.repcount > 0){
+                	replyli+='<button type="button" class="replyBtnView">'
+                            +'댓글보기&#40;<span>'+v.repcount+'</span>개&#41;</button>';
+					replyli+='<ul class="replyList">';
+					$.each(v.replyList, function(j,comrep){	//대댓글들 출력
+						var reprep ='<li class="reply"><a href="#">'
+                                   + '<img src="images/profile/'+comrep.profile+'" /></a>'
+                                   + '<p><a href="#">'+comrep.nickname+'</a>'
+                                   + '<span>'+comrep.comcont+'</span></p></li>';
+						replyli += reprep;
+					})
+					replyli+='</ul>';
+				}
+                replyli+= '</li>'
+				$('#feedComm').children('ul').append(replyli);
+			})
+			
 		},
 		dataType : 'json'
 	})
+}
+
+function setCookie(name, value, exp){
+	var date = new Date();
+	date.setTime(date.getTime() + exp*24*60*60*1000);
+	document.cookie = name+'='+escape(value)+';expires='+date.toUTCString()+';path=1';
+}
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return unescape(parts.pop()).split(';').shift();
 }
