@@ -100,5 +100,15 @@
 	
 	</delete>
 	
+	<insert id ="insertLike" parameterClass="map">
+	
+	insert into likes(like_no, user_id, feed_no)
+		values(like_no_seq.nextval,#id#,#feedno#)
+	
+	
+	</insert>
+	
+	
+	
 	
 	</sqlMap>

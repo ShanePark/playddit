@@ -25,8 +25,9 @@ public interface IFeedDao {
 	
 	// 단일 피드 정보 불러오기
 	public FeedVO getOneFeed(String user_id, int feed_no) throws SQLException;
-	
-	
-	
 
+	// 피드 좋아요 입력
+	public int insertLike(String id, int feedno) throws SQLException;
+	
+	
 }

@@ -22,6 +22,8 @@
 <script type="text/javascript">
 	$(function() {
 		
+	
+		
 		
 		//내 피드 삭제하기 모달
 
@@ -55,7 +57,51 @@
    			goDel(feedno);
    		})
         
+   	// 좋아요 누르기 insert
+		 $("#showfeed").on("click",".like", function(){
+			  
+			 var like = $(this).hasClass("on");
+              
+              if(like){
+                  $(this).removeClass("on");
+                  $(this).html('<i class="far fa-heart"></i>');
+                  like = false;
+              }else{
+                  $(this).addClass("on");
+                  $(this).html('<i class="fas fa-heart"></i>');
+                  like = true;
+              }
+			 
+			 feedno = $(this).parents(".feed").attr("idx");
+			 insertLike(feedno);
+		})
+		
+		var insertLike = function(feedno){
+			
+        	   $.ajax({
+        		 url : '/playddit/feed/insertLike.do',
+        		 type : 'post',
+        		 data : {'feedno' : feedno},
+        		 
+        		 success : function(res) {
+        			 alert("성공");
+        			 
+        		 },
+        		 error : function(xhr){
+        			 alert("status : " + xhr.status);
+        			 
+        		 },
+        		 dataType : 'json'
+        		   
+        	   })
+		
+	}
+	
+	
+	
 	})
+	
+		
 	// 피드 삭제 function 생성
 	var goDel = function(feedno) {
 		
