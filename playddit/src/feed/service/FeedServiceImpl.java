@@ -82,21 +82,18 @@ public class FeedServiceImpl implements IFeedService {
 		}
 		return vo;
     
-  @Override
+  	@Override
 	public int deleteFeed(int feedno) {
 	
-			try {
-				return dao.deleteFeed(feedno);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			return dao.deleteFeed(feedno);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return 0;
 	}
 
-<<<<<<< Updated upstream
-    
-=======
 	@Override
 	public int insertLike(String id, int feedno) {
 			
