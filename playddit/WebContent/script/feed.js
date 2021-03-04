@@ -84,7 +84,7 @@ function loadProfile(){
 			var profile = '<a href="#" id="userPic">'
 			+'<img src="images/profile/'+res.user_pic+'"+ /></a>'
 			+'<div id="userBox">'
-			+' <a href="#" id="userName">'+res.user_nickname+'</a>'
+			+' <a href="#" id="userName">'+res.user_nickname+'</a><br/>'
 			+'<span id="userMail">'+res.user_id+'</span></div>'
 				
 			$('#infoBox').append(profile);

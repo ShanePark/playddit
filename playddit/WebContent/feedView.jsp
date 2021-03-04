@@ -30,7 +30,7 @@
                <!--사진이 없는 피드면 아래 div#slider를 다 지우시고 viewLeft 안에는 contTxt를 넣어주세요!-->
                <!--viewLeft안에 contTxt를 넣었다면 #cont안에 #contTxt를 지워주시면 됩니다.-->
                 <div id="slider">
-                    <div class="slide">
+                    <div cl ass="slide">
                         <img src="images/feed2.png" />
                     </div>
                     <div class="slide">
