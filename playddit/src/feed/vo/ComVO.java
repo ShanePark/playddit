@@ -7,6 +7,7 @@ public class ComVO {
 			private String nickname;
 			private String time;
 			private int repcount;
+			private String profile;
 			
 			
 			public int getComno() {
@@ -44,6 +45,12 @@ public class ComVO {
 			}
 			public void setRepcount(int repcount) {
 				this.repcount = repcount;
+			}
+			public String getProfile() {
+				return profile;
+			}
+			public void setProfile(String profile) {
+				this.profile = profile;
 			}
 			
 			
