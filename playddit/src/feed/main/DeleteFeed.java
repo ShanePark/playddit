@@ -42,7 +42,7 @@ public class DeleteFeed implements IAction {
 		IFeedService service = FeedServiceImpl.getService();
 		
 		 int result = service.deleteFeed(feedno);
-		
+		 
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().write(String.valueOf(result));	
 		

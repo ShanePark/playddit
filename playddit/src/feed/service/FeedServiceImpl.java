@@ -96,12 +96,12 @@ public class FeedServiceImpl implements IFeedService {
   @Override
 
 	public int deleteFeed(int feedno) {
-	
+	  	
 		try {
 			return dao.deleteFeed(feedno);
+					
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				e.printStackTrace();
 		}
 		return 0;
 	}
