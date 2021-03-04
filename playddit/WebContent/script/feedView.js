@@ -3,6 +3,15 @@ $(function(){
 	var feedno = getParameterByName('feedno');
 	loadFeed(feedno);
 	
+	// 댓글 달기
+	$('#viewRight').on('click', '#contIcon .comment', function(){
+		$("#input_area").focus();	
+	});
+	// 대댓글 달기 버튼 
+	$('#viewRight').on('click', '.replyBtn', function(){
+		$("#input_area").focus();
+	});
+	
 })
 
 function getParameterByName(name) {
@@ -83,18 +92,60 @@ function loadFeed(feedno){
                 	replyli+='<button type="button" class="replyBtnView">'
                             +'댓글보기&#40;<span>'+v.repcount+'</span>개&#41;</button>';
 					replyli+='<ul class="replyList">';
+					
 					$.each(v.replyList, function(j,comrep){	//대댓글들 출력
 						var reprep ='<li class="reply"><a href="#">'
                                    + '<img src="images/profile/'+comrep.profile+'" /></a>'
                                    + '<p><a href="#">'+comrep.nickname+'</a>'
-                                   + '<span>'+comrep.comcont+'</span></p></li>';
+                                   + '<span>'+comrep.comcont+'</span>';
+						
+						if(comrep.id == user_id ){// 내가 쓴 대댓글일때만 나타나는 버튼
+							reprep += '<button type="button" class="myReply"><i class="fas fa-ellipsis-h"></i></button>'
+						}
+						
+						reprep += '</p></li>';
 						replyli += reprep;
 					})
+					
 					replyli+='</ul>';
 				}
                 replyli+= '</li>'
 				$('#feedComm').children('ul').append(replyli);
 			})
+			
+			////////////////////////// slick 시작
+            $("#viewLeft #slider").slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true,
+                prevArrow: "<button class='left slideBtn'><i class='fas fa-chevron-left'></i></button>",
+                nextArrow: "<button class='right slideBtn'><i class='fas fa-chevron-right'></i></button>"
+            }); 
+            
+            $.each($("#viewLeft"), function(i){
+                if($(this).find(".slide").length <= 1){
+                    $(this).find(".slick-dots").css("display", "none");
+                }
+            });
+            
+            $('.slick-dots li').html('<i class="far fa-circle"></i>');
+            $('.slick-dots li.slick-active').html('<i class="fas fa-circle"></i>');
+            
+            $(".slick-dots li").on("click", function(){
+                $(this).parents("#viewLeft").find(".slick-dots li").html('<i class="far fa-circle"></i>');
+                $(this).html('<i class="fas fa-circle"></i>');
+            });
+            
+            $(".slideBtn").each(function(){
+                $(this).click(function(){
+                    var index = $(this).parent("#viewLeft #slider").slick('slickCurrentSlide');
+                    
+                    $(this).parents("#viewLeft").find(".slick-dots li").html('<i class="far fa-circle"></i>');
+                    $(this).parents("#viewLeft").find(".slick-dots li").eq(index).html('<i class="fas fa-circle"></i>');
+                }); 
+            }); 
+			//////////////////////////// slick 끝 
 			
 		},
 		dataType : 'json'
@@ -112,3 +163,4 @@ function getCookie(name) {
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) return unescape(parts.pop()).split(';').shift();
 }
+
