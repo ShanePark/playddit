@@ -419,39 +419,6 @@
                     var slideH = $(".slide img").height();
 					$("#viewRight").height(slideH);
                 });
-                
-                //feed slick
-                $("#viewLeft #slider").slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true,
-                    prevArrow: "<button class='left slideBtn'><i class='fas fa-chevron-left'></i></button>",
-                    nextArrow: "<button class='right slideBtn'><i class='fas fa-chevron-right'></i></button>"
-                }); 
-                
-                $.each($("#viewLeft"), function(i){
-                    if($(this).find(".slide").length <= 1){
-                        $(this).find(".slick-dots").css("display", "none");
-                    }
-                });
-                
-                $('.slick-dots li').html('<i class="far fa-circle"></i>');
-                $('.slick-dots li.slick-active').html('<i class="fas fa-circle"></i>');
-                
-                $(".slick-dots li").on("click", function(){
-                    $(this).parents("#viewLeft").find(".slick-dots li").html('<i class="far fa-circle"></i>');
-                    $(this).html('<i class="fas fa-circle"></i>');
-                });
-                
-                $(".slideBtn").each(function(){
-                    $(this).click(function(){
-                        var index = $(this).parent("#viewLeft #slider").slick('slickCurrentSlide');
-                        
-                        $(this).parents("#viewLeft").find(".slick-dots li").html('<i class="far fa-circle"></i>');
-                        $(this).parents("#viewLeft").find(".slick-dots li").eq(index).html('<i class="fas fa-circle"></i>');
-                    }); 
-                }); 
 				
 				//like button
                 $(".like").on("click", function(){
@@ -468,27 +435,15 @@
                     }
                 });
 				
-            	//대댓글 보기 버튼 동적으로 만들기
+            	// 대댓글 보기 버튼 [동적이벤트 수정 완료]
             	$('#viewRight').on('click', '.replyBtnView', function(){
             		$(this).parent(".comment").children('.replyList').slideToggle(300);
             	})
 				
-				//대댓글 달기 버튼
-				$(".replyBtn").each(function(){
-					$(this).click(function(){
-						$("#input_area").focus();
-					});
-				});
-				
-				//댓글달기 버튼 누르면 focus 이동하기
-				$(".comment").click(function(){
-					$("#input_area").focus();	
-				});
-				
-				//내 피드 삭제하기 모달
+				//내 피드 삭제하기 모달[동적이벤트 수정 완료]
 				var modal2 = true;
-
-				$(".myFeed").click(function(){
+				
+            	$('#viewRight').on('click', '.myFeed', function(){
 					if(modal2){
 						$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
 							e.preventDefault();
@@ -503,8 +458,8 @@
 					}
 				});
 				
-				//내 댓글, 대댓글 삭제하기 모달
-				$(".myComm").click(function(){
+				//내 댓글 삭제하기 모달[동적이벤트 수정 완료]
+				$('#viewRight').on('click', '.myComm', function(){
 					if(modal2){
 						$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
 							e.preventDefault();
@@ -519,7 +474,8 @@
 					}
 				});
 				
-				$(".myReply").click(function(){
+				//내 대댓글 삭제하기 모달[동적이벤트 수정 완료]
+				$('#viewRight').on('click', '.myReply', function(){
 					if(modal2){
 						$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
 							e.preventDefault();
