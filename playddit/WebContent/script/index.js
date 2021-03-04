@@ -92,6 +92,8 @@ function idPassCheck(){
 			if( res.id == 'null' ){
 				alert("아이디나 비밀번호를 확인해주세요.");
 			}else{
+				//쿠키에 접속자 아이디 저장 후 feed.jsp로 보낸다.
+				setCookie("user_id", idvalue, 1);
 				location.href="./feed.jsp";
 			}
 		},
