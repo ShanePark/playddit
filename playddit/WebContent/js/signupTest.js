@@ -10,8 +10,8 @@ selectClass = function(){
 		success : function(res){
 			code = "";
 			code += "<select name='itemclass'>";
-			code += "<option value='default'>Choose your class</option>";
-			code += "<option value='default'>소속 학급 없음</option>";
+			code += "<option value='C000'>Choose your class</option>";
+			code += "<option value='C000'>소속 학급 없음</option>";
 			$.each(res, function(i, v){
 				code += "<option value=" + v.class_id +"> " + v.classname + "</option>"; 
 			})
