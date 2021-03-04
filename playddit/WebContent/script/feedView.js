@@ -39,10 +39,13 @@ function loadFeed(feedno){
 
 			}else{	// 사진이 첨부된 피드일 경우 
 			
+				// 사진 문자열을 쉼표를 기준으로 쪼갠다.
+				var pictures = res.feedpic.split(',');
+				
 				var slides = '';
-                slides += '<div class="slide"> <img src="images/feed2.png" /></div>'
-                slides += '<div class="slide"> <img src="images/feed3.jpg" /></div>'
-                slides += '<div class="slide"> <img src="images/feed3.jpg" /></div>'
+				for(i=0; i<pictures.length; i++){
+               		slides += '<div class="slide"> <img src="images/feed/'+pictures[i]+'" /></div>'
+				}
 				$('#slider').html(slides);
 				
 				$('#contTxt').html(res.cont);
