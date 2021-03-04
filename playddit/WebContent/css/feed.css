@@ -497,6 +497,15 @@ body {
     width: 100%;
 }
 
+#viewLeft .textOnly {
+    height: 80vh;
+    font-size: 1.2em;
+    background: white;
+    padding: 26px;
+    border-right: 1px solid #e9e7fb;
+    line-height: 1.7em;
+}
+
 #viewRight {
     float: right;
     width: 40%;
@@ -889,6 +898,7 @@ input[type="checkbox"]:checked + label .chk {
 
 #picup #uploadBox {
 	border: 1px solid #90bdde;
+	margin-right: 6px;
 }
 #picup #uploadBox #fileBtn {
 	width: 100%;
@@ -911,6 +921,7 @@ input[type="checkbox"]:checked + label .chk {
 
 #picup .file {
 	position: relative;
+	margin-top: 20px;
 }
 #picup .file img {
 	min-width: 100%;
@@ -1008,9 +1019,29 @@ input[type="checkbox"]:checked + label .chk {
     
     .feedWrite form {
         border-radius: 0;
+		padding: 40px 20px;
     }
     
     #mainTitle {
         margin-top: 20px;
     }
+	
+	#mainTitle h2 {
+		font-size: 1.5em;
+	}
+	
+	#moniterCho label {
+		display: block;
+	}
+	
+	#picup .file {
+		width: 80px;
+		height: 80px;
+	}
+	
+	#picup #uploadBox #fileBtn {
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+	}
 }
