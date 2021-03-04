@@ -71,13 +71,11 @@ public class FeedDaoImpl implements IFeedDao {
 		return (FeedVO) client.queryForObject("feed.getOneFeed", vo);
 	}
   
-  @Override
+  	@Override
 	public int deleteFeed(int feedno) throws SQLException {
 		return client.delete("feed.deleteFeed",feedno);
 	}
 
-<<<<<<< Updated upstream
-=======
 	@Override
 	public int insertLike(String id, int feedno) throws SQLException {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -95,6 +93,4 @@ public class FeedDaoImpl implements IFeedDao {
 	
 	}
 
-
->>>>>>> Stashed changes
 }
