@@ -61,40 +61,27 @@ $(function(){
     
     //알람
 	//feed Search
-    var visi = false;
 	$("#search button, #msearch button").on("click", function(){
-		if(visi){
-			$("#alarmEdge2, #alarmEdge").hide();
-			$("#modal").fadeOut(300);
-			visi = false;
-		}
-
 		$("#mask").show();
 		$("#feedSearch").show();
 		$("#feedSearchModal").slideDown(500);
-		visi = true;
 	});
 
 	$("#mask").click(function(){
 		$(this).hide();
-		
+			
+		if($("#modal").is(":visible")){
 			$("#alarmEdge2, #alarmEdge").hide();
 			$("#modal").fadeOut(300);
-        
+		}else {
 			$("#feedSearchModal").slideUp(300);
 			$("#feedSearch").delay(200).hide();
+		}
 	});
     
     $(".alarmBtn").click(function(){
-        if(!visi){
-			$("#feedSearchModal").slideUp(300);
-			$("#feedSearch").delay(200).hide();
-            visi = true;
-        }
-		
 		$("#mask").show();
 		$("#alarmEdge2 , #alarmEdge, #modal").show();
-        visi = false;
     });
 	
     //모바일 헤더 설정
