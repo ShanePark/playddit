@@ -271,7 +271,7 @@
 			feed += '          </div>'
 			feed += '                                                                                                 '
 			
-			if(v.feedpic != "none") {
+			if(v.feedpic != "feedpictest") {
 			feed += '          <div class="txt">'
 			feed += '              <a href="#" class="proName"> '+v.nickname+' </a>'
 			feed += '              <p class="txtCont">'
@@ -279,6 +279,15 @@
 			feed += '              </p>'
 			feed += '          </div>'
 			
+			}else {
+				
+					feed += '          <div class="txt" style="display:none">'
+					feed += '              <a href="#" class="proName"> '+v.nickname+' </a>'
+					feed += '              <p class="txtCont">'
+					feed +=                 v.cont  
+					feed += '              </p>'
+					feed += '          </div>'
+				
 			}
 			
 			
@@ -331,7 +340,37 @@
 				
 				})
 				$('#showfeed').append(feeds);
-
+				
+				$("#showfeed").find('.txt').each(function(){
+				    var content = $(this).children('.txtCont');
+				    var index = content.width();
+				    var content_txt = content.text();
+				    var content_txt_short = content_txt.substring(0,200)+"...";
+				    var btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
+				    $(this).append(btn_more);
+				    if(content_txt.length >= 200){
+				        content.html(content_txt_short);
+				    }else{
+				        btn_more.hide();
+				    }
+				    btn_more.click(toggle_content);
+				    function toggle_content(){
+				        if($(this).hasClass('short')){
+				            // 접기 상태
+				            $(this).html('더보기');
+				            content.html(content_txt_short)
+				            $(this).removeClass('short');
+				        }else{
+				            // 더보기 상태
+				            $(this).html('접기');
+				            content.html(content_txt);
+				            $(this).addClass('short');
+				        }
+				    }
+				});	
+				
+				
+			
 			},
 			error : function(xhr) {
 				alert("status : " + xhr.status);
