@@ -22,9 +22,6 @@
 <script type="text/javascript">
 	$(function() {
 		
-	
-		
-		
 		//내 피드 삭제하기 모달
 
         var modal2 = true;
@@ -56,26 +53,33 @@
    			
    			goDel(feedno);
    		})
-        
-   	// 좋아요 누르기 insert
+       
+   		
+  
 		 $("#showfeed").on("click",".like", function(){
 			  
 			 var like = $(this).hasClass("on");
+			 
+			 feedno = $(this).parents(".feed").attr("idx");
               
               if(like){
                   $(this).removeClass("on");
                   $(this).html('<i class="far fa-heart"></i>');
                   like = false;
+             	
+                   deleteLike(feedno);
               }else{
                   $(this).addClass("on");
                   $(this).html('<i class="fas fa-heart"></i>');
                   like = true;
+                  insertLike(feedno);
               }
 			 
-			 feedno = $(this).parents(".feed").attr("idx");
-			 insertLike(feedno);
+			
+			
+			
 		})
-		
+		 	// 좋아요 누르기 insert
 		var insertLike = function(feedno){
 			
         	   $.ajax({
@@ -84,7 +88,7 @@
         		 data : {'feedno' : feedno},
         		 
         		 success : function(res) {
-        			 alert("성공");
+        			
         			 
         		 },
         		 error : function(xhr){
@@ -96,6 +100,30 @@
         	   })
 		
 	}
+           
+                 
+           // 좋아요 취소 delete
+           var deleteLike = function(feedno){
+        	   
+        	   $.ajax({
+          		 url : '/playddit/feed/deleteLike.do',
+          		 type : 'post',
+          		 data : {'feedno' : feedno},
+          		 
+          		 success : function(res) {
+          			
+          			 
+          		 },
+          		 error : function(xhr){
+          			 alert("status : " + xhr.status);
+          			 
+          		 },
+          		 dataType : 'json'
+          		   
+          	   })
+        	   
+        	   
+           }
 	
 	
 	

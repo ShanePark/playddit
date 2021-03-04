@@ -93,4 +93,14 @@ public class FeedDaoImpl implements IFeedDao {
 	
 	}
 
+	@Override
+	public int deleteLike(String id, int feedno) throws SQLException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("feedno", feedno);
+		
+		return client.delete("feed.deleteLike", map);
+	
+	}
+
 }

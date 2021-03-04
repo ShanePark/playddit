@@ -108,6 +108,13 @@
 	
 	</insert>
 	
+	<delete id ="deleteLike" parameterClass="map">
+	
+	delete from likes
+		where user_id = #id#
+		and feed_no = #feedno#
+	</delete>
+	
 	
 	
 	

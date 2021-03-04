@@ -20,7 +20,6 @@ public interface IFeedDao {
 	// 피드 삭제 하기 (내 피드만)
 	public int deleteFeed(int feedno) throws SQLException;
 	
-	
 	// 피드 수정 하기 (내 피드만)
 	
 	// 단일 피드 정보 불러오기
@@ -29,5 +28,7 @@ public interface IFeedDao {
 	// 피드 좋아요 입력
 	public int insertLike(String id, int feedno) throws SQLException;
 	
+	// 피드 좋아요 삭제
+	public int deleteLike(String id, int feedno) throws SQLException;
 	
 }
