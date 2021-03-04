@@ -103,4 +103,10 @@ public class FeedDaoImpl implements IFeedDao {
 	
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ComVO> getComReplies(int feed_com_no) throws SQLException {
+		return client.queryForList("feed.getComReplies", feed_com_no);
+	}
+
 }
