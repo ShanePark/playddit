@@ -76,4 +76,25 @@ public class FeedDaoImpl implements IFeedDao {
 		return client.delete("feed.deleteFeed",feedno);
 	}
 
+<<<<<<< Updated upstream
+=======
+	@Override
+	public int insertLike(String id, int feedno) throws SQLException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("feedno", feedno);
+		
+		if(client.insert("feed.insertLike", map)==null) {
+			
+			return 1;
+
+		} else {
+
+			return 0;
+		}
+	
+	}
+
+
+>>>>>>> Stashed changes
 }

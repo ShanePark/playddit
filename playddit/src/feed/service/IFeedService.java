@@ -22,5 +22,16 @@ public interface IFeedService {
 
 	// 피드 삭제 하기 (내 피드만)
 	public int deleteFeed(int feedno);
+<<<<<<< Updated upstream
 
+=======
+	
+	
+	// 피드 수정 하기 (내 피드만)
+	
+	// 피드 좋아요 입력
+	public int insertLike(String id, int feedno);
+	
+	
+>>>>>>> Stashed changes
 }

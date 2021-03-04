@@ -94,5 +94,23 @@ public class FeedServiceImpl implements IFeedService {
 		return 0;
 	}
 
+<<<<<<< Updated upstream
     
+=======
+	@Override
+	public int insertLike(String id, int feedno) {
+			
+		try {
+			return dao.insertLike(id, feedno);
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	
+
+
+>>>>>>> Stashed changes
 }

@@ -20,10 +20,10 @@ public class FeedTest {
 		// service 받아오기
 		IFeedService service = FeedServiceImpl.getService();
 
-	
-
-
-
+		int feedno = 98;
+		String id = "expedition1205@gmail.com";
+		
+		System.out.println(service.insertLike(id,feedno));
 	}
 
 }
