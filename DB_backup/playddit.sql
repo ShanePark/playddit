@@ -331,9 +331,16 @@ values(f_com_re_no_seq.nextval,46,'psh40963@naver.com','대댓글 달기 테스�
 delete from feed_com_re
 where f_com_re_no = 1;
 -----------------------------------------------------
-commit;
+-- Personal Feedpage feeds loading
+select feed_no as feed_no, feed_cont as content,
+       (select count(*) from likes where feed_no = a.feed_no) as likes,
+       (select count(*) from feed_comment where feed_no = a.feed_no) as comments,
+        substr(feed_pic, 0, instr(feed_pic, ',')-1) as pic
+from feed a
+where user_id = 'psh40963@naver.com'
+order by feed_no desc;
 
-
+-----------------------------------------------------
 
 
 

@@ -7,6 +7,7 @@ import feed.dao.FeedDaoImpl;
 import feed.dao.IFeedDao;
 import feed.vo.ComVO;
 import feed.vo.FeedVO;
+import feed.vo.MypageFeedVO;
 
 public class FeedServiceImpl implements IFeedService {
 	
@@ -182,6 +183,16 @@ public class FeedServiceImpl implements IFeedService {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public List<MypageFeedVO> loadUserFeeds(String user_id) {
+		try {
+			return dao.loadUserFeeds(user_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	
