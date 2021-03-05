@@ -421,38 +421,7 @@
                     var slideH = $(".slide img").height();
 					$("#viewRight").height(slideH);
                 });
-				
-				
-            	// 대댓글 보기 버튼 [동적이벤트 수정 완료]
-            	$('#viewRight').on('click', '.replyBtnView', function(){
-            		$(this).parent(".comment").children('.replyList').slideToggle(300);
-            	})
-				
-				//내 피드 삭제하기 모달[동적이벤트 수정 완료]
-				var modal2 = true;
-				
-            	$('#viewRight').on('click', '.myFeed', function(){
-					if(modal2){
-						$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
-							e.preventDefault();
-						});
-						
-						$("#feedDelModal p").text("피드를 삭제하시겠습니까?");
-						
-						$("#reportBack").show();
-						$("#feedDel").show();
-						$("#feedDelModal").slideDown(500);
-						modal2 = true;
-					}
-				});
-				
-				$("#reportBack, #goCancel").click(function(){
-                    $("#feedDelModal").slideUp(500);
-                    $("#feedDel").delay(200).hide();
-                    $("#reportBack").hide();
-                    modal2 = true;
-                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-                });
+            	
             });
         </script>
     </body>

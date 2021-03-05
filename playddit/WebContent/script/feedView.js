@@ -3,10 +3,22 @@ $(function(){
 	var feedno = getParameterByName('feedno');
 	loadFeed(feedno);
 	
+	// 피드 삭제 버튼 
+	$('#goDel').on('click', function(){
+		delFeed(feedno);
+	})
+	
+	
 	// 댓글 말풍선 버튼 
 	$('#viewRight').on('click', '#contIcon .comment', function(){
 		$("#input_area").focus();
 	});
+	
+    // 대댓글 보기 버튼
+	$('#viewRight').on('click', '.replyBtnView', function(){
+		$(this).parent(".comment").children('.replyList').slideToggle(300);
+	})
+	
 	// 대댓글 달기 버튼
 	$('#viewRight').on('click', '.replyBtn', function(){
 		comno = $(this).parent('.comment').attr("comno");
@@ -133,7 +145,31 @@ $(function(){
 		}
 	});
 	
-	
+	// 신고, 삭제 모달에서 취소 버튼 이벤트 
+	$("#reportBack, #goCancel").click(function(){
+        $("#feedDelModal").slideUp(500);
+        $("#feedDel").delay(200).hide();
+        $("#reportBack").hide();
+        modal2 = true;
+        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+    });
+
+	// 피드 삭제하기 모달
+	var modal2 = true;
+	$('#viewRight').on('click', '.myFeed', function(){
+		if(modal2){
+			$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+				e.preventDefault();
+			});
+			
+			$("#feedDelModal p").text("피드를 삭제하시겠습니까?");
+			
+			$("#reportBack").show();
+			$("#feedDel").show();
+			$("#feedDelModal").slideDown(500);
+			modal2 = true;
+		}
+	});
 })
 
 
@@ -142,6 +178,21 @@ $(function(){
 							여기부터 함수 선언부입니다. 
 		
  ***************************************************************************/
+
+function delFeed(feedno){
+	$.ajax({
+		url : '/playddit/feed/deleteFeed.do',
+		type : 'post',
+		data : {'feedno' : feedno},
+		error : function(xhr){
+			 alert("status : " + xhr.status);
+		 },
+		 dataType : 'json'
+   })
+
+	window.location.href= 'feed.jsp'
+	
+}
 
 // 대댓글 등록
 function insertComReply(comno, content){
