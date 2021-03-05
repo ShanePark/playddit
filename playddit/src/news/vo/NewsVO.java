@@ -5,6 +5,7 @@ public class NewsVO {
 	private String news_date;
 	private String news_cont;
 	private String news_title;
+	private int news_no;
 	
 	
 	public String getNews_pic() {
@@ -37,7 +38,6 @@ public class NewsVO {
 	public void setNews_no(int news_no) {
 		this.news_no = news_no;
 	}
-	private int news_no;
 	
 	
 	
