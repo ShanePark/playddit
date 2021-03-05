@@ -26,7 +26,7 @@ public interface IFeedDao {
 	public int deleteFeed(int feedno) throws SQLException;
 	
 	// 피드 수정 하기 (내 피드만)
-	public int updateFeed(String feed_cont, String feed_pic, int feed_no) throws SQLException;
+	public int modifyFeed(String feed_cont, String feed_pic, int feed_no) throws SQLException;
 	
 	// 단일 피드 정보 불러오기
 	public FeedVO getOneFeed(String user_id, int feed_no) throws SQLException;

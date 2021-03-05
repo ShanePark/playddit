@@ -62,7 +62,7 @@
 		
 		$("#goModi").on("click",function(){
 			alert(feedno);
-			location.href='feedUpdateTest.jsp?feedno=' + feedno;
+			location.href='feedModifyTest.jsp?feedno=' + feedno;
 		});
 		
 		function goNum(){
@@ -70,10 +70,7 @@
 		}
 	 	
 
-		$("#showfeed").on(
-				"click",
-				".like",
-				function() {
+		$("#showfeed").on("click",".like",function() {
 					var likeCount = parseInt($(this).parents('.feed').find(
 							'.likeCount').children('span').text());
 					var like = $(this).hasClass("on");
@@ -192,8 +189,7 @@
 						$.each(res,function(i, v) {
 
 											var feed = "";
-											v.cont = v.cont.replace(/\n/g,
-													"<br>");
+											v.cont = v.cont.replace(/\n/g,"<br>");
 
 											feed += '<div class="feed" idx="'+v.feedno+'">'
 											feed += '<div class="proBox" action="'+v.id+'">'

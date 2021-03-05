@@ -14,7 +14,7 @@ import feed.service.IFeedService;
 import login.vo.ProfileVO;
 import web.IAction;
 
-public class UpdateFeed implements IAction {
+public class ModifyFeed implements IAction {
 
 	@Override
 	public boolean isRedirect() {
@@ -45,7 +45,7 @@ public class UpdateFeed implements IAction {
 		
 		IFeedService service = FeedServiceImpl.getService();
 		
-		int result = service.updateFeed(feed_cont, feedpic, feed_no);
+		int result = service.modifyFeed(feed_cont, feedpic, feed_no);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().write(String.valueOf(result));	

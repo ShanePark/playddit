@@ -12,7 +12,7 @@
         <link href="../css/style.css" rel="stylesheet" />
         <link href="../css/feed.css" rel="stylesheet" />
 
-<title>update feed!!</title>
+<title>modify feed!!</title>
 <script src="../js/jquery-3.5.1.min.js"></script>
 <style>
 
@@ -24,47 +24,58 @@
 
 <script type="text/javascript">
 	var feedno = <%=sfeedno%>;
-	console.log(feedno);
+
 
 	$(function() {
 		$.ajax({
 				url : '/playddit/feed/getOneFeed.do',
 				type : 'post',
-				data : {'feed_no' : feedno },
+				data : {'feed_no' :feedno},
 				success : function(res){
-					if(res == "0"){
-						alert("성공");
-					}else{
-						alert("실패");
-					}
+					
+					var modifeed = "";
+					
+					modifeed += '<label>피드내용</label>'
+					modifeed += '<p><textarea cols="50" rows="10" name="feedcont">'+res.cont+'</textarea><p><br><br>'
+					modifeed += '<label>피드사진</label>'
+					modifeed += '<input type = "text" name ="feedpic"><br><br>'
+					
+					$('#modifyFeedForm').append(modifeed);
 				},
 				error : function(xhr){
 					alert("status : " + xhr.status);
 				},
-				dataType : 'text'
+				dataType : 'json'
 				
 			})
+	
 			
-		$('modifyfeed').on('click',function(){
-			modifyfeed();
+			$("#modifyfeed").on('click',function(){
+			alert("test1")
+			modifyfeed(feedno);
+			
 			
 		})
 		
-		
-	})
 	
 	
 	
-	var modifyfeed = function(){
-		var content = $('textarea[name=feedcont]').val(feedno);
+
+	
+	var modifyfeed = function(feedno){
+		alert(feedno)
+		alert("test2")
+		var content = $('textarea[name=feedcont]').val();
 		content = content.replace(/<br>/g, "\n");
+		alert(content)
 		$.ajax({
-			url : '/playddit/feed/updateFeed.do',
+			url : '/playddit/feed/modifyFeed.do',
 			type : 'post',
-			data : {'cont' : content},
+			data : {'feed_no' : feedno,
+					'feed_cont' : content},
 			success : function(res){
-				
-				
+				alert("성공");
+				location.href='feedtest.jsp';
 			},
 			error : function(xhr){
 				alert("status : " + xhr.status);
@@ -73,47 +84,24 @@
 			
 		})
 	}
+		
+	})
 
 </script>
 </head>
 <body>
-<h2>Update Feed</h2>
+<h2>Modify Feed</h2>
 <hr>
 <a href="../index.html">세션필요할때(500에러) 로그인 하고오기</a><br><br><br>
 <hr>
-<form id ="updateFeedForm" method="post" >
 
-		<label>피드</label>
-		<p>
+
+<form id ="modifyFeedForm" method="post" >
 	
-
-		<label>피드내용</label>
-	
-			<p><textarea cols="50" rows="10" name="feedcont"></textarea><p>
-			
-			
-			
-			<br><br>
-
-	
-		<label>피드사진</label>
-		
-			<input type = "text" name ="feedpic">
-			
-			<br><br>
-		
-	
-			
-	
-		
-		
-	
-
-
-
-
 </form>
-<input type = "button" onclick="location.href='feedtest.html'" value = "수정" id = "modifyfeed">
+
+<button type = "button" id = "modifyfeed">수정</button>
+
 
 </body>
 </html>
