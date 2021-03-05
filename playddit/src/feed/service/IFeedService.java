@@ -24,6 +24,7 @@ public interface IFeedService {
 	public int deleteFeed(int feedno);
 	
 	// 피드 수정 하기 (내 피드만)
+	public int modifyFeed(String feed_cont, String feed_pic, int feed_no);
 	
 	// 피드 좋아요 입력
 	public int insertLike(String id, int feedno);
@@ -31,4 +32,9 @@ public interface IFeedService {
 	// 피드 좋아요 삭제
 	public int deleteLike(String id, int feedno);
 	
+	// 댓글 등록
+	public int insertComment(String id, String content, int feedno);
+
+	// 댓글 삭제
+	public int deleteComment(int feedno);
 }

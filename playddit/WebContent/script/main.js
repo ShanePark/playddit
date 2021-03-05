@@ -3,9 +3,9 @@ $(function(){
 	getAlarm();
 	loadGroup();
 	
+	// 팔로우 혹은 팔로잉 목록 불러오는 이벤트
 	 $(".followBtn").click(function(){
         title = $(this).parent("li").children(".th").text();
-	
 		if(title == "팔로워"){
 			loadFollower();
 		}else{
@@ -17,14 +17,30 @@ $(function(){
 		logout();
 	})
 
+	// 팔로우 버튼 이벤트
 	$('.followList').on('click', '.followBtn', function(){
+		$(this).remove();
 		var targetId = this.getAttribute('follow');
-		follow(this, targetId);
+		follow(targetId);
 	})
+	// 언팔로우 버튼 이벤트 
 	$('.followList').on('click', '.unfollowBtn', function(){
+		$(this).parents('li').remove();
 		var targetId = this.getAttribute('follow');
-		unfollow(this, targetId);
+		unfollow(targetId);
 	})
+	
+	// 알람 모달 
+    $(".alarmBtn").click(function(){
+        if(!visi){
+            $("#alarmEdge2 , #alarmEdge, #modal").show();
+            visi = true;
+        }else{
+            $("#alarmEdge2, #alarmEdge").hide();
+            $("#modal").fadeOut(300);
+            visi = false;
+        }
+    });
 	
 })
 
@@ -156,26 +172,16 @@ loadFollowing = function(){
 	})
 }
 
-follow = function(button, targetId){
+follow = function(targetId){
 	$.ajax({
 		url : '/playddit/users/followUser.do',
 		type : 'post',
 		data : {'targetId' : targetId},
 		success : function(res){
-			
 			// 프로필 쪽 숫자 바꾸기
 			$('#Following').empty();
 			$('#Following').append(res);
-				
-			if(title == "팔로잉"){
-				// 모달창 숫자 바꾸기 
-				$('.followTitle').find('span').empty();
-				$('.followTitle').find('span').append(res);
-				loadFollowing();
-			}else{
-				// 팔로워 보는 모달일경우 follow 버튼만 삭제한다.
-				button.remove();
-			}
+
 		},
 		error : function(xhr){
 			alert("status : " + xhr.status);
@@ -183,7 +189,7 @@ follow = function(button, targetId){
 		dataType : "text"
 	})
 }
-unfollow = function(button, targetId){
+unfollow = function(targetId){
 	$.ajax({
 		url : '/playddit/users/unfollowUser.do',
 		type : 'post',
@@ -197,8 +203,6 @@ unfollow = function(button, targetId){
 			$('#Following').empty();
 			$('#Following').append(res);	
 			
-			// unfollow는 어차피 following 목록에서만 가능하다.
-			loadFollowing();
 		},
 		error : function(xhr){
 			alert("status : " + xhr.status);

@@ -124,6 +124,32 @@
 		where user_id = #id#
 		and feed_no = #feedno#
 	</delete>
+
+	
+	<update id = "modifyFeed" parameterClass="map">
+	
+	update feed set 
+           feed_cont = #feed_cont#,
+           feed_date = sysdate,
+           feed_pic = #feed_pic#
+           where feed_no = #feed_no#
+	</update>
+	
+	
+	<insert id ="insertComment" parameterClass="map">
+	
+	insert into feed_comment 
+	(feed_com_no, feed_no, user_id, feed_com_cont, feed_com_date)
+	values(feed_com_no_seq.nextval,#feedno#,#id#,#content#, sysdate)
+	
+	</insert>
+	
+	<delete id ="deleteComment" parameterClass="int">
+		delete from feed_comment
+		where feed_com_no = #comno#
+	</delete>
+	
+	
 	
 	
 	

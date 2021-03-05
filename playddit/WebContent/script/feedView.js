@@ -3,26 +3,74 @@ $(function(){
 	var feedno = getParameterByName('feedno');
 	loadFeed(feedno);
 	
-	// 댓글 달기
+	// 댓글 말풍선 버튼 
 	$('#viewRight').on('click', '#contIcon .comment', function(){
-		$("#input_area").focus();	
-	});
-	// 대댓글 달기 버튼 
-	$('#viewRight').on('click', '.replyBtn', function(){
 		$("#input_area").focus();
 	});
+	// 대댓글 말풍선 버튼
+	$('#viewRight').on('click', '.replyBtn', function(){
+		$('#commentInputBox').prepend('대댓글 작성입니다.');
+		$("#input_area").focus();
+	});
+	// 댓글 등록 버튼
+	$('#viewRight').on('click', '#commentSend', function(){
+		let content = document.getElementById('input_area').innerHTML;
+		insertComment(feedno,content);
+	});
+	
+	// 좋아요 버튼 이벤트
+	$("#viewRight").on("click",".like", function(){	
+		var likeCount = parseInt($(this).parents('#viewRight').find('#likeBtn').children('span').text()); 
+		var like = $(this).hasClass("on");
+	      
+		if(like){	// 이미 좋아요가 있으면 unlike
+			$(this).removeClass("on");
+			$(this).html('<i class="far fa-heart"></i>');
+			like = false;
+			$(this).parents('#viewRight').find('#likeBtn').html(  '좋아요 <span>'+ (likeCount-1) +' </span>개 ');
+	        deleteLike(feedno);
+		}else{	// 좋아요 없으면 like 추가
+	        $(this).addClass("on");
+	        $(this).html('<i class="fas fa-heart"></i>');
+	        like = true;
+	        $(this).parents('#viewRight').find('#likeBtn').html(  '좋아요 <span>'+ (likeCount+1) +' </span>개 ');
+	        insertLike(feedno);
+	      }
+	})
 	
 })
 
+/************************************************************************** 
+
+							여기부터 함수 선언부입니다. 
+		
+ ***************************************************************************/
+
+function insertComment(feedno,content){
+	
+   $.ajax({
+	 url : '/playddit/feed/insertComment.do',
+	 type : 'post',
+	 data : {'feedno' : feedno, 'content' : content},
+	 success : function(res) {
+		
+	 },
+	 error : function(xhr){
+		 alert("status : " + xhr.status);
+	 },
+	 dataType : 'json'
+   })
+}
+
 function getParameterByName(name) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                results = regex.exec(location.search);
-        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
 function loadFeed(feedno){
-		$.ajax({
+	$.ajax({
 		url : '/playddit/feed/getOneFeed.do',
 		type : 'post',
 		error : function(xhr){
@@ -81,7 +129,7 @@ function loadFeed(feedno){
 			
 			// 댓글들 출력
 			$.each(res.replyList, function(i,v){
-				var replyli = '<li class="comment">'
+				var replyli = '<li class="comment" comno="'+v.comno+'">'
                             +'<a href="#"><img src="images/profile/'+v.profile+'" /></a>'
                             +'<p><a href="#">'+v.nickname+'</a>'
                             +'<span>'+v.comcont+'</span>'
@@ -166,5 +214,34 @@ function getCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) return unescape(parts.pop()).split(';').shift();
+}
+
+
+var insertLike = function(feedno){
+   $.ajax({
+	 url : '/playddit/feed/insertLike.do',
+	 type : 'post',
+	 data : {'feedno' : feedno},
+	 success : function(res) {
+	 },
+	 error : function(xhr){
+		 alert("status : " + xhr.status);
+	 },
+	 dataType : 'json'
+   })
+}
+
+var deleteLike = function(feedno){
+	$.ajax({
+		url : '/playddit/feed/deleteLike.do',
+		type : 'post',
+		data : {'feedno' : feedno},
+		success : function(res) {
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+		dataType : 'json'
+	})
 }
 

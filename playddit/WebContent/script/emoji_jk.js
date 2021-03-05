@@ -36,29 +36,29 @@ $(document).on("mouseenter",".emoji_pickup",function() {
 
 // 이모지 버튼 클릭시 이모지 목록 popup
 $(document).on("click",".emoji_pickup",function(){
+ var view = $("#emoji_popup").is(":visible");
+	if(!view){
+	  // popup div의 size를 가져와서 위치 선정에 활용
+	  var popupdiv_width = $('#emoji_popup').width();
+	  var popupdiv_height = $('#emoji_popup').height();
 
-  // popup div의 size를 가져와서 위치 선정에 활용
-  var popupdiv_width = $('#emoji_popup').width();
-  var popupdiv_height = $('#emoji_popup').height();
-
-  // popup div의 위치를 설정
-  var position = $('.emoji_pickup').position();
-  $('#emoji_popup').css("left", "0");
-  $('#emoji_popup').css("bottom", "70px");
-  $("#emoji_popup").css("background-color","#FFFFFF")
-  $('#emoji_popup').css("display","block");
-
+	  // popup div의 위치를 설정
+	  var position = $('.emoji_pickup').position();
+	  $('#emoji_popup').css("left", "0");
+	  $('#emoji_popup').css("bottom", "70px");
+	  $("#emoji_popup").css("background-color","#FFFFFF")
+	  $('#emoji_popup').css("display","block");
+	}else{
+		$("#emoji_popup").css({"display":"none"});
+	}
 });
 
-
 // input area에서 esc 누르면 popup div가 사라짐
-$(document).on("keyup","#input_area",function() {
+$(document).on("keyup","body",function() {
   if (event.keyCode === 27) {
     $("#emoji_popup").css({"display":"none"});
  	  }
 });
-
-
 
 // emoji_picks
 $(document).on("click",".emoji_list", function(e) {
