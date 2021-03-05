@@ -94,7 +94,11 @@ select user_id, user_nickname,class_id, nvl(user_pic, 'default.png') as user_pic
 (select count(*) from follow where followee=users.user_id) as follower,
 (select class_title ||' '|| class_num || ' - ' || class_room
 from class
-where class_id = (select class_id from users where user_id='psh40963@naver.com')) as className,
+where class_id = (select class_id from users where user_id='psh40963@naver.com')) as className1,
+(select count(*) from follow where followee=users.user_id) as follower,
+(select class_num || ' - ' || class_room
+from class
+where class_id = (select class_id from users where user_id='psh40963@naver.com')) as className2,
 (select count(*)
 from feed
 where feed.user_id = users.user_id) as allFeed,

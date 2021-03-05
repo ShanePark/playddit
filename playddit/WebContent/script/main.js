@@ -121,7 +121,7 @@ loadFollower = function(){
 		success : function(res){
 			$.each(res, function(i,v){
 				var li = '<li>';
-				li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
+				li += '<a href=myPage.jsp?feed_id='+v.id+' class="followPic" nick="'+v.nickname+'">';
 				li += '<img src="images/profile/'+v.profile+'" /></a>';
 				li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
 				li += '<p class="followName">'+v.nickname+'</p>';
@@ -148,7 +148,7 @@ loadFollowing = function(){
 		success : function(res){
 			$.each(res, function(i,v){
 				var li = '<li>';
-				li += '<a href="/playddit/users/personalFeed?id='+v.id+'" class="followPic" nick="'+v.nickname+'">';
+				li += '<a href=myPage.jsp?feed_id='+v.id+' class="followPic" nick="'+v.nickname+'">';
 				li += '<img src="images/profile/'+v.profile+'" /></a>';
 				li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
 				li += '<p class="followName">'+v.nickname+'</p>';
@@ -217,7 +217,7 @@ getAlarm = function(){
 			var alarm = '';
 			$.each(res, function(i,v){
 				alarm += '<div class="alarm">';
-				alarm += '<a class="alarmUser" href="'+v.sender+'"><img src="images/profile/'+ v.sender_pic +'" /></a>'
+				alarm += '<a class="alarmUser" href=myPage.jsp?feed_id='+v.sender+'><img src="images/profile/'+ v.sender_pic +'" /></a>'
 				alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
 				switch(v.type){
 				case 11: alarm += '님이 나를 follow 하기 시작했습니다.'
