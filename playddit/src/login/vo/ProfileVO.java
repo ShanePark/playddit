@@ -3,7 +3,8 @@ package login.vo;
 public class ProfileVO {
 	private String user_id;
 	private String user_nickname;
-	private String classname;
+	private String classname1;
+	private String classname2;
 	private String user_bio;
 	private String class_id;
 	private String user_pic;
@@ -23,11 +24,17 @@ public class ProfileVO {
 	public void setUser_nickname(String user_nickname) {
 		this.user_nickname = user_nickname;
 	}
-	public String getClassname() {
-		return classname;
+	public String getClassname1() {
+		return classname1;
 	}
-	public void setClassname(String classname) {
-		this.classname = classname;
+	public void setClassname1(String classname1) {
+		this.classname1 = classname1;
+	}
+	public String getClassname2() {
+		return classname2;
+	}
+	public void setClassname2(String classname2) {
+		this.classname2 = classname2;
 	}
 	public String getUser_bio() {
 		return user_bio;
