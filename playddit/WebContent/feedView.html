@@ -900,6 +900,7 @@
 									+ '<button type="button" id="replyCommentSend">게시</button>'
 									+ '</div>';
 						
+						$("#reply_input").remove();
 						$(this).parent(".comment").find(".inputWrap").append(replyArea);
 						$(this).parents("#viewRight").find("#input_area").attr("contenteditable", "false");
 					});
@@ -910,10 +911,18 @@
 				$("#input_area").click(function(){
 					if(!stat){
 						$(this).attr("contenteditable", "true");
+						$("#reply_input_area").attr("contenteditable", "false");
+						stat = true;
 					}
 				});
 				
-				$("#reply")
+				$("#viewRight").on("click", "#reply_input_area", function(){
+					if(stat){
+						$(this).attr("contenteditable", "true");
+						$("#input_area").attr("contenteditable", "false");
+						stat = false;
+					}
+				});
 				
 				//댓글달기 버튼 누르면 focus 이동하기
 				$(".comment").click(function(){
