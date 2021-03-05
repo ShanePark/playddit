@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <div id="profile">
-        <div id="userBox">
-			<a href="#" id="userName"></a>
-			<span id="userMail"></span>
+        <div id="infoBox">
+			<a href="#" id="userPic">
+				<img src="images/default.png" />
+			</a>
+			<div id="userBox">
+				<a href="#" id="userName"></a>
+				<span id="userMail"></span>
+			</div>
 		</div>
         <div id="followBox">
             <ul>
