@@ -319,9 +319,14 @@ values(feed_com_no_seq.nextval,6,'psh40963@naver.com','댓글 달기 테스트~'
 delete from feed_comment
 where feed_com_no = 41;
 -----------------------------------------------------
--- find most recent comment number I left
-
-
+-- insert comment's reply 
+insert into feed_com_re 
+(f_com_re_no, feed_com_no, user_id, f_com_re_cont, f_com_re_date)
+values(f_com_re_no_seq.nextval,46,'psh40963@naver.com','대댓글 달기 테스트~!', sysdate);
+-- delete comment's reply
+delete from feed_com_re
+where f_com_re_no = 1;
+-----------------------------------------------------
 commit;
 
 

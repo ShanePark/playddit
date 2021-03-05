@@ -153,6 +153,22 @@
 		where feed_com_no = #comno#
 	</delete>
 	
+	<insert id ="insertComReply" parameterClass="map">
+	
+	insert into feed_com_re
+	(f_com_re_no, feed_com_no, user_id, f_com_re_cont, f_com_re_date)
+	values(f_com_re_no_seq.nextval,#comno#,#id#,#content#, sysdate)
+	
+		<selectKey keyProperty="f_com_re_no" resultClass="int">
+			select f_com_re_no_seq.currval AS f_com_re_no from dual
+		</selectKey>
+
+	</insert>
+	
+	<delete id ="deleteComReply" parameterClass="int">
+		delete from feed_com_re
+		where f_com_re_no = #recomno#
+	</delete>
 	
 	
 	

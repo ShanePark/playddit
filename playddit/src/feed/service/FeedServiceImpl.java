@@ -155,9 +155,29 @@ public class FeedServiceImpl implements IFeedService {
 	}
 
 	@Override
-	public int deleteComment(int feedno) {
+	public int deleteComment(int comno) {
 		try {
-			return dao.deleteComment(feedno);
+			return dao.deleteComment(comno);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int insertComReply(String id, String content, int comno) {
+		try {
+			return dao.insertComReply(id, content, comno);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int deleteComReply(int recomno) {
+		try {
+			return dao.deleteComReply(recomno);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
