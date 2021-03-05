@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link href="css/common.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet" />
+        <link href="css/study.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script src="script/script.js"></script>
@@ -334,10 +335,59 @@
                 <div id="alarmEdge2"></div>
             
                 <!-- 컨텐츠 시작 -->
-                
+                <div id="studyWrap">
+                    <div id="buttonArea">
+                        <h2>My study list</h2>
+                        <button><i class="fas fa-plus"></i></button>
+                    </div>
+                    
+                    <!--학급, 스터디가 없을때 나오는 태그-->
+                    <div id="noneClass">
+                        <img src="images/study.png"/>
+                        <p>
+                            대덕인재개발원 학생, 선생님들과<br/>
+                            소통을 시작해볼까요?
+                        </p>
+                    </div>
+                    
+                    <div id="myClass">
+                        <h3>My class</h3>
+                        <div id="classBox" class="studys">
+                            <a href="#" id="classProfile" class="studyPic" style="background: url(../WebContent/images/feed3.jpg)"></a>
+                            <div id="classInfo">
+                                <h6>풀스택 개발자 과정 6기-302호</h6>
+                                <p>학급인원 <span>25</span>명</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="myStudy">
+                        <h3>My Study</h3>
+                        <div class="studyBox studys">
+                            <a href="#" class="studyProfile studyPic" style="background: url(../WebContent/images/profile/expedition1205@gmail.com.jpg)"></a>
+                            <div class="studyInfo">
+                                <h6>프로그래머스 스터디방</h6>
+                                <p>스터디원 <span>4</span>명</p>
+                            </div>
+                        </div>
+                        <div class="studyBox studys">
+                            <a href="#" class="studyProfile studyPic" style="background: url(../WebContent/images/profile/chdnjs7610@gmail.com.jpg)"></a>
+                            <div class="studyInfo">
+                                <h6>프로그래머스 스터디방</h6>
+                                <p>스터디원 <span>4</span>명</p>
+                            </div>
+                        </div>
+                        <div class="studyBox studys">
+                            <a href="#" class="studyProfile studyPic" style="background: url(../WebContent/images/profile/psh40963@naver.com.png)"></a>
+                            <div class="studyInfo">
+                                <h6>프로그래머스 스터디방</h6>
+                                <p>스터디원 <span>4</span>명</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 				<div id="mask"></div>
             </div>
-            <!--컨텐츠 끝-->
+                <!--컨텐츠 끝-->
             
             <div id="profile">
                 <div id="infoBox">
