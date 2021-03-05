@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -45,6 +48,7 @@ public class JoinSessionAdd implements IAction{
 		String birth = request.getParameter("birth");
 		String class_id = request.getParameter("class_id");
 		
+		
 		if(class_id == null || class_id == "") {
 			class_id = "C000";
 		}		
@@ -65,7 +69,7 @@ public class JoinSessionAdd implements IAction{
 		insertVo.setUser_name(name);
 		insertVo.setUser_tel(tel);
 		insertVo.setUser_birth(birth);
-		insertVo.setUser_class(class_id);
+		insertVo.setClass_id(class_id);
 
 		session.setAttribute("insertVo", insertVo);	
 		

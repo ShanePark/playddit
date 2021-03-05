@@ -41,17 +41,18 @@ public class UsersVO {
 	public void setUser_tel(String user_tel) {
 		this.user_tel = user_tel;
 	}
+
 	public String getUser_birth() {
 		return user_birth;
 	}
 	public void setUser_birth(String user_birth) {
 		this.user_birth = user_birth;
 	}
-	public String getUser_class() {
+	public String getClass_id() {
 		return class_id;
 	}
-	public void setUser_class(String user_class) {
-		this.class_id = user_class;
+	public void setClass_id(String class_id) {
+		this.class_id = class_id;
 	}
 	public String getUser_sign_date() {
 		return user_sign_date;
