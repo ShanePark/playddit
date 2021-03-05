@@ -1,6 +1,103 @@
 $(function(){
 	loadFeed();
+	
+	// 피드 삭제
+	$('.cen').on('click','#goDel',function() {
+		// 해당하는 feed 화면에서 제거
+		// $('.feed[idx=feedno]').remove()로 제거해야 하는데,찾질 못해서 임시로 each문 돌립니다
+		$(this).parents('.cen').find('.feed').each(function(){
+			if($(this).attr("idx") == feedno){
+				this.remove();
+				return false;
+			}
+		})
+		// 실제로 피드를 제거하는 함수
+		delFeed(feedno);
+   	});
+	
+	// 좋아요 버튼 이벤트
+	$("#feedBox").on("click",".like", function(){	
+		var likeCount = parseInt($(this).parents('.feed').find('.likeCount').children('span').text()); 
+		var like = $(this).hasClass("on");
+		feedno = $(this).parents(".feed").attr("idx");
+	      
+		if(like){	// 이미 좋아요가 있으면 unlike
+			$(this).removeClass("on");
+			$(this).html('<i class="far fa-heart"></i>');
+			like = false;
+			$(this).parents('.feed').find('.likeCount').html(  '좋아요 <span>'+ (likeCount-1) +' </span>개 ');
+	        deleteLike(feedno);
+		}else{	// 좋아요 없으면 like 추가
+	        $(this).addClass("on");
+	        $(this).html('<i class="fas fa-heart"></i>');
+	        like = true;
+	        $(this).parents('.feed').find('.likeCount').html(  '좋아요 <span>'+ (likeCount+1) +' </span>개 ');
+	        insertLike(feedno);
+	      }
+	})
+	
+	// 댓글 버튼 이벤트 -> 상세 피드정보 페이지로 넘긴다.
+	$("#feedBox").on("click",".comment", function(){
+		feedno = $(this).parents(".feed").attr("idx");
+		var feedUrl = 'feedView.jsp?feedno='+feedno;
+		location.replace(feedUrl);
+	});
+	
+	////////////////////////// 모달 이벤트 관련 함수 시작 /////////////////////////////
+	// 내 피드 삭제하기 모달
+    var modal2 = true;
+    $("#feedBox").on("click",".myFeed", function(){
+    	feedno = $(this).parents(".feed").attr("idx");
+    	
+        if(modal2){
+            $("#feedDel").show();
+            $("#feedDelModal").slideDown(500);
+            modal2 = true;
+        }
+    });
+
+    // 피드 삭제 취소 모달 닫기
+    $("#reportBack, #goCancel").click(function(){
+        $("#feedDelModal").slideUp(500);
+        $("#feedDel").delay(200).hide();
+        $("#reportBack").hide();
+        modal2 = true;
+        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+    });
+
+	//신고 모달
+    var modal = true;
+    $("#feedBox").on("click",".report", function(){
+        if(modal){
+            $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+                e.preventDefault();
+            });
+            $("#reportBack").show();
+            $("#reportWrap").show();
+            $("#reportModal").slideDown(500);
+            modal = true;
+        }
+    });
+
+    // 신고 취소 모달 닫기
+    $("#reportBack, #cancel").click(function(){
+        $("#reportModal").slideUp(500);
+        $("#reportWrap").delay(200).hide();
+        $("#reportBack").hide();
+        modal = true;
+        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+    });
+
+	////////////////////////// 모달 이벤트 관련 함수 끝 /////////////////////////////
+	
 })
+
+/************************************************************************** 
+
+							여기부터 함수 선언부입니다. 
+		
+ ***************************************************************************/
+
 
 var loadFeed = function(){
 	$.ajax({
@@ -10,7 +107,7 @@ var loadFeed = function(){
 			
 			$.each(res, function(i,v){
 				
-				var feed = '<div class="feed">';
+				var feed = '<div class="feed" idx="'+v.feedno+'">';
 				v.cont = v.cont.replace(/\n/g,"<br>");
 				
 				feed += '<div class="proBox" action="'+v.id+'">'
@@ -83,7 +180,7 @@ var loadFeed = function(){
 				$('#feedBox').append(feed);
 				
 			})
-				//////////////feed slick
+				//////////////////////////// feed slick//////////////////////////// 
                 $(".feedPic .slider").slick({
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -115,7 +212,36 @@ var loadFeed = function(){
                         $(this).parents(".feedPic").find(".slick-dots li").eq(index).html('<i class="fas fa-circle"></i>');
                     }); 
                 });
-				//////////////feed slick끝 
+				//////////////////////////// feed slick 끝 //////////////////////////// 
+				
+				// 더보기 기능 적용 
+				$("#feedBox").find('.txt').each(function(){
+				    var content = $(this).children('.txtCont');
+				    var index = content.width();
+				    var content_txt = content.text();
+				    var content_txt_short = content_txt.substring(0,100)+"...";
+				    var btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
+				    $(this).append(btn_more);
+				    if(content_txt.length >= 200){
+				        content.html(content_txt_short);
+				    }else{
+				        btn_more.hide();
+				    }
+				    btn_more.click(toggle_content);
+				    function toggle_content(){
+				        if($(this).hasClass('short')){
+				            // 접기 상태
+				            $(this).html('더보기');
+				            content.html(content_txt_short)
+				            $(this).removeClass('short');
+				        }else{
+				            // 더보기 상태
+				            $(this).html('접기');
+				            content.html(content_txt);
+				            $(this).addClass('short');
+				        }
+				    }
+				});	
 			
 		},
 		error : function(xhr) {
@@ -124,3 +250,61 @@ var loadFeed = function(){
 	})
 		
 }
+
+var insertLike = function(feedno){
+	   $.ajax({
+		 url : '/playddit/feed/insertLike.do',
+		 type : 'post',
+		 data : {'feedno' : feedno},
+		 success : function(res) {
+		 },
+		 error : function(xhr){
+			 alert("status : " + xhr.status);
+		 },
+		 dataType : 'json'
+	   })
+}
+
+var deleteLike = function(feedno){
+	$.ajax({
+		url : '/playddit/feed/deleteLike.do',
+		type : 'post',
+		data : {'feedno' : feedno},
+		success : function(res) {
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+		dataType : 'json'
+	})
+	   
+}
+
+var delFeed = function(feedno){
+	
+	$.ajax({
+	url : '/playddit/feed/deleteFeed.do',
+	type : 'post',
+	data : {'feedno' : feedno},
+	success : function(res) {
+		
+		// 마이 피드 모달 끄기
+		$("#feedDelModal").slideUp(500);
+        $("#feedDel").delay(200).hide();
+        $("#reportBack").hide();
+        modal2 = true;
+        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+		
+	},
+	error : function(xhr){
+		alert("status : " + xhr.status);
+	},
+	dataType : 'json'
+	});
+	
+}
+
+
+
+
+
