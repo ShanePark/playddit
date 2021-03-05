@@ -10,9 +10,9 @@ $(function(){
 	})
 		
 	$('#remail').on('click', function(){
-		var waitTime = 10;
-		if((new Date() - resentTime) < 10 * 1000){
-		alert("인증코드를 재발송하려면" + waitTime + "초를 기다려야합니다." + (Math.round((waitTime * 1000 - (new Date() - resentTime))/1000)) + "초 남음");
+		var waitTime = 1;
+		if((new Date() - resentTime) < 60 * 1000){
+		alert("인증코드를 재발송하려면 " + waitTime + " 분을 기다려야합니다." + (Math.round((waitTime * 60 * 1000 - (new Date() - resentTime))/1000)) + "초 남음");
 		
 		return false;
 	}
@@ -34,7 +34,6 @@ codeCheck = function(){
 		data : { 'code' : code},
 		success : function(res){
 			if(code == res){
-				alert("코드가 일치합니다.");
 				$('input[name=code]').val('');
 				join();
 			}else{
