@@ -40,7 +40,7 @@ $(function(){
 	$("#feedBox").on("click",".comment", function(){
 		feedno = $(this).parents(".feed").attr("idx");
 		var feedUrl = 'feedView.jsp?feedno='+feedno;
-		location.replace(feedUrl);
+		window.location.href=feedUrl;
 	});
 	
 	////////////////////////// 모달 이벤트 관련 함수 시작 /////////////////////////////
@@ -277,7 +277,6 @@ var deleteLike = function(feedno){
 		},
 		dataType : 'json'
 	})
-	   
 }
 
 var delFeed = function(feedno){
