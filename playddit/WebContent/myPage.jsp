@@ -17,6 +17,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/script.js"></script>
 		<script src="script/view.js"></script>
+		<script src="script/mypage.js"></script>
+		
 	</head>
 	<body>
 		<!-- header.jsp include -->
@@ -26,66 +28,37 @@
 		<div class="cen" id="myPage">
 			<div id="myLeft">
 			    <div id="my">
-                    <div id="myProfile" style="background-image: url(images/profile/bomik0614@gmail.com.jpg);">
+                    <div id="myProfile" style="background-image: url(images/profile/default.png);">
                     </div>
                     <ul id="myText">
-                        <li id="myName">SUMMERSU</li>
-                        <li id="myClass">6기 - 302호</li>
+                        <li id="myName"></li>
+                        <li id="myClass"></li>
                     </ul>
 			    </div>
                
-                <p id="myIntro">
-                    안녕하세요~~ 저는 써머에요~! 제일 좋아하는 계절은?? 여름입니다^^ㅎㅎ
-                </p>
+                <p id="myIntro"></p>
 				
 				<ul id="myFollow">
 					<li id="myFeed">
 						<p>게시물</p>
-						<span>100</span>
+						<span></span>
 					</li>
 					<li id="myFollower">
 						<p>팔로워</p>
-						<span class="followBtn">15</span>
+						<span class="followBtn"></span>
 					</li>
 					<li id="myFollowing">
 						<p>팔로잉</p>
-						<span class="followBtn">10</span>
+						<span class="followBtn"></span>
 					</li>
 				</ul>
 				
 				<!--다른 사람의 페이지라면 나오는 버튼들-->
-				<div id="btnBox">
-                    <div class="myIcon" id="toFollow">
-                        <i class="fas fa-user"></i>
-                        <div class="button_su">
-                            <span class="su_button_circle">
-                            </span>
-                            <a href="#" class="button_su_inner">
-                              <span class="button_text_container">
-                                Follow
-                              </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="myIcon">
-                        <i class="fas fa-envelope"></i>
-                        <div class="button_su">
-                            <span class="su_button_circle">
-                            </span>
-                            <a href="#" class="button_su_inner">
-                              <span class="button_text_container">
-                                Message
-                              </span>
-                            </a>
-                        </div>
-                    </div>
-				</div>
+				
 			</div><!--꼭 있어야하는 태그입니다!-->
 			
 			<!--나의 페이지라면 나오는 버튼-->
-			<div id="mySet">
-			  <a id="setBtn"><i class="fas fa-cog"></i>Setting</a> 
-			</div>
+			
 		
 			<div id="myRight">
 				<h2>Feed</h2>
