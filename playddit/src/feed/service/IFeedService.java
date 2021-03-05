@@ -36,5 +36,11 @@ public interface IFeedService {
 	public int insertComment(String id, String content, int feedno);
 
 	// 댓글 삭제
-	public int deleteComment(int feedno);
+	public int deleteComment(int comno);
+	
+	// 대 댓글 등록
+	public int insertComReply(String id, String content, int comno);
+
+	// 대 댓글 삭제
+	public int deleteComReply(int recomno);
 }

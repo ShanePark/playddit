@@ -422,20 +422,6 @@
 					$("#viewRight").height(slideH);
                 });
 				
-				//like button
-                $(".like").on("click", function(){
-                    var like = $(this).hasClass("on");
-                    
-                    if(like){
-                        $(this).removeClass("on");
-                        $(this).html('<i class="far fa-heart"></i>');
-                        like = false;
-                    }else{
-                        $(this).addClass("on");
-                        $(this).html('<i class="fas fa-heart"></i>');
-                        like = true;
-                    }
-                });
 				
             	// 대댓글 보기 버튼 [동적이벤트 수정 완료]
             	$('#viewRight').on('click', '.replyBtnView', function(){
@@ -452,24 +438,6 @@
 						});
 						
 						$("#feedDelModal p").text("피드를 삭제하시겠습니까?");
-						
-						$("#reportBack").show();
-						$("#feedDel").show();
-						$("#feedDelModal").slideDown(500);
-						modal2 = true;
-					}
-				});
-				
-
-				
-				//내 대댓글 삭제하기 모달[동적이벤트 수정 완료]
-				$('#viewRight').on('click', '.myReply', function(){
-					if(modal2){
-						$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
-							e.preventDefault();
-						});
-						
-						$("#feedDelModal p").text("대댓글을 삭제하시겠습니까?");
 						
 						$("#reportBack").show();
 						$("#feedDel").show();

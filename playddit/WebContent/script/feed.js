@@ -28,7 +28,7 @@ $(function(){
 	      }
 	})
 	
-	// 댓글 버튼 이벤트 -> 상세 피드정보 페이지로 넘긴다.
+	// 댓글 버튼 (구름아이콘) 이벤트 -> 상세 피드정보 페이지로 넘긴다.
 	$("#feedBox").on("click",".comment", function(){
 		feedno = $(this).parents(".feed").attr("idx");
 		var feedUrl = 'feedView.jsp?feedno='+feedno;
@@ -99,6 +99,7 @@ var loadFeed = function(){
 		success : function(res) {
 			
 			$.each(res, function(i,v){
+				let url = 'feedView.jsp?feedno='+v.feedno;
 				
 				var feed = '<div class="feed" idx="'+v.feedno+'">';
 				v.cont = v.cont.replace(/\n/g,"<br>");
@@ -160,12 +161,20 @@ var loadFeed = function(){
 						 + '<p class="txtCont">'+v.cont +'</p></div>';
 				}
 				
-				feed += '<div class="countComm">댓글 <span class="count">'+v.comcount+'</span>개</div>'
+				feed += '<a class="countComm" href='+url+'>댓글 <span class="count">'+v.comcount+'</span>개';
+				if(v.comcount >2){
+					feed += '&nbsp;모두 보기';
+				}
+				
+				feed += '</a>'
 					 + '<div class="commentBox"><ul>'                          
                             
-				$.each(v.replyList, function(i,v){
-					feed += '<li class="comm"><a href="#" class="commUser">'+v.nickname+'</a>'
-						 + '<span>'+v.comcont+'</span></li>'
+				$.each(v.replyList, function(j,rep){
+					if(j > 1){
+						return false;
+					}
+					feed += '<li class="comm"><a href="#" class="commUser">'+rep.nickname+'</a>'
+						 + '<span>'+rep.comcont+'</span></li>'
 				})
                 feed += '</ul></div>'
 					 +'</div>';	// feed 닫음.

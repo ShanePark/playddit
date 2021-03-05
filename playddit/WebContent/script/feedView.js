@@ -7,9 +7,10 @@ $(function(){
 	$('#viewRight').on('click', '#contIcon .comment', function(){
 		$("#input_area").focus();
 	});
-	// 대댓글 말풍선 버튼
+	// 대댓글 달기 버튼
 	$('#viewRight').on('click', '.replyBtn', function(){
-		$('#commentInputBox').prepend('대댓글 작성입니다.');
+		comno = $(this).parent('.comment').attr("comno");
+		comli = $(this).parent('.comment');
 		$("#input_area").focus();
 	});
 	// 댓글 등록 버튼
@@ -20,14 +21,29 @@ $(function(){
 		// 컨텐츠 내용 모아서 함수로보내기
 		let content = document.getElementById('input_area').innerHTML;
 		$(this).parent('.row').children('#input_area').empty();
+		
+		// 댓글인지 대댓글인지 확인해서 각각 분기시키기
+		
 		insertComment(feedno,content);
+		//insertComReply(comno, content);
+		
+		/************************************
+		
+				대댓글 분기 작성해서 조건에 맞게 대댓글 작성하게끔 작성해야함.
+				
+		 ***************************/
+		
 		
 	});
 	
 	// 댓글 삭제 버튼
 	$('#goDel').on('click', function(){
-		// 해당하는 댓글 li 를 제거한다.
-		comli.remove();
+		// 해당하는 댓글 혹은 대댓글 li 를 제거한다.
+		if(mytarget == 'comment'){
+			comli.remove();			
+		}else if(mytarget == 'comrep'){
+			comrepli.remove();
+		}
 		
 		// 모달 닫는 이벤트
 		$("#feedDelModal").slideUp(500);
@@ -35,8 +51,13 @@ $(function(){
 	    $("#reportBack").hide();
 	    modal2 = true;
 	    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-
-		deleteComment(comno);
+		
+		// 댓글 삭제할건지 대댓글 삭제한건지 따라서 분기시키기
+		if(mytarget == 'comment'){
+			deleteComment(comno);		
+		}else if(mytarget == 'comrep'){
+			deleteComReply(comrepno);
+		}
 		
 	});
 	
@@ -74,6 +95,7 @@ $(function(){
 		// 댓글 수정 혹은 삭제를 위해 comno에 기록합니다. comli로 comment li 도 기록합니다.
 		comli = $(this).parents('.comment');
 		comno = $(this).parents('.comment').attr("comno");
+		mytarget = 'comment';
 		
 		if(modal2){
 			$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
@@ -89,7 +111,27 @@ $(function(){
 		}
 	});
 	
-	
+	//내 대댓글 삭제하기 모달[동적이벤트 수정 완료]
+	$('#viewRight').on('click', '.myReply', function(){
+		
+		// 대댓글 수정 혹은 삭제를 위해 comrepli 에 기록합니다. 
+		comrepli = $(this).parents('.reply');
+		comrepno = $(this).parents('.reply').attr("comrepno");
+		mytarget = 'comrep';
+		
+		if(modal2){
+			$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+				e.preventDefault();
+			});
+			
+			$("#feedDelModal p").text("대댓글을 삭제하시겠습니까?");
+			
+			$("#reportBack").show();
+			$("#feedDel").show();
+			$("#feedDelModal").slideDown(500);
+			modal2 = true;
+		}
+	});
 	
 	
 })
@@ -101,6 +143,42 @@ $(function(){
 		
  ***************************************************************************/
 
+// 대댓글 등록
+function insertComReply(comno, content){
+	$.ajax({
+		url : '/playddit/feed/insertCommentReply.do',
+		type : 'post',
+		data : {'comno' : comno, 'content' : content},
+		success : function(comrep) {
+			
+			var reprep ='<li class="reply" comrepno="'+comrep.comno+'"><a href="#">'
+                       + '<img src="images/profile/'+comrep.profile+'" /></a>'
+                       + '<p><a href="#">'+comrep.nickname+'</a>'
+                       + '<span>'+comrep.comcont+'</span>'
+					   + '<button type="button" class="myReply"><i class="fas fa-ellipsis-h"></i></button>'
+						+ '</p></li>';
+			comli.find('ul').append(reprep);
+		 },
+		 error : function(xhr){
+			 alert("status : " + xhr.status);
+		 },
+		 dataType : 'json'
+   })
+}
+// 대댓글 삭제
+function deleteComReply(comRepNo){
+
+   $.ajax({
+	 url : '/playddit/feed/deleteCommentReply.do',
+	 type : 'post',
+	 data : {'comRepNo' : comRepNo},
+	 error : function(xhr){
+		 alert("status : " + xhr.status);
+	 }
+   })
+}
+
+// 댓글 다는 함수
 function insertComment(feedno,content){
 	
    $.ajax({
@@ -221,7 +299,7 @@ function loadFeed(feedno){
 					replyli+='<ul class="replyList">';
 					
 					$.each(v.replyList, function(j,comrep){	//대댓글들 출력
-						var reprep ='<li class="reply"><a href="#">'
+						var reprep ='<li class="reply" comrepno="'+comrep.comno+'"><a href="#">'
                                    + '<img src="images/profile/'+comrep.profile+'" /></a>'
                                    + '<p><a href="#">'+comrep.nickname+'</a>'
                                    + '<span>'+comrep.comcont+'</span>';

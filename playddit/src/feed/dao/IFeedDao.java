@@ -41,6 +41,12 @@ public interface IFeedDao {
 	public int insertComment(String id, String content, int feedno) throws SQLException;
 
 	// 댓글 삭제
-	public int deleteComment(int feedno) throws SQLException;
+	public int deleteComment(int comno) throws SQLException;
+	
+	// 대 댓글 등록
+	public int insertComReply(String id, String content, int comno) throws SQLException;
+
+	// 대 댓글 삭제
+	public int deleteComReply(int recomno) throws SQLException;
 	
 }
