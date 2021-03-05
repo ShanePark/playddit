@@ -367,7 +367,7 @@
 							</div>
 					  </div>
 					  <div id="input_area" contenteditable="true" class="scrollStyle"></div>
-					  <button type="button" id="commentSend">게시</button>
+					  <button type="button" id="commentSend">등록</button>
 					</div>
 				</div>
             </div>
