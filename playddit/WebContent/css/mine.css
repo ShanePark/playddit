@@ -2,11 +2,11 @@
 /*-----------------------my page--------------------------*/
 #myPage {
     border-radius: 45px;
-    margin: 4% auto 1% auto;
+    margin: 3% auto 1% auto;
     display: flex;
     justify-content: space-between;
     box-shadow: 5px 5px 25px #c9bcd0;
-	min-height: 750px;
+	min-height: 800px;
     height: 70vh;
     overflow: hidden;
     background: #f5f2f5;
@@ -22,7 +22,7 @@
 
 #my {
     display: flex;
-    margin-top: 60px;
+    margin-top: 90px;
 }
 #my #myProfile {
 	width: 100px;
@@ -46,7 +46,7 @@
 #myName {
     font-size: 1.02em;
     font-weight: bold;
-    color: #6395e6;
+    color: #8daee3;
 }
 #myClass {
     font-size: 0.9em;
@@ -58,7 +58,7 @@
     margin-top: 25px;
     line-height: 1.4em;
     text-align: left!important;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 
 #myFollow {
@@ -68,7 +68,7 @@
 }
 #myFollow li {
     display: inline-block;
-    width: calc((96% - 30px) / 3);
+    width: calc((95% - 30px) / 3);
     margin-right: 15px;
     text-align: center;
 }
@@ -82,11 +82,12 @@
 #myFollow li span {
     cursor: pointer;
     font-weight: bold;
+	cursor: pointer;
 }
 
 #btnBox {
     display: flex;
-    margin-top: 30px;
+    margin-top: 50px;
     width: 100%;
 }
 
@@ -104,10 +105,74 @@
     margin-bottom: 10px;
 }
 
-#myRight {
-	width: 75%;
+#mySet {
+	position: absolute;
+	bottom: 249px;
+	padding-left: 20px;
 }
 
+#setBtn i {
+	font-size: 1.4em;
+	vertical-align: top;
+	margin-right: 10px;
+}
+
+#myRight {
+	width: 75%;
+	padding: 40px;
+}
+#myRight h2 {
+	margin-top: 15px;
+	font-size: 1.8em;
+	margin-right: 10px;
+	margin-bottom: 30px;
+	text-align: right;
+	color: #8daee3;
+}
+#myRight #thumsBox {
+	height: 620px;
+	overflow: auto;
+}
+
+.thums {
+	display: inline-block;
+	width: calc((98% - 80px) / 3);
+	margin-right: 40px;
+	margin-bottom: 60px;
+	cursor: pointer;
+}
+.thums:nth-of-type(3n){
+	margin-right: 0;
+}
+.thums a {
+	display: inline-block;
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+	border: 1px solid #c4bfed;
+	border-radius: 20px;
+}
+.thums a p {
+	padding: 20px;
+	overflow: hidden;
+}
+.thums .icons {
+	height: 40px;
+	line-height: 40px;
+	text-align: right;
+	padding-right: 10px;
+}
+.thums .icons div {
+	display: inline-block;
+	margin-right: 10px;
+}
+.thums .icons i {
+	font-size: 1.4em;
+	vertical-align: middle;
+	color: #6054c4;
+}
 
 /*---------------------버튼------------------*/
 .button_su{
@@ -116,7 +181,7 @@
   display: inline-block;
   border-radius: 28px;
   margin-bottom: 30px;
-    width: 100%;
+  width: 100%;
 }
 
 .su_button_circle{
@@ -150,7 +215,7 @@
 
 .button_text_container{
    position:relative;
-   z-index: 10000;
+   z-index: 500;
 }
 
 .explode-circle {
@@ -199,7 +264,7 @@
 #setBtn {
   flex: 1 1 auto;
   margin: 10px;
-  padding: 30px;
+  padding: 20px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
@@ -207,7 +272,8 @@
   color: white;
  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
   box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
+  border-radius: 40px;
+  cursor: pointer;
  }
 
 #setBtn:hover {
@@ -215,5 +281,198 @@
 }
 
 #setBtn {
-  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+	 background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);;
+}
+
+/*------------팔로워,팔로잉 목록 출력 모달---------------*/
+#back2 {
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    z-index: 505;
+    position: fixed;
+}
+
+.followModal {
+    position: fixed;
+    z-index: 100;
+    width: 380px;
+    max-height: 50%;
+    background: white;
+    overflow: auto;
+    top : -30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    z-index: 505;
+}
+.followModal .followTitle {
+    border-bottom: 1px solid #e9e7fb;
+    margin-bottom: 15px;
+}
+.followModal .followTitle h6 {
+    font-size: 1.4em;
+    padding: 10px;
+    display: inline-block;
+}
+
+.followList {
+    border-bottom: 1px solid #e9e7fb;
+}
+.followList:last-of-type {
+    border-bottom: none;
+}
+.followList h5 {
+    font-size: 1.0em;
+    margin: 15px 15px 3px;
+}
+.followList li {
+    width: 100%;
+    display: inline-block;
+    padding: 10px;
+}
+.followList .followPic {
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.followList .followPic img {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.followList .followInfo {
+    display: inline-block;
+    vertical-align: 12px;
+    margin-left: 10px;
+}
+.followList .followClass {
+    font-size: 0.9em;
+}
+.followList .f4f {
+    float: right;
+    width: 80px;
+    height: 30px;
+    border: none;
+    background-color: #b0cff5; 
+    color: white;
+    font-weight: bold;
+    font-size: 0.95em;
+    position: relative;
+    transform: translateY(50%);
+}
+
+.closeBox {
+    width: 100%;
+    padding: 2%;
+}
+.closeBox .close {
+    border: none;
+    background: none;
+    float: right;
+    padding: 2% 4%;
+}
+.closeBox .close .fas {
+    font-size: 2em;
+    color: #b0cff5; 
+}
+
+/*-----------------여기부터 태블릿pc---------------------*/
+@media all and (max-width: 1020px) {
+	#myPage {
+		border-radius: 0px; 
+		margin: 0% auto 1% auto;
+		box-shadow: none;
+		min-height: none;
+		height: auto;
+		display: block;
+	}
+	
+	#myLeft {
+		width: 100%;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	
+	#my {
+		display: flex;
+		 margin-top: 0px; 
+	}
+	
+	#myText li {
+		text-align: left;
+	}
+	
+	#myIntro {
+		margin-top: 30px;
+	}
+	
+	#mySet {
+		bottom: 0px;
+		top: 172px;
+    	right: 4.5em;
+	}
+	
+	#setBtn {
+		padding: 10px;
+	}
+	#setBtn i {
+		font-size: 1.1em;
+		vertical-align: -1px;
+	}
+	
+	#myFollow {
+		margin-bottom: 10px;
+	}
+	
+	#myRight {
+		width: 100%;
+		padding: 30px;
+	}
+	#myRight h2 {
+		margin-top: 30px;
+		margin-bottom: 45px;
+	}
+	
+	#myRight #thumsBox {
+		height: auto;
+		overflow: inherit;
+	}
+}
+/*-----------------여기부터 모바일버전-------------------*/
+@media all and (max-width:767px) {
+    #mySet {
+		top: 160px;
+		right: 0;
+		left: 130px;
+	}
+	
+	#my #myText {
+		margin-top: 12px;
+		margin-left: 36px;
+	}
+	
+	#setBtn {
+		font-size: 0.8em;
+	}
+	
+	.thums {
+		width: calc((98% - 20px) / 2);
+		margin-right: 10px;
+		margin-bottom: 30px;
+	}
+	.thums:nth-of-type(3n) {
+		margin-right: 10px;
+	}
+	.thums:nth-of-type(2n) {
+		margin-right: 0px!important;;
+	}
 }
