@@ -109,4 +109,17 @@ public class FeedDaoImpl implements IFeedDao {
 		return client.queryForList("feed.getComReplies", feed_com_no);
 	}
 
+	@Override
+	public int modifyFeed(String feed_cont, String feed_pic, int feed_no) throws SQLException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("feed_cont", feed_cont);
+		map.put("feed_pic", feed_pic);
+		map.put("feed_no", feed_no);
+		
+		return client.update("feed.modifyFeed", map);
+	}
+
+
+
+	
 }
