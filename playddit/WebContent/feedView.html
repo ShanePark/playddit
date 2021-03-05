@@ -334,6 +334,7 @@
                                 <button type="button" class="replyBtnView">
                                     댓글보기&#40;<span>2</span>개&#41;
                                 </button>
+                                <div class="inputWrap"></div>
                                 <ul class="replyList">
                                     <li class="reply">
                                         <a href="#">
@@ -377,6 +378,7 @@
                                 <button type="button" class="replyBtnView">
                                     댓글보기&#40;<span>2</span>개&#41;
                                 </button>
+                                <div class="inputWrap"></div>
                                 <ul class="replyList">
                                     <li class="reply">
                                         <a href="#">
@@ -404,7 +406,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="comment">
+                            <li class="comment" idx="1">
                                 <a href="#">
                                     <img src="images/default.png" />
                                 </a>
@@ -412,13 +414,14 @@
                                     <a href="#">josh</a>
                                     <span>
                                         피드 댓글입니다. 좋아요~!! 퍼가요~!! 어쩌구 저쩌구 
-                                        댓글 다는중...
+                                        댓글 다는중...이걸로
                                     </span>
                                 </p>
                                 <button type="button" class="replyBtn">댓글달기</button>
                                 <button type="button" class="replyBtnView">
                                     댓글보기&#40;<span>2</span>개&#41;
                                 </button>
+                                <div class="inputWrap"></div>
                                 <ul class="replyList">
                                     <li class="reply">
                                         <a href="#">
@@ -459,6 +462,7 @@
                                 <button type="button" class="replyBtnView">
                                     댓글보기&#40;<span>0</span>개&#41;
                                 </button>
+                                <div class="inputWrap"></div>
                                 <ul class="replyList">                                    
                                 </ul>
                             </li>
@@ -890,9 +894,26 @@
 				//대댓글 달기 버튼
 				$(".replyBtn").each(function(){
 					$(this).click(function(){
-						$("#input_area").focus();
+						var idx = $(this).parent(".comment").attr("idx");
+						var replyArea = '<div id="reply_input" idx="' + idx  +'">'
+									+ '<div id="reply_input_area" contenteditable="true" class="scrollStyle"></div>'
+									+ '<button type="button" id="replyCommentSend">게시</button>'
+									+ '</div>';
+						
+						$(this).parent(".comment").find(".inputWrap").append(replyArea);
+						$(this).parents("#viewRight").find("#input_area").attr("contenteditable", "false");
 					});
 				});
+				
+				//댓글 입력창 contenteditable
+				var stat = false;
+				$("#input_area").click(function(){
+					if(!stat){
+						$(this).attr("contenteditable", "true");
+					}
+				});
+				
+				$("#reply")
 				
 				//댓글달기 버튼 누르면 focus 이동하기
 				$(".comment").click(function(){

@@ -71,7 +71,6 @@ $(document).on("click",".emoji_list", function(e) {
   var emoji_id = $(this).attr('id');
   var imgtag = '<img style="width:23px; height:23px" src="images/emoji/' + emoji_id + '.png">';
   $('#input_area').append(imgtag);
-  $('#input_area').focus();
 
 });
 
@@ -85,10 +84,7 @@ $(document).on("keyup","#input_area",function() {
   if (event.keyCode === 13) {
     var input_area_default = $('#input_area').html();
     $('#input_area').html('');
-    $('#chat_area').append(input_area_default);
 
-    var textarea = $('#chat_area');
-    textarea.scrollTop(textarea[0].scrollHeight);
  	  }
 
 });
