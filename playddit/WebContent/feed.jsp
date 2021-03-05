@@ -183,7 +183,6 @@
             
             <!-- footer.jsp include -->
             <jsp:include page="/footer.jsp"></jsp:include>
-        </div>
         
         <script>
             $(function(){
@@ -198,68 +197,8 @@
                     $(".rect .slide").height(4 * rectW / 3);
                 });*/
                 
-                //like button
-                $(".like").on("click", function(){
-                    var like = $(this).hasClass("on");
-                    
-                    if(like){
-                        $(this).removeClass("on");
-                        $(this).html('<i class="far fa-heart"></i>');
-                        like = false;
-                    }else{
-                        $(this).addClass("on");
-                        $(this).html('<i class="fas fa-heart"></i>');
-                        like = true;
-                    }
-                });
-                
-                //feed text 더보기
-                $('.txt').each(function(){
-                    var content = $(this).children('.txtCont');
-                    var index = content.width();
-                    var content_txt = content.text();
-                    var content_txt_short = content_txt.substring(0,200)+"...";
-                    var btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
-
-                    $(this).append(btn_more);
-
-                    if(content_txt.length >= 200){
-                        content.html(content_txt_short);
-                    }else{
-                        btn_more.hide();
-                    }
-
-                    btn_more.click(toggle_content);
-
-                    function toggle_content(){
-                        if($(this).hasClass('short')){
-                            // 접기 상태
-                            $(this).html('더보기');
-                            content.html(content_txt_short)
-                            $(this).removeClass('short');
-                        }else{
-                            // 더보기 상태
-                            $(this).html('접기');
-                            content.html(content_txt);
-                            $(this).addClass('short');
-
-                        }
-                    }
-                });
-                
                 var visi = false;
 
-                $(".alarmBtn").click(function(){
-                    if(!visi){
-                        $("#alarmEdge2 , #alarmEdge, #modal").show();
-                        visi = true;
-                    }else{
-                        $("#alarmEdge2, #alarmEdge").hide();
-                        $("#modal").fadeOut(300);
-                        visi = false;
-                    }
-                });
-                
                 //feed Search
                 $("#search button, #msearch button").on("click", function(){
                     
@@ -279,56 +218,7 @@
                     $("#feedSearchModal").slideUp(300);
                     $("#feedSearch").delay(200).hide();
                 });
-                
-                //신고 모달
-                $(".report").each(function(){
-                    var modal = true;
-                    
-                    $(this).click(function(){
-                        if(modal){
-                            $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
-                                e.preventDefault();
-                            });
-                            $("#reportBack").show();
-                            $("#reportWrap").show();
-                            $("#reportModal").slideDown(500);
-                            modal = true;
-                        }
-                    });
-                });
-                
-                $("#reportBack, #cancel").click(function(){
-                    $("#reportModal").slideUp(500);
-                    $("#reportWrap").delay(200).hide();
-                    $("#reportBack").hide();
-                    modal = false;
-                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-                });
-                
-                //내 피드 삭제하기 모달
-                $(".myFeed").each(function(){
-                    var modal2 = true;
-                    
-                    $(this).click(function(){
-                        if(modal2){
-                            $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
-                                e.preventDefault();
-                            });
-                            $("#reportBack").show();
-                            $("#feedDel").show();
-                            $("#feedDelModal").slideDown(500);
-                            modal2 = true;
-                        }
-                    });
-                });
-                
-                $("#reportBack, #goCancel").click(function(){
-                    $("#feedDelModal").slideUp(500);
-                    $("#feedDel").delay(200).hide();
-                    $("#reportBack").hide();
-                    modal2 = true;
-                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-                });
+
             });
         </script>
     </body>
