@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <div id="profile">
-        <div id="infoBox">
-        </div>
+        <div id="userBox">
+			<a href="#" id="userName"></a>
+			<span id="userMail"></span>
+		</div>
         <div id="followBox">
             <ul>
                 <li>
