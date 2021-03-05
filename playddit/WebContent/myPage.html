@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href="css/common.css" rel="stylesheet" />
         <link href="css/view.css" rel="stylesheet" />
+        <link href="css/mine.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/script.js"></script>
 		<script src="script/view.js"></script>
@@ -244,18 +245,48 @@
         </header>
         
         <!--컨텐츠 시작-->
-		<div class="cen" id="wrap">
+		<div class="cen" id="myPage">
 			<div id="myLeft">
-				<div id="myProfile">
-					<img src="images/profile/bomik0614@gmail.com.jpg" />
+			    <div id="my">
+                    <div id="myProfile" style="background-image: url(../WebContent/images/profile/bomik0614@gmail.com.jpg);">
+                    </div>
+                    <ul id="myText">
+                        <li id="myName">SUMMERSU</li>
+                        <li id="myClass">6기 - 302호</li>
+                    </ul>
+			    </div>
+               
+                <p id="myIntro">
+                    안녕하세요~~ 저는 써머에요~! 제일 좋아하는 계절은?? 여름입니다^^ㅎㅎ
+                </p>
+				
+				<!--다른 사람의 페이지라면 나오는 버튼들-->
+				<div id="btnBox">
+                    <div class="myIcon">
+                        <i class="fas fa-user"></i>
+                        <div class="button_su">
+                            <span class="su_button_circle">
+                            </span>
+                            <a href="#" class="button_su_inner">
+                              <span class="button_text_container">
+                                Follow
+                              </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="myIcon">
+                        <i class="fas fa-envelope"></i>
+                        <div class="button_su">
+                            <span class="su_button_circle">
+                            </span>
+                            <a href="#" class="button_su_inner">
+                              <span class="button_text_container">
+                                Message
+                              </span>
+                            </a>
+                        </div>
+                    </div>
 				</div>
-				<ul id="myText">
-					<li id="myName">SUMMER</li>
-					<li id="myClass">6기 - 302호</li>
-					<li id="myIntro">
-						안녕하세요~~ 저는 써머에요~! 제일 좋아하는 계절은?? 여름입니다^^
-					</li>
-				</ul>
 				
 				<ul id="myFollow">
 					<li id="myFeed">
@@ -271,17 +302,15 @@
 						<span>10</span>
 					</li>
 				</ul>
+				
+				
+				<!--나의 페이지라면 나오는 버튼-->
+				<!--<div id="mySet">
+                  <a id="setBtn"><i class="fas fa-cog"></i>Setting</a> 
+                </div>-->
 			</div>
-			
-			<!--내 페이지라면 나타나는 버튼-->
-			<a href="setting.jsp" id="setBtn">Setting</a>
 		
-       
 			<div id="myRight">
-				<!--내 페이지가 아니라면 나타나는 버튼-->
-				<!--맞팔이라면 Unfollow로 노출시킨다.-->
-				<button id="others" type="button">Follow</button>
-
 				<h2>Feed</h2>
 				<div id="thumsBox">
 					<div class="thums">
@@ -463,6 +492,29 @@
             <p id="copy">&copy; PLAYDDIT All Rights Reserved</p>
         </footer>
         
-        <script></script>
+        <script>
+            $( ".button_su_inner" ).mouseenter(function(e) {
+               var parentOffset = $(this).offset(); 
+
+               var relX = e.pageX - parentOffset.left;
+               var relY = e.pageY - parentOffset.top;
+               $(this).prev(".su_button_circle").css({"left": relX, "top": relY });
+               $(this).prev(".su_button_circle").removeClass("desplode-circle");
+               $(this).prev(".su_button_circle").addClass("explode-circle");
+
+            });
+
+            $( ".button_su_inner" ).mouseleave(function(e) {
+
+                 var parentOffset = $(this).offset(); 
+
+                 var relX = e.pageX - parentOffset.left;
+                 var relY = e.pageY - parentOffset.top;
+                 $(this).prev(".su_button_circle").css({"left": relX, "top": relY });
+                 $(this).prev(".su_button_circle").removeClass("explode-circle");
+                 $(this).prev(".su_button_circle").addClass("desplode-circle");
+
+            });
+        </script>
 	</body>
 </html>

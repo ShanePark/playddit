@@ -25,7 +25,7 @@
         <div class="cen" id="wrap">
 	        <!-- header.jsp include -->
 	        <jsp:include page="/header.jsp"></jsp:include>
-
+	        
 			<!-- 컨텐츠 시작 -->
                 <div id="feedWrap">
                     <div id="storyBox">
