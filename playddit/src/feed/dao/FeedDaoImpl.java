@@ -119,6 +119,22 @@ public class FeedDaoImpl implements IFeedDao {
 		return client.update("feed.modifyFeed", map);
 	}
 
+	@Override
+	public int insertComment(String id, String content, int feedno) throws SQLException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("content", content);
+		map.put("feedno", feedno);
+		
+		return (client.insert("feed.insertComment",map)==null? 1 : 0);
+		
+	}
+
+	@Override
+	public int deleteComment(int feedno) throws SQLException {
+		return client.delete("feed.deleteComment", feedno);
+	}
+
 
 
 	

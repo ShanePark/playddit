@@ -32,4 +32,9 @@ public interface IFeedService {
 	// 피드 좋아요 삭제
 	public int deleteLike(String id, int feedno);
 	
+	// 댓글 등록
+	public int insertComment(String id, String content, int feedno);
+
+	// 댓글 삭제
+	public int deleteComment(int feedno);
 }

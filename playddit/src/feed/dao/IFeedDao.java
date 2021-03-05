@@ -37,6 +37,10 @@ public interface IFeedDao {
 	// 피드 좋아요 삭제
 	public int deleteLike(String id, int feedno) throws SQLException;
 	
-	
+	// 댓글 등록
+	public int insertComment(String id, String content, int feedno) throws SQLException;
+
+	// 댓글 삭제
+	public int deleteComment(int feedno) throws SQLException;
 	
 }
