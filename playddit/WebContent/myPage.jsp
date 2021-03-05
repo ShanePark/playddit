@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -17,238 +19,14 @@
 		<script src="script/view.js"></script>
 	</head>
 	<body>
-		<header>
-            <div class="cen">
-                <a href="feed.jsp">
-                    <img src="images/logo1.png" alt="logo"/>
-                </a>
-                <div id="search">
-                    <form action="" method="get">
-                        <input type="text" name="searchBox" placeholder="search"/>
-                        <button type="button" name="search">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-                <ul id="gnb">
-                    <li>
-                        <a href="feed.jsp"><i class="fas fa-home"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-pen-nib"></i></a>
-                    </li>
-                    <li>
-                        <a class="alarmBtn"><i class="fas fa-bell"></i></a>
-                    </li>
-                    
-                    <!--알람 모달 -->
-					<div id="alarmEdge" class="alarmEdge2"></div>
-					<div id="modal" class="alarmModal">
-						<div id="alarmWrap">
-						   <div class="alarm classMoniter">
-								<a class="alarmUser" href="#">
-									<img src="images/default.png" />
-								</a>
-								<a class="alarmCont" href="#">
-									<span class="alarmNick">adsgasdg</span>님의 학급 승인 요청
-								</a>
-								<button type="button"><i class="fas fa-times red"></i></button>
-								<button type="button"><i class="fas fa-check"></i></button>
-							</div>
-							<div class="alarm">
-								<a class="alarmUser" href="#">
-									<img src="images/default.png" />
-								</a>
-								<a class="alarmCont" href="#">
-									<span class="alarmNick">josh</span>님이 나를 follow 했습니다.
-								</a>
-							</div>
-							<div class="alarm">
-								<a class="alarmUser" href="#">
-									<img src="images/default.png" />
-								</a>
-								<a class="alarmCont" href="#">
-									<span class="alarmNick">summer</span>님이 내가 쓴 글을 좋아합니다.
-								</a>
-							</div>
-							<div class="alarm">
-								<a class="alarmUser" href="#">
-									<img src="images/default.png" />
-								</a>
-								<a class="alarmCont" href="#">
-									<span class="alarmNick">shane</span>님이 내가 쓴 글에 댓글을 남겼습니다.
-								</a>
-							</div>
-							<div class="alarm">
-								<a class="alarmUser" href="#">
-									<img src="images/default.png" />
-								</a>
-								<a class="alarmCont" href="#">
-									<span class="alarmNick">홍길동</span>님이 나를 follow 취소했습니다.
-								</a>
-							</div>
-							<div class="alarm">
-								<a class="alarmUser" href="#">
-									<img src="images/default.png" />
-								</a>
-								<a class="alarmCont" href="#">
-									<span class="alarmNick">프로그래머스 스터디</span>에서 공지사항이 올라왔습니다.
-								</a>
-							</div>
-							<div class="alarm">
-								<a class="alarmUser" href="#">
-									<img src="images/default.png" />
-								</a>
-								<a class="alarmCont" href="#">
-									<span class="alarmNick">프로그래머스 스터디</span>에서 공지사항이 올라왔습니다.
-								</a>
-							</div>
-							<div class="alarm">
-								<a class="alarmUser" href="#">
-									<img src="images/default.png" />
-								</a>
-								<a class="alarmCont" href="#">
-									<span class="alarmNick">shane</span>님이 내가 쓴 글에 댓글을 남겼습니다.
-								</a>
-							</div>
-							 <div class="alarm">
-								<a class="alarmUser" href="#">
-									<img src="images/default.png" />
-								</a>
-								<a class="alarmCont" href="#">
-									<span class="alarmNick">asdgasdgasdgasdg</span>님이 내가 쓴 글에 댓글을 남겼습니다.
-								</a>
-							</div>
-							<div class="alarm">
-								<a class="alarmUser" href="#">
-									<img src="images/default.png" />
-								</a>
-								<a class="alarmCont" href="#">
-									<span class="alarmNick">홍길동</span>님이 나를 follow 취소했습니다.
-								</a>
-							</div>
-							<div class="alarm">
-								<a class="alarmUser" href="#">
-									<img src="images/default.png" />
-								</a>
-								<a class="alarmCont" href="#">
-									<span class="alarmNick">abcdefg</span>님이 나를 follow 했습니다.
-								</a>
-							</div>
-						</div>
-					</div>
-					<div id="alarmEdge2" class="alarmEdge2"></div>
-                </ul>
-            </div>
-            
-            <!-- 피드 검색 모달창 -->
-			<div id="mask"></div>
-			<div id="feedSearch" class="feedSearch2">
-				<div class="edge edge2"></div>
-				<div id="feedSearchModal">
-					<div id="feedCount">
-						<a href="#" class="feedCir">
-							<i class="fas fa-hashtag"></i>
-						</a>
-						<a href="#" id="feedText">
-							<p id="keyword">검색단어</p>
-							<p id="count">
-								피드 <span>5,000</span>개
-							</p>
-						</a>
-					</div>
-
-					<ul id="searchUser">
-						<li>
-							<a href="#" user="scarlet" class="feedCir">
-								<img src="images/default.png" />
-							</a>
-							<a href="#" class="searchUserBox">
-								<span href="#" user="scarlet" class="userNick">
-									scarlett
-								</span>
-								<span class="userEmail">chdnjs7610@gmail.com</span>
-							</a>
-						</li>
-						<li>
-							<a href="#" user="scarlet" class="feedCir">
-								<img src="images/default.png" />
-							</a>
-							<a href="#" class="searchUserBox">
-								<span href="#" user="scarlet" class="userNick">
-									scarlett
-								</span>
-								<span class="userEmail">chdnjs7610@gmail.com</span>
-							</a>
-						</li>
-						<li>
-							<a href="#" user="scarlet" class="feedCir">
-								<img src="images/default.png" />
-							</a>
-							<a href="#" class="searchUserBox">
-								<span href="#" user="scarlet" class="userNick">
-									scarlett
-								</span>
-								<span class="userEmail">chdnjs7610@gmail.com</span>
-							</a>
-						</li>
-						<li>
-							<a href="#" user="scarlet" class="feedCir">
-								<img src="images/default.png" />
-							</a>
-							<a href="#" class="searchUserBox">
-								<span href="#" user="scarlet" class="userNick">
-									scarlett
-								</span>
-								<span class="userEmail">chdnjs7610@gmail.com</span>
-							</a>
-						</li>
-						<li>
-							<a href="#" user="scarlet" class="feedCir">
-								<img src="images/default.png" />
-							</a>
-							<a href="#" class="searchUserBox">
-								<span href="#" user="scarlet" class="userNick">
-									scarlett
-								</span>
-								<span class="userEmail">chdnjs7610@gmail.com</span>
-							</a>
-						</li>
-						<li>
-							<a href="#" user="scarlet" class="feedCir">
-								<img src="images/default.png" />
-							</a>
-							<a href="#" class="searchUserBox">
-								<span href="#" user="scarlet" class="userNick">
-									scarlett
-								</span>
-								<span class="userEmail">chdnjs7610@gmail.com</span>
-							</a>
-						</li>
-						<li>
-							<a href="#" user="scarlet" class="feedCir">
-								<img src="images/default.png" />
-							</a>
-							<a href="#" class="searchUserBox">
-								<span href="#" user="scarlet" class="userNick">
-									scarlett
-								</span>
-								<span class="userEmail">chdnjs7610@gmail.com</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-        </header>
-        
-        <!--컨텐츠 시작-->
+		<!-- header.jsp include -->
+		<jsp:include page="/viewHeader.jsp"></jsp:include>
+	        
+	    <!--컨텐츠 시작-->
 		<div class="cen" id="myPage">
 			<div id="myLeft">
 			    <div id="my">
-                    <div id="myProfile" style="background-image: url(../WebContent/images/profile/bomik0614@gmail.com.jpg);">
+                    <div id="myProfile" style="background-image: url(images/profile/bomik0614@gmail.com.jpg);">
                     </div>
                     <ul id="myText">
                         <li id="myName">SUMMERSU</li>
@@ -315,7 +93,7 @@
 					<div class="thums">
 						<!--이미지가 있는 글이라면 아래 태그를 노출시켜주시는데
 						style 속성의 url 안에 이미지 소스를 넣으시면 됩니다.-->
-						<a class="thumCont" style="background-image: url(../WebContent/images/profile/expedition1205@gmail.com.jpg);"></a>
+						<a class="thumCont" style="background-image: url(images/profile/expedition1205@gmail.com.jpg);"></a>
 						<div class="icons">
 							<div class="heart">
 								<i class="far fa-heart"></i>
@@ -330,7 +108,7 @@
 					<div class="thums">
 						<!--이미지가 있는 글이라면 아래 태그를 노출시켜주시는데
 						style 속성의 url 안에 이미지 소스를 넣으시면 됩니다.-->
-						<a class="thumCont" style="background-image: url(../WebContent/images/feed4.jpg);"></a>
+						<a class="thumCont" style="background-image: url(images/feed4.jpg);"></a>
 						<div class="icons">
 							<div class="heart">
 								<i class="far fa-heart"></i>
@@ -345,7 +123,7 @@
 					<div class="thums">
 						<!--이미지가 있는 글이라면 아래 태그를 노출시켜주시는데
 						style 속성의 url 안에 이미지 소스를 넣으시면 됩니다.-->
-						<a class="thumCont" style="background-image: url(../WebContent/images/feed5.jpg);"></a>
+						<a class="thumCont" style="background-image: url(images/feed5.jpg);"></a>
 						<div class="icons">
 							<div class="heart">
 								<i class="far fa-heart"></i>
@@ -386,7 +164,7 @@
 					<div class="thums">
 						<!--이미지가 있는 글이라면 아래 태그를 노출시켜주시는데
 						style 속성의 url 안에 이미지 소스를 넣으시면 됩니다.-->
-						<a class="thumCont" style="background-image: url(../WebContent/images/profile/chdnjs7610@gmail.com.jpg);"></a>
+						<a class="thumCont" style="background-image: url(images/profile/chdnjs7610@gmail.com.jpg);"></a>
 						<div class="icons">
 							<div class="heart">
 								<i class="far fa-heart"></i>
@@ -401,7 +179,7 @@
 					<div class="thums">
 						<!--이미지가 있는 글이라면 아래 태그를 노출시켜주시는데
 						style 속성의 url 안에 이미지 소스를 넣으시면 됩니다.-->
-						<a class="thumCont" style="background-image: url(../WebContent/images/feed4.jpg);"></a>
+						<a class="thumCont" style="background-image: url(images/feed4.jpg);"></a>
 						<div class="icons">
 							<div class="heart">
 								<i class="far fa-heart"></i>
@@ -416,7 +194,7 @@
 					<div class="thums">
 						<!--이미지가 있는 글이라면 아래 태그를 노출시켜주시는데
 						style 속성의 url 안에 이미지 소스를 넣으시면 됩니다.-->
-						<a class="thumCont" style="background-image: url(../WebContent/images/feed4.jpg);"></a>
+						<a class="thumCont" style="background-image: url(images/feed4.jpg);"></a>
 						<div class="icons">
 							<div class="heart">
 								<i class="far fa-heart"></i>
@@ -431,7 +209,7 @@
 					<div class="thums">
 						<!--이미지가 있는 글이라면 아래 태그를 노출시켜주시는데
 						style 속성의 url 안에 이미지 소스를 넣으시면 됩니다.-->
-						<a class="thumCont" style="background-image: url(../WebContent/images/feed4.jpg);"></a>
+						<a class="thumCont" style="background-image: url(images/feed4.jpg);"></a>
 						<div class="icons">
 							<div class="heart">
 								<i class="far fa-heart"></i>
@@ -446,7 +224,7 @@
 					<div class="thums">
 						<!--이미지가 있는 글이라면 아래 태그를 노출시켜주시는데
 						style 속성의 url 안에 이미지 소스를 넣으시면 됩니다.-->
-						<a class="thumCont" style="background-image: url(../WebContent/images/profile/expedition1205@gmail.com.jpg);"></a>
+						<a class="thumCont" style="background-image: url(images/profile/expedition1205@gmail.com.jpg);"></a>
 						<div class="icons">
 							<div class="heart">
 								<i class="far fa-heart"></i>
@@ -482,7 +260,7 @@
 					<div class="thums">
 						<!--이미지가 있는 글이라면 아래 태그를 노출시켜주시는데
 						style 속성의 url 안에 이미지 소스를 넣으시면 됩니다.-->
-						<a class="thumCont" style="background-image: url(../WebContent/images/feed4.jpg);"></a>
+						<a class="thumCont" style="background-image: url(images/feed4.jpg);"></a>
 						<div class="icons">
 							<div class="heart">
 								<i class="far fa-heart"></i>
@@ -550,12 +328,11 @@
 
 			</ul>
 		</form>
-        
-        <footer class="feedViewFooter">
-            <p id="copy">&copy; PLAYDDIT All Rights Reserved</p>
-        </footer>
-        
-        <script>
+		
+		<!-- footer.jsp include -->
+		<jsp:include page="/viewFooter.jsp"></jsp:include>
+		
+		<script>
             $( ".button_su_inner" ).mouseenter(function(e) {
                var parentOffset = $(this).offset(); 
 
