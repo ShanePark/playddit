@@ -310,5 +310,21 @@ where a.user_id = b.user_id
 order by comno;
 
 -----------------------------------------------------
+-- insert  comment
+insert into feed_comment 
+(feed_com_no, feed_no, user_id, feed_com_cont, feed_com_date)
+values(feed_com_no_seq.nextval,6,'psh40963@naver.com','댓글 달기 테스트~', sysdate);
+-----------------------------------------------------
+-- delete comment
+delete from feed_comment
+where feed_com_no = 41;
+-----------------------------------------------------
+-- find most recent comment number I left
+
+
+commit;
+
+
+
 
 

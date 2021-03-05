@@ -460,21 +460,7 @@
 					}
 				});
 				
-				//내 댓글 삭제하기 모달[동적이벤트 수정 완료]
-				$('#viewRight').on('click', '.myComm', function(){
-					if(modal2){
-						$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
-							e.preventDefault();
-						});
-						
-						$("#feedDelModal p").text("댓글을 삭제하시겠습니까?");
-						
-						$("#reportBack").show();
-						$("#feedDel").show();
-						$("#feedDelModal").slideDown(500);
-						modal2 = true;
-					}
-				});
+
 				
 				//내 대댓글 삭제하기 모달[동적이벤트 수정 완료]
 				$('#viewRight').on('click', '.myReply', function(){

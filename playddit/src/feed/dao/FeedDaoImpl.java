@@ -126,7 +126,7 @@ public class FeedDaoImpl implements IFeedDao {
 		map.put("content", content);
 		map.put("feedno", feedno);
 		
-		return (client.insert("feed.insertComment",map)==null? 1 : 0);
+		return (Integer)client.insert("feed.insertComment",map);
 		
 	}
 
