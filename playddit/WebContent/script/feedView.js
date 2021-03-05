@@ -1,13 +1,8 @@
 $(function(){
 	user_id = getCookie("user_id");
 	var feedno = getParameterByName('feedno');
+	mytarget = 'feed';
 	loadFeed(feedno);
-	
-	// 피드 삭제 버튼 
-	$('#goDel').on('click', function(){
-		delFeed(feedno);
-	})
-	
 	
 	// 댓글 말풍선 버튼 
 	$('#viewRight').on('click', '#contIcon .comment', function(){
@@ -47,14 +42,15 @@ $(function(){
 		
 		
 	});
-	
-	// 댓글 삭제 버튼
+
 	$('#goDel').on('click', function(){
 		// 해당하는 댓글 혹은 대댓글 li 를 제거한다.
 		if(mytarget == 'comment'){
 			comli.remove();			
 		}else if(mytarget == 'comrep'){
 			comrepli.remove();
+		}else if(mytarget == 'feed'){
+			delFeed(feedno);
 		}
 		
 		// 모달 닫는 이벤트
@@ -99,6 +95,26 @@ $(function(){
 								모달 이벤트 관련 함수들입니다
 			
 	 ***************************************************************************/
+	
+	// 피드 삭제하기 모달
+	var modal2 = true;
+	$('#viewRight').on('click', '.myFeed', function(){
+		
+		mytarget = 'feed';
+		
+		if(modal2){
+			$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+				e.preventDefault();
+			});
+			
+			$("#feedDelModal p").text("피드를 삭제하시겠습니까?");
+			
+			$("#reportBack").show();
+			$("#feedDel").show();
+			$("#feedDelModal").slideDown(500);
+			modal2 = true;
+		}
+	});
 	
 	// 내 댓글 삭제하기 모달
 	var modal2 = true;
@@ -154,22 +170,6 @@ $(function(){
         $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
     });
 
-	// 피드 삭제하기 모달
-	var modal2 = true;
-	$('#viewRight').on('click', '.myFeed', function(){
-		if(modal2){
-			$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
-				e.preventDefault();
-			});
-			
-			$("#feedDelModal p").text("피드를 삭제하시겠습니까?");
-			
-			$("#reportBack").show();
-			$("#feedDel").show();
-			$("#feedDelModal").slideDown(500);
-			modal2 = true;
-		}
-	});
 })
 
 
@@ -204,7 +204,7 @@ function insertComReply(comno, content){
 			
 			var reprep ='<li class="reply" comrepno="'+comrep.comno+'"><a href="#">'
                        + '<img src="images/profile/'+comrep.profile+'" /></a>'
-                       + '<p><a href="#">'+comrep.nickname+'</a>'
+                       + '<p><a href=myPage.jsp?feed_id='+comrep.id+'>'+comrep.nickname+'</a>'
                        + '<span>'+comrep.comcont+'</span>'
 					   + '<button type="button" class="myReply"><i class="fas fa-ellipsis-h"></i></button>'
 						+ '</p></li>';
@@ -239,8 +239,8 @@ function insertComment(feedno,content){
 	 success : function(v) {
 		
 		let replyli = '<li class="comment" comno="'+v.comno+'">'
-                    +'<a href="#"><img src="images/profile/'+v.profile+'" /></a>'
-                    +'<p><a href="'+v.id+'+">'+v.nickname+'</a>'
+                    +'<a href=myPage.jsp?feed_id='+v.id+'><img src="images/profile/'+v.profile+'" /></a>'
+                    +'<p><a href=myPage.jsp?feed_id='+v.id+'>'+v.nickname+'</a>'
                     +'<span>'+v.comcont+'</span>'
 					+'<button type="button" class="myComm">'
 					+'<i class="fas fa-ellipsis-h"></i></button>'	
@@ -323,8 +323,7 @@ function loadFeed(feedno){
 			}
 			$('#contIcon').prepend(likeIcon)	
 			
-			
-			var userprofile ='<a href="'+res.id+'" id="userPic">'
+			var userprofile ='<a href=myPage.jsp?feed_id='+res.id+' id="userPic">'
 						+ '<img src="images/profile/'+res.profile+'"+ /></a>'
 						+ '<a href="'+res.id+'" id="userInfo"><p>'+res.nickname+'</p>'
 						+ '<span>'+res.classname+'</span></a>';
@@ -334,8 +333,8 @@ function loadFeed(feedno){
 			// 댓글들 출력
 			$.each(res.replyList, function(i,v){
 				var replyli = '<li class="comment" comno="'+v.comno+'">'
-                            +'<a href="#"><img src="images/profile/'+v.profile+'" /></a>'
-                            +'<p><a href="#">'+v.nickname+'</a>'
+                            +'<a href=myPage.jsp?feed_id='+v.id+'><img src="images/profile/'+v.profile+'" /></a>'
+                            +'<p><a href=myPage.jsp?feed_id='+v.id+'>'+v.nickname+'</a>'
                             +'<span>'+v.comcont+'</span>'
 				
 				if(v.id == user_id){ //내가 쓴 댓글일때만 나타나는 버튼
