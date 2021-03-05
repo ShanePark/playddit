@@ -113,10 +113,10 @@ var loadFeed = function(){
 				var feed = '<div class="feed" idx="'+v.feedno+'">';
 				v.cont = v.cont.replace(/\n/g,"<br>");
 				
-				feed += '<div class="proBox" action="'+v.id+'">'
+				feed += '<div class="proBox" onclick=location.href="myPage.jsp?feed_id='+v.id+'">'
 				   	 + '<div class="proCir"><img src="images/profile/'+v.profile+'" alt="프로필사진" /></div>'
                      + '<p class="proName">'+v.nickname
-                     + '<span class="proClass">6기 - 302호</span></p>';
+                     + '<span class="proClass">'+v.classname+'</span></p>';
 				
 				 if(v.ismine == "true"){	// 내가 쓴 글이면 출력될 버튼
 				    feed += '<button type="button" class="myFeed"><i class="fas fa-ellipsis-h"></i></button>';
@@ -166,7 +166,7 @@ var loadFeed = function(){
                 
            		if(v.feedpic != "none") {
 					feed += '<div class="txt">'
-						 + '<a href="#" class="proName"> '+v.nickname+'</a>'
+						 + '<a ="#href" class="proName"> '+v.nickname+'</a>'
 						 + '<p class="txtCont">'+v.cont +'</p></div>';
 				}
 				

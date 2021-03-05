@@ -93,6 +93,8 @@ function loadProfile(){
 			$('#className').text(res.classname1);	
 			$('#self').append(res.user_bio);
 			$('#userName').text(res.user_nickname);
+			$('#userName').attr("href",'myPage.jsp?feed_id='+res.user_id);
+			$('#userPic').attr("href",'myPage.jsp?feed_id='+res.user_id);
 			$('#userMail').text(res.user_id);
 			$('#userPic').children('img').attr("src",'images/profile/'+res.user_pic);
 			
