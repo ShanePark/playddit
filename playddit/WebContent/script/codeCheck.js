@@ -26,7 +26,7 @@ $(function(){
 
 codeCheck = function(){
 		
-	const code = $('input[name=code]').val().trim();
+	var code = $('input[name=code]').val().trim();
 	
 	$.ajax({
 		url : '/playddit/join/codeCheck.do',
