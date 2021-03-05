@@ -4,9 +4,18 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 	
 <sqlMap namespace="news">
-	<!-- 뉴스 내용 가져오기 -->
-	<select id="getNews" resultClass="newsVo">
-		select * 
+	<!-- 뉴스 내용 전체 가져오기 -->
+	<select id="getNewsList" resultClass="newsVo">
+		select news_no, news_title, news_pic
 		  from news
 	</select>
+	
+	
+	<!-- 뉴스 하나 가져오기 -->
+	<select id="getNews" resultClass="newsVo" parameterClass="int">
+		select news_no, news_title, news_cont, news_date, news_pic
+		  from news
+		 where news_no = #news_no# 
+	</select>
+	
 </sqlMap>
