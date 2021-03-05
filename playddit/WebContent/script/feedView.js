@@ -14,8 +14,30 @@ $(function(){
 	});
 	// 댓글 등록 버튼
 	$('#viewRight').on('click', '#commentSend', function(){
+		// 이모지 닫기
+		$("#emoji_popup").css({"display":"none"});
+		
+		// 컨텐츠 내용 모아서 함수로보내기
 		let content = document.getElementById('input_area').innerHTML;
+		$(this).parent('.row').children('#input_area').empty();
 		insertComment(feedno,content);
+		
+	});
+	
+	// 댓글 삭제 버튼
+	$('#goDel').on('click', function(){
+		// 해당하는 댓글 li 를 제거한다.
+		comli.remove();
+		
+		// 모달 닫는 이벤트
+		$("#feedDelModal").slideUp(500);
+	    $("#feedDel").delay(200).hide();
+	    $("#reportBack").hide();
+	    modal2 = true;
+	    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+
+		deleteComment(comno);
+		
 	});
 	
 	// 좋아요 버튼 이벤트
@@ -38,7 +60,40 @@ $(function(){
 	      }
 	})
 	
+	
+	/************************************************************************** 
+	
+								모달 이벤트 관련 함수들입니다
+			
+	 ***************************************************************************/
+	
+	// 내 댓글 삭제하기 모달
+	var modal2 = true;
+	$('#viewRight').on('click', '.myComm', function(){
+		
+		// 댓글 수정 혹은 삭제를 위해 comno에 기록합니다. comli로 comment li 도 기록합니다.
+		comli = $(this).parents('.comment');
+		comno = $(this).parents('.comment').attr("comno");
+		
+		if(modal2){
+			$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+				e.preventDefault();
+			});
+			
+			$("#feedDelModal p").text("댓글을 삭제하시겠습니까?");
+			
+			$("#reportBack").show();
+			$("#feedDel").show();
+			$("#feedDelModal").slideDown(500);
+			modal2 = true;
+		}
+	});
+	
+	
+	
+	
 })
+
 
 /************************************************************************** 
 
@@ -52,13 +107,33 @@ function insertComment(feedno,content){
 	 url : '/playddit/feed/insertComment.do',
 	 type : 'post',
 	 data : {'feedno' : feedno, 'content' : content},
-	 success : function(res) {
+	 success : function(v) {
 		
+		let replyli = '<li class="comment" comno="'+v.comno+'">'
+                    +'<a href="#"><img src="images/profile/'+v.profile+'" /></a>'
+                    +'<p><a href="'+v.id+'+">'+v.nickname+'</a>'
+                    +'<span>'+v.comcont+'</span>'
+					+'<button type="button" class="myComm">'
+					+'<i class="fas fa-ellipsis-h"></i></button>'	
+					+'</p><button type="button" class="replyBtn">댓글달기</button></li>';
+		$('#feedComm').children('ul').append(replyli);
 	 },
 	 error : function(xhr){
 		 alert("status : " + xhr.status);
 	 },
 	 dataType : 'json'
+   })
+}
+
+function deleteComment(comno){
+	
+   $.ajax({
+	 url : '/playddit/feed/deleteComment.do',
+	 type : 'post',
+	 data : {'comno' : comno},
+	 error : function(xhr){
+		 alert("status : " + xhr.status);
+	 }
    })
 }
 
