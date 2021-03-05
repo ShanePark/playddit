@@ -142,6 +142,10 @@
 	(feed_com_no, feed_no, user_id, feed_com_cont, feed_com_date)
 	values(feed_com_no_seq.nextval,#feedno#,#id#,#content#, sysdate)
 	
+		<selectKey keyProperty="feed_com_no" resultClass="int">
+			select feed_com_no_seq.currval AS feed_com_no from dual
+		</selectKey>
+
 	</insert>
 	
 	<delete id ="deleteComment" parameterClass="int">

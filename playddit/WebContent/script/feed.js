@@ -3,15 +3,7 @@ $(function(){
 	
 	// 피드 삭제
 	$('.cen').on('click','#goDel',function() {
-		// 해당하는 feed 화면에서 제거
-		// $('.feed[idx=feedno]').remove()로 제거해야 하는데,찾질 못해서 임시로 each문 돌립니다
-		$(this).parents('.cen').find('.feed').each(function(){
-			if($(this).attr("idx") == feedno){
-				this.remove();
-				return false;
-			}
-		})
-		// 실제로 피드를 제거하는 함수
+		feeddiv.remove();
 		delFeed(feedno);
    	});
 	
@@ -47,6 +39,7 @@ $(function(){
 	// 내 피드 삭제하기 모달
     var modal2 = true;
     $("#feedBox").on("click",".myFeed", function(){
+		feeddiv = $(this).parents(".feed")
     	feedno = $(this).parents(".feed").attr("idx");
     	
         if(modal2){
