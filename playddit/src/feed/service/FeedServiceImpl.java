@@ -81,10 +81,10 @@ public class FeedServiceImpl implements IFeedService {
 	}
 
 	@Override
-	public int insertFeed(String id, String cont, String feedpic) {
+	public int insertFeed(String id, String cont) {
 		
 		try {
-			return dao.insertFeed(id, cont, feedpic);
+			return dao.insertFeed(id, cont);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

@@ -20,7 +20,7 @@ public interface IFeedDao {
 	public List<ComVO> getComReplies(int feed_com_no) throws SQLException;
 	
 	// 피드 작성 하기 
-	public int insertFeed(String id, String cont, String feedpic) throws SQLException;
+	public int insertFeed(String id, String cont) throws SQLException;
 	
 	// 피드 삭제 하기 (내 피드만)
 	public int deleteFeed(int feedno) throws SQLException;

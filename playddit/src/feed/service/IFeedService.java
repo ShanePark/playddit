@@ -15,7 +15,7 @@ public interface IFeedService {
 	public List<ComVO> getCom(int feed_no);
 	
 	// 피드 작성 하기 
-	public int insertFeed(String id, String cont, String feedpic);
+	public int insertFeed(String id, String cont);
 	
 	// 단일 피드 정보 불러오기
 	public FeedVO getOneFeed(String user_id, int feed_no);
