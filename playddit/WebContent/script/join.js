@@ -2,7 +2,9 @@
  * 
  */
 	$(function(){			
-		$('input[name=itemclass]').on('click', function(){
+		selectClass();
+		
+		$("#tagChange").on('click', '.itemclass', function(){
 			var nameLength = $('input[name=name]').val().length;
 			var phoneLength = $('input[name=phone]').val().length;
 			var birthLength = $('input[name=birth]').val().length;
@@ -22,8 +24,6 @@
 			}else if(multiValue == 0){
 				alert("학급을 선택하기 위해서는 \n이름, 전화번호, 생년월일을 입력해야 합니다.");
 				return false;
-			}else{
-				selectClass();
 			}				
 		})
 			

@@ -10,7 +10,7 @@ function codeSubmit(){
 	name = $('input[name=name]').val().trim();
 	phone = $('input[name=phone]').val().trim();
 	birth = $('input[name=birth]').val().trim();
-	class_id = $('select[name=itemclass]').val();
+	class_id =$("#tagChange").find("#classCho").attr("idx");
 
 	if(class_id === undefined){
 		class_id = 'C000';

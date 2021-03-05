@@ -9,13 +9,16 @@ selectClass = function(){
 		type : 'get',
 		success : function(res){
 			code = "";
-			code += "<select name='itemclass'>";
-			code += "<option value='C000'>Choose your class</option>";
-			code += "<option value='C000'>소속 학급 없음</option>";
+			code += "<ul class='itemclass'>";
+			code += "<li id='classCho' idx='C000'>Choose your class";
+			code += "<ul>"
+			code += "<li idx='C000'>소속 학급 없음</li>";
 			$.each(res, function(i, v){
-				code += "<option value=" + v.class_id +"> " + v.classname + "</option>"; 
+				code += "<li idx=" + v.class_id +"> " + v.classname + "</li>"; 
 			})
-			code += "</select>";
+			code += "</ul>";
+			code += "</li>";
+			code += "</ul>";
 			$('#tagChange').html(code);
 		},
 		error : function(xhr){
