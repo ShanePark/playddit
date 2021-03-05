@@ -43,6 +43,13 @@ public class FileUtil {
 	public static String getProfilePath() {
 		return getProjectPath() + SEP + "WebContent"+SEP+"images"+SEP+"profile";
 	}
+	/**
+	 * 피드 사진을 저장할 폴더를 찾아내 반환해주는 메서드
+	 * @return
+	 */
+	public static String getFeedPath() {
+		return getProjectPath() + SEP + "WebContent"+SEP+"images"+SEP+"feed";
+	}
 	
 }
 

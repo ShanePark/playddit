@@ -46,12 +46,11 @@ public class FeedDaoImpl implements IFeedDao {
 	}
 
 	@Override
-	public int insertFeed(String id, String cont, String feedpic) throws SQLException {
+	public int insertFeed(String id, String cont) throws SQLException {
 		Map<String, String> map = new HashMap<>();
 		map.put("id", id);
 		map.put("cont", cont);
-		map.put("feedpic", feedpic);
-
+	
 		if (client.insert("feed.insertFeed", map) == null) {
 
 			return 1;

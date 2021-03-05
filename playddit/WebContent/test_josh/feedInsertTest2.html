@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Insert feed and pictures!!</title>
 <meta charset="UTF-8">
 		<link href="favicon.ico" rel="icon shortcut" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -8,9 +9,8 @@
         <link href="../css/common.css" rel="stylesheet" />
         <link href="../css/style.css" rel="stylesheet" />
         <link href="../css/feed.css" rel="stylesheet" />
-
-<title>Insert feed!!</title>
-<script src="../js/jquery-3.5.1.min.js"></script>
+		<script src="../js/jquery-3.5.1.min.js"></script>
+		
 <style>
 
 </style>
@@ -26,6 +26,7 @@
 	})
 	
 	var savefeed = function(){
+			alert("save버튼 클릭");
 		var content = $('textarea[name=feedcont]').val();
 		content = content.replace(/<br>/g, "\n");
 		$.ajax({
@@ -49,45 +50,33 @@
 	}
 
 </script>
+
 </head>
 <body>
-<h2>Insert Feed</h2>
+<h2>Insert Feed and Pictures</h2>
 <hr>
 <a href="../index.html">세션필요할때(500에러) 로그인 하고오기</a><br><br><br>
 <hr>
-<form id ="insertFeedForm" method="post" >
 
-
-
-	
+		
 
 		<label>피드내용</label>
 	
 			<p><textarea cols="50" rows="10" name="feedcont"></textarea><p>
 			
-			
-			
 			<br><br>
-
 	
+	
+		<form action="/playddit/feed/insertFeed.do"  method="post" enctype="multipart/form-data">
 		<label>피드사진</label>
 		
-			<input type = "text" name ="feedpic">
+	        <input type="file" name="file1">
+            <br><br>
+            <input type="submit" value="저장" id = "savefeed">
+     	</form>
 			
 			<br><br>
 		
 	
-			
-	
-		
-		
-	
-
-
-
-
-</form>
-<input type = "button" onclick="location.href='feedtest.jsp'" value = "저장" id = "savefeed">
-
 </body>
 </html>
