@@ -12,10 +12,9 @@ nickCheck = function(btn){
 		success : function(res){
 			if(res.result == '0'){
 				$(btn).addClass("active"); 			
-				alert("사용가능");
 				return true;
 			}else{
-				alert("사용 불가능");
+				$('input[name=nickname]').parents('.box').find('.msg').text("이미 사용중인 닉네임 입니다.");
 				return false;
 			}
 		},
@@ -42,11 +41,10 @@ idDcheck = function(btn){
 		success : function(res){
 			if(res.result == '0'){
 				$(btn).addClass("active"); 			
-				alert("사용가능");
 				return true;
 			}
 			else{
-				alert("사용 불가능");
+				$('input[name=mail]').parents('.box').find('.msg').text("이미 사용중인 이메일 입니다.");
 				return false;
 			}
 
