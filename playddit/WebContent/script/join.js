@@ -1,7 +1,9 @@
 /**
  * 
  */
-	$(function(){			
+	$(function(){	
+		
+        //$('input[name=itemclass]').on('click', function(){
 		selectClass();
 		
 		$("#tagChange").on('click', '.itemclass', function(){
@@ -24,7 +26,10 @@
 			}else if(multiValue == 0){
 				alert("학급을 선택하기 위해서는 \n이름, 전화번호, 생년월일을 입력해야 합니다.");
 				return false;
-			}				
+			}
+//			else{
+//				selectClass();					
+//			}
 		})
 			
 		// id(email) check
