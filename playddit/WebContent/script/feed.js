@@ -3,7 +3,16 @@ $(function(){
 	
 	// 피드 삭제
 	$('.cen').on('click','#goDel',function() {
+		// 해당 피드 제거
 		feeddiv.remove();
+		
+		// 마이 피드 모달 닫기
+		$("#feedDelModal").slideUp(500);
+	    $("#feedDel").delay(200).hide();
+	    $("#reportBack").hide();
+	    modal2 = true;
+	    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+
 		delFeed(feedno);
    	});
 	
@@ -272,8 +281,6 @@ var deleteLike = function(feedno){
 		url : '/playddit/feed/deleteLike.do',
 		type : 'post',
 		data : {'feedno' : feedno},
-		success : function(res) {
-		},
 		error : function(xhr){
 			alert("status : " + xhr.status);
 		},
@@ -282,25 +289,15 @@ var deleteLike = function(feedno){
 }
 
 var delFeed = function(feedno){
-	
+
 	$.ajax({
-	url : '/playddit/feed/deleteFeed.do',
-	type : 'post',
-	data : {'feedno' : feedno},
-	success : function(res) {
+		url : '/playddit/feed/deleteFeed.do',
+		type : 'post',
+		data : {'feedno' : feedno},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		}
 		
-		// 마이 피드 모달 끄기
-		$("#feedDelModal").slideUp(500);
-        $("#feedDel").delay(200).hide();
-        $("#reportBack").hide();
-        modal2 = true;
-        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-		
-	},
-	error : function(xhr){
-		alert("status : " + xhr.status);
-	},
-	dataType : 'json'
 	});
 	
 }

@@ -90,20 +90,16 @@ function loadProfile(){
 			$('#allFeed').append(res.allfeed);	
 			$('#Follower').append(res.follower);	
 			$('#Following').append(res.following);	
-			$('#className').append(res.className);	
+			$('#className').text(res.classname1);	
 			$('#self').append(res.user_bio);
+			$('#userName').text(res.user_nickname);
+			$('#userMail').text(res.user_id);
+			$('#userPic').children('img').attr("src",'images/profile/'+res.user_pic);
 			
 			if(res.user_pic == null){
 				res.user_pic = 'default.png';
 			}
 			
-			var profile = '<a href="#" id="userPic">'
-			+'<img src="images/profile/'+res.user_pic+'"+ /></a>'
-			+'<div id="userBox">'
-			+' <a href="#" id="userName">'+res.user_nickname+'</a>'
-			+'<span id="userMail">'+res.user_id+'</span></div>'
-				
-			$('#infoBox').append(profile);
 			
 		},
 		error : function(xhr){
