@@ -1,0 +1,61 @@
+@charset "utf-8";
+#news {
+    background: white;
+    width: 100%;
+    max-height: 630px;
+    overflow: auto;
+}
+
+.thums {
+    display: inline-block;
+    width: calc((99% - 15px) / 2);
+    margin-right: 15px;
+    border: 1px solid #e9e7fb;
+    margin-bottom: 20px;
+}
+.thums:nth-of-type(2n) {
+    margin-right: 0;
+}
+.thums .newsCont {
+    width: 100%;
+    border-bottom : 1px solid #e9e7fb;
+}
+.thums .newsPic {
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.thums .newsCont p {
+    padding: 20px;
+    font-size: 1.05em;
+    line-height: 1.5em;
+}
+.thums .newsTitle {
+    height: 100px;
+    padding: 20px;
+}
+.thums .newsTitle h3 {
+    font-size: 1em;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 800;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.thums .newsTitle p {
+    position: relative;
+    bottom: -25px;
+}
+
+/*-----------------여기부터 태블릿pc---------------------*/
+@media all and (max-width: 1020px) {
+    #news {
+        margin-top: 30px;
+    }
+}
+
+/*-----------------여기부터 모바일버전-------------------*/
+@media all and (max-width:767px) {
+    
+}
