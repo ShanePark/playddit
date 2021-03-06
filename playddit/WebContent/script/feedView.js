@@ -246,12 +246,19 @@ function insertComment(feedno,content){
 	 success : function(v) {
 		
 		let replyli = '<li class="comment" comno="'+v.comno+'">'
-                    +'<a href=myPage.jsp?feed_id='+v.id+'><img src="images/profile/'+v.profile+'" /></a>'
-                    +'<p><a href=myPage.jsp?feed_id='+v.id+'>'+v.nickname+'</a>'
-                    +'<span>'+v.comcont+'</span>'
-					+'<button type="button" class="myComm">'
-					+'<i class="fas fa-ellipsis-h"></i></button>'	
-					+'</p><button type="button" class="replyBtn">댓글달기</button></li>';
+                    +	'<a href=myPage.jsp?feed_id='+v.id+'><img src="images/profile/'+v.profile+'" /></a>'
+                    +	'<p>'
+					+		'<a href=myPage.jsp?feed_id='+v.id+'>'+v.nickname+'</a>'
+                    +		'<span>'+v.comcont+'</span>'
+					+		'<button type="button" class="myComm">'
+					+			'<i class="fas fa-ellipsis-h"></i>'
+					+		'</button>'	
+					+	'</p>'
+					+	'<button type="button" class="replyBtn">댓글달기</button>'
+					+	'<button type="button" class="replyBtnView">'
+					+	'댓글보기&#40;<span>0</span>개&#41;</button>'
+					+	'<ul class="replyList"></ul>'
+					+'</li>';
 		$('#feedComm').children('ul').append(replyli);
 	 },
 	 error : function(xhr){
