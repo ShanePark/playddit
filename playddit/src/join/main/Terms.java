@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import join.service.IJoinservice;
 import join.service.JoinServiceImpl;
 import join.vo.TermsVO;
@@ -27,14 +29,14 @@ public class Terms implements IAction {
 		request.setCharacterEncoding("UTF-8");
 		
 		IJoinservice service = JoinServiceImpl.getService();
-		
 	
 		List<TermsVO> list = service.showTerm();
-
-		request.setAttribute("terms", list);
-
-		return "/join/Terms.jsp";
-
+		String listJson = new Gson().toJson(list);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().write(listJson);
+		
+		return null;
 	}
 
 }

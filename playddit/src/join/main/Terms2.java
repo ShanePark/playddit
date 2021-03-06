@@ -31,9 +31,12 @@ public class Terms2 implements IAction {
 		
 		List<TermsVO> list = service.showTerm2();
 		
-		request.setAttribute("terms2", list);
+		String listJson = new Gson().toJson(list);
 		
-		return "/join/Terms2.jsp";
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().write(listJson);
+		
+		return null;
 	}
 
 }

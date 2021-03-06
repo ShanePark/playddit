@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import users.service.IUsersService;
 import users.service.UsersServiceImpl;
 import web.IAction;
@@ -26,9 +28,12 @@ public class IdCheck implements IAction {
 		String user_id = request.getParameter("id");
 		IUsersService service = UsersServiceImpl.getService();
 		String result = service.selectById(user_id);
-		request.setAttribute("resultvalue", result);
+		String resultJson = new Gson().toJson(result);
 		
-		return "/users/idCheck.jsp";
-	}
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().write(resultJson);
+
+		return null;
+	}	
 
 }

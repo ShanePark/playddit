@@ -2,7 +2,6 @@
  * 
  */
 
-
 nickCheck = function(btn){
 	nickvalue = $('input[name=nickname]').val().trim();
 	$.ajax({
@@ -10,7 +9,7 @@ nickCheck = function(btn){
 		type : 'post',
 		data : { 'user_nickname' : nickvalue },
 		success : function(res){
-			if(res.result == '0'){
+			if(res == null){
 				$(btn).addClass("active"); 			
 				return true;
 			}else{
@@ -25,7 +24,6 @@ nickCheck = function(btn){
 	})
 }
 
-
 idDcheck = function(btn){
 	
 	idvalue = $('input[name=mail]').val().trim();
@@ -39,7 +37,7 @@ idDcheck = function(btn){
 		type : 'post',
 		data : { 'id' : idvalue },
 		success : function(res){
-			if(res.result == '0'){
+			if(res == null){
 				$(btn).addClass("active"); 			
 				return true;
 			}
@@ -64,11 +62,4 @@ function resetMail(){
 		return false;	// 서버로 전송을 취소한다.
 	}
 }
-
-
-
-
-
-
-
 

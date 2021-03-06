@@ -30,10 +30,12 @@ public class TermsCon implements IAction {
 		IJoinservice service = JoinServiceImpl.getService();
 		
 		TermsVO vo = service.termsCon(no);
-
-		request.setAttribute("termsCon", vo);
+		String voJson = new Gson().toJson(vo);
 		
-		return "/join/TermsCon.jsp";
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().write(voJson);		
+		
+		return null;
 	}
 
 }
