@@ -460,22 +460,19 @@ function join(){
 		},
 		success : function(res){
 			if(res == '1'){
-				alert("회원 가입 성공");	
 	
 				$("#codeModal").animate({marginTop:"300px"},300);
 				$("#modal").delay(100).fadeOut(300);
 
 				location.href="/playddit/play.html";
 
-			}else if(res == '0'){
-				alert("회원 가입 실패");
+			}else{
+				alert("회원 가입에 실패했습니다. 반복 실패시 관리자에게 문의해주세요.");
 				
 				$("#codeModal").animate({marginTop:"300px"},300);
 				$("#modal").delay(100).fadeOut(300);
 				
 				location.href="/playddit/conditions.html";
-			}else{
-				location.href = "/playddit/index.html";		
 			}
 		},
 		error : function(xhr){
