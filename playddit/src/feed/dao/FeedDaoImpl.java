@@ -10,6 +10,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import config.SqlMapClientFactory;
 import feed.vo.ComVO;
 import feed.vo.FeedVO;
+import feed.vo.MypageFeedVO;
 
 public class FeedDaoImpl implements IFeedDao {
 
@@ -147,6 +148,12 @@ public class FeedDaoImpl implements IFeedDao {
 	@Override
 	public int deleteComReply(int recomno) throws SQLException {
 		return client.delete("feed.deleteComReply", recomno);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MypageFeedVO> loadUserFeeds(String user_id) throws SQLException {
+		return client.queryForList("feed.loadUserFeeds", user_id);
 	}
 
 

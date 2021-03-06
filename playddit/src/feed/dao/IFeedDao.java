@@ -3,10 +3,9 @@ package feed.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.ibatis.sqlmap.client.SqlMapException;
-
 import feed.vo.ComVO;
 import feed.vo.FeedVO;
+import feed.vo.MypageFeedVO;
 
 public interface IFeedDao {
 
@@ -48,5 +47,8 @@ public interface IFeedDao {
 
 	// 대 댓글 삭제
 	public int deleteComReply(int recomno) throws SQLException;
+	
+	// 마이페이지 피드자료 가볍게 불러오기
+	public List<MypageFeedVO> loadUserFeeds(String user_id) throws SQLException;
 	
 }

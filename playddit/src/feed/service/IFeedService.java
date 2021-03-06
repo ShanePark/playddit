@@ -5,6 +5,7 @@ import java.util.List;
 
 import feed.vo.ComVO;
 import feed.vo.FeedVO;
+import feed.vo.MypageFeedVO;
 
 public interface IFeedService {
 
@@ -43,4 +44,7 @@ public interface IFeedService {
 
 	// 대 댓글 삭제
 	public int deleteComReply(int recomno);
+	
+	// 마이페이지 피드자료 가볍게 불러오기
+	public List<MypageFeedVO> loadUserFeeds(String user_id);
 }

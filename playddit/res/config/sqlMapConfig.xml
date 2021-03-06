@@ -33,8 +33,9 @@
  	  <typeAlias alias = "followerVO" type="users.vo.FollowerVO"/>
       <typeAlias alias = "feedVO" type="feed.vo.FeedVO"/>
       <typeAlias alias = "comVO" type="feed.vo.ComVO"/>
-      <typeAlias alias="classVo" type="join.vo.ClassVO"/>
-      <typeAlias alias="newsVo" type="news.vo.NewsVO"/>
+      <typeAlias alias = "classVo" type="join.vo.ClassVO"/>
+      <typeAlias alias = "newsVo" type="news.vo.NewsVO"/>
+      <typeAlias alias = "mypageFeedVO" type="feed.vo.MypageFeedVO"/>
  	  
  	  <!-- DB와의 연결을 처리하는 부분 -->
  	  <transactionManager type="JDBC">

@@ -94,7 +94,11 @@ select user_id, user_nickname,class_id, nvl(user_pic, 'default.png') as user_pic
 (select count(*) from follow where followee=users.user_id) as follower,
 (select class_title ||' '|| class_num || ' - ' || class_room
 from class
-where class_id = (select class_id from users where user_id='psh40963@naver.com')) as className,
+where class_id = (select class_id from users where user_id='psh40963@naver.com')) as className1,
+(select count(*) from follow where followee=users.user_id) as follower,
+(select class_num || ' - ' || class_room
+from class
+where class_id = (select class_id from users where user_id='psh40963@naver.com')) as className2,
 (select count(*)
 from feed
 where feed.user_id = users.user_id) as allFeed,
@@ -327,9 +331,16 @@ values(f_com_re_no_seq.nextval,46,'psh40963@naver.com','대댓글 달기 테스�
 delete from feed_com_re
 where f_com_re_no = 1;
 -----------------------------------------------------
-commit;
+-- Personal Feedpage feeds loading
+select feed_no as feed_no, feed_cont as content,
+       (select count(*) from likes where feed_no = a.feed_no) as likes,
+       (select count(*) from feed_comment where feed_no = a.feed_no) as comments,
+        substr(feed_pic, 0, instr(feed_pic, ',')-1) as pic
+from feed a
+where user_id = 'psh40963@naver.com'
+order by feed_no desc;
 
-
+-----------------------------------------------------
 
 
 
