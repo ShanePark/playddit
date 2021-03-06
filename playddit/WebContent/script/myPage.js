@@ -59,6 +59,37 @@ function loadUserProfile(feed_id){
 	})
 }
 function loadUserFeeds(feed_id){
+	$.ajax({
+		url : '/playddit/feed/loadUserFeeds.do',
+		type : 'post',
+		data : {'feed_id' : feed_id},
+		success : function(feedList){
+			$.each(feedList, function(i,feed){
+				
+				var thums = '<div class="thums">'
+						+		'<a class="thumCont" style="background-image: url(images/profile/expedition1205@gmail.com.jpg);"></a>'
+						+		'<div class="icons">'
+						+			'<div class="heart">'
+						+				'<i class="far fa-heart"></i>'
+						+				'<span>'+feed.likes+'</span>'
+						+			'</div>'
+						+			'<div class="comment">'
+						+				'<i class="far fa-comment"></i>'
+						+				'<span>'+feed.comments+'</span>'
+						+			'</div>'
+						+		'</div>'
+						+ '</div>'
+				
+				$('#thumsBox').append(thums);
+			
+			})
+			
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+	})
 }
 
 function setCookie(name, value, exp){
