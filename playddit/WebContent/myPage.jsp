@@ -17,7 +17,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/script.js"></script>
 		<script src="script/view.js"></script>
-		<script src="script/mypage.js"></script>
+		<script src="script/myPage.js"></script>
 		
 	</head>
 	<body>
