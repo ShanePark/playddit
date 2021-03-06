@@ -229,7 +229,7 @@ function loadUserFeeds(){
 		success : function(feedList){
 			$.each(feedList, function(i,feed){
 				
-				var thums = '<div class="thums">'
+				var thums = '<div class="thums" onclick=location.href="feedView.jsp?feedno='+feed.feed_no+'">'
 						+		'<a class="thumCont" style="background-image: url(images/feed/' + feed.pic +');">';
 				if(feed.pic === undefined){
 					thums +='<p>'+feed.content+'</p>'

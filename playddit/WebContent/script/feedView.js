@@ -195,7 +195,7 @@ function delFeed(feedno){
 		 dataType : 'json'
    })
 
-	window.location.href= 'feed.jsp'
+	window.location.href= 'myPage.jsp?feed_id='+user_id;
 	
 }
 
