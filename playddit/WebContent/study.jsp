@@ -43,7 +43,7 @@
                     <div id="myClass">
                         <h3>My class</h3>
                         <div id="classBox" class="studys">
-                            <a href="#" id="classProfile" class="studyPic" style="background: url(../images/feed3.jpg)"></a>
+                            <a href="#" id="classProfile" class="studyPic" style="background: url(images/feed3.jpg);"></a>
                             <div id="classInfo">
                                 <h6>풀스택 개발자 과정 6기-302호</h6>
                                 <p>학급인원 <span>25</span>명</p>
@@ -53,21 +53,21 @@
                     <div id="myStudy">
                         <h3>My Study</h3>
                         <div class="studyBox studys">
-                            <a href="#" class="studyProfile studyPic" style="background: url(../images/profile/expedition1205@gmail.com.jpg)"></a>
+                            <a href="#" class="studyProfile studyPic" style="background: url(images/profile/expedition1205@gmail.com.jpg);"></a>
                             <div class="studyInfo">
                                 <h6>프로그래머스 스터디방</h6>
                                 <p>스터디원 <span>4</span>명</p>
                             </div>
                         </div>
                         <div class="studyBox studys">
-                            <a href="#" class="studyProfile studyPic" style="background: url(../images/profile/chdnjs7610@gmail.com.jpg)"></a>
+                            <a href="#" class="studyProfile studyPic" style="background: url(images/profile/chdnjs7610@gmail.com.jpg);"></a>
                             <div class="studyInfo">
                                 <h6>프로그래머스 스터디방</h6>
                                 <p>스터디원 <span>4</span>명</p>
                             </div>
                         </div>
                         <div class="studyBox studys">
-                            <a href="#" class="studyProfile studyPic" style="background: url(../images/profile/psh40963@naver.com.png)"></a>
+                            <a href="#" class="studyProfile studyPic" style="background: url(images/profile/psh40963@naver.com.png);"></a>
                             <div class="studyInfo">
                                 <h6>프로그래머스 스터디방</h6>
                                 <p>스터디원 <span>4</span>명</p>
