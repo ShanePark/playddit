@@ -55,9 +55,9 @@ showTerm = function(){
             	code += "<input type='checkbox' class='mustCondi' name='must"+i+"' id='must" +i + "'/>";
             	code += "<label for='must" +i+ "'>";
             	code += "<span class='chk'></span>";
-            	code += "<span> " + v.title + '(필수)' + "</span>";
+            	code += "<span> " + v.terms_title + '(필수)' + "</span>";
             	code += "</label>";
-            	code += "<i  must=" + v.no+" class='fas fa-chevron-right'></i>";
+            	code += "<i  must=" + v.terms_no+" class='fas fa-chevron-right'></i>";
             	code += "</li>";
 
             })    
@@ -85,9 +85,9 @@ showTerm2 = function(){
             	code += "<input type='checkbox' class='pickCondi' name='pick"+ i+"' id='pick" + i  + "' value='pick" + i  + "'/>";
             	code += "<label for='pick" + i  + "'>";
             	code += "<span class='chk'></span>";
-            	code += "<span> " + v.title + '(선택)' + "</span>";
+            	code += "<span> " + v.terms_title + '(선택)' + "</span>";
             	code += "</label>";
-            	code += "<i  must=" + v.no+" class='fas fa-chevron-right'></i>";
+            	code += "<i  must=" + v.terms_no+" class='fas fa-chevron-right'></i>";
             	code += "</li>";
             })    
             code += "</ul>";
@@ -112,10 +112,10 @@ termsCon = function(terms_no){
 			code += '</button>';
 			code += '</div>';
 			code += '<div style="clear: both;"></div>';
-			code += '<h2>' + res.title + '</h2>';
+			code += '<h2>' + res.terms_title + '</h2>';
 			code += '<div class="longbar"></div>';
 			code += '<div id="condiTxt">';
-			code +=  res.cont;
+			code +=  (res.terms_cont).replaceAll("\"", "\"").replaceAll("\r", "").replaceAll("\n", "<br>");
 			code += '</div>';
 				
 			$('#condiModal').html(code);
