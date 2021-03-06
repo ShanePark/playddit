@@ -60,5 +60,6 @@
 		select class_id, class_title ||' '|| class_num ||' - '|| class_room as classname
  	      from class
         <![CDATA[  where class_id != 'C000' and sysdate < class_end ]]>
+        order by class_start desc
 	</select>
 </sqlMap>

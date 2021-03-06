@@ -89,11 +89,12 @@ function loadProfile(){
 		url : '/playddit/login/login.do',
 		type : 'post',
 		success : function(res){
-			$('#allFeed').append(res.allfeed);	
-			$('#Follower').append(res.follower);	
-			$('#Following').append(res.following);	
+			$('#allFeed').text(res.allfeed);
+			$('#allFeed').attr("href",'myPage.jsp?feed_id='+res.user_id)
+			$('#Follower').text(res.follower);	
+			$('#Following').text(res.following);	
 			$('#className').text(res.classname1);	
-			$('#self').append(res.user_bio);
+			$('#self').text(res.user_bio);
 			$('#userName').text(res.user_nickname);
 			$('#userName').attr("href",'myPage.jsp?feed_id='+res.user_id);
 			$('#userPic').attr("href",'myPage.jsp?feed_id='+res.user_id);
