@@ -9,9 +9,9 @@ $(function(){
 	 $(".followBtn").click(function(){
         title = $(this).parent("li").children(".th").text();
 		if(title == "팔로워"){
-			loadFollower(user_id);
+			loadFollower();
 		}else{
-			loadFollowing(user_id);
+			loadFollowing();
 		}
     });
 		
@@ -115,7 +115,7 @@ function loadProfile(){
 }
 
 
-loadFollower = function(user_id){
+loadFollower = function(){
 	$('.followList').empty();
 	$.ajax({
 		url : '/playddit/users/followerList.do',
@@ -143,7 +143,7 @@ loadFollower = function(user_id){
 	})
 }
 
-loadFollowing = function(user_id){
+loadFollowing = function(){
 	$('.followList').empty();
 	$.ajax({
 		url : '/playddit/users/followingList.do',
