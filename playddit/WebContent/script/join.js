@@ -4,36 +4,9 @@
 	$(function(){	
 
 		var resentTime = new Date();
-			
-        //$('input[name=itemclass]').on('click', function(){
+		
 		selectClass();
 		
-		$("#tagChange").on('click', '.itemclass', function(){
-			var nameLength = $('input[name=name]').val().length;
-			var phoneLength = $('input[name=phone]').val().length;
-			var birthLength = $('input[name=birth]').val().length;
-			var multiValue = nameLength * phoneLength * birthLength;
-				
-			var nameSpan = $('input[name=name]').parents('.box').find('.msg').text().length;
-			var phoneSpan = $('input[name=phone]').parents('.box').find('.msg').text().length;
-			var birthSpan = $('input[name=birth]').parents('.box').find('.msg').text().length;
-				
-			if(nameSpan > 1){
-				alert("이름 형식을 확인해주세요");
-				return false;
-			}else if(phoneSpan > 1){
-				alert("전화번호 형식(-없이 숫자만 입력해주세요)을 확인해주세요");
-			}else if(birthSpan > 1){
-				alert("생년월일을 확인해주세요.");
-			}else if(multiValue == 0){
-				alert("학급을 선택하기 위해서는 \n이름, 전화번호, 생년월일을 입력해야 합니다.");
-				return false;
-			}
-//			else{
-//				selectClass();					
-//			}
-		})
-			
 		// id(email) check
 		$('input[name=mail]').on('keyup', function() {
 			idCheck();
@@ -185,28 +158,62 @@
 	
 	
 // class 정보 출력하기
+	
 selectClass = function(){
 	$.ajax({
 		url : '/playddit/join/getClassList.do',
 		type : 'get',
 		success : function(res){
 			code = "";
-//            code += "<select name='itemclass'>";
-//            code += "<option value='C000'>Choose your class</option>";
-//            code += "<option value='C000'>소속 학급 없음</option>";
 			code += "<ul class='itemclass'>";
-			code += "<li id='classCho' idx='C000'>Choose your class";
-			code += "<ul>"
+			code += "<li id='classCho' idx='C000'><span>Choose your class</span><i class='fas fa-chevron-down'></i>";
+			code += "<ul class='scrollStyle'>";
 			code += "<li idx='C000'>소속 학급 없음</li>";
 			$.each(res, function(i, v){
-                //code += "<option value=" + v.class_id +"> " + v.classname + "</option>"; 
 				code += "<li idx=" + v.class_id +"> " + v.classname + "</li>"; 
 			})
-//			code += "</select>";
 			code += "</ul>";
 			code += "</li>";
 			code += "</ul>";
 			$('#tagChange').html(code);
+			
+            $("#tagChange").on("click", ".itemclass",function(){
+            	$(this).find(".scrollStyle").slideToggle();
+            });
+            
+            $("#tagChange").on('click', '.itemclass ul li', function(){
+    			var nameLength = $('input[name=name]').val().length;
+    			var phoneLength = $('input[name=phone]').val().length;
+    			var birthLength = $('input[name=birth]').val().length;
+    			var multiValue = nameLength * phoneLength * birthLength;
+    				
+    			var nameSpan = $('input[name=name]').parents('.box').find('.msg').text().length;
+    			var phoneSpan = $('input[name=phone]').parents('.box').find('.msg').text().length;
+    			var birthSpan = $('input[name=birth]').parents('.box').find('.msg').text().length;
+    				
+    			if(nameSpan > 1){
+    				alert("이름 형식을 확인해주세요");
+    				return false;
+    			}else if(phoneSpan > 1){
+    				alert("전화번호 형식(-없이 숫자만 입력해주세요)을 확인해주세요");
+    			}else if(birthSpan > 1){
+    				alert("생년월일을 확인해주세요.");
+    			}else if(multiValue == 0){
+    				alert("학급을 선택하기 위해서는 \n이름, 전화번호, 생년월일을 입력해야 합니다.");
+    				$("#tagChange").find(".itemclass .scrollStyle").slideUp(200);
+    				$("input[name=name]").focus();
+    				stat = false;
+    				return false;
+    			}
+    			
+    			var choice = $(this).attr("idx");
+    			var choiceText = $(this).text();
+    			$(this).parents("#tagChange").find("#classCho").attr("idx", choice);
+    			$(this).parents("#tagChange").find("#classCho").children("span").text(choiceText);
+    		});
+            
+            $("#tagChange").find(".itemclass .scrollStyle").slideUp(200);
+            
 		},
 		error : function(xhr){
 			alert('상태 : ' + xhr.status);

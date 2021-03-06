@@ -704,6 +704,29 @@ label[for='allchk'] h5 {
     font-weight: 700;
 }
 
+/* ----------------- join.html select --------------------- */
+.itemclass li {
+	cursor: pointer;
+}
+.itemclass li i{
+	float: right;
+    margin-top: 16px;
+}
+.itemclass li ul {
+	background: white;
+    border: 1px solid #e9e7fb;
+    max-height: 200px;
+    overflow: auto;
+    display: none;
+}
+.itemclass li ul li {
+	height: 30px;
+    line-height: 30px;
+}
+.itemclass li ul li:hover {
+	background: #f6f9fe;
+}
+
 /*------------------여기부터 태블릿pc---------------------*/
 @media all and (max-width: 1020px) {
     /*----------------로그인페이지----------------------*/
