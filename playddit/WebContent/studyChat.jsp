@@ -632,7 +632,7 @@
 	    <jsp:include page="/viewFooter.jsp"></jsp:include>
         
         <script>
-            
+           
         </script>
     </body>
 </html>
