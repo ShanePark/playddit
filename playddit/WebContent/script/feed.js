@@ -45,6 +45,7 @@ $(function(){
 	});
 	
 	////////////////////////// 모달 이벤트 관련 함수 시작 /////////////////////////////
+	
 	// 내 피드 삭제하기 모달
     var modal2 = true;
     $("#feedBox").on("click",".myFeed", function(){
@@ -113,9 +114,9 @@ var loadFeed = function(){
 				var feed = '<div class="feed" idx="'+v.feedno+'">';
 				v.cont = v.cont.replace(/\n/g,"<br>");
 				
-				feed += '<div class="proBox" onclick=location.href="myPage.jsp?feed_id='+v.id+'">'
-				   	 + '<div class="proCir"><img src="images/profile/'+v.profile+'" alt="프로필사진" /></div>'
-                     + '<p class="proName">'+v.nickname
+				feed += '<div class="proBox">'
+				   	 + '<div class="proCir" onclick=location.href="myPage.jsp?feed_id='+v.id+'"><img src="images/profile/'+v.profile+'" alt="프로필사진" /></div>'
+                     + '<p class="proName" onclick=location.href="myPage.jsp?feed_id='+v.id+'">'+v.nickname
                      + '<span class="proClass">'+v.classname+'</span></p>';
 				
 				 if(v.ismine == "true"){	// 내가 쓴 글이면 출력될 버튼
