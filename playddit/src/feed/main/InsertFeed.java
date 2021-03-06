@@ -41,25 +41,21 @@ public class InsertFeed implements IAction {
 		Gson gson = new Gson();
 		ProfileVO profile = gson.fromJson(profileJson, ProfileVO.class);
 		
+		// insert feed 에 필요한 아이디 
 		String id = profile.getUser_id();
-		
-		// 2. feed 의 cont를 저장 
-		String cont = request.getParameter("cont");
-		
-		
+
 		// 3. service 생성 / 저장
 		IFeedService service = FeedServiceImpl.getService();
-
-    	int result = service.insertFeed(id, cont);
 		
+	
 				
 		// 2. 사진을 저장할 경로는 FileUtil에서 처리한다. 배포 전까지는 강제로 경로를 잡아줄 예정.
-				final String DIR = FileUtil.getFeedPath();
-				
-				final int LIMIT_SIZE_BYTES = 10 * 1024 * 1024;
-				final String CHARSET = "utf-8";
-				
-				File attachDir = new File(DIR);
+		final String DIR = FileUtil.getFeedPath();
+		
+		final int LIMIT_SIZE_BYTES = 10 * 1024 * 1024;
+		final String CHARSET = "utf-8";
+		
+		File attachDir = new File(DIR);
 		
 				
 		// 4. 사진 저장
@@ -69,37 +65,50 @@ public class InsertFeed implements IAction {
 		fileItemFactory.setSizeThreshold(LIMIT_SIZE_BYTES);
 		ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
 		
+		FileItem pictureFile = null;
+		String separator = File.separator;
+		String ext = "";
+		String feedcont = "";
+		
 		try {
 		List<FileItem> items = fileUpload.parseRequest(request);
 		for(FileItem item : items) {
 			if(item.isFormField()) {
+				if(("feedcont").equals(item.getFieldName())){
+					feedcont = item.getString(CHARSET);
+				}				
 				System.out.printf("파라미터 명 : %s, 파라미터 값 :  %s \n", item.getFieldName(), item.getString(CHARSET));
 			}else {
 				System.out.printf("파라미터 명 : %s, 파일 명 : %s,  파일 크기 : %s bytes \n", item.getFieldName(),
                             item.getName(), item.getSize());
                 if (item.getSize() > 0) {
                 	// 1. 첨부된 파일에 대한 정보를 잘 정리한다.
-                	String separator = File.separator;
                 	int index =  item.getName().lastIndexOf(separator);
                 	String fileName = item.getName().substring(index  + 1);
-                	String ext = fileName.substring(fileName.lastIndexOf("."));
-                	// 2. 유저 이름 + count + 확장자로 이름을 변경한다.
-                
+                	ext = fileName.substring(fileName.lastIndexOf("."));
                 	
-                	// 3. feedpic 컬럼 데이터를 user_id+ext 로 수정한다.
-                                	
-                	response.setContentType("text/html; charset=UTF-8");
-            		response.getWriter().write(""+ result);	
-                	              	
-                	// 4. 이름을 변경한 파일을 지정된 폴더에 업로드 한다.
-                	
+                	pictureFile = item;
+
                 }
 			}
 		}
+		int feed_no = service.insertFeed(id, feedcont);
+		
+		
+    	// 2. feed_cur_no +count+ 확장자로 이름을 변경한다.
+		String feedpic_name = feed_no + ext;
+    	File uploadFile =new File(DIR + separator + feedpic_name);
+    	// 3. feedpic 컬럼 데이터를 feed_cur_no+ext 로 수정한다.
+    	service.updateFeedPic(feedpic_name, feed_no);
+    	// 4. 이름을 변경한 파일을 지정된 폴더에 업로드 한다.
+    	pictureFile.write(uploadFile);
+		
+		
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
 		
+		response.sendRedirect("/playddit/feed.jsp");
 	
 				
 		return null;

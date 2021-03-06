@@ -195,6 +195,18 @@ public class FeedServiceImpl implements IFeedService {
 		return null;
 	}
 
+	@Override
+	public int updateFeedPic(String feed_pic, int feed_no) {
+		
+			try {
+				return dao.updateFeedPic(feed_pic, feed_no);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return 0;
+	}
+
 	
 
 
