@@ -17,6 +17,7 @@
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script src="script/script.js"></script>
 		<script src="script/view.js"></script>
+		<script src="script/chat.js"></script>
 		<script src="script/emoji_jk.js"></script>
 	</head>
     <body>
@@ -447,12 +448,14 @@
                 <div id="curChatBox" class="scrollStyle">
                     <p class="chatDate">2020.03.03 Wed</p>
                     <div class="from">
+                        <h4>josh</h4>
                         <div class="bubble">
                             안녕하세요. 메시지 보냅니다~! 테스트 하는 중...
                         </div>
                         <p>10:23</p>
                     </div>
                     <div class="from">
+                        <h4>josh</h4>
                         <div class="bubble">
                             더 길게 보내봅니다....<br/>
                             띄어쓰기도 적용하셔서 출력해주세요..<br/>
@@ -472,6 +475,7 @@
                         <p>10:23</p>
                     </div>
                     <div class="from">
+                        <h4>josh</h4>
                         <div class="bubble">
                             안녕하세요. 메시지 보냅니다~! 테스트 하는 중...
                         </div>
@@ -497,6 +501,7 @@
                         <p>10:23</p>
                     </div>
                     <div class="from">
+                        <h4>josh</h4>
                         <div class="bubble">
                             안녕하세요. 메시지 보냅니다~! 테스트 하는 중...
                         </div>
@@ -850,39 +855,6 @@
         </footer>
         
         <script>
-            $(function(){
-                var stat = false;
-                
-                $("#curChatBtn").click(function(){
-                    if(!stat){
-                        $("#mask").fadeIn();
-                        $("#chatBack").fadeIn(200); $("#chatUserBox").delay(100).animate({marginRight : 0}, 300);
-                        stat = true;
-                    }else{
-                        $("#mask").fadeOut();
-                        $("#chatUserBox").animate({marginRight : "-80%"}, 300);
-                        $("#chatBack").delay(100).fadeOut(200); 
-                        stat = false;
-                    }
-                });
-                
-                $("#chatBack, #mask").click(function(){
-                    $("#mask").fadeOut();
-                    $("#chatUserBox").animate({marginRight : "-80%"}, 300);
-                    $("#chatBack").delay(100).fadeOut(200); 
-                    stat = false;
-                });
-                
-                $("#chatUserBox h3").on("click","button",function(){
-                    $("#outWrap").fadeIn(200);
-                    $("#outModal").delay(200).animate({marginTop:"0"}, 400);
-                });
-                
-                $("#cancel, #outWrap").click(function(){
-                    $("#outModal").animate({marginTop:"100px"}, 400);
-                    $("#outWrap").delay(200).fadeOut(200);
-                });
-            });
         </script>
     </body>
 </html>
