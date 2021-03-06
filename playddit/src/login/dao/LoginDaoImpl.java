@@ -1,6 +1,7 @@
 package login.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -24,6 +25,12 @@ public class LoginDaoImpl implements ILoginDao{
 	@Override
 	public ProfileVO loadProfile(String user_id) throws SQLException {
 		return (ProfileVO)client.queryForObject("login.loadProfile",user_id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ProfileVO> loadRandomFriends() throws SQLException {
+		return client.queryForList("login.loadRandomFriends");
 	}
 
 }

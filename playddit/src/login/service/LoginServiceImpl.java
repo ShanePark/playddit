@@ -1,6 +1,7 @@
 package login.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import login.dao.ILoginDao;
 import login.dao.LoginDaoImpl;
@@ -24,6 +25,16 @@ public class LoginServiceImpl implements ILoginService {
 	public ProfileVO loadProfile(String user_id) {
 		try {
 			return dao.loadProfile(user_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<ProfileVO> loadRandomFriends() {
+		try {
+			return dao.loadRandomFriends();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
