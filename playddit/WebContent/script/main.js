@@ -1,4 +1,6 @@
 $(function(){
+	user_id = getCookie("user_id");
+	
 	loadProfile();
 	getAlarm();
 	loadGroup();
@@ -7,9 +9,9 @@ $(function(){
 	 $(".followBtn").click(function(){
         title = $(this).parent("li").children(".th").text();
 		if(title == "팔로워"){
-			loadFollower();
+			loadFollower(user_id);
 		}else{
-			loadFollowing();
+			loadFollowing(user_id);
 		}
     });
 		
@@ -113,17 +115,18 @@ function loadProfile(){
 }
 
 
-loadFollower = function(){
+loadFollower = function(user_id){
 	$('.followList').empty();
 	$.ajax({
 		url : '/playddit/users/followerList.do',
 		type : 'post',
+		data : {'id' : user_id},
 		success : function(res){
 			$.each(res, function(i,v){
 				var li = '<li>';
 				li += '<a href=myPage.jsp?feed_id='+v.id+' class="followPic" nick="'+v.nickname+'">';
 				li += '<img src="images/profile/'+v.profile+'" /></a>';
-				li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
+				li += '<div class="followInfo"> <a href=myPage.jsp?feed_id='+v.id+' nick="'+v.nickname+'">';
 				li += '<p class="followName">'+v.nickname+'</p>';
 				li += '<span class="followClass">'+v.department+'</span></a></div>';
 				if(v.followback == 0){
@@ -140,23 +143,24 @@ loadFollower = function(){
 	})
 }
 
-loadFollowing = function(){
+loadFollowing = function(user_id){
 	$('.followList').empty();
 	$.ajax({
 		url : '/playddit/users/followingList.do',
 		type : 'post',
+		data : {'id' : user_id},
 		success : function(res){
 			$.each(res, function(i,v){
 				var li = '<li>';
 				li += '<a href=myPage.jsp?feed_id='+v.id+' class="followPic" nick="'+v.nickname+'">';
 				li += '<img src="images/profile/'+v.profile+'" /></a>';
-				li += '<div class="followInfo"> <a href="/playddit/users/personalFeed?id='+v.id+'" nick="'+v.nickname+'">';
+				li += '<div class="followInfo"> <a href=myPage.jsp?feed_id='+v.id+' nick="'+v.nickname+'">';
 				li += '<p class="followName">'+v.nickname+'</p>';
 				li += '<span class="followClass">'+v.department+'</span></a></div>';
 				if(v.followback == 0){
 					li += '</div><button type="button" follow="'+v.id+'" class="f4f followBtn">Follow</button>'
 				}else{
-					li += '</div><button type="button" follow="'+v.id+'" class="f4f unfollowBtn">unfollow</button>'
+					li += '</div><button type="button" follow="'+v.id+'" class="f4f unfollowBtn">Unfollow</button>'
 					
 				}
 				li += '</li>';
