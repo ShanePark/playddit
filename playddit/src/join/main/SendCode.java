@@ -28,16 +28,9 @@ public class SendCode implements IAction {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		UsersVO vo = null;
 		
 		UsersVO usersVo = (UsersVO)session.getAttribute("insertVo");
-		
-		// 세션 테스트
-			System.out.println(usersVo);
-			System.out.println(usersVo.getUser_id());
-		// 세션 테스트 끝
 		String mail = usersVo.getUser_id();
-		
 		
 		// 인증 코드 생성 & 발송
 		String code = "";
