@@ -52,14 +52,7 @@ public class FeedDaoImpl implements IFeedDao {
 		map.put("id", id);
 		map.put("cont", cont);
 	
-		if (client.insert("feed.insertFeed", map) == null) {
-
-			return 1;
-
-		} else {
-
-			return 0;
-		}
+		return (Integer)client.insert("feed.insertFeed", map);
 
 	}
 
@@ -154,6 +147,16 @@ public class FeedDaoImpl implements IFeedDao {
 	@Override
 	public List<MypageFeedVO> loadUserFeeds(String user_id) throws SQLException {
 		return client.queryForList("feed.loadUserFeeds", user_id);
+	}
+
+	@Override
+	public int updateFeedPic(String feed_pic, int feed_no) throws SQLException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("feed_pic",feed_pic);
+		map.put("feed_no",feed_no);
+				
+		return client.update("feed.updateFeedPic", map);
+
 	}
 
 

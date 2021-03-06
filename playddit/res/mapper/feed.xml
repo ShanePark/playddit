@@ -100,8 +100,20 @@
 	insert into feed (feed_no, user_id, feed_cont,feed_date)
         values(feed_no_seq.nextval, #id#, #cont#, sysdate)
     	
+    	
+ 	 <selectKey keyProperty="feed_no" resultClass="int">
+			select feed_no_seq.currval AS feed_no from dual
+	 </selectKey>
+
 	</insert>
 	
+	<update id ="updateFeedPic" parameterClass="map">
+	
+	update feed set
+		feed_pic = #feed_pic#
+		where feed_no = #feed_no#
+	
+	</update>
 	
 	<delete id ="deleteFeed" parameterClass="int">
 	

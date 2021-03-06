@@ -17,37 +17,10 @@
 
 <script type="text/javascript">
 	$(function() {
-		$('#savefeed').on('click',function(){
-			savefeed();
-			
-		})
-		
 		
 	})
 	
-	var savefeed = function(){
-			alert("save버튼 클릭");
-		var content = $('textarea[name=feedcont]').val();
-		content = content.replace(/<br>/g, "\n");
-		$.ajax({
-			url : '/playddit/feed/insertFeed.do',
-			type : 'post',
-			data : {'cont' : content},
-			success : function(res){
-				if(res == "1"){
-					alert("성공");
-				}else{
-					alert("실패");
-					
-				}
-			},
-			error : function(xhr){
-				alert("status : " + xhr.status);
-			},
-			dataType : 'text'
-			
-		})
-	}
+
 
 </script>
 
@@ -58,21 +31,22 @@
 <a href="../index.html">세션필요할때(500에러) 로그인 하고오기</a><br><br><br>
 <hr>
 
-		
-
-		<label>피드내용</label>
-	
-			<p><textarea cols="50" rows="10" name="feedcont"></textarea><p>
-			
-			<br><br>
-	
-	
 		<form action="/playddit/feed/insertFeed.do"  method="post" enctype="multipart/form-data">
-		<label>피드사진</label>
 		
-	        <input type="file" name="file1">
-            <br><br>
-            <input type="submit" value="저장" id = "savefeed">
+			<label>피드내용</label>
+		
+				<p>
+					<textarea cols="50" rows="10" name="feedcont"></textarea>
+				<p>
+				
+				<br><br>
+		
+			<label>피드사진</label>
+			
+			<input type="file" name="file1">
+	            <br><br>
+	        <input type="submit" value="저장" id = "savefeed">
+	        
      	</form>
 			
 			<br><br>
