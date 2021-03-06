@@ -230,7 +230,12 @@ function loadUserFeeds(){
 			$.each(feedList, function(i,feed){
 				
 				var thums = '<div class="thums">'
-						+		'<a class="thumCont" style="background-image: url(images/profile/expedition1205@gmail.com.jpg);"></a>'
+						+		'<a class="thumCont" style="background-image: url(images/feed/' + feed.pic +');">';
+				if(feed.pic === undefined){
+					thums +='<p>'+feed.content+'</p>'
+				}		
+						
+				thums +=		'</a>'
 						+		'<div class="icons">'
 						+			'<div class="heart">'
 						+				'<i class="far fa-heart"></i>'
@@ -244,8 +249,13 @@ function loadUserFeeds(){
 						+ '</div>'
 				
 				$('#thumsBox').append(thums);
+
 			
 			})
+			
+			var thumsW = $(".thums").width();
+			$(".thums").height(thumsW + 40);
+			$(".thums a").height(thumsW);
 			
 		},
 		error : function(xhr){

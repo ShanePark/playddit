@@ -335,12 +335,12 @@ where f_com_re_no = 1;
 select feed_no as feed_no, feed_cont as content,
        (select count(*) from likes where feed_no = a.feed_no) as likes,
        (select count(*) from feed_comment where feed_no = a.feed_no) as comments,
-        substr(feed_pic, 0, instr(feed_pic, ',')-1) as pic
+       case when instr(feed_pic, ',')!=0 then substr(feed_pic, 0, instr(feed_pic, ',')-1)
+       else feed_pic end as pic
+        
 from feed a
 where user_id = 'psh40963@naver.com'
 order by feed_no desc;
-
+select instr(feed_pic, ',') from feed;
 -----------------------------------------------------
-
-
 
