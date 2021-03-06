@@ -14,6 +14,7 @@
         <link href="css/user.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/modal.js"></script>
+		<script src="script/play.js"></script>
 	</head>
     <body id="pink">
         <div id="wrap" class="cen">
@@ -35,8 +36,8 @@
                                 <i class="fas fa-edit"></i>
                             </span>
                         </div>
-                        <p id="name">Scarl-ett</p>
-                        <p id="mail">chdnjs7610@gmail.com</p>
+                        <p id="name">닉네임</p>
+                        <p id="mail">아이디</p>
                     </div>
                 </div>
                 <div id="welcomBottom">
@@ -44,14 +45,7 @@
                         <p>Class<span class="msg"></span></p>
                         <div class="item">
                             <select name="class">
-                                <option>Choose your class</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 2기 - 401호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 3기 - 402호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 4기 - 403호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 5기 - 404호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 6기 - 302호</option>
-                                <option value="학급번호">AI 소프트웨어 엔지니어링 1기 - 405호</option>
-                                <option value="학급번호">풀-스택 개발자 양성과정 7기 - 406호</option>
+                                <option value="C000">Choose your class</option>
                             </select>
                         </div>
                         <p id="txt">
@@ -59,52 +53,8 @@
                         </p>
                     </div>
                     <div id="followBox">
-                        <div class="miniBox">
-                            <div class="smallPic">
-                                <img src="images/default.png" alt="프로필사진"/>
-                            </div>
-                            <p class="followName">Shane</p>
-                            <p class="followClass">6기 - 302호</p>
-                            <span>
-                                <i class="fas fa-plus"></i>
-                                <i class="fas fa-user-check"></i>
-                            </span>
-                        </div>
-                        <div class="miniBox">
-                            <div class="smallPic">
-                                <img src="images/default.png" alt="프로필사진"/>
-                            </div>
-                            <p class="followName">SUMMER</p>
-                            <p class="followClass">6기 - 302호</p>
-                            <span>
-                                <i class="fas fa-plus"></i>
-                                <i class="fas fa-user-check"></i>
-                            </span>
-                        </div>
-                        <div class="miniBox">
-                            <div class="smallPic">
-                                <img src="images/default.png" alt="프로필사진"/>
-                            </div>
-                            <p class="followName">홍길동</p>
-                            <p class="followClass">6기 - 302호</p>
-                            <span>
-                                <i class="fas fa-plus"></i>
-                                <i class="fas fa-user-check"></i>
-                            </span>
-                        </div>
-                        <div class="miniBox">
-                            <div class="smallPic">
-                                <img src="images/default.png" alt="프로필사진"/>
-                            </div>
-                            <p class="followName">josh</p>
-                            <p class="followClass">6기 - 302호</p>
-                            <span>
-                                <i class="fas fa-plus"></i>
-                                <i class="fas fa-user-check"></i>
-                            </span>
-                        </div>
                     </div>
-                    <button type="submit" id="join">PLAY</button>
+                    <button type="button" id="join">PLAY</button>
                 </div>
             </form>
         </div>
@@ -123,10 +73,7 @@
                 $(".double").on("click", function(){
                    $(this).toggleClass("active"); 
                 });
-                
-                $(".miniBox").on("click", function(){
-                    $("span", this).toggleClass("follow");
-                });
+
             });
         </script>
         
@@ -160,25 +107,6 @@
 		</script>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

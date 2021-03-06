@@ -1,3 +1,12 @@
+-----------------------------------------------------
+--    RECOVER DATA after commit
+
+select * from users as of
+timestamp(systimestamp-interval'5'minute);
+
+-----------------------------------------------------
+
+
 -----------------------------------GET COLUMN LIST--
  select 'private ' || 
     -- NUMBER일 때는 int, 그 외는 모두 String으로 한다.
@@ -116,15 +125,28 @@ where a.class_id = b.class_id
 and b.user_id = 'psh40963@naver.com';
 
 -----------------------------------------------------
---
---
---
---  ALL the queries
+-- PLAY ! follow recommended list (random)
+select * from(
+select user_id, user_nickname, user_pic,
+(select class_num || ' - ' || class_room
+from class
+where class_id = users.class_id) as className2
+from users
+where users.class_id != 'C000'
+order by DBMS_RANDOM.RANDOM
+) where rownum < 5;
+
+-----------------------------------------------------
+
+
+
+-----------------------------------------------------
+
+--          ALL the queries
+
 --          about MESSAGE 
---
---
---
---
+
+
 -----------------------------------------------------
 update message set msg_senddate = sysdate where msg_sender = 'psh40963@naver.com';
 
