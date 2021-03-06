@@ -2,10 +2,13 @@ $(function(){
 	user_id = getCookie("user_id");
 	var feedno = getParameterByName('feedno');
 	mytarget = 'feed';
+	repTarget = 'comment';
 	loadFeed(feedno);
 	
 	// 댓글 말풍선 버튼 
 	$('#viewRight').on('click', '#contIcon .comment', function(){
+		repTarget = 'comment';
+		$("#input_area").empty();
 		$("#input_area").focus();
 	});
 	
@@ -16,8 +19,13 @@ $(function(){
 	
 	// 대댓글 달기 버튼
 	$('#viewRight').on('click', '.replyBtn', function(){
-		comno = $(this).parent('.comment').attr("comno");
 		comli = $(this).parent('.comment');
+		comno = comli.attr("comno");
+		comWriter = comli.children('p').find('a').text();
+		
+		repTarget = 'comrep';
+		
+		$("#input_area").html('@'+comWriter+'&nbsp;');
 		$("#input_area").focus();
 	});
 	// 댓글 등록 버튼
@@ -30,15 +38,12 @@ $(function(){
 		$(this).parent('.row').children('#input_area').empty();
 		
 		// 댓글인지 대댓글인지 확인해서 각각 분기시키기
-		
-		insertComment(feedno,content);
-		//insertComReply(comno, content);
-		
-		/************************************
-		
-				대댓글 분기 작성해서 조건에 맞게 대댓글 작성하게끔 작성해야함.
-				
-		 ***************************/
+		if(repTarget == 'comrep'){
+			insertComReply(comno, content);
+			repTarget = 'comment';
+		}else if (repTarget == 'comment'){
+			insertComment(feedno,content);
+		}
 		
 		
 	});
@@ -209,6 +214,8 @@ function insertComReply(comno, content){
 					   + '<button type="button" class="myReply"><i class="fas fa-ellipsis-h"></i></button>'
 						+ '</p></li>';
 			comli.find('ul').append(reprep);
+			comli.children('.replyList').slideToggle(300);
+			
 		 },
 		 error : function(xhr){
 			 alert("status : " + xhr.status);
@@ -341,30 +348,29 @@ function loadFeed(feedno){
 					replyli+= '<button type="button" class="myComm"><i class="fas fa-ellipsis-h"></i></button>'	
 				}
 						
-                replyli += '</p><button type="button" class="replyBtn">댓글달기</button>';
-
-				if(v.repcount > 0){
-                	replyli+='<button type="button" class="replyBtnView">'
-                            +'댓글보기&#40;<span>'+v.repcount+'</span>개&#41;</button>';
-					replyli+='<ul class="replyList">';
+                replyli += '</p>'
+						+'<button type="button" class="replyBtn">댓글달기</button>'
+						+'<button type="button" class="replyBtnView">'
+                        +'댓글보기&#40;<span>'+v.repcount+'</span>개&#41;</button>'
+						+'<ul class="replyList">';
+				
+				$.each(v.replyList, function(j,comrep){	//대댓글들 출력
+					var reprep ='<li class="reply" comrepno="'+comrep.comno+'"><a href="#">'
+                               + '<img src="images/profile/'+comrep.profile+'" /></a>'
+                               + '<p><a href="#">'+comrep.nickname+'</a>'
+                               + '<span>'+comrep.comcont+'</span>';
 					
-					$.each(v.replyList, function(j,comrep){	//대댓글들 출력
-						var reprep ='<li class="reply" comrepno="'+comrep.comno+'"><a href="#">'
-                                   + '<img src="images/profile/'+comrep.profile+'" /></a>'
-                                   + '<p><a href="#">'+comrep.nickname+'</a>'
-                                   + '<span>'+comrep.comcont+'</span>';
-						
-						if(comrep.id == user_id ){// 내가 쓴 대댓글일때만 나타나는 버튼
-							reprep += '<button type="button" class="myReply"><i class="fas fa-ellipsis-h"></i></button>'
-						}
-						
-						reprep += '</p></li>';
-						replyli += reprep;
-					})
+					if(comrep.id == user_id ){// 내가 쓴 대댓글일때만 나타나는 버튼
+						reprep += '<button type="button" class="myReply"><i class="fas fa-ellipsis-h"></i></button>'
+					}
 					
-					replyli+='</ul>';
-				}
+					reprep += '</p></li>';
+					replyli += reprep;
+				})
+				
+				replyli+='</ul>';
                 replyli+= '</li>'
+
 				$('#feedComm').children('ul').append(replyli);
 			})
 			
