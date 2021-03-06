@@ -268,38 +268,9 @@
 				<span></span>명
 			</div>
 			<ul class="followList">
-				<h5>6기 - 302호 <span>2</span>명</h5>
-				<li>
-					<a href=" #" class="followPic" nick="shane">
-						<img src="images/default.png" />
-					</a>
-					<div class="followInfo">
-						<a href="#" nick="shane">
-							<p class="followName">Shane</p>
-							<span class="followClass">6기 - 302호</span>
-						</a>
-					</div>
-					<button type="submit" class="f4f">Follow</button>
-				</li>
-
+				<h5><span></span>명</h5>
 			</ul>
-
-			<ul class="followList">
-				<h5>예비학생 <span>2</span>명</h5>
-				<li>
-					<a href=" #" class="followPic" nick="shane">
-						<img src="images/default.png" />
-					</a>
-					<div class="followInfo">
-						<a href="#" nick="shane">
-							<p class="followName">Shane</p>
-							<span class="followClass">6기 - 302호</span>
-						</a>
-					</div>
-					<button type="submit" class="f4f">Follow</button>
-				</li>
-
-			</ul>
+	
 		</form>
 		
 		<!-- footer.jsp include -->
@@ -341,25 +312,7 @@
 					$(".thums a").height(thumsW - 40);
 				});
 				
-				//팔로우 목록 모달창
-				var follow = $("#back2").is(":visible");
 
-				$(".followBtn").click(function(){
-					if(!follow){
-						title = $(this).parent("li").children("p").text();
-						$(".followTitle h6").text(title);
-						n = $(this).text();
-						$(".followTitle span").text(n);
-
-						$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
-							e.preventDefault();
-						});
-
-						$("#back2").fadeIn(200);
-						$(".followModal").delay(100).animate({top: "50%"},400);
-						follow = true;
-					}
-				});
 
 				$(".close, #back2").on("click", function(){
 					if(follow){
