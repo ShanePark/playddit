@@ -3,7 +3,6 @@ package join.main;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,6 +11,9 @@ import com.google.gson.Gson;
 
 import join.service.IJoinservice;
 import join.service.JoinServiceImpl;
+import login.service.ILoginService;
+import login.service.LoginServiceImpl;
+import login.vo.ProfileVO;
 import users.vo.UsersVO;
 import web.IAction;
 
@@ -36,6 +38,12 @@ public class Join implements IAction {
 		  IJoinservice service = JoinServiceImpl.getService();
 		  int insert = service.insertUser(vo);
 		  
+		  if(insert == 1) {	// 가입에 성공하면 여기에서 세션에 로그인 처리한다.
+				ILoginService loginService = LoginServiceImpl.getService();
+				ProfileVO profile = loginService.loadProfile(mail);
+				String profileJson = new Gson().toJson(profile);
+				session.setAttribute("profile", profileJson);
+		  }
 		  
 		  String insertJson = new Gson().toJson(insert);
 		  
