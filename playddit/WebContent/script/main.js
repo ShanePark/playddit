@@ -2,7 +2,6 @@ $(function(){
 	user_id = getCookie("user_id");
 	
 	loadProfile();
-	getAlarm();
 	loadGroup();
 	
 	// 팔로우 혹은 팔로잉 목록 불러오는 이벤트
@@ -34,6 +33,7 @@ $(function(){
 	
 	// 알람 모달 
     $(".alarmBtn").click(function(){
+		getAlarm();
         if(!visi){
             $("#alarmEdge2 , #alarmEdge, #modal").show();
             visi = true;
@@ -221,24 +221,49 @@ getAlarm = function(){
 		success : function(res){
 			var alarm = '';
 			$.each(res, function(i,v){
-				alarm += '<div class="alarm">';
-				alarm += '<a class="alarmUser" href=myPage.jsp?feed_id='+v.sender+'><img src="images/profile/'+ v.sender_pic +'" /></a>'
-				alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
-				switch(v.type){
-				case 11: alarm += '님이 나를 follow 하기 시작했습니다.'
-					break;
-				case 12: alarm += '님이 새로운 메시지를 보냈습니다.'
-					break;
-				case 21: alarm += '님이 내가 쓴 글을 좋아합니다.'
-					break;
-				case 22: alarm += '님이 내가 쓴 글에 댓글을 남겼습니다.'
-					break;
-				case 31: alarm += '에 새로운 공지사항이 올라왔습니다.'
-					break;
+				
+				if(v.type == 10){	// 학급 승인 관련 알람일경우
+					alarm += '<div class="alarm classMoniter alarmno='+v.alarm_no+'">'
+							+	'<a class="alarmUser" href=myPage.jsp?feed_id='+v.sender+'>'
+							+		'<img src="images/profile/'+ v.sender_pic +'" />'
+							+	'</a>'
+							+	'<a class="alarmCont" href="#">'
+							+		'<span class="alarmNick">'+ v.cont +'</span>님의 학급 승인 요청'
+							+	'</a>'
+							+	'<button type="button"><i class="fas fa-times red"></i></button>'
+							+	'<button type="button"><i class="fas fa-check"></i></button>'
+							+'</div>';
+					
+				}else{
+					alarm += '<div class="alarm alarmno='+v.alarm_no+'">'
+							+	'<a class="alarmUser" href=myPage.jsp?feed_id='+v.sender+'>'
+							+		'<img src="images/profile/'+ v.sender_pic +'" />'
+							+	'</a>'
+							
+					switch(v.type){
+					case 11: alarm += '<a class="alarmCont" href=myPage.jsp?feed_id='+v.sender+'><span class="alarmNick">'+ v.cont +'</span>'
+									+'님이 나를 follow 하기 시작했습니다.'
+						break;
+					case 12: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
+									+'님이 새로운 메시지를 보냈습니다.'
+						break;
+					case 21: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
+									+'님이 내가 쓴 글을 좋아합니다.'
+						break;
+					case 22: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
+									+ '님이 내가 쓴 글에 댓글을 남겼습니다.'
+						break;
+					case 31: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
+									+'에 새로운 공지사항이 올라왔습니다.'
+						break;
+					default : alarm += '존재하지 않는 알람 타입. 관리자에게 해당 알람번호를 신고해주세요.'
+						break;
 				}
 				alarm += '</a></div>';
+				}
+				
 			})
-			$('#alarmWrap').append(alarm);
+			$('#alarmWrap').html(alarm);
 		},
 		error : function(xhr){
 			alert("status : " + xhr.status);

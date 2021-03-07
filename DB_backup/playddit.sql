@@ -223,16 +223,16 @@ select * from alarm;
 -----------------------------------------------------
 -- Get alarm list
 select alarm.alarm_cont as cont, alarm.alarm_type as type, alarm.alarm_chk as chk,
-        users.user_id as sender, users.user_pic as sender_pic
+        users.user_pic as sender_pic, sender_id as sender, alarm_no
 from alarm, users
 where alarm.user_id = 'psh40963@naver.com'
-        and alarm.alarm_cont = users.user_nickname
+        and alarm.sender_id = users.user_id
 order by alarm_no desc;
 -----------------------------------------------------
 -- insert new message alarm 
 insert into alarm 
-(alarm_no, user_id, alarm_cont, alarm_type, alarm_date, alarm_chk)
-values(alarm_no_seq.nextval,'psh40963@naver.com', '스칼렛', 12, sysdate, 0);
+(alarm_no, user_id, alarm_cont, alarm_type, alarm_date, alarm_chk, sender_id)
+values(alarm_no_seq.nextval,'psh40963@naver.com', '스칼렛', 12, sysdate, 0, 'scarlet@a.net');
 -----------------------------------------------------
 -- delete same message alarm before insert
 delete from alarm 
