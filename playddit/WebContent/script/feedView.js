@@ -5,6 +5,11 @@ $(function(){
 	repTarget = 'comment';
 	loadFeed(feedno);
 	
+	// 메시지 버튼 클릭시 채팅으로 이동
+	$('.fa-envelope').on('click',function(){
+		location.href="chat.jsp";
+	})
+	
 	// 댓글 말풍선 버튼 
 	$('#viewRight').on('click', '#contIcon .comment', function(){
 		repTarget = 'comment';

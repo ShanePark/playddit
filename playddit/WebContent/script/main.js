@@ -4,7 +4,10 @@ $(function(){
 	loadProfile();
 	loadGroup();
 	
-	
+	// 메시지 버튼 클릭시 채팅으로 이동
+	$('.fa-envelope').on('click',function(){
+		location.href="chat.jsp";
+	})
 	
 	// 알람에서 학급승인 처리 이벤트
 	$("#alarmWrap").on("click","button", function(){

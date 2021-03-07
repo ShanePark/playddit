@@ -5,6 +5,10 @@ $(function(){
 	loadUserProfile(feed_id);
 	loadUserFeeds(feed_id);
 	
+	// 메시지 버튼 클릭시 채팅으로 이동
+	$('.fa-envelope').on('click',function(){
+		location.href="chat.jsp";
+	})
 	
 	// 팔로우 혹은 팔로잉 목록 불러오는 이벤트
 	 $(".followBtn").click(function(){
