@@ -41,55 +41,6 @@
                     </button>
                 </div>
                 <div id="chatList" class="scrollStyle">
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             
