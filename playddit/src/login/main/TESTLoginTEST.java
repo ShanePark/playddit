@@ -7,7 +7,8 @@ public class TESTLoginTEST {
 
 	public static void main(String[] args) {
 		ILoginService service = LoginServiceImpl.getService();
-		System.out.println(service.loadRandomFriends());
+		String user_id = "psh40963@naver.com";
+		System.out.println(service.loadRandomFriends(user_id));
 	}
 
 }

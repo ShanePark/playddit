@@ -29,8 +29,8 @@ public class LoginDaoImpl implements ILoginDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ProfileVO> loadRandomFriends() throws SQLException {
-		return client.queryForList("login.loadRandomFriends");
+	public List<ProfileVO> loadRandomFriends(String user_id) throws SQLException {
+		return client.queryForList("login.loadRandomFriends", user_id);
 	}
 
 }

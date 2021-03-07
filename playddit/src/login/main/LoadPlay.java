@@ -40,7 +40,8 @@ public class LoadPlay implements IAction {
 		ProfileVO profile = gson.fromJson(profileJson, ProfileVO.class);
 		
 		// 2. 세션에서 불러온 정보로 접속유저에 대한 정보를 vo에 담는다.
-		playvo.setUser_id(profile.getUser_id());
+		String user_id = profile.getUser_id();
+		playvo.setUser_id(user_id);
 		playvo.setUser_nickname(profile.getUser_nickname());
 		playvo.setClass_id(profile.getClass_id());
 		
@@ -49,7 +50,7 @@ public class LoadPlay implements IAction {
 		ILoginService loginService = LoginServiceImpl.getService();
 		
 		List<ClassVO> classList = joinService.selectClass();
-		List<ProfileVO> followList = loginService.loadRandomFriends();
+		List<ProfileVO> followList = loginService.loadRandomFriends(user_id);
 		
 		playvo.setClassList(classList);
 		playvo.setFollowList(followList);
