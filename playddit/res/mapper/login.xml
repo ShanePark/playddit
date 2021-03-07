@@ -22,7 +22,7 @@
 		where user_id = #user_id#
 	</select>
 	
-	<select id="loadRandomFriends" resultClass="ProfileVO">
+	<select id="loadRandomFriends" parameterClass="String" resultClass="ProfileVO">
 		select * from(
 		select user_id, user_nickname, user_pic,
 		(select class_num || ' - ' || class_room
@@ -30,6 +30,7 @@
 		where class_id = users.class_id) as className2
 		from users
 		where users.class_id != 'C000'
+		and user_id != #user_id#
 		order by DBMS_RANDOM.RANDOM
 		)
 		<![CDATA[ where rownum < 5]]>

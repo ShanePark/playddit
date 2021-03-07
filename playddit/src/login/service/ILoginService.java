@@ -9,5 +9,5 @@ public interface ILoginService {
 	public ProfileVO loadProfile(String user_id);
 	
 	// play에서 랜덤으로 팔로우 추천리스트 추천
-	public List<ProfileVO> loadRandomFriends();
+	public List<ProfileVO> loadRandomFriends(String user_id);
 }

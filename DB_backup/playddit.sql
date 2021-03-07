@@ -133,6 +133,7 @@ from class
 where class_id = users.class_id) as className2
 from users
 where users.class_id != 'C000'
+and user_id != 'psh40963@naver.com'
 order by DBMS_RANDOM.RANDOM
 ) where rownum < 5;
 
@@ -236,10 +237,10 @@ values(alarm_no_seq.nextval,'psh40963@naver.com', '스칼렛', 12, sysdate, 0, '
 -----------------------------------------------------
 -- delete same message alarm before insert
 delete from alarm 
-where user_id = 'psh40963@naver.com' and alarm_cont = '스칼렛' and alarm_type = 12;
+where user_id = 'psh40963@naver.com' and sender_id= 'chdnjs7610@gmail.com' and alarm_type = 12;
 -----------------------------------------------------
 
-
+commit;
 -----------------------------------------------------
 
 --

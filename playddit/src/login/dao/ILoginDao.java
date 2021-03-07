@@ -10,5 +10,5 @@ public interface ILoginDao {
 	public ProfileVO loadProfile(String user_id) throws SQLException;
 	
 	// play에서 랜덤으로 팔로우 추천리스트 추천
-	public List<ProfileVO> loadRandomFriends() throws SQLException;
+	public List<ProfileVO> loadRandomFriends(String user_id) throws SQLException;
 }

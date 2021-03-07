@@ -32,9 +32,9 @@ public class LoginServiceImpl implements ILoginService {
 	}
 
 	@Override
-	public List<ProfileVO> loadRandomFriends() {
+	public List<ProfileVO> loadRandomFriends(String user_id) {
 		try {
-			return dao.loadRandomFriends();
+			return dao.loadRandomFriends(user_id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
