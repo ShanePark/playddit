@@ -172,32 +172,28 @@ and a.msg_target_id = b.user_id
 and a.msg_sender = c.user_id
 order by msg_no;
 
+-----------------------------------------------------
+-----------------------------------------------------
 -- load people who i message with order by recent msg_no
 
-select case when b.user_id='psh40963@naver.com' then c.user_id
-            else b.user_id end as audience_id,
-            a.msg_content, a.msg_senddate
-from message a, users b, users c
-where (msg_sender = 'psh40963@naver.com' or msg_target_id = 'psh40963@naver.com')
-and a.msg_target_id = b.user_id
-and a.msg_sender = c.user_id
-order by msg_no desc;
-
+select msg_content as content, b.user_id, b.user_nickname, b.user_pic,
+       (case when c.class_id = 'C000' then c.class_title
+                else c.class_num ||' - '|| c.class_room end) as classname
+from message a, users b, class c,
+    (select max(msg_no) as no,
+            (case when a.msg_target_id = 'psh40963@naver.com' then a.msg_sender
+                        else a.msg_target_id end) as audience
+    from message a, users b, users c
+    where (msg_sender = 'psh40963@naver.com' or msg_target_id = 'psh40963@naver.com')
+      and a.msg_target_id = b.user_id
+      and a.msg_sender = c.user_id
+    group by (case when a.msg_target_id = 'psh40963@naver.com' then a.msg_sender
+                   else a.msg_target_id end)
+    order by max(msg_no) desc)d
+where a.msg_no = d.no
+    and b.user_id = d.audience
+    and b.class_id = c.class_id;
 -----------------------------------------------------
--- distinct by user_nickname 
-
-select audience as user_nickname, (select user_id from users where user_nickname=audience) as user_id
-from
-(select case when (select user_nickname
-                    from users
-                    where user_id='psh40963@naver.com') = b.user_nickname then c.user_nickname
-            else b.user_nickname end as audience, a.msg_content, a.msg_senddate
-from message a, users b, users c
-where (msg_sender = 'psh40963@naver.com' or msg_target_id = 'psh40963@naver.com')
-and a.msg_target_id = b.user_id
-and a.msg_sender = c.user_id
-order by msg_no desc)
-group by audience;
 -----------------------------------------------------
 -- send message 'c' from a to b . in here a is psh40963@naver.com b is exp...
 insert into message 
@@ -396,3 +392,10 @@ order by feed_no desc;
 select instr(feed_pic, ',') from feed;
 -----------------------------------------------------
 
+
+
+
+commit;
+
+select user_rating from users where user_id = 'bomik0614@gmail.com';
+select * from users where user_id = 'psh40963@naver.com';
