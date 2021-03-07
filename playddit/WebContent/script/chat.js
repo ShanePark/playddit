@@ -27,6 +27,10 @@ $(function(){
 		
 	});
 	
+	$('#commentSend').on('click', function(){
+		sendMessage();
+	});
+	
 	// 알람 버튼 이벤트 수행시 목록 받아 붙이기
 	$(".alarmBtn").click(function(){
 		getAlarm();
@@ -99,6 +103,33 @@ $(function(){
 							여기부터 함수 선언부입니다. 
 		
  ***************************************************************************/
+
+
+sendMessage = function(){
+	
+	var receiver = $('#chatUserMail').text();
+	var content = document.getElementById('input_area').innerHTML;
+	
+	var from = '<div class="to">'
+			+		'<div class="myBubble">'+content
+			+		'</div>'
+			+		'<p>now</p>'
+			+	'</div>';
+	$('#curChatBox').append(from);
+	$('#input_area').empty();
+	
+	// 스크롤을 제일 아래로 내려준다.
+	$('#curChatBox').scrollTop($('#curChatBox')[0].scrollHeight);
+	
+	$.ajax({
+		url : '/playddit/message/sendMessage.do',
+		type : 'post',
+		data : {'receiver' : receiver, 'content' : content},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+	})
+}
 
 getAudiences = function(){
 
@@ -182,12 +213,18 @@ getMessage = function(audience, audience_nickname){
 				}
 				$('#curChatBox').append(from);
 			})
+			
+			// 스크롤을 제일 아래로 내려준다.
+			$('#curChatBox').scrollTop($('#curChatBox')[0].scrollHeight);
+			
 		},
 		error : function(xhr){
 			alert("status : " + xhr.status);
 		},
 		dataType : 'json'
 	})
+	
+	
 }
 
 strToDate = function(str){	// 받아온 날짜 문자열을 date 객체로 변환 
