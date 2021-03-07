@@ -21,4 +21,7 @@ public interface IMessageDao {
 	
 	// 학급에 단체 메시지 보내기
 	public int insertMessageClass(String sender, String receiver, String content) throws SQLException;
+	
+	// 채팅을 위해 친구 검색하기
+	public List<AudienceVO> searchToChat(String user_id, String keyword) throws SQLException;
 }

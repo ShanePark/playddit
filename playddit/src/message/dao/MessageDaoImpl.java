@@ -66,4 +66,13 @@ public class MessageDaoImpl implements IMessageDao{
 		return client.update("message.insertMessageClass", map);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<AudienceVO> searchToChat(String user_id, String keyword) throws SQLException {
+		Map<String, String> map = new HashMap<>();
+		map.put("user_id", user_id);
+		map.put("keyword", "%"+keyword+"%");	// 쿼리에 %를 쓰면 에러가 나서 파라미터에 붙여 보내야함.
+		return client.queryForList("message.searchToChat",map);
+	}
+
 }

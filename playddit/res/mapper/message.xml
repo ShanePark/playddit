@@ -56,5 +56,20 @@
 		values(cmsg_no_seq.nextval,#receiver#, #sender#, #content#, sysdate)
 	</insert>
 	
+	<select id="searchToChat" parameterClass="map" resultClass="audienceVO">
+		select user_id as id, user_nickname as nickname, user_pic as profile, 
+	        user_bio as bio,
+	        (case when b.class_id = 'C000' then b.class_title
+	                else b.class_title || ' ' ||b.class_num ||' - '|| b.class_room end) as classname,
+	        (select count(*) from message where msg_sender =#user_id# and msg_target_id = a.user_id)
+	        + (select count(*) from message where msg_target_id =#user_id# and msg_sender = a.user_id)
+	        as content
+		from users a, class b
+		where (user_nickname like #keyword# 
+		    or user_name like #keyword#)
+		    and a.class_id = b.class_id
+		order by content desc
+	</select>
+	
 </sqlMap>
 

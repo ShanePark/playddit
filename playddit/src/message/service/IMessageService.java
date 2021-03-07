@@ -20,4 +20,12 @@ public interface IMessageService {
 	
 	// 그룹에 메시지를 보내는 기능입니다. 재사용을 염두해 두고 작성했습니다.
 	public int insertMessageGroup(String sender, String receiver, String content, String groupType);
+	
+	/**
+	 * 채팅을 위해 친구 검색하는 기능입니다.
+	 * @param user_id
+	 * @param keyword
+	 * @return	리턴중에 content 값은 해당 유저와의 총 대화수 입니다. vo 재활용중 0인지를 구분하기 위해 인자사용했습니다.
+	 */
+	public List<AudienceVO> searchToChat(String user_id, String keyword);
 }

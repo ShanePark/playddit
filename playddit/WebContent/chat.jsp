@@ -422,48 +422,13 @@
                     </button>
                 </div>
                 <h5>Create a chat room</h5>
-                <form action="" method="get">
+                <form onsubmit="createChat()" method="get">
                     <input type="text" name="searchBox" placeholder="대화상대 검색"/>
                     <button type="submit" name="userSearch">
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
                 <ul id="userList" class="scrollStyle">
-                    <li>
-                        <div class="userPic" style="background-image: url(images/profile/chdnjs7610@gmail.com.jpg)"></div>
-                        <div class="userInfo">
-                            <h6>scarlett <span>풀스택 개발과정 6기</span></h6>
-                            <p>chdnjs7610@gmail.com</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="userPic" style="background-image: url(images/profile/chdnjs7610@gmail.com.jpg)"></div>
-                        <div class="userInfo">
-                            <h6>scarlett <span>풀스택 개발과정 6기</span></h6>
-                            <p>chdnjs7610@gmail.com</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="userPic" style="background-image: url(images/profile/chdnjs7610@gmail.com.jpg)"></div>
-                        <div class="userInfo">
-                            <h6>scarlett <span>풀스택 개발과정 6기</span></h6>
-                            <p>chdnjs7610@gmail.com</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="userPic" style="background-image: url(images/profile/chdnjs7610@gmail.com.jpg)"></div>
-                        <div class="userInfo">
-                            <h6>scarlett <span>풀스택 개발과정 6기</span></h6>
-                            <p>chdnjs7610@gmail.com</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="userPic" style="background-image: url(images/profile/chdnjs7610@gmail.com.jpg)"></div>
-                        <div class="userInfo">
-                            <h6>scarlett <span>풀스택 개발과정 6기</span></h6>
-                            <p>chdnjs7610@gmail.com</p>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>

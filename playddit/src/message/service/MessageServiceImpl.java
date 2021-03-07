@@ -77,4 +77,14 @@ public class MessageServiceImpl implements IMessageService{
 		return 0;
 	}
 
+	@Override
+	public List<AudienceVO> searchToChat(String user_id, String keyword) {
+		try {
+			return dao.searchToChat(user_id, keyword);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }
