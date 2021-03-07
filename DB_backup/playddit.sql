@@ -221,14 +221,15 @@ values(cmsg_no_seq.nextval,'C202011302', 'psh40963@naver.com', '학급에 메시
 select user_id as id, user_nickname as nickname, user_pic as profile, 
         user_bio as bio,
         (case when b.class_id = 'C000' then b.class_title
-                else b.class_title || ' ' ||b.class_num ||' - '|| b.class_room end) as classname,
+                else b.class_num ||' - '|| b.class_room end) as classname,
         (select count(*) from message where msg_sender ='psh40963@naver.com' and msg_target_id = a.user_id)
         + (select count(*) from message where msg_target_id ='psh40963@naver.com' and msg_sender = a.user_id)
         as content
 from users a, class b
-where (user_nickname like '%조%' 
-    or user_name like '%조%')
+where (user_nickname like '%박%' 
+    or user_name like '%박%')
     and a.class_id = b.class_id
+    and user_id != 'psh40963@naver.com'
 order by content desc;
 -----------------------------------------------------
 
