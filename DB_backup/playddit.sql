@@ -176,7 +176,8 @@ order by msg_no;
 -----------------------------------------------------
 -- load people who i message with order by recent msg_no
 
-select d.no, msg_content as content, b.user_id as id, b.user_nickname as nickname, b.user_pic as profile,
+select d.no, msg_content as content, b.user_id as id, b.user_nickname as nickname, 
+        b.user_pic as profile, b.user_bio as bio,
        (case when c.class_id = 'C000' then c.class_title
                 else c.class_num ||' - '|| c.class_room end) as classname
 from message a, users b, class c,

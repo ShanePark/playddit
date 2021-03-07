@@ -6,6 +6,14 @@ public class AudienceVO {
 	private String nickname;
 	private String profile;
 	private String classname;
+	private String bio;
+	
+	public String getBio() {
+		return bio;
+	}
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
 	
 	public String getContent() {
 		return content;
