@@ -52,4 +52,14 @@ public class AlarmServiceImpl implements IAlarmService{
 		return 0;
 	}
 
+	@Override
+	public int sendNewAlarm(String user, String cont, int type, String sender) {
+		try {
+			return dao.newAlarm(user, cont, type, sender);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 }

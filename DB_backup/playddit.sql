@@ -239,6 +239,10 @@ values(alarm_no_seq.nextval,'psh40963@naver.com', '스칼렛', 12, sysdate, 0, '
 delete from alarm 
 where user_id = 'psh40963@naver.com' and sender_id= 'chdnjs7610@gmail.com' and alarm_type = 12;
 -----------------------------------------------------
+--send alarm to right holders
+
+
+-----
 
 commit;
 -----------------------------------------------------

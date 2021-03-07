@@ -16,13 +16,7 @@ $(function(){
     });
 
 	$('#join').on('click',function(){
-		
-		// 입력된 학급 정보대로 학급 정보 변경 및 해당 학급 관리자에게 승인알람 보내기
-		
-		
-		// 이후 feed.jsp로 리다이렉트
-		location.href="feed.jsp";
-		
+		play();
 	})
 	
 })
@@ -34,6 +28,24 @@ $(function(){
 							여기부터 함수 선언부입니다. 
 		
  ***************************************************************************/
+
+function play(){
+	var class_id = $('.item').find('select').val();
+	
+	$.ajax({
+		url : '/playddit/login/play.do',
+		type : 'post',
+		data : {'class_id' : class_id, 'user_id' : user_id, 'user_nickname' : user_nickname },
+		success : function(){
+
+		},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+	})
+	
+	location.href="feed.jsp";
+}
 
 follow = function(targetId){
 	$.ajax({
@@ -84,6 +96,8 @@ function loadPlay(){
 			// 로그인 성공하며 쿠키에 아이디 값을 기록한다. 
 			// 회원가입 성공시 서블릿에서 이미 세션에는 기록했으니, 결과적으로 로그인 필요충분조건 모두 달성
 			setCookie("user_id", res.user_id, 1);
+			user_id = res.user_id;
+			user_nickname = res.user_nickname;
 			
 			// 아이디, 닉네임을 화면에 찍어준다.
 			$('#name').text(res.user_nickname);

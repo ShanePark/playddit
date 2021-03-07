@@ -149,6 +149,26 @@ public class UsersServiceImpl implements IUsersService {
 		}
 		return list;
 	}
+
+	@Override
+	public int setUserClass(String user_id, String class_id){
+		try {
+			return dao.setUserClass(user_id, class_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public List<String> getRightHolders(String class_id){
+		try {
+			return dao.getRightHolders(class_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 		
 	
 	
