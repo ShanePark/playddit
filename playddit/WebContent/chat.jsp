@@ -41,55 +41,6 @@
                     </button>
                 </div>
                 <div id="chatList" class="scrollStyle">
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="chats" idx="C202011302">
-                        <a class="chatPic" style="background-image: url(images/profile/expedition1205@gmail.com.jpg)"></a>
-                        <div class="chatInfo">
-                            <h6>scarlett</h6>
-                            <p class="small">chdnjs7610@gmail.com</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             
@@ -127,70 +78,6 @@
                     </div>
                 </div>
                 <div id="curChatBox" class="scrollStyle">
-                    <p class="chatDate">2020.03.03 Wed</p>
-                    <div class="from">
-                        <div class="bubble">
-                            안녕하세요. 메시지 보냅니다~! 테스트 하는 중...
-                        </div>
-                        <p>10:23</p>
-                    </div>
-                    <div class="from">
-                        <div class="bubble">
-                            더 길게 보내봅니다....<br/>
-                            띄어쓰기도 적용하셔서 출력해주세요..<br/>
-                            <br/><br/>
-                            테스트 중...test...
-                        </div>
-                        <p>10:23</p>
-                    </div>
-                    <div class="to">
-                        <div class="myBubble">
-                            더 길게 보내봅니다....<br/>
-                            띄어쓰기도 적용하셔서 출력해주세요..<br/>
-                            <br/><br/>
-                            테스트 중...test...<br/>
-                            내가 보내면 글씨 색상이 하얀색이에요...
-                        </div>
-                        <p>10:23</p>
-                    </div>
-                    <div class="from">
-                        <div class="bubble">
-                            안녕하세요. 메시지 보냅니다~! 테스트 하는 중...
-                        </div>
-                        <p>10:23</p>
-                    </div>
-                    <div class="to">
-                        <div class="myBubble">
-                            더 길게 보내봅니다....<br/>
-                            띄어쓰기도 적용하셔서 출력해주세요..<br/>
-                        </div>
-                        <p>10:23</p>
-                    </div>
-
-                    <p class="chatDate">Today</p>
-                    <div class="to">
-                        <div class="myBubble">
-                            더 길게 보내봅니다....<br/>
-                            띄어쓰기도 적용하셔서 출력해주세요..<br/>
-                            <br/><br/>
-                            테스트 중...test...<br/>
-                            내가 보내면 글씨 색상이 하얀색이에요...
-                        </div>
-                        <p>10:23</p>
-                    </div>
-                    <div class="from">
-                        <div class="bubble">
-                            안녕하세요. 메시지 보냅니다~! 테스트 하는 중...
-                        </div>
-                        <p>10:23</p>
-                    </div>
-                    <div class="to">
-                        <div class="myBubble">
-                            더 길게 보내봅니다....<br/>
-                            띄어쓰기도 적용하셔서 출력해주세요..<br/>
-                        </div>
-                        <p>10:23</p>
-                    </div>
                 </div>
 
                 <div id="commentInputBox">

@@ -8,6 +8,7 @@ import java.util.Map;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import config.SqlMapClientFactory;
+import message.vo.AudienceVO;
 import message.vo.MessageVO;
 import users.vo.UsersVO;
 
@@ -36,8 +37,8 @@ public class MessageDaoImpl implements IMessageDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<UsersVO> getAudiences(String user_id) throws SQLException {
-		return (List<UsersVO>)client.queryForList("message.getAudiences",user_id);
+	public List<AudienceVO> getAudiences(String user_id) throws SQLException {
+		return (List<AudienceVO>)client.queryForList("message.getAudiences",user_id);
 	}
 
 	@Override

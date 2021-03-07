@@ -119,6 +119,7 @@
 				return false;
 			} else if (!$('#nickDbtn').hasClass('active')) {
 				alert("닉네임 중복확인을 해주세요.");
+				return false;
 			} else if ($('input[name=pass]').parents('.box').find('.msg').text().length > 1 || $('input[name=pass]').val() == "") {
 				alert("비밀번호를 입력해주세요.");
 				return false;
