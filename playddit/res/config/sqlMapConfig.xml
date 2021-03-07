@@ -28,6 +28,7 @@
  	  <typeAlias alias = "groupVO" type="users.vo.GroupVO"/>
  	  <typeAlias alias = "ProfileVO" type="login.vo.ProfileVO"/>
  	  <typeAlias alias = "MessageVO" type="message.vo.MessageVO"/>
+ 	  <typeAlias alias = "audienceVO" type="message.vo.AudienceVO"/>
  	  <typeAlias alias = "termsVo" type="join.vo.TermsVO"/>
  	  <typeAlias alias = "alarmVO" type="alarm.vo.AlarmVO"/>
  	  <typeAlias alias = "followerVO" type="users.vo.FollowerVO"/>

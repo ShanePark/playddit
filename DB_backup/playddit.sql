@@ -176,23 +176,26 @@ order by msg_no;
 -----------------------------------------------------
 -- load people who i message with order by recent msg_no
 
-select msg_content as content, b.user_id, b.user_nickname, b.user_pic,
+select d.no, msg_content as content, b.user_id as id, b.user_nickname as nickname, b.user_pic as profile,
        (case when c.class_id = 'C000' then c.class_title
                 else c.class_num ||' - '|| c.class_room end) as classname
 from message a, users b, class c,
     (select max(msg_no) as no,
-            (case when a.msg_target_id = 'psh40963@naver.com' then a.msg_sender
+            (case when a.msg_target_id = d.user_id then a.msg_sender
                         else a.msg_target_id end) as audience
-    from message a, users b, users c
-    where (msg_sender = 'psh40963@naver.com' or msg_target_id = 'psh40963@naver.com')
+    from message a, users b, users c, users d
+    where (msg_sender = d.user_id or msg_target_id = d.user_id)
       and a.msg_target_id = b.user_id
       and a.msg_sender = c.user_id
-    group by (case when a.msg_target_id = 'psh40963@naver.com' then a.msg_sender
+      and d.user_id = 'psh40963@naver.com'
+    group by (case when a.msg_target_id = d.user_id then a.msg_sender
                    else a.msg_target_id end)
     order by max(msg_no) desc)d
 where a.msg_no = d.no
     and b.user_id = d.audience
     and b.class_id = c.class_id;
+
+    
 -----------------------------------------------------
 -----------------------------------------------------
 -- send message 'c' from a to b . in here a is psh40963@naver.com b is exp...

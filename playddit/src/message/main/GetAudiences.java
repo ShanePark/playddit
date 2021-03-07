@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 import login.vo.ProfileVO;
 import message.service.IMessageService;
 import message.service.MessageServiceImpl;
-import users.vo.UsersVO;
+import message.vo.AudienceVO;
 import web.IAction;
 
 public class GetAudiences implements IAction {
@@ -36,14 +36,14 @@ public class GetAudiences implements IAction {
 		
 		// 2. 해당 유저 아이디 기준으로 서비스에서 대화주고받은 사람들 목록 받아오기 
 		IMessageService service = MessageServiceImpl.getService();
-		List<UsersVO> list = service.getAudiences(user_id);
+		List<AudienceVO> list = service.getAudiences(user_id);
 		String listJson = new Gson().toJson(list);
 		
-		// 3. 해당 유저들의 UsersVO가 담긴 List를 json 형태로 jsp 파일에 돌려보내기.
-		request.setAttribute("list", listJson);
+		// 3. 해당 유저들의 AudienceVO가 담긴 List를 json 형태로 ajax에 보낸다.
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().write(listJson);
 		
-		
-		return "/message/GetAudiences.jsp";
+		return null;
 		
 	}
 
