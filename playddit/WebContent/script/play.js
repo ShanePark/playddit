@@ -98,6 +98,7 @@ function loadPlay(){
 			setCookie("user_id", res.user_id, 1);
 			user_id = res.user_id;
 			user_nickname = res.user_nickname;
+			user_class_before = res.class_id;
 			
 			// 아이디, 닉네임을 화면에 찍어준다.
 			$('#name').text(res.user_nickname);
@@ -105,7 +106,12 @@ function loadPlay(){
 			
 			// 클래스는 option을 동적으로 붙여준다.
 			$.each(res.classList, function(i,v){
-				var option = '<option value='+v.class_id+'>'+v.classname+'</option>';
+				if(user_class_before == v.class_id){
+					var option = '<option value='+v.class_id+' selected>'+v.classname+'</option>';
+				}else{
+					var option = '<option value='+v.class_id+'>'+v.classname+'</option>';
+				}
+				
 				$('#welcomBottom').find('select').append(option);
 			})
 			
