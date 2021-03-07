@@ -2,7 +2,6 @@ $(function(){
     
 	getAudiences();
 
-	
 	// 채팅 목록에서 유저 클릭시 
 	$('#chatList').on('click','.chats',function(){
 		$('#input_area').empty();
@@ -106,6 +105,39 @@ $(function(){
 		
  ***************************************************************************/
 
+createChat = function(){
+	event.preventDefault();
+	var keyword = $('#createModal').find('input').val();
+	$.ajax({
+		url : '/playddit/message/searchToChat.do',
+		type : 'post',
+		data : {'keyword' : keyword},
+		error : function(xhr){
+			if(xhr.status == 500){
+				location.href="index.html";
+				return false;
+			}
+			alert("status : " + xhr.status);
+		},
+		success : function(res){
+			$('#userList').empty();
+			
+			$.each(res,function(i,v){
+				var audienceLi = '<li>'
+								+	'<div class="userPic" style="background-image: url(images/profile/'+v.profile+')"></div>'
+								+ 		'<div class="userInfo">'
+								+			'<h6>'+v.nickname+' <span>'+v.classname+'</span></h6>'
+				                +			'<p>'+v.id+'</p>'    
+                        		+		'</div>'
+								+'</li>';
+				$('#userList').append(audienceLi);
+			})
+			
+			
+		},
+		dataType : 'json'
+	})
+}
 
 sendMessage = function(){
 	
@@ -187,6 +219,10 @@ getAudiences = function(){
 			
 		},
 		error : function(xhr){
+			if(xhr.status == 500){
+				location.href="index.html";
+				return false;
+			}
 			alert("status : " + xhr.status);
 		},
 		dataType : 'json'
