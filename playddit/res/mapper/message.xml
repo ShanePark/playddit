@@ -60,7 +60,7 @@
 		select user_id as id, user_nickname as nickname, user_pic as profile, 
 	        user_bio as bio,
 	        (case when b.class_id = 'C000' then b.class_title
-	                else b.class_title || ' ' ||b.class_num ||' - '|| b.class_room end) as classname,
+	                else b.class_num ||' - '|| b.class_room end) as classname,
 	        (select count(*) from message where msg_sender =#user_id# and msg_target_id = a.user_id)
 	        + (select count(*) from message where msg_target_id =#user_id# and msg_sender = a.user_id)
 	        as content
@@ -68,6 +68,7 @@
 		where (user_nickname like #keyword# 
 		    or user_name like #keyword#)
 		    and a.class_id = b.class_id
+		    and user_id != #user_id#
 		order by content desc
 	</select>
 	
