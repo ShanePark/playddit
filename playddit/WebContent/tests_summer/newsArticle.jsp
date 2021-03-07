@@ -66,8 +66,8 @@
 				code = '<table>';
 				code += '<tr><td>제목</td><td>' + res.news_title+'</td></tr>';
 				code += '<tr><td>작성일</td><td>' + res.news_date +'</td></tr>';
-				code += '<tr><td>내용</td><td>' + res.news_cont +'</td></tr>';
 				code += '<tr><td><img src="../images/news/' + res.news_pic +'"width="300px" height="300px"></td></tr>';
+				code += '<tr><td>' + (res.news_cont).replaceAll("\n", "<br>") +'</td></tr>';
 				code += '</table>';
 				
 				$('#content').html(code);
