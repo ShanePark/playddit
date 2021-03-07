@@ -169,6 +169,17 @@ public class UsersServiceImpl implements IUsersService {
 		}
 		return null;
 	}
+
+	@Override
+	public int setUserRate(String user_id, int user_rating) {
+		try {
+			return dao.setUserRate(user_id, user_rating);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 		
 	
 	

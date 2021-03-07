@@ -12,6 +12,9 @@ public interface IAlarmDao {
 	// user에게 있는 sender id 와 type 이 일치하는 알람을 제거한다.
 	public int deleteAlarm(String user, String sender, int type) throws SQLException;
 	
+	//  sender id 와 type 이 일치하는 알람을 제거한다.
+	public int deleteAlarm(String sender, int type) throws SQLException;
+	
 	// 새로운 알람을 추가한다.
 	public int newAlarm(String user, String cont, int type, String sender) throws SQLException;
 }

@@ -149,6 +149,14 @@ public class UsersDaoImpl implements IUsersDao {
 	@Override
 	public List<String> getRightHolders(String class_id) throws SQLException {
 		return (List<String>)client.queryForList("users.getRightHolders", class_id);
+	}
+
+	@Override
+	public int setUserRate(String user_id, int user_rating) throws SQLException {
+		Map<String, Object> map = new HashMap<>();
+		map.put("user_id", user_id);
+		map.put("user_rating", user_rating);
+		return client.update("users.setUserRate", map);
 	}	
 	
 	
