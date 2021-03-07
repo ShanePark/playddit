@@ -85,6 +85,13 @@
 		set user_pic = #user_pic#
 		where user_id = #user_id#
 	</update>
+
+	<!-- 유저 등급 변경 -->
+	<update id="setUserRate" parameterClass="map">
+		update users 
+		set user_rating = #user_rating#
+		where user_id = #user_id#
+	</update>
 	
 	<!-- 학급 정보 변경 -->
 	<update id="setUserClass" parameterClass="map">

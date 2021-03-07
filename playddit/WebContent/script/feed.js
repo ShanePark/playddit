@@ -257,6 +257,10 @@ var loadFeed = function(){
 			
 		},
 		error : function(xhr) {
+		if(xhr.status == 500){
+				location.href="index.html";
+				return false;
+			}
 			alert("status : " + xhr.status);
 		}
 	})

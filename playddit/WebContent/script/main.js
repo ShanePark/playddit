@@ -4,6 +4,35 @@ $(function(){
 	loadProfile();
 	loadGroup();
 	
+	
+	
+	// 알람에서 학급승인 처리 이벤트
+	$("#alarmWrap").on("click","button", function(){
+		// 승인을 하든 거절을 하든 해당 알람은 삭제된다.
+		$(this).parent().remove();
+		
+		var targetId = $(this).parent().attr("targetId");
+		var approve;
+		
+		if($(this).children('i').hasClass("red")){
+			approve = 'false';
+		}else{
+			approve = 'true';		
+		}
+		
+		$.ajax({
+		url : '/playddit/users/approveClass.do',
+		type : 'post',
+		data : {'targetId' : targetId, 'approve' : approve},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+
+	})
+		
+
+	});
+	
 	// 팔로우 혹은 팔로잉 목록 불러오는 이벤트
 	 $(".followBtn").click(function(){
         title = $(this).parent("li").children(".th").text();
@@ -50,6 +79,10 @@ function loadGroup(){
 	$.ajax({
 		url : '/playddit/users/getGroup.do',
 		error : function(xhr){
+			if(xhr.status == 500){
+				location.href="index.html";
+				return false;
+			}
 			alert("status : " + xhr.status);
 		},
 		success : function(res){
@@ -108,6 +141,10 @@ function loadProfile(){
 			
 		},
 		error : function(xhr){
+			if(xhr.status == 500){
+				location.href="index.html";
+				return false;
+			}
 			alert("상태 : " + xhr.status);
 		},
 		dataType : 'json'
@@ -223,7 +260,7 @@ getAlarm = function(){
 			$.each(res, function(i,v){
 				
 				if(v.type == 10){	// 학급 승인 관련 알람일경우
-					alarm += '<div class="alarm classMoniter alarmno='+v.alarm_no+'">'
+					alarm += '<div class="alarm classMoniter" targetId="'+v.sender+'" alarmno="'+v.alarm_no+'"">'
 							+	'<a class="alarmUser" href=myPage.jsp?feed_id='+v.sender+'>'
 							+		'<img src="images/profile/'+ v.sender_pic +'" />'
 							+	'</a>'
@@ -235,7 +272,7 @@ getAlarm = function(){
 							+'</div>';
 					
 				}else{
-					alarm += '<div class="alarm alarmno='+v.alarm_no+'">'
+					alarm += '<div class="alarm" alarmno="'+v.alarm_no+'">'
 							+	'<a class="alarmUser" href=myPage.jsp?feed_id='+v.sender+'>'
 							+		'<img src="images/profile/'+ v.sender_pic +'" />'
 							+	'</a>'

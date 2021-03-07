@@ -49,4 +49,12 @@ public class AlarmDaoImpl implements IAlarmDao {
 		}else return 0;
 	}
 
+	@Override
+	public int deleteAlarm(String sender, int type) throws SQLException {
+		AlarmVO vo = new AlarmVO();
+		vo.setSender(sender);
+		vo.setType(type);
+		return client.delete("alarm.deleteAlarm2",vo);
+	}
+
 }

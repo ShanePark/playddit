@@ -16,4 +16,7 @@ public interface IAlarmService {
 	
 	// user에게 있는 sender id 와 type 이 일치하는 알람을 제거한다.
 	public int deleteAlarm(String user, String sender, int type);
+	
+	//  sender id 와 type 이 일치하는 알람을 제거한다.
+	public int deleteAlarm(String sender, int type);
 }

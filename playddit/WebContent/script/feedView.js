@@ -292,6 +292,10 @@ function loadFeed(feedno){
 		url : '/playddit/feed/getOneFeed.do',
 		type : 'post',
 		error : function(xhr){
+			if(xhr.status == 500){
+				location.href="index.html";
+				return false;
+			}
 			alert("status : " + xhr.status);
 		},
 		data : {"feed_no" : feedno},

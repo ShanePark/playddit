@@ -77,8 +77,10 @@ where follower = 'psh40963@naver.com'
 and followee = 'bomik0614@gmail.com';
 
 -----------------------------------------------------
+
 --      ALL ABOUT
 --              USER INFORMATION
+
 -----------------------------------------------------
 -- set new password 
 update users
@@ -90,6 +92,13 @@ update users
 set user_pic = 'zzz.png'
 where user_id = 'psh40963@naver.com';
 commit;
+-----------------------------------------------------
+-- set new rating
+update users 
+set user_rating = 2
+where user_id = 'psh40963@naver.com';
+
+select user_rating from users where user_id = 'psh40963@naver.com';
 -----------------------------------------------------
 -- insert new user
 -----------------------------------------------------
@@ -239,12 +248,28 @@ values(alarm_no_seq.nextval,'psh40963@naver.com', '스칼렛', 12, sysdate, 0, '
 delete from alarm 
 where user_id = 'psh40963@naver.com' and sender_id= 'chdnjs7610@gmail.com' and alarm_type = 12;
 -----------------------------------------------------
---send alarm to right holders
+--to send alarm to right holders find right holders
+select user_id
+from users 
+where user_rating >1 
+    and class_id = 'C202011302';
 
+-----------------------------------------------------
+-- delete all alarms about approval 
+select *
+from alarm
+where sender_id = 'psh40963@naver.com'
+and alarm_type = 10;
 
------
+delete
+alarm
+where sender_id = 'psh40963@naver.com'
+and alarm_type = 10;
 
+rollback;
 commit;
+
+
 -----------------------------------------------------
 
 --

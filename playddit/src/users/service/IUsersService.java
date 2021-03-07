@@ -39,6 +39,9 @@ public interface IUsersService {
 
 	// 프로필 변경하기
 	public int setUserPic(String user_id, String user_pic);
+
+	// 유저 등급 변경하기
+	public int setUserRate(String user_id, int user_rating);
 	
 	// 학급정보 변경하기
 	public int setUserClass(String user_id, String class_id);
