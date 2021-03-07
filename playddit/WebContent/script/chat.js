@@ -118,6 +118,16 @@ sendMessage = function(){
 	$('#curChatBox').append(from);
 	$('#input_area').empty();
 	
+	$('#chatList').children('.chats').each(function(){
+		if($(this).attr("userid") == receiver){
+			contShow = content;
+			if(content.length > 18){
+				contShow = contShow.substr(0,16)+'...';
+			}
+			$(this).find('.small').text(contShow);
+		}
+	})
+	
 	// 스크롤을 제일 아래로 내려준다.
 	$('#curChatBox').scrollTop($('#curChatBox')[0].scrollHeight);
 	
@@ -145,6 +155,9 @@ getAudiences = function(){
 				$('#chatRight').html(chatStart);
 			}
 			$.each(res, function(i,v){
+				if(v.content.length > 18){
+					v.content = v.content.substr(0,16)+'...';
+				}
 				var chats = '<div class="chats" bio="'+v.bio+'" classname="'+v.classname+'" userid="'+v.id+'">'
 							+	'<a class="chatPic" style="background-image: url(images/profile/'+v.profile+')">'
 				         	+	'</a>'
