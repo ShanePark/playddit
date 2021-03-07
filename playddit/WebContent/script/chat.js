@@ -5,6 +5,8 @@ $(function(){
 	
 	// 채팅 목록에서 유저 클릭시 
 	$('#chatList').on('click','.chats',function(){
+		$('#input_area').empty();
+		
 		var chatUser = new Object();
 		chatUser.id = $(this).attr("userid");
 		chatUser.classname = $(this).attr("classname");
