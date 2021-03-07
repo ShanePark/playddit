@@ -5,6 +5,8 @@ $(function(){
 	
 	// 채팅 목록에서 유저 클릭시 
 	$('#chatList').on('click','.chats',function(){
+		$('#input_area').empty();
+		
 		var chatUser = new Object();
 		chatUser.id = $(this).attr("userid");
 		chatUser.classname = $(this).attr("classname");
@@ -25,6 +27,10 @@ $(function(){
 		
 		getMessage(chatUser.id, chatUser.nickname);
 		
+	});
+	
+	$('#commentSend').on('click', function(){
+		sendMessage();
 	});
 	
 	// 알람 버튼 이벤트 수행시 목록 받아 붙이기
@@ -100,6 +106,43 @@ $(function(){
 		
  ***************************************************************************/
 
+
+sendMessage = function(){
+	
+	var receiver = $('#chatUserMail').text();
+	var content = document.getElementById('input_area').innerHTML;
+	
+	var from = '<div class="to">'
+			+		'<div class="myBubble">'+content
+			+		'</div>'
+			+		'<p>now</p>'
+			+	'</div>';
+	$('#curChatBox').append(from);
+	$('#input_area').empty();
+	
+	$('#chatList').children('.chats').each(function(){
+		if($(this).attr("userid") == receiver){
+			contShow = content;
+			if(content.length > 18){
+				contShow = contShow.substr(0,16)+'...';
+			}
+			$(this).find('.small').text(contShow);
+		}
+	})
+	
+	// 스크롤을 제일 아래로 내려준다.
+	$('#curChatBox').scrollTop($('#curChatBox')[0].scrollHeight);
+	
+	$.ajax({
+		url : '/playddit/message/sendMessage.do',
+		type : 'post',
+		data : {'receiver' : receiver, 'content' : content},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+	})
+}
+
 getAudiences = function(){
 
 	$.ajax({
@@ -114,6 +157,9 @@ getAudiences = function(){
 				$('#chatRight').html(chatStart);
 			}
 			$.each(res, function(i,v){
+				if(v.content.length > 18){
+					v.content = v.content.substr(0,16)+'...';
+				}
 				var chats = '<div class="chats" bio="'+v.bio+'" classname="'+v.classname+'" userid="'+v.id+'">'
 							+	'<a class="chatPic" style="background-image: url(images/profile/'+v.profile+')">'
 				         	+	'</a>'
@@ -182,12 +228,18 @@ getMessage = function(audience, audience_nickname){
 				}
 				$('#curChatBox').append(from);
 			})
+			
+			// 스크롤을 제일 아래로 내려준다.
+			$('#curChatBox').scrollTop($('#curChatBox')[0].scrollHeight);
+			
 		},
 		error : function(xhr){
 			alert("status : " + xhr.status);
 		},
 		dataType : 'json'
 	})
+	
+	
 }
 
 strToDate = function(str){	// 받아온 날짜 문자열을 date 객체로 변환 

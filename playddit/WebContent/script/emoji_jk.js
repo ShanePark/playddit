@@ -76,6 +76,7 @@ $(document).on("click",".emoji_list", function(e) {
 
 
 // Enter 키를 입력할 경우 전송처리
+/*
 $(document).on("keyup","#input_area",function() {
 
   var inputarea = $('#input_area');
@@ -87,4 +88,4 @@ $(document).on("keyup","#input_area",function() {
 
  	  }
 
-});
+});			*/
