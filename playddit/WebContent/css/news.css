@@ -48,6 +48,38 @@
     bottom: -25px;
 }
 
+/*-------------newsDetail--------------*/
+#newsDetail {
+    overflow-x: hidden;
+    padding: 10
+}
+
+#titleBox {
+    border-bottom : 1px solid #e9e7fb;
+    margin-bottom: 40px;
+}
+#titleBox h3 {
+    font-size: 1.3em;
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    line-height: 1.5em;
+}
+#titleBox p {
+    font-weight: 700;
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#newsDetail p {
+    line-height: 1.5em;
+    padding-bottom: 30px;
+}
+#newsDetail p img {
+    width: 100%;
+}
 /*-----------------여기부터 태블릿pc---------------------*/
 @media all and (max-width: 1020px) {
     #news {
