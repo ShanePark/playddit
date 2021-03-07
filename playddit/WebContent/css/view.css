@@ -443,7 +443,7 @@ footer p {
 @media all and (max-width: 1020px) {
     .edge {
         top: 98px;
-        left: 75%;
+        left: 51%;
     }
     
     #feedSearchModal {

@@ -1,0 +1,137 @@
+@charset "utf-8";
+/*-----------------프로필 편집----------*/
+#set {
+    border-radius: 45px;
+    background: white;
+    margin: 1% auto;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 5px 5px 25px #c9bcd0;
+}
+
+#setLeft {
+    padding: 30px;
+    width: 32%;
+    border-right : 1px solid #e9e7fb;
+}
+#setLeft li{
+    width: 100%;
+    height: 60px;
+    border-bottom : 1px solid #e9e7fb;
+    line-height: 60px;
+    padding-left: 30px;
+}
+#setLeft li:hover {
+    background: #f6f9fe;
+}
+#setLeft li a {
+    width: 100%;
+    display: inline-block;
+}
+#setLeft li i {
+    font-size: 1.4em;
+    vertical-align: -5px;
+    margin-right: 15px;
+    color: #a1c4fd;
+}
+
+#setRight {
+    padding : 20px 50px;
+    width: 68%;
+    margin-bottom: 40px;
+}
+#setRight #setProfile {
+    padding: 20px;
+    display: flex;
+    border-bottom: 1px solid #e9e7fb; 
+    margin-bottom: 40px;
+}
+
+#cir {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#modiPic {
+    font-size: 1.5em;
+    color: #a1c4fd;
+    position: relative;
+    top: -30px;
+    right: -103px;
+    cursor: pointer;
+}
+
+#setInfo {
+    margin-left: 30px;
+}
+#setInfo h3 {
+    color: #a1c4fd;
+    font-size: 1.4em;
+    margin-top: 40px;
+    margin-bottom: 2px;
+}
+
+.item {
+    margin-bottom: 25px;
+}
+.item label {
+    font-weight: 800;
+    font-size: 1.05em;
+    text-align: right;
+    padding-left: 10px;
+}
+.item textarea {
+    width: 80%;
+    resize: none;
+    height: 150px;
+    border: 1px solid #e9e7fb; 
+    padding: 15px;
+    font-size: 0.95em;
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.5em;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.item textarea:focus {
+    outline: none;
+}
+.item select, .item input {
+    display: block;
+    width: 50%;
+    height: 40px;
+    margin-top: -9px;
+    border: 1px solid #e9e7fb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.item select:focus,
+.item input:focus {
+    outline: none;
+}
+
+#modiBtn {
+    border: none;
+    background: #a1c4fd;
+    color: white;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+/*-----------------여기부터 태블릿pc---------------------*/
+@media all and (max-width: 1020px) {
+    
+}
+
+/*-----------------여기부터 모바일버전-------------------*/
+@media all and (max-width:767px) {
+    
+}
