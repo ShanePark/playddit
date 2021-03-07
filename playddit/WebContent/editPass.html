@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1, width=device-width" />
+		<meta name="author" content="playddit" />
+		<meta name="description" content="대덕인재개발원 학생들을 위한 스터디그룹, 소모임, 학급 공지사항, 주변 맛집 검색 등 다양한커뮤니티 서비스를 제공합니다." />
+		<meta name="keywords" content="대덕인재개발원, 대전 중구 대덕인재개발원, 대덕인재, 개발자과정, 프로그래머, 자바" />
+		<title>playddit</title>
+		<link href="favicon.ico" rel="icon shortcut" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link href="css/common.css" rel="stylesheet" />
+        <link href="css/view.css" rel="stylesheet" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<script src="script/view.js"></script>
+	</head>
+    <body>
+        <header>
+            <div class="cen">
+                <a href="feed.jsp">
+                    <img src="images/logo1.png" alt="logo"/>
+                </a>
+                <div id="search">
+                    <form action="" method="get">
+                        <input type="text" name="searchBox" placeholder="search"/>
+                        <button type="button" name="search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <ul id="gnb">
+                    <li>
+                        <a href="feed.jsp"><i class="fas fa-home"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-pen-nib"></i></a>
+                    </li>
+                    <li>
+                        <a class="alarmBtn"><i class="fas fa-bell"></i></a>
+                    </li>
+                    
+                    <!--알람 모달 -->
+					<div id="alarmEdge" class="alarmEdge2"></div>
+					<div id="modal" class="alarmModal">
+						<div id="alarmWrap">
+						   <div class="alarm classMoniter">
+								<a class="alarmUser" href="#">
+									<img src="images/default.png" />
+								</a>
+								<a class="alarmCont" href="#">
+									<span class="alarmNick">adsgasdg</span>님의 학급 승인 요청
+								</a>
+								<button type="button"><i class="fas fa-times red"></i></button>
+								<button type="button"><i class="fas fa-check"></i></button>
+							</div>
+							<div class="alarm">
+								<a class="alarmUser" href="#">
+									<img src="images/default.png" />
+								</a>
+								<a class="alarmCont" href="#">
+									<span class="alarmNick">josh</span>님이 나를 follow 했습니다.
+								</a>
+							</div>
+							<div class="alarm">
+								<a class="alarmUser" href="#">
+									<img src="images/default.png" />
+								</a>
+								<a class="alarmCont" href="#">
+									<span class="alarmNick">summer</span>님이 내가 쓴 글을 좋아합니다.
+								</a>
+							</div>
+							<div class="alarm">
+								<a class="alarmUser" href="#">
+									<img src="images/default.png" />
+								</a>
+								<a class="alarmCont" href="#">
+									<span class="alarmNick">shane</span>님이 내가 쓴 글에 댓글을 남겼습니다.
+								</a>
+							</div>
+							<div class="alarm">
+								<a class="alarmUser" href="#">
+									<img src="images/default.png" />
+								</a>
+								<a class="alarmCont" href="#">
+									<span class="alarmNick">홍길동</span>님이 나를 follow 취소했습니다.
+								</a>
+							</div>
+							<div class="alarm">
+								<a class="alarmUser" href="#">
+									<img src="images/default.png" />
+								</a>
+								<a class="alarmCont" href="#">
+									<span class="alarmNick">프로그래머스 스터디</span>에서 공지사항이 올라왔습니다.
+								</a>
+							</div>
+							<div class="alarm">
+								<a class="alarmUser" href="#">
+									<img src="images/default.png" />
+								</a>
+								<a class="alarmCont" href="#">
+									<span class="alarmNick">프로그래머스 스터디</span>에서 공지사항이 올라왔습니다.
+								</a>
+							</div>
+							<div class="alarm">
+								<a class="alarmUser" href="#">
+									<img src="images/default.png" />
+								</a>
+								<a class="alarmCont" href="#">
+									<span class="alarmNick">shane</span>님이 내가 쓴 글에 댓글을 남겼습니다.
+								</a>
+							</div>
+							 <div class="alarm">
+								<a class="alarmUser" href="#">
+									<img src="images/default.png" />
+								</a>
+								<a class="alarmCont" href="#">
+									<span class="alarmNick">asdgasdgasdgasdg</span>님이 내가 쓴 글에 댓글을 남겼습니다.
+								</a>
+							</div>
+							<div class="alarm">
+								<a class="alarmUser" href="#">
+									<img src="images/default.png" />
+								</a>
+								<a class="alarmCont" href="#">
+									<span class="alarmNick">홍길동</span>님이 나를 follow 취소했습니다.
+								</a>
+							</div>
+							<div class="alarm">
+								<a class="alarmUser" href="#">
+									<img src="images/default.png" />
+								</a>
+								<a class="alarmCont" href="#">
+									<span class="alarmNick">abcdefg</span>님이 나를 follow 했습니다.
+								</a>
+							</div>
+						</div>
+					</div>
+					<div id="alarmEdge2" class="alarmEdge2"></div>
+                </ul>
+            </div>
+            
+            <!-- 피드 검색 모달창 -->
+			<div id="mask"></div>
+			<div id="feedSearch" class="feedSearch2">
+				<div class="edge edge2"></div>
+				<div id="feedSearchModal">
+					<div id="feedCount">
+						<a href="#" class="feedCir">
+							<i class="fas fa-hashtag"></i>
+						</a>
+						<a href="#" id="feedText">
+							<p id="keyword">검색단어</p>
+							<p id="count">
+								피드 <span>5,000</span>개
+							</p>
+						</a>
+					</div>
+
+					<ul id="searchUser">
+						<li>
+							<a href="#" user="scarlet" class="feedCir">
+								<img src="images/default.png" />
+							</a>
+							<a href="#" class="searchUserBox">
+								<span href="#" user="scarlet" class="userNick">
+									scarlett
+								</span>
+								<span class="userEmail">chdnjs7610@gmail.com</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" user="scarlet" class="feedCir">
+								<img src="images/default.png" />
+							</a>
+							<a href="#" class="searchUserBox">
+								<span href="#" user="scarlet" class="userNick">
+									scarlett
+								</span>
+								<span class="userEmail">chdnjs7610@gmail.com</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" user="scarlet" class="feedCir">
+								<img src="images/default.png" />
+							</a>
+							<a href="#" class="searchUserBox">
+								<span href="#" user="scarlet" class="userNick">
+									scarlett
+								</span>
+								<span class="userEmail">chdnjs7610@gmail.com</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" user="scarlet" class="feedCir">
+								<img src="images/default.png" />
+							</a>
+							<a href="#" class="searchUserBox">
+								<span href="#" user="scarlet" class="userNick">
+									scarlett
+								</span>
+								<span class="userEmail">chdnjs7610@gmail.com</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" user="scarlet" class="feedCir">
+								<img src="images/default.png" />
+							</a>
+							<a href="#" class="searchUserBox">
+								<span href="#" user="scarlet" class="userNick">
+									scarlett
+								</span>
+								<span class="userEmail">chdnjs7610@gmail.com</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" user="scarlet" class="feedCir">
+								<img src="images/default.png" />
+							</a>
+							<a href="#" class="searchUserBox">
+								<span href="#" user="scarlet" class="userNick">
+									scarlett
+								</span>
+								<span class="userEmail">chdnjs7610@gmail.com</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" user="scarlet" class="feedCir">
+								<img src="images/default.png" />
+							</a>
+							<a href="#" class="searchUserBox">
+								<span href="#" user="scarlet" class="userNick">
+									scarlett
+								</span>
+								<span class="userEmail">chdnjs7610@gmail.com</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+        </header>
+        
+        <!--컨텐츠시작-->
+        <div id="set" class="cen">
+            <div id="setLeft">
+                <ul>
+                    <li><a href="#">프로필 편접</a></li>
+                    <li><a href="#">비밀번호 변경</a></li>
+                </ul>
+            </div>
+            <div id="setRight">
+                <div id="setProfile">
+                    <div id="setPic">
+                        <div id="cir" style="background-image: url(../WebContent/images/profile/chdnjs7610@gmail.com.jpg)"></div>
+                        <input type="file" id="profileUpload" style="display: none;">
+                        <span id="modiPic" onclick="onclick=document.all.profileUpload.click()">
+                            <i class="fas fa-edit"></i>
+                        </span>
+                    </div>
+                    <div id="setInfo">
+                        <h3>scarlett</h3>
+                        <p>chdnjs7610@gmail.com</p>
+                    </div>
+                </div>
+                <div id="setitems">
+                    <form>
+                        <div class="item">
+                            <label>Self-Introduction</label>
+                            <textarea>본인이 설정한 자기소개가 나오거나 default 값이 출력됩니다.</textarea>
+                        </div>
+                        <div class="item">
+                            <label>Class</label>
+                            <!--본인 학급 선택된 상태로-->
+                            <select name="myClass">
+                                <option>소속학급 없음</option>
+                                <option>풀스택 개발과장 6기 302호</option>
+                                <option>풀스택 개발과장 7기 302호</option>
+                                <option selected>풀스택 개발과장 8기 302호</option>
+                                <option>풀스택 개발과장 9기 302호</option>
+                                <option>풀스택 개발과장 10기 302호</option>
+                            </select>
+                            <p>학급 관리자 또는 반장에 의해 승인됩니다.</p>
+                        </div>
+                        <div class="item">
+                            <lable>Name</lable>
+                            <input type="text" name="name" value="박초원" />
+                        </div>
+                        <div class="item">
+                            <label>Phone Number</label>
+                            <input type="text" name="tel" value="01068287610"/>
+                        </div>
+                        <div class="item">
+                            <label>Birthday</label>
+                            <input type="date" name="birth" value="1995-05-03" />
+                        </div>
+                        
+                        <button type="submit" id="modiBtn">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--컨텐츠 끝-->
+        
+        <footer class="feedViewFooter">
+            <p id="copy">&copy; PLAYDDIT All Rights Reserved</p>
+        </footer>
+        
+        <script>
+			var sel_files = [];
+ 
+			$(document).ready(function() {
+				$("#profileUpload").on("change", handleImgsFilesSelect);
+			}); 
+
+			function handleImgsFilesSelect(e) {
+				var files = e.target.files;
+				var filesArr = Array.prototype.slice.call(files);
+
+				filesArr.forEach(function(f) {
+					if(!f.type.match("image.*")) {
+						alert("이미지만 업로드 하실 수 있습니다.");
+						return;
+					}
+
+					sel_files.push(f);
+
+					var reader = new FileReader();
+					reader.onload = function(e) {
+						var img_html = e.target.result;
+						$("#cir").attr("style", "background-image:url("+ img_html +")");
+					}
+					reader.readAsDataURL(f);
+				});
+			}
+		</script>
+    </body>
+</html>
