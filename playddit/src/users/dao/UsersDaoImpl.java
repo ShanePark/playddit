@@ -135,6 +135,20 @@ public class UsersDaoImpl implements IUsersDao {
 	@Override
 	public GroupVO getGroupInfo_class(String user_id) throws SQLException {
 		return (GroupVO) client.queryForObject("users.getGroupInfo_class",user_id);
+	}
+
+	@Override
+	public int setUserClass(String user_id, String class_id) throws SQLException {
+		Map<String, String> map = new HashMap<>();
+		map.put("user_id", user_id);
+		map.put("class_id", class_id);
+		return client.update("users.setUserClass", map);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> getRightHolders(String class_id) throws SQLException {
+		return (List<String>)client.queryForList("users.getRightHolders", class_id);
 	}	
 	
 	

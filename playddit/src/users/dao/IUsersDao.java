@@ -40,5 +40,11 @@ public interface IUsersDao {
 	// 프로필 변경하기
 	public int setUserPic(String user_id, String user_pic) throws SQLException;
 	
+	// 학급정보 변경하기
+	public int setUserClass(String user_id, String class_id) throws SQLException;
+	
+	// 학급 권한부여 권한자들 목록 불러오기
+	public List<String> getRightHolders(String class_id) throws SQLException;
+	
 }
 	

@@ -86,5 +86,20 @@
 		where user_id = #user_id#
 	</update>
 	
+	<!-- 학급 정보 변경 -->
+	<update id="setUserClass" parameterClass="map">
+		update users
+		set class_id = #class_id#
+		where user_id = #user_id#
+	</update>
+	
+	<!-- 반장, 담임선생님 목록 불러오기 -->
+	<select id="getRightHolders" resultClass="String" parameterClass="String">
+		select user_id
+		from users 
+		where user_rating >1 
+		    and class_id = #class_id#
+	</select>
+	
 </sqlMap>
 
