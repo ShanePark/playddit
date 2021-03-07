@@ -1,7 +1,42 @@
 $(function(){
     
 	getAudiences();
-
+	
+	
+	// 친구 검색해서 클릭할때 일어날 이벤트
+	$('#userList').on('click','li',function(){
+		
+		$('#userList').empty();
+		$('#input_area').empty();
+		$('#curChatBox').empty();
+		
+		// 모달 닫기
+        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+        $("#createModal").animate({marginTop : "100px"},400);
+        $("#createBack").delay(200).fadeOut(200);
+		
+		var msgcount = $(this).attr("msgcount");
+		var user_id = $(this).attr("user_id");
+		var profile = $(this).attr("profile");
+		var nickname = $(this).attr("nickname");
+		var bio = $(this).attr("bio");
+		var classname = $(this).attr("classname");
+		
+		$('#curChatPic').attr('href','myPage.jsp?feed_id='+user_id);
+		$('#curChatPic').attr('style','background-image: url(images/profile/'+profile+')');
+		$('#curChatInfo').html('<h4>'+nickname+'<span>'+classname+'</span></h4>');
+		$('#chatUserName').text(nickname);
+		$('#chatUserMail').text(user_id);
+		$('#chatUserIntro').text(bio);
+		$('#chatUserPic').attr('style','background-image: url(images/profile/'+profile+')');
+		$('#chatUserPic').attr('href','myPage.jsp?feed_id='+user_id);
+		
+		if(msgcount != 0){
+			getMessage(user_id,nickname);
+		}
+		
+	})
+	
 	// 채팅 목록에서 유저 클릭시 
 	$('#chatList').on('click','.chats',function(){
 		$('#input_area').empty();
@@ -123,7 +158,7 @@ createChat = function(){
 			$('#userList').empty();
 			
 			$.each(res,function(i,v){
-				var audienceLi = '<li>'
+				var audienceLi = '<li msgCount="'+v.content+'" user_id="'+v.id+'" profile="'+v.profile+'" nickname="'+v.nickname+'" bio="'+v.bio+'" classname="'+v.classname+'">'
 								+	'<div class="userPic" style="background-image: url(images/profile/'+v.profile+')"></div>'
 								+ 		'<div class="userInfo">'
 								+			'<h6>'+v.nickname+' <span>'+v.classname+'</span></h6>'
@@ -132,8 +167,6 @@ createChat = function(){
 								+'</li>';
 				$('#userList').append(audienceLi);
 			})
-			
-			
 		},
 		dataType : 'json'
 	})
@@ -143,6 +176,33 @@ sendMessage = function(){
 	
 	var receiver = $('#chatUserMail').text();
 	var content = document.getElementById('input_area').innerHTML;
+	
+	// 첫 메시지일 경우에 왼쪽에 chats div 새로 하나 만들어 prepend 해준다.
+	var isFirst = true;
+	$('#chatList').children('.chats').each(function(){
+		if($(this).attr("userid") == receiver){
+			isFirst = false;
+		}
+	})
+	if(isFirst){
+		var newProStyle = $('#curChatPic').attr("style");
+		newProfile = newProStyle.substr(newProStyle.indexOf('profile/')+8);
+		newProfile = newProfile.substr(0,newProfile.length-1);
+		
+		newClassname=$('#curChatInfo').find('span').text();
+		newNick=$('#chatUserName').text();
+		newBio=$('#chatUserIntro').text();
+		
+		var chats = '<div class="chats" bio="'+newBio+'" classname="'+newClassname+'" userid="'+receiver+'">'
+				+	'<a class="chatPic" style="background-image: url(images/profile/'+newProfile+')">'
+	         	+	'</a>'
+            	+	'<div class="chatInfo">'
+				+		'<h6>'+newNick+'</h6>'
+            	+		'<p class="small">'+content+'</p>'
+				+	'</div>'
+              	+	'</div>';
+		$('#chatList').prepend(chats);
+	}
 	
 	var from = '<div class="to">'
 			+		'<div class="myBubble">'+content
