@@ -9,11 +9,10 @@
 		<title>playddit</title>
 		<link href="favicon.ico" rel="icon shortcut" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link href="css/common.css" rel="stylesheet" />
         <link href="css/view.css" rel="stylesheet" />
+        <link href="css/edit.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script src="script/view.js"></script>
 	</head>
     <body>
@@ -248,57 +247,36 @@
         <div id="set" class="cen">
             <div id="setLeft">
                 <ul>
-                    <li><a href="#">프로필 편접</a></li>
-                    <li><a href="#">비밀번호 변경</a></li>
+                    <li><a href="#"><i class="fas fa-user-edit"></i>Edit your profile</a></li>
+                    <li><a href="#"><i class="fas fa-key"></i>Changing Password</a></li>
                 </ul>
             </div>
             <div id="setRight">
-                <div id="setProfile">
-                    <div id="setPic">
-                        <div id="cir" style="background-image: url(../WebContent/images/profile/chdnjs7610@gmail.com.jpg)"></div>
-                        <input type="file" id="profileUpload" style="display: none;">
-                        <span id="modiPic" onclick="onclick=document.all.profileUpload.click()">
-                            <i class="fas fa-edit"></i>
-                        </span>
-                    </div>
-                    <div id="setInfo">
-                        <h3>scarlett</h3>
-                        <p>chdnjs7610@gmail.com</p>
-                    </div>
-                </div>
-                <div id="setitems">
-                    <form>
-                        <div class="item">
-                            <label>Self-Introduction</label>
-                            <textarea>본인이 설정한 자기소개가 나오거나 default 값이 출력됩니다.</textarea>
-                        </div>
-                        <div class="item">
-                            <label>Class</label>
-                            <!--본인 학급 선택된 상태로-->
-                            <select name="myClass">
-                                <option>소속학급 없음</option>
-                                <option>풀스택 개발과장 6기 302호</option>
-                                <option>풀스택 개발과장 7기 302호</option>
-                                <option selected>풀스택 개발과장 8기 302호</option>
-                                <option>풀스택 개발과장 9기 302호</option>
-                                <option>풀스택 개발과장 10기 302호</option>
-                            </select>
-                            <p>학급 관리자 또는 반장에 의해 승인됩니다.</p>
-                        </div>
-                        <div class="item">
-                            <lable>Name</lable>
-                            <input type="text" name="name" value="박초원" />
-                        </div>
-                        <div class="item">
-                            <label>Phone Number</label>
-                            <input type="text" name="tel" value="01068287610"/>
-                        </div>
-                        <div class="item">
-                            <label>Birthday</label>
-                            <input type="date" name="birth" value="1995-05-03" />
+                <div id="passwordBox">
+                    <p>
+                        본인 확인을 위해 비밀번호를 입력해주세요.
+                    </p>
+                    <form onsubmit="idPassCheck()" id="login">
+                        <div class="loginBox">
+                            <i disabled class="fas fa-lock"></i>
+                            <input type="password" id="passCheck" name="pass" placeholder="Password" />
                         </div>
                         
-                        <button type="submit" id="modiBtn">Upload</button>
+                        <!--스크립트 보여드릴려고 button 타입으로 했습니다.-->
+                        <!--submit으로 바꿔주세요!-->
+                        <button type="button" id="changeBtn" class="purBtn">ENTER</button>
+                    </form>
+                    <form id="change">
+                        <div class="loginBox">
+                            <i disabled class="fas fa-lock"></i>
+                            <input type="password" id="newPass" name="pass" placeholder="New Password" />
+                        </div>
+                        <div class="loginBox">
+                            <i disabled class="fas fa-key"></i>
+                            <input type="password" id="newPassCheck" name="pass" placeholder="Confirm New Password" />
+                        </div>
+                        
+                        <button type="button" id="changeBtn" class="purBtn">CHANGE</button>
                     </form>
                 </div>
             </div>
@@ -310,32 +288,10 @@
         </footer>
         
         <script>
-			var sel_files = [];
- 
-			$(document).ready(function() {
-				$("#profileUpload").on("change", handleImgsFilesSelect);
-			}); 
-
-			function handleImgsFilesSelect(e) {
-				var files = e.target.files;
-				var filesArr = Array.prototype.slice.call(files);
-
-				filesArr.forEach(function(f) {
-					if(!f.type.match("image.*")) {
-						alert("이미지만 업로드 하실 수 있습니다.");
-						return;
-					}
-
-					sel_files.push(f);
-
-					var reader = new FileReader();
-					reader.onload = function(e) {
-						var img_html = e.target.result;
-						$("#cir").attr("style", "background-image:url("+ img_html +")");
-					}
-					reader.readAsDataURL(f);
-				});
-			}
+			$("#changeBtn").on("click", function(){
+                $(this).hide();
+               $("#change").slideDown();
+            });
 		</script>
     </body>
 </html>
