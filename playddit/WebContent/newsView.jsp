@@ -55,7 +55,10 @@
             </div>
             <!--컨텐츠 끝-->
             
-        <!-- footer.jsp include -->
-        <jsp:include page="/footer.jsp"></jsp:include>
+            <!-- footer.jsp include -->
+        	<jsp:include page="/footer.jsp"></jsp:include>
+        	
+        <script>
+        </script>
     </body>
 </html>
