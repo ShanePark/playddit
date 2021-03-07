@@ -2,7 +2,6 @@ $(function(){
 	user_id = getCookie("user_id");
 	
 	loadProfile();
-	getAlarm();
 	loadGroup();
 	
 	// 팔로우 혹은 팔로잉 목록 불러오는 이벤트
@@ -34,6 +33,7 @@ $(function(){
 	
 	// 알람 모달 
     $(".alarmBtn").click(function(){
+		getAlarm();
         if(!visi){
             $("#alarmEdge2 , #alarmEdge, #modal").show();
             visi = true;
@@ -238,7 +238,7 @@ getAlarm = function(){
 				}
 				alarm += '</a></div>';
 			})
-			$('#alarmWrap').append(alarm);
+			$('#alarmWrap').html(alarm);
 		},
 		error : function(xhr){
 			alert("status : " + xhr.status);
