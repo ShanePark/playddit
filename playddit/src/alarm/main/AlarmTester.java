@@ -16,9 +16,10 @@ public class AlarmTester {
 		
 		String user = "psh40963@naver.com";
 		String content = "스칼렛";
+		String sender = "chdnjs7610@gmail.com";
 		int type = 12;
 		
-		service.renewAlarm(user, content, type);
+		System.out.println(service.renewAlarm(user, content, type, sender));
 
 	}
 }

@@ -5,23 +5,23 @@
 
 <sqlMap namespace = "alarm">
 	<select id="getAlarm" parameterClass="String" resultClass="alarmVo">
-		select alarm.alarm_cont as cont, alarm.alarm_type as type, alarm.alarm_chk as chk,
-        users.user_id as sender, users.user_pic as sender_pic
+				select alarm.alarm_cont as cont, alarm.alarm_type as type, alarm.alarm_chk as chk,
+        users.user_pic as sender_pic, sender_id as sender, alarm_no
 		from alarm, users
 		where alarm.user_id = #receiver#
-		        and alarm.alarm_cont = users.user_nickname
+		        and alarm.sender_id = users.user_id
 		order by alarm_no desc
 	</select>
 	
 	<delete id="deleteAlarm" parameterClass="alarmVo">
 		delete from alarm 
-		where user_id = #receiver# and alarm_cont = #cont# and alarm_type = #type#
+		where user_id = #receiver# and sender_id = #sender# and alarm_type = #type#
 	</delete>
 	
 	<insert id="newAlarm" parameterClass="alarmVo">
 		insert into alarm 
-		(alarm_no, user_id, alarm_cont, alarm_type, alarm_date, alarm_chk)
-		values(alarm_no_seq.nextval,#receiver#,#cont#,#type#, sysdate, 0)
+		(alarm_no, user_id, alarm_cont, alarm_type, alarm_date, alarm_chk, sender_id)
+		values(alarm_no_seq.nextval,#receiver#,#cont#,#type#, sysdate, 0, #sender#)
 	</insert>
 	
 </sqlMap>

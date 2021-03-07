@@ -32,10 +32,10 @@ public class AlarmServiceImpl implements IAlarmService{
 	}
 
 	@Override
-	public int renewAlarm(String user, String cont, int type) {
+	public int renewAlarm(String user, String cont, int type, String sender) {
 		try {
-			dao.deleteAlarm(user, cont, type);
-			return dao.newAlarm(user, cont, type);
+			dao.deleteAlarm(user, sender, type);
+			return dao.newAlarm(user, cont, type, sender);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -43,9 +43,9 @@ public class AlarmServiceImpl implements IAlarmService{
 	}
 
 	@Override
-	public int deleteAlarm(String user, String cont, int type) {
+	public int deleteAlarm(String user, String sender, int type) {
 		try {
-			return dao.deleteAlarm(user, cont, type);
+			return dao.deleteAlarm(user, sender, type);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

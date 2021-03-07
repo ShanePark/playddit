@@ -1,11 +1,14 @@
 package alarm.vo;
 
 public class AlarmVO {
+	private int alarm_no;
 	private String cont;
 	private String receiver;
 	private String sender;
 	private String sender_pic;
 	private int type;
+	private int chk;
+	
 	public String getCont() {
 		return cont;
 	}
@@ -42,7 +45,12 @@ public class AlarmVO {
 	public void setChk(int chk) {
 		this.chk = chk;
 	}
-	private int chk;
+	public int getAlarm_no() {
+		return alarm_no;
+	}
+	public void setAlarm_no(int alarm_no) {
+		this.alarm_no = alarm_no;
+	}
 	
 	
 }
