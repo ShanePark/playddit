@@ -18,7 +18,6 @@
 		<script src="script/script.js"></script>
 		<script src="script/main.js"></script>
 		<script src="script/newsGetOne.js"></script>
-		<script src="script/main.js"></script>
 	</head>
     <body>
        <div class="cen" id="wrap">
