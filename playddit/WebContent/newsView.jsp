@@ -16,6 +16,7 @@
         <link href="css/news.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/script.js"></script>
+		<script src="script/main.js"></script>
 		<script src="script/newsGetOne.js"></script>
 		<script src="script/main.js"></script>
 	</head>
