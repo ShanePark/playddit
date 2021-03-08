@@ -4,6 +4,7 @@
 //document.domain = "naver.com";
 wordchk = function(nickvalue){
 	arrList = new Array();
+	arrList[arrList.length]  = "코로나";
 	arrList[arrList.length]  = "캐쉬스파이더";
 	arrList[arrList.length]  = "캐시스파이더";
 	arrList[arrList.length]  = "목자르는동영상";
