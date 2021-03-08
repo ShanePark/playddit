@@ -269,7 +269,7 @@ function loadUserProfile(){
 			
 			if(user_id == feed_id){	// 본인의 페이지일경우 setting 버튼만 추가 
 				var buttons = '<div id="mySet">'
-					+ '<a id="setBtn"><i class="fas fa-cog"></i>Setting</a></div>';
+					+ '<a href="setting.jsp" id="setBtn"><i class="fas fa-cog"></i>Setting</a></div>';
 				
 				$('#myLeft').append(buttons);
 			}else{	// 본인의 페이지가 아닐 경우 follow 버튼과 message 버튼 추가
