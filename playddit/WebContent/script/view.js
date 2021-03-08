@@ -1,25 +1,7 @@
 $(function(){
-	var visi = false;
-	$(".alarmBtn").click(function(){
-		if(!visi){
-			$("#alarmEdge2 , #alarmEdge, #modal").show();
-			visi = true;
-		}else{
-			$("#alarmEdge2, #alarmEdge").hide();
-			$("#modal").fadeOut(300);
-			visi = false;
-		}
-	});
-
+	//알람
 	//feed Search
 	$("#search button, #msearch button").on("click", function(){
-
-		if(visi){
-			$("#alarmEdge2, #alarmEdge").hide();
-			$("#modal").fadeOut(300);
-			visi = false;
-		}
-
 		$("#mask").show();
 		$("#feedSearch").show();
 		$("#feedSearchModal").slideDown(500);
@@ -27,9 +9,20 @@ $(function(){
 
 	$("#mask").click(function(){
 		$(this).hide();
-		$("#feedSearchModal").slideUp(300);
-		$("#feedSearch").delay(200).hide();
+			
+		if($("#modal").is(":visible")){
+			$("#alarmEdge2, #alarmEdge").hide();
+			$("#modal").fadeOut(300);
+		}else {
+			$("#feedSearchModal").slideUp(300);
+			$("#feedSearch").delay(200).hide();
+		}
 	});
+    
+    $(".alarmBtn").click(function(){
+		$("#mask").show();
+		$("#alarmEdge2 , #alarmEdge, #modal").show();
+    });
 
 	//신고 모달
 	$(".report").each(function(){

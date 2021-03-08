@@ -157,6 +157,7 @@
 .thums a p {
 	padding: 20px;
 	overflow: hidden;
+    background: rgb(255, 255, 255);
 }
 .thums .icons {
 	height: 40px;
