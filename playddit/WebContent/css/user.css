@@ -704,6 +704,17 @@ label[for='allchk'] h5 {
     font-weight: 700;
 }
 
+#refreshPlay {
+    	 border: none;
+	    background: none;
+	    font-size: 2em;
+	    /* display: block; */
+	    position: relative;
+	    top: -88px;
+	    right: -19%;
+	    color: #a1c4fd;
+    }
+
 /* ----------------- join.html select --------------------- */
 .itemclass li {
 	cursor: pointer;
@@ -1182,6 +1193,7 @@ label[for='allchk'] h5 {
         font-size: 1.2em;
         font-weight: 700;
     }
+    
 }
 
 
