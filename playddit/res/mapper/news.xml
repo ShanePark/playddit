@@ -6,7 +6,7 @@
 <sqlMap namespace="news">
 	<!-- 뉴스 내용 전체 가져오기 -->
 	<select id="getNewsList" resultClass="newsVo">
-		select news_no, news_title, news_cont, news_date, nvl(news_pic,'none')news_pic
+		select news_no, news_title, news_cont, to_char(news_date, 'yyyy-mm-dd') as news_date, nvl(news_pic,'none')news_pic
 		  from news
 		  order by news_date desc
 	</select>
@@ -14,7 +14,7 @@
 	
 	<!-- 뉴스 하나 가져오기 -->
 	<select id="getNews" resultClass="newsVo" parameterClass="int">
-		select news_no, news_title, news_cont, news_date, nvl(news_pic,'none') as news_pic
+		select news_no, news_title, news_cont, to_char(news_date, 'yyyy-mm-dd') as news_date, nvl(news_pic,'none') as news_pic
 		  from news
 		 where news_no = #news_no# 
 	</select>
