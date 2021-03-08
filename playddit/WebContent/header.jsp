@@ -193,3 +193,25 @@
         </div>
     </div>
     <div id="alarmEdge2"></div>
+    
+    <!-- 피드 검색 모달창 -->
+     <div id="mask"></div>
+     <div id="feedSearch">
+         <div class="edge"></div>
+         <div id="feedSearchModal">
+             <div id="feedCount">
+                 <a href="#" class="feedCir">
+                     <i class="fas fa-hashtag"></i>
+                 </a>
+                 <a href="#" id="feedText">
+                     <p id="keyword">검색단어</p>
+                     <p id="count">
+                         검색된 유저 <span>5,000</span>명
+                     </p>
+                 </a>
+             </div>
+             
+             <ul id="searchUser">
+             </ul>
+         </div>
+     </div>
