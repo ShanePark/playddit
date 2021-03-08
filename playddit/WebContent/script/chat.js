@@ -140,6 +140,21 @@ $(function(){
 		
  ***************************************************************************/
 
+chatSearch = function(){
+	event.preventDefault();
+	
+	// 일단 모달 띄우고
+	$('body').addClass('scrollOff').on('scroll touchmove mousewheel', function(e){
+        e.preventDefault();
+    });
+    $("#createBack").fadeIn(200);
+    $("#createModal").delay(200).animate({marginTop : "0"},400);
+	
+	var keyword = $('#chatSearch').find('input').val();
+	$('#createModal').find('input').val(keyword);
+	createChat();
+}
+
 createChat = function(){
 	event.preventDefault();
 	var keyword = $('#createModal').find('input').val();
