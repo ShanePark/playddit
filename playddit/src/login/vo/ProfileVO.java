@@ -8,6 +8,9 @@ public class ProfileVO {
 	private String user_bio;
 	private String class_id;
 	private String user_pic;
+	private String user_name;
+	private String user_tel;
+	private String user_birth;
 	private int following;
 	private int follower;
 	private int allfeed;
@@ -71,6 +74,24 @@ public class ProfileVO {
 	}
 	public void setUser_pic(String user_pic) {
 		this.user_pic = user_pic;
+	}
+	public String getUser_tel() {
+		return user_tel;
+	}
+	public void setUser_tel(String user_tel) {
+		this.user_tel = user_tel;
+	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+	public String getUser_birth() {
+		return user_birth;
+	}
+	public void setUser_birth(String user_birth) {
+		this.user_birth = user_birth;
 	}
 
 }

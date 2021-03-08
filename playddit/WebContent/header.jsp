@@ -18,12 +18,12 @@
             </a>
         </li>
         <li class="main">
-            <a href="food.jsp">
+            <a href="loading.jsp">
                 <i class="fas fa-utensils"></i>Food
             </a>
         </li>
         <li class="main">
-            <a href="store.jsp">
+            <a href="loading.jsp">
                 <i class="fas fa-store"></i>Store
             </a>
         </li>
@@ -174,12 +174,12 @@
                 </a>
             </li>
             <li class="main">
-                <a href="store.jsp">
+                <a href="loading.jsp">
                     <i class="fas fa-store"></i>Store
                 </a>
             </li>
             <li class="main">
-                <a href="setting">
+                <a href="loading.jsp">
                     <i class="fas fa-cog"></i>Setting
                 </a>
             </li>

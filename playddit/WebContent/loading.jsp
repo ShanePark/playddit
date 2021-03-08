@@ -16,6 +16,7 @@
         <link href="css/load.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/script.js"></script>
+		<script src="script/main.js"></script>
 	</head>
     <body>
         <div class="cen" id="wrap">
@@ -44,11 +45,11 @@
         		$(".wrapper input").on("click", function(){
 	        		
 	        		if(!visi){
-	        			$("#profile #userPic img").css("z-index", "-1");
+	        			$("#profile #userPic img, #myGroup .groupCir img").css("z-index", "-1");
 	        			visi = true;
 	        		}else{
 	        			setTimeout(function() {
-	        			$("#profile #userPic img").delay(100).css("z-index", "100");
+	        			$("#profile #userPic img, #myGroup .groupCir img").delay(100).css("z-index", "100");
 	        				}, 200);
 	        			visi = false;
 	        		}
