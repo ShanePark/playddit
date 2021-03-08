@@ -1707,7 +1707,15 @@ wordchk = function(nickvalue){
     arrList[arrList.length]="함소원헤어누드";
     arrList[arrList.length]="함소원누드사진";
     arrList[arrList.length]="함소원누두";
-    arrList[arrList.length]="함소원누드보기";
+    arrList[arrList.length]="시발";
+    arrList[arrList.length]="개새끼";
+    arrList[arrList.length]="씨발";
+    arrList[arrList.length]="개새";
+    arrList[arrList.length]="미친";
+    arrList[arrList.length]="미친놈";
+    arrList[arrList.length]="미친년";
+    arrList[arrList.length]="시발놈";
+    arrList[arrList.length]="시발년";
     
     arrList[arrList.length]  = "자살";
 	arrList[arrList.length]  = "음독";
@@ -1723,18 +1731,7 @@ wordchk = function(nickvalue){
 		}
 	}
 			$('input[name=nickname]').parents('.box').find('.msg').empty();
-			return true;
-
-	
-	/*for(str in arrList){
-		if(nickvalue==str){
-			$('#nickspan').text('사용불가능').css('color', 'red');
-			return
-		}
-	}
-	$('#nickspan').text('사용가능').css('color', 'green');
-	return*/
-	
+			return true;	
 }
 
 
