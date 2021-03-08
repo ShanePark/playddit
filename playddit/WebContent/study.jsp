@@ -19,6 +19,7 @@
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script src="script/script.js"></script>
 		<script src="script/main.js"></script>
+		<script src="script/study.js"></script>
 	</head>
     <body>
     	<div class="cen" id="wrap">
@@ -43,7 +44,7 @@
                     
                     <div id="myClass">
                         <h3>My class</h3>
-                        <div id="classBox" class="studys">
+                        <div id="classBox" onClick="location.href='chat.jsp'" class="studys">
                             <a href="#" id="classProfile" class="studyPic" style="background: url(images/feed3.jpg);"></a>
                             <div id="classInfo">
                                 <h6>풀스택 개발자 과정 6기-302호</h6>
@@ -56,8 +57,8 @@
                         <div class="studyBox studys">
                             <a href="#" class="studyProfile studyPic" style="background: url(images/profile/expedition1205@gmail.com.jpg);"></a>
                             <div class="studyInfo">
-                                <h6>프로그래머스 스터디방</h6>
-                                <p>스터디원 <span>4</span>명</p>
+                                <h6>공부 열심히 할사람들~</h6>
+                                <p>스터디원 <span>1</span>명</p>
                             </div>
                         </div>
                         <div class="studyBox studys">
@@ -70,8 +71,8 @@
                         <div class="studyBox studys">
                             <a href="#" class="studyProfile studyPic" style="background: url(images/profile/psh40963@naver.com.png);"></a>
                             <div class="studyInfo">
-                                <h6>프로그래머스 스터디방</h6>
-                                <p>스터디원 <span>4</span>명</p>
+                                <h6>맥북 사용자들의 모임</h6>
+                                <p>스터디원 <span>6</span>명</p>
                             </div>
                         </div>
                     </div>
