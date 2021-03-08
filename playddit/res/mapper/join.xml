@@ -30,7 +30,7 @@
 	<!-- 회원가입 -->
 	<insert id="insertUser" parameterClass="UsersVO">
 		 insert into users(user_id, user_nickname, user_password, user_name, user_tel, user_birth, user_theme, user_sign_date, class_id, user_pic, user_bio)
-		 values (#user_id#, #user_nickname#, #user_password#, #user_name#, #user_tel#, #user_birth#, 0, sysdate, #class_id#, 'default2.jpg', '자기소개가 없습니다')
+		 values (#user_id#, #user_nickname#, #user_password#, #user_name#, #user_tel#, #user_birth#, 0, sysdate, #class_id#, 'default.png', '자기소개가 없습니다')
 	</insert>
 	
 	
