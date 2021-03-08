@@ -56,89 +56,12 @@
                             <a href="#" id="feedText">
                                 <p id="keyword">검색단어</p>
                                 <p id="count">
-                                    피드 <span>5,000</span>개
+                                    검색된 유저 <span>5,000</span>명
                                 </p>
                             </a>
                         </div>
                         
                         <ul id="searchUser">
-                            <li>
-                                <a href="#" user="scarlet" class="feedCir">
-                                    <img src="images/default.png" />
-                                </a>
-                                <a href="#" class="searchUserBox">
-                                    <span href="#" user="scarlet" class="userNick">
-                                        scarlett
-                                    </span>
-                                    <span class="userEmail">chdnjs7610@gmail.com</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" user="scarlet" class="feedCir">
-                                    <img src="images/default.png" />
-                                </a>
-                                <a href="#" class="searchUserBox">
-                                    <span href="#" user="scarlet" class="userNick">
-                                        scarlett
-                                    </span>
-                                    <span class="userEmail">chdnjs7610@gmail.com</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" user="scarlet" class="feedCir">
-                                    <img src="images/default.png" />
-                                </a>
-                                <a href="#" class="searchUserBox">
-                                    <span href="#" user="scarlet" class="userNick">
-                                        scarlett
-                                    </span>
-                                    <span class="userEmail">chdnjs7610@gmail.com</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" user="scarlet" class="feedCir">
-                                    <img src="images/default.png" />
-                                </a>
-                                <a href="#" class="searchUserBox">
-                                    <span href="#" user="scarlet" class="userNick">
-                                        scarlett
-                                    </span>
-                                    <span class="userEmail">chdnjs7610@gmail.com</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" user="scarlet" class="feedCir">
-                                    <img src="images/default.png" />
-                                </a>
-                                <a href="#" class="searchUserBox">
-                                    <span href="#" user="scarlet" class="userNick">
-                                        scarlett
-                                    </span>
-                                    <span class="userEmail">chdnjs7610@gmail.com</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" user="scarlet" class="feedCir">
-                                    <img src="images/default.png" />
-                                </a>
-                                <a href="#" class="searchUserBox">
-                                    <span href="#" user="scarlet" class="userNick">
-                                        scarlett
-                                    </span>
-                                    <span class="userEmail">chdnjs7610@gmail.com</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" user="scarlet" class="feedCir">
-                                    <img src="images/default.png" />
-                                </a>
-                                <a href="#" class="searchUserBox">
-                                    <span href="#" user="scarlet" class="userNick">
-                                        scarlett
-                                    </span>
-                                    <span class="userEmail">chdnjs7610@gmail.com</span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>

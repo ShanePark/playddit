@@ -64,9 +64,9 @@
         </a>
         
         <div id="search">
-            <form class="searchs">
+            <form class="searchs" onsubmit="searchFunc()">
                 <input type="text" name="searchBox" placeholder="search"/>
-                <button type="button" name="search">
+                <button type="submit" name="search">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
