@@ -30,7 +30,7 @@
         <div class="cen chat" id="wrap">
             <div id="chatLeft">
                 <div id="chatSearch">
-                    <form action="" method="get" style="width: 80%!important; display: inline-block;">
+                    <form onsubmit="chatSearch()" method="get" style="width: 80%!important; display: inline-block;">
                         <input type="text" name="chatSearchBox" placeholder="search"/>
                         <button type="submit" name="search">
                             <i class="fas fa-search"></i>
