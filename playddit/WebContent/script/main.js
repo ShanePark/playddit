@@ -284,13 +284,13 @@ getAlarm = function(){
 					case 11: alarm += '<a class="alarmCont" href=myPage.jsp?feed_id='+v.sender+'><span class="alarmNick">'+ v.cont +'</span>'
 									+'님이 나를 follow 하기 시작했습니다.'
 						break;
-					case 12: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
+					case 12: alarm += '<a class="alarmCont" href="chat.jsp"><span class="alarmNick">'+ v.cont +'</span>'
 									+'님이 새로운 메시지를 보냈습니다.'
 						break;
-					case 21: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
+					case 21: alarm += '<a class="alarmCont" href=myPage.jsp?feed_id='+user_id+'><span class="alarmNick">'+ v.cont +'</span>'
 									+'님이 내가 쓴 글을 좋아합니다.'
 						break;
-					case 22: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
+					case 22: alarm += '<a class="alarmCont" href=myPage.jsp?feed_id='+user_id+'><span class="alarmNick">'+ v.cont +'</span>'
 									+ '님이 내가 쓴 글에 댓글을 남겼습니다.'
 						break;
 					case 31: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
