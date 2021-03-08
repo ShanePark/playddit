@@ -91,7 +91,7 @@ function loadGroup(){
 		success : function(res){
 			
 			$.each(res, function(i,v){
-				var li = '<li class="group"><a href="'+v.groupId+'">'
+				var li = '<li class="group"><a href="study.jsp">'
                     li += '<div class="groupCir"><img src="images/default.png"/></div>'
                     li += '<div class="groupInfo"><p class="groupName">'+v.name+'</p>'
                     if(v.type == 'class'){
