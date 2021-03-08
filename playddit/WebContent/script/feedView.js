@@ -43,10 +43,10 @@ $(function(){
 		$(this).parent('.row').children('#input_area').empty();
 		
 		// 댓글인지 대댓글인지 확인해서 각각 분기시키기
-		if(repTarget == 'comrep'){
+		if(repTarget == 'comrep'){	// 대댓글 분기 
 			insertComReply(comno, content);
 			repTarget = 'comment';
-		}else if (repTarget == 'comment'){
+		}else if (repTarget == 'comment'){	// 댓글 분기
 			insertComment(feedno,content);
 		}
 		
@@ -58,7 +58,12 @@ $(function(){
 		if(mytarget == 'comment'){
 			comli.remove();			
 		}else if(mytarget == 'comrep'){
+			// 대댓글 갯수도 줄여준다.
+			var comrepCount = parseInt(comrepli.parents('.comment').find('.replyBtnView').children('span').text());
+			comrepli.parents('.comment').find('.replyBtnView').children('span').text(comrepCount-1);
+			
 			comrepli.remove();
+			
 		}else if(mytarget == 'feed'){
 			delFeed(feedno);
 		}
@@ -218,8 +223,14 @@ function insertComReply(comno, content){
                        + '<span>'+comrep.comcont+'</span>'
 					   + '<button type="button" class="myReply"><i class="fas fa-ellipsis-h"></i></button>'
 						+ '</p></li>';
+						
 			comli.find('ul').append(reprep);
-			comli.children('.replyList').slideToggle(300);
+			
+			// 대댓글 갯수 늘려주기
+			var comrepCount = parseInt(comli.find('.replyBtnView').children('span').text());
+			comli.find('.replyBtnView').children('span').text(comrepCount+1);
+			
+			comli.children('.replyList').slideDown(300);
 			
 		 },
 		 error : function(xhr){
