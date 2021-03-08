@@ -77,6 +77,46 @@ $(function(){
     });
 	
 })
+function searchFunc(){
+	event.preventDefault();
+	var keyword = $('#search').find('input').val();
+	$('#keyword').text(keyword);
+	
+	$.ajax({
+		url : '/playddit/message/searchToChat.do',
+		type : 'post',
+		data : {'keyword' : keyword},
+		error : function(xhr){
+			if(xhr.status == 500){
+				location.href="index.html";
+				return false;
+			}
+			alert("status : " + xhr.status);
+		},
+		success : function(res){
+			$('#searchUser').empty();
+			$('#count').find('span').text(res.length);
+			
+			$.each(res,function(i,v){
+				var addLi='<li>'
+						+	'<a href=myPage.jsp?feed_id='+v.id+' user="scarlet" class="feedCir">'
+						+		'<img src="images/profile/'+v.profile+'" />'
+				 		+	'</a>'
+						+	'<a href=myPage.jsp?feed_id='+v.id+' class="searchUserBox">'
+						+		' <span href="#" user="'+v.nickname+'" class="userNick">'
+						+			v.nickname
+						+		'</span>'
+                        +		'<span class="userEmail">'+v.id+'</span>'
+                       	+	'</a>'       
+						+'</li>'
+				$('#searchUser').append(addLi);
+			})
+		},
+		dataType : 'json'
+	})
+	
+	
+}
 
 function loadGroup(){
 	$.ajax({
