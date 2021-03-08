@@ -640,6 +640,127 @@ footer #copy {
     color: #b0cff5; 
 }
 
+/*-----------------feed 검색 modal-----------------------------*/
+#mask {
+    position:fixed;
+    right: 0;
+    bottom: 0;
+    left:0;
+    top:0;
+    z-index: 50;  
+    background-color: transparent;
+	display: none;
+}
+#feedSearch {
+    display: none;
+}
+#feedSearchModal {
+    display: none;
+    width: 400px;
+    height: 335px;
+    background: white;
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: 1px 4px 10px rgba(39, 39, 39, 0.4);
+    z-index: 100;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: auto;
+    padding: 12px 15px 12px 12px;
+}
+.feedSearch2 #feedSearchModal {
+	top : 57PX;
+}
+#feedSearchModal::-webkit-scrollbar {
+    width: 6px;
+}
+#feedSearchModal::-webkit-scrollbar-track {
+    background-color: transparent;
+    padding: 10px;
+}
+#feedSearchModal::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #b0cff5; 
+}
+#feedSearchModal::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+.edge {
+    width: 18px;
+    height: 18px;
+    background: white;
+    position: absolute;
+    border-radius: 2px;
+    box-shadow: 1px 2px 5px #b2b2b2;
+    transform: rotate(45deg)!important;
+    z-index: 0;
+    top: 56px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.feedCir {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: white;
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    margin-right: 8px;
+    overflow: hidden;
+}
+.feedCir img {
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#feedCount .feedCir {
+    line-height: 55px;
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+#feedCount #feedText {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -66px;
+}
+#feedCount #keyword {
+    font-weight: 800;
+    font-family: 'Nanum Gothic', sans-serif;
+    margin-bottom: 3px;
+}
+#feedCount #count {
+    font-size: 0.93em;
+    color: #a0a0a0;
+}
+
+#searchUser li {
+    margin-bottom: 10px;
+    display: flex;
+    z-index: 300;
+}
+#searchUser li:last-of-type {
+    margin-bottom: 0;
+}
+#searchUser .searchUserBox {
+    margin-top: 10px;
+}
+#searchUser .userNick {
+    display: block;
+    font-weight: 800;
+}
+#searchUser .userEmail {
+    font-size: 0.9em;
+    color: #a0a0a0;
+}
+
 /*-----------------여기부터 태블릿pc---------------*/
 @media all and (max-width: 1020px) {
     /*---------------컨텐츠 공통영역 시작---------------*/
@@ -855,6 +976,7 @@ footer #copy {
     .followModal {
         display: none;
     }
+    
 }
 
 

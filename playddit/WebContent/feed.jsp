@@ -45,7 +45,7 @@
                 </div>
                 
                 <!-- 피드 검색 모달창 -->
-                <div id="mask"></div>
+                <!-- <div id="mask"></div>
                 <div id="feedSearch">
                     <div class="edge"></div>
                     <div id="feedSearchModal">
@@ -64,7 +64,7 @@
                         <ul id="searchUser">
                         </ul>
                     </div>
-                </div>
+                </div> -->
             </div>
             
             <!--신고 모달-->
