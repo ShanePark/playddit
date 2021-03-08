@@ -38,9 +38,11 @@ public class GetClassMessage implements IAction {
 		List<MessageVO> list = service.getClassMessage(class_id);
 		
 		String listJson = new Gson().toJson(list);
-		request.setAttribute("message", listJson);
 		
-		return "/message/getMessage.jsp";
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().write(listJson);
+		
+		return null;
 	
 	}
 
