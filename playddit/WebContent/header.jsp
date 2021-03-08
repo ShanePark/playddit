@@ -80,7 +80,7 @@
                 <a href="#"><i class="fas fa-envelope"></i></a>
             </li>
             <li>
-                <a href="#"><i class="fas fa-pen-nib"></i></a>
+                <a href="feedWrite.jsp"><i class="fas fa-pen-nib"></i></a>
             </li>
             <li>
                 <a class="alarmBtn"><i class="fas fa-bell"></i></a>
@@ -119,7 +119,7 @@
                         <a href="#"><i class="fas fa-envelope"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fas fa-pen-nib"></i></a>
+                        <a href="feedWrite.jsp"><i class="fas fa-pen-nib"></i></a>
                     </li>
                     <li>
                         <a class="alarmBtn"><i class="fas fa-bell"></i></a>
