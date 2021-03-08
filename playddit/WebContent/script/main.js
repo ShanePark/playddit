@@ -131,6 +131,12 @@ function loadGroup(){
 		success : function(res){
 			
 			$.each(res, function(i,v){
+				
+				// study.jsp 에만 적용될 내용 
+				if(v.type == 'class'){
+					$('#classInfo').children('p').find('span').text(v.num);
+				}// study.jsp 에만 적용될 내용 끝
+				
 				var li = '<li class="group"><a href="study.jsp">'
                     li += '<div class="groupCir"><img src="images/default.png"/></div>'
                     li += '<div class="groupInfo"><p class="groupName">'+v.name+'</p>'
@@ -176,6 +182,9 @@ function loadProfile(){
 			$('#userPic').attr("href",'myPage.jsp?feed_id='+res.user_id);
 			$('#userMail').text(res.user_id);
 			$('#userPic').children('img').attr("src",'images/profile/'+res.user_pic);
+			
+			// Study 페이지에서 추가될 내용
+			$('#classInfo').children('h6').text(res.classname1);
 			
 			if(res.user_pic == null){
 				res.user_pic = 'default.png';
