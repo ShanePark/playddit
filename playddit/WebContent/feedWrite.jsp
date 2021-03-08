@@ -159,6 +159,11 @@
                         });
                       });
                     });
+                    
+                    setTimeout(function() {
+	                    location.href="feed.jsp";
+	        		}, 3000);
+                    
                 });
 			});
 			
