@@ -4,13 +4,6 @@
 // 뉴스 목록 출력
 $(function(){
 	getNewsList();
-				
-	$('#news').on('click', '.newsTitle', function(){
-		news_no = $(this).parents(".thums").attr("idx");
-		var newsUrl = '/playddit/newsView.jsp?news_no='+news_no;
-		window.location.href=newsUrl;
-	})
-	
 })
 
 
@@ -26,7 +19,7 @@ getNewsList = function(){
 							
 		code = '<div id="newsList">';
 		$.each(res, function(i, v){		
-			code += '<a href="#" class="thums" no="' + i + '"idx="' + v.news_no +'">';
+			code += '<a href=newsView.jsp?news_no='+v.news_no+' class="thums" no='+i+' >';
 	        code += '<div class="newsCont">';		
 	        if(v.news_pic != "none"){
 	        	code += '<div class="newsPic" style="background-image: url(images/news/' + v.news_pic +')"></div>';
