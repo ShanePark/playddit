@@ -108,6 +108,9 @@ function loadPlay(){
 			$('#mail').text(res.user_id);
 			
 			// 클래스는 option을 동적으로 붙여준다.
+			$('#welcomBottom').find('select').empty();
+			$('#welcomBottom').find('select').append('<option value="C000">소속 학급 없음</option>');
+			
 			$.each(res.classList, function(i,v){
 				if(user_class_before == v.class_id){
 					var option = '<option value='+v.class_id+' selected>'+v.classname+'</option>';
