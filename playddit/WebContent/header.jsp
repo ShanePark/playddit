@@ -2,27 +2,27 @@
     pageEncoding="UTF-8"%>
 <nav id="lnb">
     <ul>
-        <li class="main active">
+        <li class="main" id="feedH">
             <a href="feed.jsp">
                 <i class="fas fa-comment-dots"></i>Feed
             </a>
         </li>
-        <li class="main">
+        <li class="main" id="newsH">
             <a href="news.jsp">
                 <i class="far fa-newspaper"></i>News
             </a>
         </li>
-        <li class="main">
+        <li class="main" id="studyH">
             <a href="study.jsp">
                 <i class="fas fa-users"></i>Study
             </a>
         </li>
-        <li class="main">
+        <li class="main" id="foodH">
             <a href="loading.jsp">
                 <i class="fas fa-utensils"></i>Food
             </a>
         </li>
-        <li class="main">
+        <li class="main" id="storeH">
             <a href="loading.jsp">
                 <i class="fas fa-store"></i>Store
             </a>

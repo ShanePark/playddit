@@ -82,5 +82,13 @@
             
             <!-- footer.jsp include -->
             <jsp:include page="/footer.jsp"></jsp:include>
+            
+            <script>
+            $(function(){
+            	
+          		//메뉴 active
+				$("#studyH").addClass("active");
+            })
+            </script>
 	</body>
 </html>
