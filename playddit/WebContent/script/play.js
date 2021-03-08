@@ -1,6 +1,9 @@
 $(function(){
 	loadPlay();
 	
+	$('#refreshPlay').on('click', function(){
+		loadPlay();	
+	})
 	
 	// follow 버튼 토글 이벤트
     $("#followBox").on("click", ".miniBox", function(){
@@ -116,6 +119,7 @@ function loadPlay(){
 			})
 			
 			// 추천 친구 리스트도 miniBox들을 동적으로 붙여준다.
+			$('#followBox').empty();
 			$.each(res.followList, function(i,v){
 				
 				if(v.user_pic === undefined){

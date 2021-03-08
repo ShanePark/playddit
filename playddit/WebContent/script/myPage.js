@@ -280,7 +280,7 @@ function loadUserProfile(){
                     + '<span class="button_text_container">Follow</span></a></div></div>'
                     + '<div class="myIcon"><i class="fas fa-envelope"></i>'     
                     + '<div class="button_su"><span class="su_button_circle"></span>'          
-                    + '<a href="#" class="button_su_inner">'
+                    + '<a href="chat.jsp" class="button_su_inner">'
                     + '<span class="button_text_container">Message</span>'    
                     + '</a></div></div></div>';    
 				$('#myLeft').append(buttons);
