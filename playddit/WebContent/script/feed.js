@@ -44,6 +44,11 @@ $(function(){
 		window.location.href=feedUrl;
 	});
 	
+	// 종이비행기 버튼 -> chat 으로 이동하기
+	$("#feedBox").on("click",".dm", function(){
+		window.location.href='chat.jsp';
+	});
+	
 	////////////////////////// 모달 이벤트 관련 함수 시작 /////////////////////////////
 	
 	// 내 피드 삭제하기 모달
