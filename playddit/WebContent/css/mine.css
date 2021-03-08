@@ -107,7 +107,7 @@
 
 #mySet {
 	position: absolute;
-	bottom: 137px;
+	bottom: 22%;
 	padding-left: 20px;
 }
 
@@ -158,6 +158,7 @@
 	padding: 20px;
 	overflow: hidden;
     background: rgb(255, 255, 255);
+    height : 100%;
 }
 .thums .icons {
 	height: 40px;
@@ -173,6 +174,7 @@
 	font-size: 1.4em;
 	vertical-align: middle;
 	color: #6054c4;
+	margin-right: 5px;
 }
 
 /*---------------------버튼------------------*/

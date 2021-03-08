@@ -17,7 +17,7 @@
 		(select count(*)
 		from feed
 		where feed.user_id = users.user_id) as allFeed,
-		user_bio
+		user_bio, user_birth, user_tel, user_name
 		from users
 		where user_id = #user_id#
 	</select>

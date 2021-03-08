@@ -141,7 +141,9 @@
                     $("#feedSearchModal").slideUp(300);
                     $("#feedSearch").delay(200).hide();
                 });
-
+                
+                //메뉴 active
+				$("#feedH").addClass("active");
             });
         </script>
     </body>

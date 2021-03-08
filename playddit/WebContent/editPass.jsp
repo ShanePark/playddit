@@ -31,7 +31,7 @@
             </div>
             <div id="setRight">
                 <div id="passwordBox">
-                    <p>
+                    <p id="passCon">
                         본인 확인을 위해 비밀번호를 입력해주세요.
                     </p>
                     <form onsubmit="idPassCheck()" id="login">

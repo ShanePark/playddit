@@ -62,6 +62,9 @@
                     $(".thums").height(thumsW);
                     $(".thums .newsCont").height(thumsW - 100);
                 });
+                
+             	//메뉴 active
+				$("#newsH").addClass("active");
             });
         </script>
 

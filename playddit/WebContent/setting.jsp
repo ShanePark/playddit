@@ -15,7 +15,9 @@
         <link href="css/view.css" rel="stylesheet" />
         <link href="css/edit.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="script/main.js"></script>
 		<script src="script/view.js"></script>
+		<script src="script/setting.js"></script>
 	</head>
     <body>
         <!-- header.jsp include -->
@@ -32,46 +34,38 @@
             <div id="setRight">
                 <div id="setProfile">
                     <div id="setPic">
-                        <div id="cir" style="background-image: url(images/profile/chdnjs7610@gmail.com.jpg)"></div>
+                        <div id="cir"></div>
                         <input type="file" id="profileUpload" style="display: none;">
                         <span id="modiPic" onclick="onclick=document.all.profileUpload.click()">
                             <i class="fas fa-edit"></i>
                         </span>
                     </div>
                     <div id="setInfo">
-                        <h3>scarlett</h3>
-                        <p>chdnjs7610@gmail.com</p>
+                        <h3></h3>
+                        <p></p>
                     </div>
                 </div>
                 <div id="setitems">
                     <form>
                         <div class="item">
                             <label>Self-Introduction</label>
-                            <textarea>본인이 설정한 자기소개가 나오거나 default 값이 출력됩니다. 줄간격 설정하려고 길게 씁니다.</textarea>
+                            <textarea></textarea>
                         </div>
-                        <div class="item">
+                        <div class="item" id="myClass">
                             <label>Class</label>
-                            <!--본인 학급 선택된 상태로 selected 속성-->
-                            <select name="myClass">
-                                <option>소속학급 없음</option>
-                                <option>풀스택 개발과장 6기 302호</option>
-                                <option>풀스택 개발과장 7기 302호</option>
-                                <option selected>풀스택 개발과장 8기 302호</option>
-                                <option>풀스택 개발과장 9기 302호</option>
-                                <option>풀스택 개발과장 10기 302호</option>
-                            </select>
+                            
                         </div>
                         <div class="item">
                             <label>Name</label>
-                            <input type="text" name="name" value="박초원" />
+                            <input type="text" name="name" />
                         </div>
                         <div class="item">
                             <label>Phone Number</label>
-                            <input type="text" name="tel" value="01068287610"/>
+                            <input type="text" name="tel" />
                         </div>
                         <div class="item">
                             <label>Birthday</label>
-                            <input type="date" name="birth" value="1995-05-03" />
+                            <input type="date" name="birth" />
                         </div>
                         
                         <button type="submit" id="modiBtn">Upload</button>

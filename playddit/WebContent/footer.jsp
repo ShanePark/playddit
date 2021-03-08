@@ -6,7 +6,7 @@
 				<img src="images/default.png" />
 			</a>
 			<div id="userBox">
-				<a href="#" id="userName"></a>
+				<a href="#" id="userName"></a><br/>
 				<span id="userMail"></span>
 			</div>
 		</div>
