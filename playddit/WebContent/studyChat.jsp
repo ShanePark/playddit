@@ -19,7 +19,6 @@
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script src="script/script.js"></script>
 		<script src="script/view.js"></script>
-		<script src="script/chat.js"></script>
 		<script src="script/emoji_jk.js"></script>
 	</head>
     <body>
@@ -632,7 +631,37 @@
 	    <jsp:include page="/viewFooter.jsp"></jsp:include>
         
         <script>
-           
+	        var stat = false;
+	    	
+	        $("#curChatBtn").click(function(){
+	            if(!stat){
+	                $("#mask").fadeIn();
+	                $("#chatBack").fadeIn(200); $("#chatUserBox").delay(100).animate({marginRight : 0}, 300);
+	                stat = true;
+	            }else{
+	                $("#mask").fadeOut();
+	                $("#chatUserBox").animate({marginRight : "-80%"}, 300);
+	                $("#chatBack").delay(100).fadeOut(200); 
+	                stat = false;
+	            }
+	        });
+	
+	        $("#chatBack, #mask").click(function(){
+	            $("#mask").fadeOut();
+	            $("#chatUserBox").animate({marginRight : "-80%"}, 300);
+	            $("#chatBack").delay(100).fadeOut(200); 
+	            stat = false;
+	        });
+	
+	        $("#chatUserBox h3").on("click","button",function(){
+	            $("#outWrap").fadeIn(200);
+	            $("#outModal").delay(200).animate({marginTop:"0"}, 400);
+	        });
+	
+	        $("#cancel, #outWrap").click(function(){
+	            $("#outModal").animate({marginTop:"100px"}, 400);
+	            $("#outWrap").delay(200).fadeOut(200);
+	        });
         </script>
     </body>
 </html>
