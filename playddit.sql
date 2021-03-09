@@ -19,30 +19,7 @@ where lower(table_name) = '테이블명';
 --      ALL ABOUT FOLLOWING
 --
 -----------------------------------------------------
--- users list who a001 is following 
------------------------------------------------------
-select followee
-from follow
-where follower = 'a001';
------------------------------------------------------
 
------------------------------------------------------
--- user "a004" information 
------------------------------------------------------
-select * 
-from users
-where user_id = 'a004';
-
------------------------------------------------------
-
------------------------------------------------------
--- users informations who a001 is following
-select * 
-from users
-where user_id in (select followee
-                from follow
-                where follower = 'psh40963@naver.com');
------------------------------------------------------
 -----------------------------------------------------
 -- users informations who are following specific person
 -----------------------------------------------------
@@ -53,7 +30,8 @@ select user_id as id, user_nickname as nickname,
 from users
 where user_id in (select follower
                 from follow
-                where followee = 'psh40963@naver.com');
+                where followee = 'psh40963@naver.com')
+order by followback;
 -----------------------------------------------------
 -----------------------------------------------------
 -- users list someone is following
