@@ -1,7 +1,6 @@
 $(function(){
-    
+	getClassChatInfo();
 	getAudiences();
-	
 	
 	// 친구 검색해서 클릭할때 일어날 이벤트
 	$('#userList').on('click','li',function(){
@@ -37,8 +36,19 @@ $(function(){
 		
 	})
 	
+	// 채팅 목록에서 학급 클릭시 
+	$('#chatList').on('click','.groupchat',function(){
+		getClassMessage();
+	})
+	
 	// 채팅 목록에서 유저 클릭시 
 	$('#chatList').on('click','.chats',function(){
+		
+		// 학급클릭이면 돌려 보낸다.
+		if($(this).hasClass('groupchat')){
+			return false;
+		}
+		
 		$('#input_area').empty();
 		
 		var chatUser = new Object();
@@ -64,6 +74,9 @@ $(function(){
 	});
 	
 	$('#commentSend').on('click', function(){
+		
+		// 전송 버튼 눌렀을때 학급일경우 분기시켜야 합니다.
+		
 		sendMessage();
 	});
 	
@@ -139,7 +152,96 @@ $(function(){
 							여기부터 함수 선언부입니다. 
 		
  ***************************************************************************/
+getClassMessage = function(){
+	var title = $('#chatList').children('.groupchat').attr("title");
+	var title2 = $('#chatList').children('.groupchat').attr("title2");
+	var class_id = $('#chatList').children('.groupchat').attr("class_id");
+	
+	$('#curChatPic').attr('href','#');
+	$('#curChatPic').attr('style','background-image: url(images/class.jpeg)');
+	$('#curChatInfo').html('<h4>'+title+'<span>'+title2+'</span></h4>');
+	$('#chatUserName').text(title);
+	$('#chatUserMail').text(title2);
+	$('#chatUserIntro').text('학급 채팅입니다.');
+	$('#chatUserPic').attr('style','background-image: url(images/class.jpeg)');
+	$('#chatUserPic').attr('href','#');
+		
+	$.ajax({
+		url : '/playddit/message/getClassMessage.do',
+		type : 'post',
+		error : function(xhr){
+			if(xhr.status == 500){
+				location.href="index.html";
+				return false;
+			}
+			alert("status : " + xhr.status);
+		},
+		success : function(msg){
+			// 첫 메시지 날짜 출력 후 기억
+			var date = msg[0].sentdate.substr(0,10);
+			$('#curChatBox').append('<p class="chatDate">'+dateFormat(strToDate(date))+'</p>');
+			
+			$.each(msg, function(i,v){
+				newDate = v.sentdate.substr(0,10);
+				if(date != newDate){	// 날짜가 바뀔때마다 날짜를 찍어준다.
+					date = newDate;
+					$('#curChatBox').append('<p class="chatDate">'+dateFormat(strToDate(date))+'</p>');
+				}
+				if(v.isMine== 0){
+					var from = '<div class="from">'
+							+		'<a href="#" id="curChatPic" style="background-image: url(images/class.jpeg);"></a>'
+							+		'<h4>'+v.sender+'</h4>'
+							+		'<div class="bubble">'
+							+			v.content	
+						    +        '</div>'        
+                        	+		'<p>'+v.sentdate.substr(11,5)+'</p>'
+                        	+	'</div>';
+				}else{
+					var from = '<div class="to">'
+							+		'<div class="myBubble">'+v.content
+							+		'</div>'
+							+		'<p>'+v.sentdate.substr(11,5)+'</p>'
+							+	'</div>';
+				}
+				$('#curChatBox').append(from);
+			})
+			
+			// 스크롤을 제일 아래로 내려준다.
+			$('#curChatBox').scrollTop($('#curChatBox')[0].scrollHeight);
+			
+		},
+		dataType : 'json'
+	})
+}
+getClassChatInfo = function(){
+	$.ajax({
+		url : '/playddit/message/getClassChatInfo.do',
+		type : 'post',
+		error : function(xhr){
+			if(xhr.status == 500){
+				location.href="index.html";
+				return false;
+			}
+			alert("status : " + xhr.status);
+		},
+		success : function(res){
+			var chats = '<div class="chats groupchat" class_id='+res.group_id+' title="'+res.title+'" title2="'+res.title2+'">'
+						+	'<a class="chatPic" style="background-image: url(images/class.jpeg)">'
+			         	+	'</a>'
+                    	+	'<div class="chatInfo">'
+						+		'<h6>'+res.title2+'</h6>'
+                    	+		'<p class="small">'+res.lastmsg+'</p>'
+						+	'</div>'
+                      	+	'</div>';
+			$('#chatList').prepend(chats);
+			
+			getClassMessage();
 
+		},
+		dataType : 'json'
+	})
+
+}
 chatSearch = function(){
 	event.preventDefault();
 	
@@ -277,20 +379,6 @@ getAudiences = function(){
                           	+	'</div>';
 				$('#chatList').append(chats);
 			})
-			
-			// 첫번째 유저 채팅기록 불러오며 함수 종료
-			if(res.length != 0){
-				$('#curChatPic').attr('href','myPage.jsp?feed_id='+res[0].id);
-				$('#curChatPic').attr('style','background-image: url(images/profile/'+res[0].profile+')');
-				$('#curChatInfo').html('<h4>'+res[0].nickname+'<span>'+res[0].classname+'</span></h4>');
-				$('#chatUserName').text(res[0].nickname);
-				$('#chatUserMail').text(res[0].id);
-				$('#chatUserIntro').text(res[0].bio);
-				$('#chatUserPic').attr('style','background-image: url(images/profile/'+res[0].profile+')');
-				$('#chatUserPic').attr('href','myPage.jsp?feed_id='+res[0].id);
-				
-				getMessage(res[0].id, res[0].nickname);
-			}
 			
 		},
 		error : function(xhr){
