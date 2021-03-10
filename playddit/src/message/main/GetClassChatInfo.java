@@ -1,7 +1,6 @@
 package message.main;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,10 +12,10 @@ import com.google.gson.Gson;
 import login.vo.ProfileVO;
 import message.service.IMessageService;
 import message.service.MessageServiceImpl;
-import message.vo.MessageVO;
+import message.vo.GroupChatVO;
 import web.IAction;
 
-public class GetClassMessage implements IAction {
+public class GetClassChatInfo implements IAction {
 
 	@Override
 	public boolean isRedirect() {
@@ -32,16 +31,16 @@ public class GetClassMessage implements IAction {
 		Gson gson = new Gson();
 		ProfileVO profile = gson.fromJson(profileJson, ProfileVO.class);
 		
-		String class_id = profile.getClass_id();
 		String user_id = profile.getUser_id();
 		
 		IMessageService service = MessageServiceImpl.getService();
-		List<MessageVO> list = service.getClassMessages(user_id, class_id);
 		
-		String listJson = new Gson().toJson(list);
+		GroupChatVO vo = service.getClassChatInfo(user_id);
+		
+		String voJson = new Gson().toJson(vo);
 		
 		response.setContentType("text/html; charset=UTF-8");
-		response.getWriter().write(listJson);
+		response.getWriter().write(voJson);
 		
 		return null;
 	

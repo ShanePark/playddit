@@ -19,30 +19,7 @@ where lower(table_name) = '테이블명';
 --      ALL ABOUT FOLLOWING
 --
 -----------------------------------------------------
--- users list who a001 is following 
------------------------------------------------------
-select followee
-from follow
-where follower = 'a001';
------------------------------------------------------
 
------------------------------------------------------
--- user "a004" information 
------------------------------------------------------
-select * 
-from users
-where user_id = 'a004';
-
------------------------------------------------------
-
------------------------------------------------------
--- users informations who a001 is following
-select * 
-from users
-where user_id in (select followee
-                from follow
-                where follower = 'psh40963@naver.com');
------------------------------------------------------
 -----------------------------------------------------
 -- users informations who are following specific person
 -----------------------------------------------------
@@ -53,7 +30,8 @@ select user_id as id, user_nickname as nickname,
 from users
 where user_id in (select follower
                 from follow
-                where followee = 'psh40963@naver.com');
+                where followee = 'psh40963@naver.com')
+order by followback desc;
 -----------------------------------------------------
 -----------------------------------------------------
 -- users list someone is following
@@ -210,6 +188,35 @@ from class_msg, users
 where class_msg.class_id = 'C202011302'
 and msg_sender = user_id
 order by class_msg.cmsg_no;
+-----------------------------------------------------
+-- get my class information for class chat
+select *
+from (select a.class_title as title,
+            case when a.class_id = 'C000' then a.class_title
+            else a.class_num||' - ' || a.class_room end as title2,
+            a.class_id as group_id,
+            nvl(msg_cont,' ') as lastmsg
+    from class a,users b, class_msg c
+    where a.class_id = b.class_id
+    and a.class_id = c.class_id(+)
+    and user_id = 'psh40963@naver.com'
+    order by c.cmsg_no desc)
+where rownum = 1;
+
+
+-- get class messages
+select a.class_id as receiver, 
+        b.user_pic as senderProfile,
+        user_nickname as sender, 
+        user_id as sender_id,
+        msg_cont as content, 
+        msg_senddate as sentdate,
+        case when b.user_id = 'psh40963@naver.com' then 1
+            else 0 end as ismine
+from class_msg a, users b
+where a.class_id = 'C202011302'
+and msg_sender = user_id
+order by a.cmsg_no;
 -----------------------------------------------------
 -- send message 'c' from a to b . AND B is not a person but a group
 insert into class_msg 

@@ -4,13 +4,6 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace = "message">
-	<select id="getClassMessage" parameterClass="String" resultClass="MessageVO">
-		select class_msg.class_id as receiver, user_nickname as sender, msg_cont as content, msg_senddate as sentdate
-		from class_msg, users
-		where class_msg.class_id = #class_id#
-		and msg_sender = user_id
-		order by class_msg.cmsg_no
-	</select>
 	
 	<select id="getMessage" parameterClass="map" resultClass="MessageVO">
 		select b.user_nickname as receiver, c.user_nickname as sender, a.msg_content as content, to_char(a.msg_senddate,'yyyy-mm-dd hh24:mi:ss') as sentdate
@@ -70,6 +63,38 @@
 		    and a.class_id = b.class_id
 		    and user_id != #user_id#
 		order by content desc
+	</select>
+	
+	<select id="getClassChatInfo" parameterClass="String" resultClass="groupChatVO">
+		select *
+		from (select a.class_title as title,
+		            case when a.class_id = 'C000' then a.class_title
+		            else a.class_num||' - ' || a.class_room end as title2,
+		            a.class_id as group_id,
+		            nvl(msg_cont,' ') as lastmsg
+		    from class a,users b, class_msg c
+		    where a.class_id = b.class_id
+		    and a.class_id = c.class_id(+)
+		    and user_id = #user_id#
+		    order by c.cmsg_no desc)
+		where rownum = 1
+
+	</select>
+	
+	<select id="getClassMessages" parameterClass="map" resultClass="MessageVO">
+		select a.class_id as receiver, 
+		        b.user_pic as senderProfile,
+		        user_nickname as sender, 
+		        user_id as sender_id,
+		        msg_cont as content, 
+		        msg_senddate as sentdate,
+		        case when b.user_id = #user_id# then 1
+		            else 0 end as ismine
+		from class_msg a, users b
+		where a.class_id = #class_id#
+		and msg_sender = user_id
+		order by a.cmsg_no
+
 	</select>
 	
 </sqlMap>

@@ -5,7 +5,7 @@ public class CryptoTest {
 	public static void main(String[] args) {
 		try {
 			String id = "psh40963@naver.com";
-			String password = "OUNYYRPARG";
+			String password = "OUN4";
 			String key = "playddit"+id+password;	// 16 글자 이상.
 			
 			String result = CryptoUtil.encryptAES256(password, key);

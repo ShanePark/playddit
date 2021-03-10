@@ -36,6 +36,7 @@
 		where user_id in (select follower
                 from follow
                 where followee = #user_id#)
+        order by followback desc
 	</select>
 	
 	<select id="getGroupInfo_class" resultClass="groupVO" parameterClass="String">

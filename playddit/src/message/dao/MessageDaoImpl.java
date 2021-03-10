@@ -9,6 +9,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 import config.SqlMapClientFactory;
 import message.vo.AudienceVO;
+import message.vo.GroupChatVO;
 import message.vo.MessageVO;
 import users.vo.UsersVO;
 
@@ -51,12 +52,6 @@ public class MessageDaoImpl implements IMessageDao{
 		return client.update("message.insertMessage", map);
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<MessageVO> getClassMessage(String class_id) throws SQLException {
-		return client.queryForList("message.getClassMessage",class_id);
-	}
-
 	@Override
 	public int insertMessageClass(String sender, String receiver, String content) throws SQLException {
 		Map<String, String> map = new HashMap<>();
@@ -73,6 +68,20 @@ public class MessageDaoImpl implements IMessageDao{
 		map.put("user_id", user_id);
 		map.put("keyword", "%"+keyword+"%");	// 쿼리에 %를 쓰면 에러가 나서 파라미터에 붙여 보내야함.
 		return client.queryForList("message.searchToChat",map);
+	}
+
+	@Override
+	public GroupChatVO getClassChatInfo(String user_id) throws SQLException {
+		return (GroupChatVO) client.queryForObject("message.getClassChatInfo", user_id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MessageVO> getClassMessages(String user_id, String class_id) throws SQLException {
+		Map<String,String> map = new HashMap<>();
+		map.put("user_id", user_id);
+		map.put("class_id", class_id);
+		return client.queryForList("message.getClassMessages", map);
 	}
 
 }

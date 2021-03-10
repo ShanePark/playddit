@@ -359,7 +359,7 @@ function loadFeed(feedno){
 			
 			var userprofile ='<a href=myPage.jsp?feed_id='+res.id+' id="userPic">'
 						+ '<img src="images/profile/'+res.profile+'"+ /></a>'
-						+ '<a href="'+res.id+'" id="userInfo"><p>'+res.nickname+'</p>'
+						+ '<a href=myPage.jsp?feed_id='+res.id+' id="userInfo"><p>'+res.nickname+'</p>'
 						+ '<span>'+res.classname+'</span></a>';
 			$('#userProfile').append(userprofile);
 			$('#likeBtn').append('좋아요 <span>'+res.countlike+'</span>개');
