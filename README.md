@@ -16,3 +16,6 @@
 >[Scarlett](https://github.com/Scarl-ett)   
 >[josh](https://github.com/JeonghoonWon)   
 >[summer](https://github.com/5UMMER)   
+
+### 3월 8일 발표 영상
+[![Video Label](http://img.youtube.com/vi/S1e29gxoSLQ/maxresdefault.jpg)](https://youtu.be/S1e29gxoSLQ) 
