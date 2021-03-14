@@ -1,27 +1,27 @@
 package users.main;
 
-import java.util.List;
+import java.sql.SQLException;
 
+import login.vo.ProfileVO;
 import users.dao.IUsersDao;
 import users.dao.UsersDaoImpl;
 import users.service.IUsersService;
 import users.service.UsersServiceImpl;
-import users.vo.GroupVO;
 
 public class TEST {
 
 	public static void main(String[] args) {
 
-		String user = "psh40963@naver.com";
+		String user_id = "psh40963@naver.com";
 		IUsersService service = UsersServiceImpl.getService();
 		IUsersDao dao = UsersDaoImpl.getDao();
-
-		List<GroupVO> list = service.getGroups(user);
 		
-		for(GroupVO vo : list){
-			System.out.println(vo.getName());
-			System.out.println(vo.getNum());
-			System.out.println(vo.getType());
+		String target_id ="vhvhglgl@naver.com";
+		try {
+			ProfileVO vo = dao.loadSomeonesProfile(user_id, target_id);
+			System.out.println(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 

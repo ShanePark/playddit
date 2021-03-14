@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import login.vo.ProfileVO;
 import users.dao.IUsersDao;
 import users.dao.UsersDaoImpl;
 import users.vo.FollowerVO;
@@ -179,6 +180,16 @@ public class UsersServiceImpl implements IUsersService {
 		}
 		
 		return 0;
+	}
+
+	@Override
+	public ProfileVO loadSomeonesProfile(String user_id, String target_id) {
+		try {
+			return dao.loadSomeonesProfile(user_id, target_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 		
 	

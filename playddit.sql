@@ -83,24 +83,28 @@ select user_rating from users where user_id = 'psh40963@naver.com';
 INSERT INTO "PLAYDDIT"."USERS" (USER_ID, USER_NICKNAME, USER_PASSWORD, USER_NAME, USER_TEL, USER_BIRTH, USER_CLASS, USER_RATING, USER_SIGN_DATE) 
 VALUES ('chdnjs7610@gmail.com', '테스터스칼릿', '1234', '박초원', '1234', TO_DATE('2005-01-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '202011_302', '1', TO_DATE('2021-02-16 00:00:00', 'YYYY-MM-DD HH24:MI:SS'));
 -----------------------------------------------------
---  login profile data loading
+--  loadSomeonesProfile
 -----------------------------------------------------
 select user_id, user_nickname,class_id, nvl(user_pic, 'default.png') as user_pic,
-(select count(*) from follow where follower=users.user_id) as following,
-(select count(*) from follow where followee=users.user_id) as follower,
-(select class_title ||' '|| class_num || ' - ' || class_room
-from class
-where class_id = (select class_id from users where user_id='psh40963@naver.com')) as className1,
-(select count(*) from follow where followee=users.user_id) as follower,
-(select class_num || ' - ' || class_room
-from class
-where class_id = (select class_id from users where user_id='psh40963@naver.com')) as className2,
-(select count(*)
-from feed
-where feed.user_id = users.user_id) as allFeed,
-user_bio
+    (select count(*) from follow where follower=users.user_id) as following,
+    (select count(*) from follow where followee=users.user_id) as follower,
+    (select class_title ||' '|| class_num || ' - ' || class_room
+       from class
+      where class_id = (select class_id from users where user_id='vhvhglgl@naver.com')) as className1,
+    (select count(*) from follow where followee=users.user_id) as follower,
+    (select class_num || ' - ' || class_room
+    from class
+    where class_id = (select class_id from users where user_id='vhvhglgl@naver.com')) as className2,
+    (select count(*)
+    from feed
+    where feed.user_id = users.user_id) as allFeed,
+    user_bio, user_birth, user_tel, user_name,
+    (select count(*) 
+        from follow
+        where follower = 'psh40963@naver.com'
+            and followee = 'vhvhglgl@naver.com') as amIfollowing
 from users
-where user_id = 'psh40963@naver.com';
+where user_id = 'vhvhglgl@naver.com';
 -----------------------------------------------------
 -- load group lists where the user is in
 --          need to add PIC ( on db first)

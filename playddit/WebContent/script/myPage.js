@@ -25,6 +25,28 @@ $(function(){
 		getAlarm();
 	});
 
+	// 마이페이지 주인 팔로우 하고 언팔로우 하기
+	$('#myLeft').on('click', '.button_su', function(){
+		if(amIfollowing == 0){
+			$(this).find('.button_text_container').text('Following');
+			
+			followerBefore = parseInt($('#myFollower').children('span').text());
+			$('#myFollower').children('span').text(followerBefore+1)
+			
+			amIfollowing = 1;
+			followOwner(feed_id);
+		}else{
+			$(this).find('.button_text_container').text('follow');
+			
+			followerBefore = parseInt($('#myFollower').children('span').text());
+			$('#myFollower').children('span').text(followerBefore-1)
+			
+			amIfollowing = 0;
+			unfollowOwner(feed_id);
+		}
+	})
+	// 아래 팔로우/ 언팔로우는 모달 관련 이벤트 입니다. 
+
 	// 팔로우 버튼 이벤트
 	$('.followList').on('click', '.followBtn', function(){
 		$(this).remove();
@@ -214,6 +236,28 @@ loadFollowing = function(){
 	})
 }
 
+followOwner = function(targetId){
+	$.ajax({
+		url : '/playddit/users/followUser.do',
+		type : 'post',
+		data : {'targetId' : targetId},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		}
+	})
+}
+unfollowOwner = function(targetId){
+	$.ajax({
+		url : '/playddit/users/unfollowUser.do',
+		type : 'post',
+		data : {'targetId' : targetId},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+	})
+}
+
+
 followFunc = function(targetId){
 	$.ajax({
 		url : '/playddit/users/followUser.do',
@@ -254,9 +298,9 @@ unfollowFunc = function(targetId){
 
 function loadUserProfile(){
 	$.ajax({
-		url : '/playddit/users/loadUserProfile.do',
+		url : '/playddit/users/LoadSomeonesProfile.do',
 		type : 'post',
-		data : {'feed_id' : feed_id},
+		data : {'feed_id' : feed_id, 'user_id' : user_id},
 		success : function(res){
 			$('#myName').text(res.user_nickname);
 			$('#myClass').text(res.classname2);
@@ -266,6 +310,7 @@ function loadUserProfile(){
 			$('#myFollowing').children('span').text(res.following);
 			var proPic = 'background-image: url(images/profile/'+res.user_pic+');'
 			$('#myProfile').attr("style",proPic)
+			amIfollowing = res.amIfollowing;
 			
 			if(user_id == feed_id){	// 본인의 페이지일경우 setting 버튼만 추가 
 				var buttons = '<div id="mySet">'
@@ -274,16 +319,31 @@ function loadUserProfile(){
 				
 				$('#myLeft').append(buttons);
 			}else{	// 본인의 페이지가 아닐 경우 follow 버튼과 message 버튼 추가
-				var buttons='<div id="btnBox"><div class="myIcon" id="toFollow">'
- 					+ '<i class="fas fa-user"></i> <div class="button_su">'
-                    + '<span class="su_button_circle"></span>'   	
-                    + '<a href="#" class="button_su_inner">'        
-                    + '<span class="button_text_container">Follow</span></a></div></div>'
-                    + '<div class="myIcon"><i class="fas fa-envelope"></i>'     
-                    + '<div class="button_su"><span class="su_button_circle"></span>'          
-                    + '<a href="chat.jsp" class="button_su_inner">'
-                    + '<span class="button_text_container">Message</span>'    
-                    + '</a></div></div></div>';    
+				var buttons='<div id="btnBox">'
+							+	'<div class="myIcon" id="toFollow">'
+ 							+ 		'<i class="fas fa-user"></i>'
+							+			'<div class="button_su">'
+		                    + 				'<span class="su_button_circle"></span>'   	
+		                    + 				'<a href="#" class="button_su_inner">';
+
+        		if(res.amIfollowing == 1){
+					buttons += 					'<span class="button_text_container">Following</span>'
+				}else{
+					buttons +=					'<span class="button_text_container">Follow</span>'
+				}			
+
+					buttons+=				'</a>'
+							+			'</div>'
+							+	'</div>'
+		                    + 	'<div class="myIcon"><i class="fas fa-envelope"></i>'     
+		                    + 		'<div class="button_su">'
+							+			'<span class="su_button_circle"></span>'          
+		                    + 			'<a href="chat.jsp" class="button_su_inner">'
+		                    + 				'<span class="button_text_container">Message</span>'    
+		                    + 			'</a>'
+							+		'</div>'
+							+	'</div>'
+							+'</div>';    
 				$('#myLeft').append(buttons);
 			}
 			

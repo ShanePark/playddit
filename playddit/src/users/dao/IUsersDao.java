@@ -3,6 +3,7 @@ package users.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import login.vo.ProfileVO;
 import users.vo.FollowerVO;
 import users.vo.GroupVO;
 import users.vo.UsersVO;
@@ -48,6 +49,9 @@ public interface IUsersDao {
 	
 	// 학급 권한부여 권한자들 목록 불러오기
 	public List<String> getRightHolders(String class_id) throws SQLException;
+	
+	// 특정 유저 정보 불러오기
+	public ProfileVO loadSomeonesProfile(String user_id, String target_id) throws SQLException;
 	
 }
 	
