@@ -9,6 +9,7 @@ import java.util.Map;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import config.SqlMapClientFactory;
+import login.vo.ProfileVO;
 import users.vo.FollowerVO;
 import users.vo.GroupVO;
 import users.vo.UsersVO;
@@ -157,6 +158,14 @@ public class UsersDaoImpl implements IUsersDao {
 		map.put("user_id", user_id);
 		map.put("user_rating", user_rating);
 		return client.update("users.setUserRate", map);
+	}
+
+	@Override
+	public ProfileVO loadSomeonesProfile(String user_id, String target_id) throws SQLException {
+		Map<String, String> map = new HashMap<>();
+		map.put("user_id", user_id);
+		map.put("target_id", target_id);
+		return (ProfileVO) client.queryForObject("users.loadSomeonesProfile", map);
 	}	
 	
 	

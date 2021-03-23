@@ -1,6 +1,7 @@
 $(function(){
 	getClassChatInfo();
 	getAudiences();
+	chatTarget = 'class';
 	
 	// 친구 검색해서 클릭할때 일어날 이벤트
 	$('#userList').on('click','li',function(){
@@ -38,6 +39,7 @@ $(function(){
 	
 	// 채팅 목록에서 학급 클릭시 
 	$('#chatList').on('click','.groupchat',function(){
+		chatTarget = 'class';
 		getClassMessage();
 	})
 	
@@ -48,6 +50,7 @@ $(function(){
 		if($(this).hasClass('groupchat')){
 			return false;
 		}
+		chatTarget = 'user';
 		
 		$('#input_area').empty();
 		
@@ -76,8 +79,12 @@ $(function(){
 	$('#commentSend').on('click', function(){
 		
 		// 전송 버튼 눌렀을때 학급일경우 분기시켜야 합니다.
+		if(chatTarget == 'class'){
+			sendClassMessage();
+		}else if(chatTarget == 'user'){
+			sendMessage();
+		}
 		
-		sendMessage();
 	});
 	
 	// 알람 버튼 이벤트 수행시 목록 받아 붙이기
@@ -152,6 +159,38 @@ $(function(){
 							여기부터 함수 선언부입니다. 
 		
  ***************************************************************************/
+sendClassMessage = function(){
+	
+	var content = document.getElementById('input_area').innerHTML;
+	
+	var from = '<div class="to">'
+			+		'<div class="myBubble">'+content
+			+		'</div>'
+			+		'<p>now</p>'
+			+	'</div>';
+	$('#curChatBox').append(from);
+	$('#input_area').empty();
+	
+	contShow = content;
+			if(content.length > 18){
+				contShow = contShow.substr(0,16)+'...';
+			}
+	$('#chatList').children('.groupchat').find('.small').text(contShow);
+	
+	
+	// 스크롤을 제일 아래로 내려준다.
+	$('#curChatBox').scrollTop($('#curChatBox')[0].scrollHeight);
+	
+	$.ajax({
+		url : '/playddit/message/sendMessageClass.do',
+		type : 'post',
+		data : {'content' : content},
+		error : function(xhr){
+			alert("status : " + xhr.status);
+		},
+	})	
+}
+
 getClassMessage = function(){
 	var title = $('#chatList').children('.groupchat').attr("title");
 	var title2 = $('#chatList').children('.groupchat').attr("title2");
@@ -336,6 +375,7 @@ sendMessage = function(){
 				contShow = contShow.substr(0,16)+'...';
 			}
 			$(this).find('.small').text(contShow);
+			return false;
 		}
 	})
 	

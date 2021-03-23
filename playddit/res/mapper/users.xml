@@ -9,6 +9,29 @@
 		from users
 	</select>
 	
+	<select id="loadSomeonesProfile" parameterClass="map" resultClass="ProfileVO">
+		select user_id, user_nickname,class_id, nvl(user_pic, 'default.png') as user_pic,
+		    (select count(*) from follow where follower=users.user_id) as following,
+		    (select count(*) from follow where followee=users.user_id) as follower,
+		    (select class_title ||' '|| class_num || ' - ' || class_room
+		       from class
+		      where class_id = (select class_id from users where user_id=#target_id#)) as className1,
+		    (select count(*) from follow where followee=users.user_id) as follower,
+		    (select class_num || ' - ' || class_room
+		    from class
+		    where class_id = (select class_id from users where user_id=#target_id#)) as className2,
+		    (select count(*)
+		    from feed
+		    where feed.user_id = users.user_id) as allFeed,
+		    user_bio, user_birth, user_tel, user_name,
+		    (select count(*) 
+		        from follow
+		        where follower = #user_id#
+		            and followee = #target_id#) as amIfollowing
+		from users
+		where user_id = #target_id#
+	</select>
+	
 	<!-- 아이디 중복체크 -->
 	<select id="selectById" resultClass="String" parameterClass="String">
 		select user_id from users

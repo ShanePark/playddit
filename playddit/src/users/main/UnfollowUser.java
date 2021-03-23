@@ -34,7 +34,6 @@ public class UnfollowUser implements IAction {
 		Gson gson = new Gson();
 		ProfileVO profile = gson.fromJson(profileJson, ProfileVO.class);
 		String id = profile.getUser_id();
-		String nickname = profile.getUser_nickname();
 		
 		String targetId = request.getParameter("targetId");
 		// 2. unfollow 할 데이터 delete

@@ -14,7 +14,22 @@ public class ProfileVO {
 	private int following;
 	private int follower;
 	private int allfeed;
+	@Override
+	public String toString() {
+		return "ProfileVO [user_id=" + user_id + ", user_nickname=" + user_nickname + ", classname1=" + classname1
+				+ ", classname2=" + classname2 + ", user_bio=" + user_bio + ", class_id=" + class_id + ", user_pic="
+				+ user_pic + ", user_name=" + user_name + ", user_tel=" + user_tel + ", user_birth=" + user_birth
+				+ ", following=" + following + ", follower=" + follower + ", allfeed=" + allfeed + ", amIfollowing="
+				+ amIfollowing + "]";
+	}
+	private int amIfollowing;
 	
+	public int getAmIfollowing() {
+		return amIfollowing;
+	}
+	public void setAmIfollowing(int amIfollowing) {
+		this.amIfollowing = amIfollowing;
+	}
 	public String getUser_id() {
 		return user_id;
 	}
