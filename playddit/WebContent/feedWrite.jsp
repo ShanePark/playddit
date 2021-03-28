@@ -18,6 +18,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/script.js"></script>
 		<script src="script/view.js"></script>
+		<script src="script/main.js"></script>
 		<script src="script/feedWrite.js"></script>
         <script src="//cdn.jsdelivr.net/npm/less@3.13" ></script>  
 	</head>

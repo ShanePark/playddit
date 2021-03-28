@@ -5,7 +5,7 @@ $(function(){
 	
 	// 친구 검색해서 클릭할때 일어날 이벤트
 	$('#userList').on('click','li',function(){
-		
+		chatTarget = 'user';
 		$('#userList').empty();
 		$('#input_area').empty();
 		$('#curChatBox').empty();
@@ -216,9 +216,14 @@ getClassMessage = function(){
 			alert("status : " + xhr.status);
 		},
 		success : function(msg){
+			$('#curChatBox').empty();
 			// 첫 메시지 날짜 출력 후 기억
-			var date = msg[0].sentdate.substr(0,10);
-			$('#curChatBox').append('<p class="chatDate">'+dateFormat(strToDate(date))+'</p>');
+			var date = "";
+			if(msg.length>0){
+				date = msg[0].sentdate.substr(0,10);
+				$('#curChatBox').append('<p class="chatDate">'+dateFormat(strToDate(date))+'</p>');
+			}
+			
 			
 			$.each(msg, function(i,v){
 				newDate = v.sentdate.substr(0,10);
@@ -398,13 +403,7 @@ getAudiences = function(){
 		url : '/playddit/message/getAudiences.do',
 		type : 'post',
 		success : function(res){
-			if(res.length == 0){
-				var chatStart = '<div id="chatStart">'
-								+	'<img src="images/message.png" />'
-								+	'<p>친구에게 메시지를 보내보세요.</p>'
-								+' </div>';
-				$('#chatRight').html(chatStart);
-			}
+
 			$.each(res, function(i,v){
 				if(v.content.length > 18){
 					v.content = v.content.substr(0,16)+'...';
