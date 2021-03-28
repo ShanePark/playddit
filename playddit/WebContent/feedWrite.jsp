@@ -31,7 +31,7 @@
                 <h2>Upload your feed</h2>
                 <p class="subtitle">Please write down your story.</p>
             </div>
-		    <form id="uploadForm" method="post" enctype="multipart/form-data">
+		    <form id="uploadForm" action="/playddit/feed/writeFeed.do" method="post" enctype="multipart/form-data">
 				<!--반장 또는 선생님만 보이는 체크박스
 				<div id="moniterCho">
 					<h3>업로드할 계정을 선택해주세요.</h3>
@@ -57,7 +57,7 @@
 					
 					<div id="fileBox">
 						<input type="file" name="file" id="input_imgs" accept="image/png, image/jpg, image/jpeg, image/gif"
-							multiple style="display: true;"/>
+							multiple style="display: none;"/>
 						<div id="uploadBox" class="file">
 							<div id="fileBtn">
 								<i class="fas fa-plus"></i>
@@ -69,7 +69,7 @@
 	    		<div id="textup">
 	    			<h3>내용을 작성해주세요.</h3>
 	    			<span id="bytes">0자 / 최대 700자</span>
-	    			<textarea id="content" style="resize: none;"></textarea>
+	    			<textarea id="content" name="feedcont" style="resize: none;"></textarea>
 	    		</div>
 	    		
 	    		<div id="uploadBtn">
@@ -117,26 +117,8 @@
 				element.checked = true;
 			}
         </script>
-        <script>
-			var sel_files = [];
- 
-
-
-
-		</script>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

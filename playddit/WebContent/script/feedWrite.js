@@ -10,37 +10,41 @@ $(function(){
 	
 	// 업로드된 파일 개별 제거 이벤트
 	$("#fileBox").on("click", ".deleteBtn", function(){
-		let files = $('#input_imgs')[0].files;
-		let removeName = $(this).parent(".file").attr("name");
-		let removeIndex;
-		$.each(files, function(i,v){
-			if(v.name == removeName){
-				removeIndex = i;
-				return false;
-			}
-		})
-		console.log(removeIndex)
-		files.splice(removeIndex,3);////////// 특정 idnex를 아직 삭제하지 못하고 있음 !
-		$(this).parent(".file").remove();
+		alert("개별 파일 제거 기능은 아직 준비중입니다. 기능 구현때까지는 다시 업로드 하는 기능을 이용해주세요.");
+//		let files = $('#input_imgs')[0].files;
+//		let removeName = $(this).parent(".file").attr("name");
+//		let removeIndex;
+//		$.each(files, function(i,v){
+//			if(v.name == removeName){
+//				removeIndex = i;
+//				return false;
+//			}
+//		})
+//		console.log(removeIndex)
+//		console.log(files[removeIndex])
+//		files[removeIndex].remove();
+//		files.splice(removeIndex,3);////////// 특정 idnex를 아직 삭제하지 못하고 있음 !
+//		$(this).parent(".file").remove();
 	});
 	
 	/**
 		Keyup 시에 본문 글자수 세주는 이벤트
 	 */	
 	$('#content').on('keyup', function() {
-				$('#bytes').html("("+$(this).val().length+"자 / 최대 700자)");
+		$('#bytes').html("("+$(this).val().length+"자 / 최대 700자)");
 
-				if($(this).val().length > 700) {
-					$(this).val($(this).val().substring(0, 700));
-					$('#bytes').html("(700자 / 최대 700자)");
-				}
-			});
+		if($(this).val().length > 700) {
+			$(this).val($(this).val().substring(0, 700));
+			$('#bytes').html("(700자 / 최대 700자)");
+		}
+	});
             
  
 	/**
 		업로드 버튼 이벤트 
 	 */
     $("#uploadBtn a span").click(function() {
+		
         var btn = $(this).parent().parent();
         var loadSVG = btn.children("a").children(".load");
         var loadBar = btn.children("div").children("span");
@@ -82,9 +86,9 @@ $(function(){
             });
           });
         });
-        
+
         setTimeout(function() {
-            location.href="feed.jsp";
+			$('#uploadForm').submit()
 		}, 3000);
         
     });	 
@@ -94,6 +98,7 @@ $(function(){
 });
 
 
+var sel_files = [];
 
 function handleImgsFilesSelect(e) {
 	var files = e.target.files;
