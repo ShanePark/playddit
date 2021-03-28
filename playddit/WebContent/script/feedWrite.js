@@ -1,7 +1,7 @@
 $(function(){
 	
 	// 파일 업로드 버튼눌렀을때 input_imgs (파일업로드 input) 실행.css 때문에 우회
-	$('#fileBtn').on('click',function(){
+	$('#uploadForm').on('click','#fileBtn',function(){
 		$('#input_imgs').click();
 	})
 	
@@ -90,6 +90,9 @@ $(function(){
 function handleImgsFilesSelect(e) {
 	var files = e.target.files;
 	var filesArr = Array.prototype.slice.call(files);
+	
+	// 사진 업로드 할때, 기존에 업로드 된 미리보기들은 제거. div가 따로 나눠져있지 않아서 필요한 두 개의 태그를 제외하고 삭제하도록 셀렉트
+	$("#fileBox").children().not('#uploadBox').not('#input_imgs').remove();
 
 	filesArr.forEach(function(f) {
 		if(!f.type.match("image.*")) {

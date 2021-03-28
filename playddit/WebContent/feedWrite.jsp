@@ -31,7 +31,7 @@
                 <h2>Upload your feed</h2>
                 <p class="subtitle">Please write down your story.</p>
             </div>
-		    <form method="post" enctype="multipart/form-data">
+		    <form id="uploadForm" method="post" enctype="multipart/form-data">
 				<!--반장 또는 선생님만 보이는 체크박스
 				<div id="moniterCho">
 					<h3>업로드할 계정을 선택해주세요.</h3>
