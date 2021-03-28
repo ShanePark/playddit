@@ -18,10 +18,10 @@
 				<a href="feed.jsp"><i class="fas fa-home"></i></a>
 			</li>
 			<li>
-				<a href="#"><i class="fas fa-envelope"></i></a>
+				<a href="chat.jsp"><i class="fas fa-envelope"></i></a>
 			</li>
 			<li>
-				<a href="#"><i class="fas fa-pen-nib"></i></a>
+				<a href="feedWrite.jsp"><i class="fas fa-pen-nib"></i></a>
 			</li>
 			<li>
 				<a class="alarmBtn"><i class="fas fa-bell"></i></a>

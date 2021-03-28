@@ -26,6 +26,10 @@ public class FileUtil {
 	 * @return
 	 */
 	public static String getProjectPath() {
+		// 톰캣 서버에서 돌릴때는 아래 주석 풀고 switch문 전체 주석걸기
+		// return System.getProperty("user.dir"); <- 해당 경로는 톰캣의 bin을 찾아가서 안됨 
+		// return "C:\\Users\\psh40\\Desktop\\apache-tomcat-8.5.64\\webapps\\playddit"; 하드코딩했음. 잘작동중.
+
 		switch(getOSName()) {
 		case "mac":
 			return MAC_PROJECT_PATH;

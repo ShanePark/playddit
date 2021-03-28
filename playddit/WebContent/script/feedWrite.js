@@ -89,7 +89,7 @@ $(function(){
 
         setTimeout(function() {
 			$('#uploadForm').submit()
-		}, 3000);
+		}, 2000);
         
     });	 
 	
