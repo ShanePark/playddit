@@ -5,15 +5,23 @@ $(function(){
 		$('#input_imgs').click();
 	})
 	
-	/**
-		이미지 업로드시 미리보기 이벤트
-	 */
-	$(document).ready(function() {
-		$("#input_imgs").on("change", handleImgsFilesSelect);
-		
-		$("#fileBox").on("click", ".deleteBtn", function(){
-			$(this).parent(".file").remove();
-		});
+	// 이미지 업로드시 미리보기 이벤트
+	$("#input_imgs").on("change", handleImgsFilesSelect);
+	
+	// 업로드된 파일 개별 제거 이벤트
+	$("#fileBox").on("click", ".deleteBtn", function(){
+		let files = $('#input_imgs')[0].files;
+		let removeName = $(this).parent(".file").attr("name");
+		let removeIndex;
+		$.each(files, function(i,v){
+			if(v.name == removeName){
+				removeIndex = i;
+				return false;
+			}
+		})
+		console.log(removeIndex)
+		files.splice(removeIndex,3);////////// 특정 idnex를 아직 삭제하지 못하고 있음 !
+		$(this).parent(".file").remove();
 	});
 	
 	/**
@@ -104,7 +112,7 @@ function handleImgsFilesSelect(e) {
 
 		var reader = new FileReader();
 		reader.onload = function(e) {
-			var img_html = '<div class="file"><img src=\"' + e.target.result + '\" /><div class=\"deleteBtn\"><i class=\"far fa-trash-alt\"></i></div></div>';
+			var img_html = '<div name="'+f.name+'" class="file"><img src=\"' + e.target.result + '\" /><div class=\"deleteBtn\"><i class=\"far fa-trash-alt\"></i></div></div>';
 			$("#fileBox").append(img_html);
 		}
 		reader.readAsDataURL(f);

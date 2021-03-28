@@ -57,7 +57,7 @@
 					
 					<div id="fileBox">
 						<input type="file" name="file" id="input_imgs" accept="image/png, image/jpg, image/jpeg, image/gif"
-							multiple style="display: none;"/>
+							multiple style="display: true;"/>
 						<div id="uploadBox" class="file">
 							<div id="fileBtn">
 								<i class="fas fa-plus"></i>
