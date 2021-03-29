@@ -6,6 +6,10 @@ $(function(){
 		// 해당 피드 제거
 		feeddiv.remove();
 		
+		// 게시물 갯수 하나 줄이기
+		allFeed = parseInt($('#allFeed').text());
+		$('#allFeed').text(allFeed-1);
+		
 		// 마이 피드 모달 닫기
 		$("#feedDelModal").slideUp(500);
 	    $("#feedDel").delay(200).hide();

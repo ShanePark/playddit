@@ -46,6 +46,11 @@ public class WriteFeed implements IAction {
 		ProfileVO profile = gson.fromJson(profileJson, ProfileVO.class);
 		String user_id = profile.getUser_id();
 		
+		// 세션에 작성한 피드 갯수 정보를 + 1 해서 새로 저장한다.
+		profile.setAllfeed(profile.getAllfeed()+1);
+		profileJson = new Gson().toJson(profile);
+		session.setAttribute("profile", profileJson);
+		
 		// feedService 얻어오기
 		IFeedService service = FeedServiceImpl.getService();
 		
