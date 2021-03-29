@@ -23,8 +23,7 @@ function sendTempPass(){
 		type : 'post',
 		data : { 'id' : email },
 		success : function(res){
-			let result = res.result;
-			if(result!='null'){
+			if(res!=null){
 				$('#msg').text('이메일 발송중입니다. 잠시만 기다려주세요.');
 				sendTempPass2(email);
 			}else{
