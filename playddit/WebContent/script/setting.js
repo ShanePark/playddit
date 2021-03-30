@@ -1,6 +1,32 @@
 $(function() {
 	loadProfile();
 	loadtClass();
+	
+	// 프로필 사진 수정하기 버튼
+	$('#modiPic').on('click',function(){
+		$('#profileUpload').click();
+	})
+	
+	// 프로필 사진 변경되면 바로 form 비동기 제출
+	$('#profileUpload').on('change',function(){
+		const form = $('#changeProfile')[0];
+		let formData = new FormData(form);
+		$.ajax({
+			type : 'post',
+			encytype : 'multipart/form-data',
+			url : '/playddit/users/setUserPic.do',
+			data : formData,
+			processData : false,
+			contentType : false,
+			cache : false,
+			timeout : 60000,
+			error : function(xhr){
+				alert("error code : " + xhr)
+			}
+			
+		})		
+	})
+	
 })
 
 
@@ -25,7 +51,6 @@ function loadProfile(){
 			if(res.user_pic == null){
 				res.user_pic = 'default.png';
 			}
-			
 			
 		},
 		error : function(xhr){
