@@ -1,6 +1,10 @@
 # 📱 playddit
 ## playddit는 우리 학생들의 소셜미디어에요.
 
+현재 배타 서비스 진행중입니다.
+
+www.playddit.tk
+
 <hr>
 
 ### 환영해요!
