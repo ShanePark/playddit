@@ -2,3 +2,4 @@
 /.Servers/
 playddit/res/config/dbinfo.properties
 playddit/.classpath
+playddit/res/config/emailinfo.properties

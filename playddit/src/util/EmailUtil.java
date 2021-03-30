@@ -1,5 +1,8 @@
 package util;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -11,12 +14,28 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.tomcat.dbcp.dbcp2.ConnectionFactory;
+
+import com.ibatis.common.resources.Resources;
+
 public class EmailUtil {
+	private static String user;
+	private static String password;
+	static {
+		String resource = "config/emailinfo.properties";
+		Properties properties = new Properties();
+		try{
+			Reader reader = Resources.getResourceAsReader(resource);
+			properties.load(reader);
+			user = properties.getProperty("user");
+			password = properties.getProperty("password");
+		} catch ( IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 	
 	public static void sendEmail(String recipient, String title, String content) {
 		
-		final String user = "ddit302@gmail.com";
-		final String password = "ddit.or.kr.302";
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
 		prop.put("mail.smtp.port", 465);
