@@ -28,17 +28,14 @@ public class SetUserPic implements IAction {
 	public boolean isRedirect() {
 		return false;
 	}
-	
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 사진을 저장할 경로는 FileUtil에서 처리한다. 배포 전까지는 강제로 경로를 잡아줄 예정.
 		final String DIR = FileUtil.getProfilePath();
-		
-		final int LIMIT_SIZE_BYTES = 2 * 1024 * 1024;
+		final int LIMIT_SIZE_BYTES = 10 * 1024 * 1024;
 		final String CHARSET = "utf-8";
-		
 		File attachDir = new File(DIR);
 		
 		// 세션을 받아온다. 유저 아이디를 사용할 것이며, user_pic 정보를 업데이트 해야한다.
@@ -58,10 +55,7 @@ public class SetUserPic implements IAction {
 			List<FileItem> items = fileUpload.parseRequest(request);
 			for(FileItem item : items) {
 				if(item.isFormField()) {
-					System.out.printf("파라미터 명 : %s, 파라미터 값 :  %s \n", item.getFieldName(), item.getString(CHARSET));
 				}else {
-					System.out.printf("파라미터 명 : %s, 파일 명 : %s,  파일 크기 : %s bytes \n", item.getFieldName(),
-	                            item.getName(), item.getSize());
 	                if (item.getSize() > 0) {
 	                	// 1. 첨부된 파일에 대한 정보를 잘 정리한다.
 	                	String separator = File.separator;
@@ -89,10 +83,7 @@ public class SetUserPic implements IAction {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("/playddit/tests/profileEditTest.html");
-		
 		return null;
-	
 	}
 
 }

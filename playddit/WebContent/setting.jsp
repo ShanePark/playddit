@@ -34,12 +34,14 @@
             <div id="setRight">
                 <div id="setProfile">
                     <div id="setPic">
-                        <div id="cir"></div>
-                        <input type="file" id="profileUpload" style="display: none;">
-                        <span id="modiPic" onclick="onclick=document.all.profileUpload.click()">
+                    	<form id="changeProfile" method="post" enctype="multipart/form-data">
+	                        <div id="cir"></div>
+		                    <input type="file" name="file" id="profileUpload" style="display: none;">
+	                        <span id="modiPic">
                             <i class="fas fa-edit"></i>
-                        </span>
-                    </div>
+    	                    </span>
+	                    </form>    
+	                </div>
                     <div id="setInfo">
                         <h3></h3>
                         <p></p>
