@@ -3,6 +3,8 @@ package users.main;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -62,15 +64,18 @@ public class SetUserPic implements IAction {
 	                	int index =  item.getName().lastIndexOf(separator);
 	                	String fileName = item.getName().substring(index  + 1);
 	                	String ext = fileName.substring(fileName.lastIndexOf("."));
-	                	// 2. 유저 이름 + 확장자로 이름을 변경한다.
-	                	File uploadFile = new File(DIR +  separator + user_id + ext);
+	                	// 2. 유저 이름 + 변경시간 + 확장자로 이름을 변경한다.
+	                	SimpleDateFormat fourteen_format = new SimpleDateFormat("yyyyMMddHHmmss"); 
+	            		
+	                	String saveName =String.format("%s_%s%s",user_id,fourteen_format.format(new Date()),ext);
+	                	File uploadFile = new File(DIR +  separator + saveName);
 	                	
 	                	// 3. user_pic 컬럼 데이터를 user_id+ext 로 수정한다.
 	                	IUsersService service = UsersServiceImpl.getService();
-	                	service.setUserPic(user_id, user_id+ext);
+	                	service.setUserPic(user_id, saveName);
 	                	
 	                	// 4. 세션의 user_pic 또한 수정해준 뒤, 세션을 새로 업데이트 한다.
-	                	profile.setUser_pic(user_id+ext);
+	                	profile.setUser_pic(saveName);
 	                	profileJson = new Gson().toJson(profile);
 	                	session.setAttribute("profile", profileJson);
 	                	
