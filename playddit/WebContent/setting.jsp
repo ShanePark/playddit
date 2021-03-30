@@ -28,7 +28,7 @@
             <div id="setLeft">
                 <ul>
                     <li><a href="#"><i class="fas fa-user-edit"></i>Edit your profile</a></li>
-                    <li><a href="editPass.jsp"><i class="fas fa-key"></i>Changing Password</a></li>
+                    <li><a href="editPass.jsp"><i class="fas fa-key"></i>Change Password</a></li>
                 </ul>
             </div>
             <div id="setRight">
