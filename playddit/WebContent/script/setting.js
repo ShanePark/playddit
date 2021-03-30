@@ -1,9 +1,10 @@
 $(function() {
 	loadProfile();
-	selectClass();
+	loadtClass();
 })
 
 
+// 프로필 정보 불러오기
 function loadProfile(){
 	className = "";
 	
@@ -39,7 +40,8 @@ function loadProfile(){
 
 }
 
-selectClass = function(){
+// 학급 정보 불러오기
+loadtClass = function(){
 	$.ajax({
 		url : '/playddit/join/getClassList.do',
 		type : 'get',
@@ -48,12 +50,11 @@ selectClass = function(){
 			code += '<select name="myClass">';
 			
 			$.each(res, function(i, v){
-				
+				let selected = "";
 				if(className == v.class_id){
-					code += "<option idx=" + v.class_id +" selected>" + v.classname  + "</option>"; 
+					selected = "selected"
 				}
-		
-				code += "<option idx=" + v.class_id +" >" + v.classname + "</option>"; 
+				code += '<option idx="' + v.class_id +'" '+selected+'> '+ v.classname + '</option>'; 
 			})
 			
 			code += '</select>';
