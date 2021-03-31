@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script src="script/viewHeader.js"></script>
+
 <header>
 	<div class="cen">
 		<a href="feed.jsp">
 			<img src="images/logo1.png" alt="logo"/>
 		</a>
 		<div id="search">
-			<form action="" method="get">
+			<form onsubmit="searchFunc()" method="get">
 				<input type="text" name="searchBox" placeholder="search"/>
-				<button type="button" name="search">
+				<button type="submit" name="search">
 					<i class="fas fa-search"></i>
 				</button>
 			</form>
@@ -49,45 +51,12 @@
 				<a href="#" id="feedText">
 					<p id="keyword">검색단어</p>
 					<p id="count">
-						피드 <span>5,000</span>개
+						검색결과 <span>5,000</span>개
 					</p>
 				</a>
 			</div>
 
 			<ul id="searchUser">
-				<li>
-					<a href="#" user="scarlet" class="feedCir">
-						<img src="images/default.png" />
-					</a>
-					<a href="#" class="searchUserBox">
-						<span href="#" user="scarlet" class="userNick">
-							scarlett
-						</span>
-						<span class="userEmail">chdnjs7610@gmail.com</span>
-					</a>
-				</li>
-				<li>
-					<a href="#" user="scarlet" class="feedCir">
-						<img src="images/default.png" />
-					</a>
-					<a href="#" class="searchUserBox">
-						<span href="#" user="scarlet" class="userNick">
-							scarlett
-						</span>
-						<span class="userEmail">chdnjs7610@gmail.com</span>
-					</a>
-				</li>
-				<li>
-					<a href="#" user="scarlet" class="feedCir">
-						<img src="images/default.png" />
-					</a>
-					<a href="#" class="searchUserBox">
-						<span href="#" user="scarlet" class="userNick">
-							scarlett
-						</span>
-						<span class="userEmail">chdnjs7610@gmail.com</span>
-					</a>
-				</li>
 				<li>
 					<a href="#" user="scarlet" class="feedCir">
 						<img src="images/default.png" />

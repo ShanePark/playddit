@@ -77,6 +77,8 @@ $(function(){
     });
 	
 })
+
+// 검색 기능
 function searchFunc(){
 	event.preventDefault();
 	var keyword = $('#search').find('input').val();

@@ -15,7 +15,6 @@
         <link href="css/view.css" rel="stylesheet" />
         <link href="css/edit.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="script/main.js"></script>
 		<script src="script/view.js"></script>
 		<script src="script/setting.js"></script>
 	</head>
