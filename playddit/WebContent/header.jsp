@@ -169,7 +169,7 @@
                 </a>
             </li>
             <li class="main">
-                <a href="food.jsp">
+                <a href="loading.jsp">
                     <i class="fas fa-utensils"></i>Food
                 </a>
             </li>
@@ -179,7 +179,7 @@
                 </a>
             </li>
             <li class="main">
-                <a href="loading.jsp">
+                <a href="setting.jsp">
                     <i class="fas fa-cog"></i>Setting
                 </a>
             </li>

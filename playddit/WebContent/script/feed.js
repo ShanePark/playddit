@@ -192,7 +192,7 @@ var loadFeed = function(){
 					if(j > 1){
 						return false;
 					}
-					feed += '<li class="comm"><a href="#" class="commUser">'+rep.nickname+'</a>'
+					feed += '<li class="comm"><a href="'+url+'" class="commUser">'+rep.nickname+'</a>'
 						 + '<span>'+rep.comcont+'</span></li>'
 				})
                 feed += '</ul></div>'
