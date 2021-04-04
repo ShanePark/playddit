@@ -89,6 +89,13 @@
          where user_id=#user_id# and user_password=#user_pw#
 	</select>
 	
+	<!--  위의 쿼리와 거의 동일 -->
+	<select id="selectMemberForAuth" resultClass="UsersVO" parameterClass="String">
+		select user_id, user_password, user_nickname
+ 		 from users
+         where user_id=#user_id#
+	</select>
+	
 	<!-- 닉네임 중복검사 -->
 	<select id="selectByNick" resultClass="String" parameterClass="String">
 		select user_nickname
