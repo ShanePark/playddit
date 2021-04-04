@@ -6,7 +6,7 @@ Now we're on beta service test. Anyone who wants to try or join us, please don't
 
 www.playddit.tk
 
-You can try the project using guest account
+You can try the project using guest account    
 userId : guest@playddit.tk   
 password : guest   
 <hr>
