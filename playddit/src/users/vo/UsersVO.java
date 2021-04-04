@@ -10,6 +10,16 @@ public class UsersVO {
 	private String class_id;
 	private String user_sign_date;
 	
+	public UsersVO() {
+		super();
+	}
+	
+	public UsersVO(String user_id, String user_password) {
+		super();
+		this.user_id = user_id;
+		this.user_password = user_password;
+	}
+	
 	
 	public String getUser_id() {
 		return user_id;

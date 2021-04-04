@@ -111,6 +111,18 @@ public class CryptoUtil {
 		return new String(c.doFinal(byteStr), "UTF-8");
 	}
 	
+	public static String encryptPass(String id, String password) {
+		String encryptedPass = "";
+		try {
+			encryptedPass = encryptAES256(password, String.format("playddit%s%s", id,password));
+		} catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException
+				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
+			e.printStackTrace();
+		}
+		
+		return encryptedPass;
+	}
+	
 	
 
 }

@@ -15,7 +15,7 @@ public class UsersServiceImpl implements IUsersService {
 	private IUsersDao dao;
 	private static IUsersService service;
 	
-	public UsersServiceImpl() {
+	private UsersServiceImpl() {
 		dao = UsersDaoImpl.getDao();
 	}
 	

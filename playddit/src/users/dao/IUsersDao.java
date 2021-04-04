@@ -53,5 +53,7 @@ public interface IUsersDao {
 	// 특정 유저 정보 불러오기
 	public ProfileVO loadSomeonesProfile(String user_id, String target_id) throws SQLException;
 	
+	// 인증확인을 위해 멤버 셀렉트 하기
+	public UsersVO selectMemberForAuth(String user_id) throws SQLException;
 }
 	

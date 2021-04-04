@@ -16,6 +16,7 @@
         <link href="css/edit.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/view.js"></script>
+		<script src="script/editPass.js"></script>
 	</head>
     <body>
         <!-- header.jsp include -->
@@ -34,27 +35,23 @@
                     <p id="passCon">
                         본인 확인을 위해 비밀번호를 입력해주세요.
                     </p>
-                    <form onsubmit="idPassCheck()" id="login">
+                    <form id="login" method="post" onsubmit="checkPass()">
                         <div class="loginBox">
                             <i disabled class="fas fa-lock"></i>
                             <input type="password" id="passCheck" name="pass" placeholder="Password" />
                         </div>
-                        
-                        <!--스크립트 보여드릴려고 button 타입으로 했습니다.-->
-                        <!--submit으로 바꿔주세요!-->
-                        <button type="button" id="changeBtn" class="purBtn">ENTER</button>
+                        <button type="submit" id="changeBtn" class="purBtn">ENTER</button>
                     </form>
-                    <form id="change">
+                    <form id="change" method="post" onsubmit="changePass()">
                         <div class="loginBox">
                             <i disabled class="fas fa-lock"></i>
-                            <input type="password" id="newPass" name="pass" placeholder="New Password" />
+                            <input type="password" id="newPass" name="newpass" placeholder="New Password" />
                         </div>
                         <div class="loginBox">
                             <i disabled class="fas fa-key"></i>
-                            <input type="password" id="newPassCheck" name="pass" placeholder="Confirm New Password" />
+                            <input type="password" id="newPassCheck" name="newpass2" placeholder="Confirm New Password" />
                         </div>
-                        
-                        <button type="button" id="changeBtn" class="purBtn">CHANGE</button>
+                        <button type="submit" id="changeBtn" class="purBtn">CHANGE</button>
                     </form>
                 </div>
             </div>
@@ -64,11 +61,5 @@
         <!-- footer.jsp include -->
 	    <jsp:include page="/viewFooter.jsp"></jsp:include>
         
-        <script>
-			$("#changeBtn").on("click", function(){
-                $(this).hide();
-               $("#change").slideDown();
-            });
-		</script>
     </body>
 </html>
