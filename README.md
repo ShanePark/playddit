@@ -28,5 +28,5 @@ www.playddit.tk
 ### playddit.tk 시연영상
 [![Video Label](http://img.youtube.com/vi/gp4PaVysbNw/maxresdefault.jpg)](https://youtu.be/gp4PaVysbNw) 
 
-### 20201년 3월 8일 발표 영상
+### 2021년 3월 8일 발표 영상
 [![Video Label](http://img.youtube.com/vi/S1e29gxoSLQ/maxresdefault.jpg)](https://youtu.be/S1e29gxoSLQ) 
