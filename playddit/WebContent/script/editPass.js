@@ -26,8 +26,8 @@ function changePass() {
 	let newPass = $('#newPass').val();
 	let newPass2 = $('#newPassCheck').val();
 
-	if (newPass.length < 4 || newPass.length > 10) {
-		alert("비밀번호를 4~10자 사이로 지정해주세요.")
+	if (newPass.length < 4 || newPass.length > 12) {
+		alert("비밀번호를 4~12자 사이로 지정해주세요.")
 		return
 	} else if (newPass != newPass2) {
 		alert("비밀번호가 서로 일치하지 않습니다.");
