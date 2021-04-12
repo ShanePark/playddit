@@ -3,8 +3,10 @@ package util;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -111,10 +113,21 @@ public class CryptoUtil {
 		return new String(c.doFinal(byteStr), "UTF-8");
 	}
 	
+	public static String encryptSha512(String plain) throws NoSuchAlgorithmException {
+		// 단방향 암호화, 해시값(일정한 길이의 문자열로 출력되는 값)
+		MessageDigest md = MessageDigest.getInstance("SHA-512");
+		byte[] input = plain.getBytes();
+		byte[] encrypted = md.digest(input);
+		String encoded = org.apache.commons.codec.binary.Base64.encodeBase64String(encrypted);
+
+		return encoded;
+	}
+	
 	public static String encryptPass(String id, String password) {
 		String encryptedPass = "";
 		try {
 			encryptedPass = encryptAES256(password, String.format("playddit%s%s", id,password));
+			encryptedPass = encryptSha512(encryptedPass);
 		} catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException
 				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
 			e.printStackTrace();
