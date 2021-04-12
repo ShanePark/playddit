@@ -54,13 +54,7 @@ public class JoinSessionAdd implements IAction{
 		}		
 		
 		// 비밀번호 암호화
-		String key = "playddit"+mail+pass;
-		try {
-			pass = CryptoUtil.encryptAES256(pass, key);
-		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException
-				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
-			e.printStackTrace();
-		}
+		pass = CryptoUtil.encryptPass(mail, pass);
 
 		UsersVO insertVo = new UsersVO();
 		insertVo.setUser_id(mail);

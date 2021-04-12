@@ -43,17 +43,9 @@ public class SendTempPass2 implements IAction {
 		String content = "임시비밀번호를 안내해 드립니다. 괄호 안의 값만 입력해주세요 [" + password + "]";
 		EmailUtil.sendEmail(email, title, content);
 		
-		// 암호는 암호화하여 DB에 저장 , 보안을 위해 key값을 복합적으로 구성
-		String key = "playddit"+email+password;
-		String data1="";
-		try {
-			data1 = CryptoUtil.encryptAES256(password, key);
-		} catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException
-				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e1) {
-			e1.printStackTrace();
-		}
+		String encPass=CryptoUtil.encryptPass(email, password);
 		
-		String result = service.setNewPass(email,data1)+"";
+		String result = service.setNewPass(email,encPass)+"";
 		request.setAttribute("result",result);
 		
 		return "/users/isSuccess.jsp";

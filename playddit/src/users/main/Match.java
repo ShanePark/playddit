@@ -37,14 +37,8 @@ public class Match implements IAction {
 			throws ServletException, IOException {
 		String id = request.getParameter("user_id");
 		String pw = request.getParameter("user_pw");
-		String key = "playddit"+id+pw;
-		String encryptedPass = "";
-		try {
-			encryptedPass = CryptoUtil.encryptAES256(pw, key);
-		} catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException
-				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
-			e.printStackTrace();
-		}
+		
+		String encryptedPass = CryptoUtil.encryptPass(id, pw);
 		
 		IUsersService service = UsersServiceImpl.getService();
 
