@@ -125,16 +125,15 @@ public class CryptoUtil {
 	
 	public static String encryptPass(String id, String password) {
 		String encryptedPass = "";
-		String encryptedPass2 = "";
 		try {
 			encryptedPass = encryptAES256(password, String.format("playddit%s%s", id,password));
-			encryptedPass2 = encryptSha512(encryptedPass);
+			encryptedPass = encryptSha512(encryptedPass);
 		} catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException
 				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
 			e.printStackTrace();
 		}
 		
-		return encryptedPass2;
+		return encryptedPass;
 	}
 	
 	
