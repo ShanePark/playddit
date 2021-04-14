@@ -7,7 +7,7 @@
 www.playddit.net
 
 🙇‍ 게스트 계정으로 로그인 해서 확인해 볼 수도 있어요.   
-아이디 : guest@playddit.tk   
+아이디 : guest@playddit.net   
 비밀번호 : guest   
 <hr>
 
