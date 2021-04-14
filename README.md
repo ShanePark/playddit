@@ -25,7 +25,7 @@ www.playddit.net
 >[josh](https://github.com/JeonghoonWon)   
 >[summer](https://github.com/5UMMER)   
 
-### playddit.tk 시연영상
+### playddit.net 시연영상
 [![Video Label](http://img.youtube.com/vi/gp4PaVysbNw/maxresdefault.jpg)](https://youtu.be/gp4PaVysbNw) 
 
 ### 2021년 3월 8일 발표 영상
