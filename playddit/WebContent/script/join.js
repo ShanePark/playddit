@@ -42,7 +42,7 @@
 		$('#nickDbtn').on('click', function() {
 			nickvalue = $('input[name=nickname]').val().trim();
 			if (nickvalue.length < 2 || nickvalue.length > 8) {
-				$(this).parents('.box').find('.msg').text("닉네임 형식을 확인해주세요.");
+				$(this).parents('.box').find('.msg').text("사용할 수 없는 닉네임입니다.");
 			} else {
 				nickCheck(this);
 			}
@@ -243,15 +243,15 @@ idCheck = function() {
 	}
 }
 
-// 비밀번호 정규화(영문대소문자, 숫자, 특수문자를 한개씩. 8~12글자)
+// 비밀번호 정규화(영문소문자, 숫자, 특수문자를 한개씩. 8~12글자)
 pwCheck = function() {
 	pwvalue = $('input[name=pass]').val().trim();
 
-	// 형식 - 영문대소문자, 숫자, 특수문자를 반드시 한개이상씩 입력
-	passreg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()]).{8,12}$/;
+	// 형식 - 영문소문자, 숫자, 특수문자를 반드시 한개이상씩 입력
+	passreg = /^(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*()]).{8,12}$/;
 
 	if (!passreg.test(pwvalue)) {
-		$('input[name=pass]').parents('.box').find('.msg').text("비밀번호 형식에 맞게 입력하세요.");
+		$('input[name=pass]').parents('.box').find('.msg').text("영문,숫자,특수문자 반드시 포함");
 	} else {
 		$('input[name=pass]').parents('.box').find('.msg').empty();
 	}

@@ -5,7 +5,7 @@ $(function(){
 	
 	// 친구 검색해서 클릭할때 일어날 이벤트
 	$('#userList').on('click','li',function(){
-		
+		chatTarget = 'user';
 		$('#userList').empty();
 		$('#input_area').empty();
 		$('#curChatBox').empty();
@@ -87,34 +87,6 @@ $(function(){
 		
 	});
 	
-	// 알람 버튼 이벤트 수행시 목록 받아 붙이기
-	$(".alarmBtn").click(function(){
-		getAlarm();
-	});
-	
-	// 알람에서 학급승인 처리 이벤트
-	$("#alarmWrap").on("click","button", function(){
-		// 승인을 하든 거절을 하든 해당 알람은 삭제된다.
-		$(this).parent().remove();
-		
-		var targetId = $(this).parent().attr("targetId");
-		var approve;
-		
-		if($(this).children('i').hasClass("red")){
-			approve = 'false';
-		}else{
-			approve = 'true';		
-		}
-		
-		$.ajax({
-			url : '/playddit/users/approveClass.do',
-			type : 'post',
-			data : {'targetId' : targetId, 'approve' : approve},
-			error : function(xhr){
-				alert("status : " + xhr.status);
-			},
-		})
-	});
 
 	/************************************************************************** 
 	
@@ -216,9 +188,14 @@ getClassMessage = function(){
 			alert("status : " + xhr.status);
 		},
 		success : function(msg){
+			$('#curChatBox').empty();
 			// 첫 메시지 날짜 출력 후 기억
-			var date = msg[0].sentdate.substr(0,10);
-			$('#curChatBox').append('<p class="chatDate">'+dateFormat(strToDate(date))+'</p>');
+			var date = "";
+			if(msg.length>0){
+				date = msg[0].sentdate.substr(0,10);
+				$('#curChatBox').append('<p class="chatDate">'+dateFormat(strToDate(date))+'</p>');
+			}
+			
 			
 			$.each(msg, function(i,v){
 				newDate = v.sentdate.substr(0,10);
@@ -398,13 +375,7 @@ getAudiences = function(){
 		url : '/playddit/message/getAudiences.do',
 		type : 'post',
 		success : function(res){
-			if(res.length == 0){
-				var chatStart = '<div id="chatStart">'
-								+	'<img src="images/message.png" />'
-								+	'<p>친구에게 메시지를 보내보세요.</p>'
-								+' </div>';
-				$('#chatRight').html(chatStart);
-			}
+
 			$.each(res, function(i,v){
 				if(v.content.length > 18){
 					v.content = v.content.substr(0,16)+'...';
@@ -495,67 +466,4 @@ dateFormat = function(date){	// date 객체를 원하는 포맷으로 출력
 	var dayName = week[date.getDay()];
 
     return  year + '.' + month + '.' + day +' ' + dayName;
-}
-
-
-getAlarm = function(){
-	
-	$.ajax({
-		url : '/playddit/alarm/getAlarm.do',
-		success : function(res){
-			var alarm = '';
-			$.each(res, function(i,v){
-				
-				if(v.type == 10){	// 학급 승인 관련 알람일경우
-					alarm += '<div class="alarm classMoniter alarmno='+v.alarm_no+'">'
-							+	'<a class="alarmUser" href=myPage.jsp?feed_id='+v.sender+'>'
-							+		'<img src="images/profile/'+ v.sender_pic +'" />'
-							+	'</a>'
-							+	'<a class="alarmCont" href="#">'
-							+		'<span class="alarmNick">'+ v.cont +'</span>님의 학급 승인 요청'
-							+	'</a>'
-							+	'<button type="button"><i class="fas fa-times red"></i></button>'
-							+	'<button type="button"><i class="fas fa-check"></i></button>'
-							+'</div>';
-					
-				}else{
-					alarm += '<div class="alarm alarmno='+v.alarm_no+'">'
-							+	'<a class="alarmUser" href=myPage.jsp?feed_id='+v.sender+'>'
-							+		'<img src="images/profile/'+ v.sender_pic +'" />'
-							+	'</a>'
-							
-					switch(v.type){
-					case 11: alarm += '<a class="alarmCont" href=myPage.jsp?feed_id='+v.sender+'><span class="alarmNick">'+ v.cont +'</span>'
-									+'님이 나를 follow 하기 시작했습니다.'
-						break;
-					case 12: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
-									+'님이 새로운 메시지를 보냈습니다.'
-						break;
-					case 21: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
-									+'님이 내가 쓴 글을 좋아합니다.'
-						break;
-					case 22: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
-									+ '님이 내가 쓴 글에 댓글을 남겼습니다.'
-						break;
-					case 31: alarm += '<a class="alarmCont" href="#"><span class="alarmNick">'+ v.cont +'</span>'
-									+'에 새로운 공지사항이 올라왔습니다.'
-						break;
-					default : alarm += '존재하지 않는 알람 타입. 관리자에게 해당 알람번호를 신고해주세요.'
-						break;
-				}
-				alarm += '</a></div>';
-				}
-			})
-			
-			$('#alarmWrap').html(alarm);
-		},
-		error : function(xhr){
-			if(xhr.status == 500){
-				location.href="index.html";
-				return false;
-			}
-			alert("status : " + xhr.status);
-		},
-		dataType : 'json'
-	})
 }

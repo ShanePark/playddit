@@ -166,6 +166,11 @@ public class UsersDaoImpl implements IUsersDao {
 		map.put("user_id", user_id);
 		map.put("target_id", target_id);
 		return (ProfileVO) client.queryForObject("users.loadSomeonesProfile", map);
+	}
+
+	@Override
+	public UsersVO selectMemberForAuth(String user_id) throws SQLException {
+		return (UsersVO) client.queryForObject("users.selectMemberForAuth", user_id);
 	}	
 	
 	

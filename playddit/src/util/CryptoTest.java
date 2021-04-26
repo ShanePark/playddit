@@ -4,17 +4,13 @@ public class CryptoTest {
 
 	public static void main(String[] args) {
 		try {
-			String id = "psh40963@naver.com";
-			String password = "OUN4";
-			String key = "playddit"+id+password;	// 16 글자 이상.
-			
-			String result = CryptoUtil.encryptAES256(password, key);
-			String result2 = CryptoUtil.decryptAES256(result, key);
-			
+			String id = "guest@playddit.net";
+			String password = "guest";
 					
 			System.out.println(" 원본 데이터 : " +password);
-			System.out.println(" 암호화 데이터 : " +result);
-			System.out.println(" 복호화 데이터 : " + result2);
+			
+			String encPass = CryptoUtil.encryptPass(id, password);
+			System.out.println("단방향암호화 된 데이터 : " + encPass);
 			
 			
 		} catch (Exception e) {

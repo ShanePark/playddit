@@ -15,7 +15,6 @@
         <link href="css/view.css" rel="stylesheet" />
         <link href="css/edit.css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="script/main.js"></script>
 		<script src="script/view.js"></script>
 		<script src="script/setting.js"></script>
 	</head>
@@ -28,18 +27,20 @@
             <div id="setLeft">
                 <ul>
                     <li><a href="#"><i class="fas fa-user-edit"></i>Edit your profile</a></li>
-                    <li><a href="editPass.jsp"><i class="fas fa-key"></i>Changing Password</a></li>
+                    <li><a href="editPass.jsp"><i class="fas fa-key"></i>Change Password</a></li>
                 </ul>
             </div>
             <div id="setRight">
                 <div id="setProfile">
                     <div id="setPic">
-                        <div id="cir"></div>
-                        <input type="file" id="profileUpload" style="display: none;">
-                        <span id="modiPic" onclick="onclick=document.all.profileUpload.click()">
+                    	<form id="changeProfile" method="post" enctype="multipart/form-data">
+	                        <div id="cir"></div>
+		                    <input type="file" name="file" id="profileUpload" style="display: none;">
+	                        <span id="modiPic">
                             <i class="fas fa-edit"></i>
-                        </span>
-                    </div>
+    	                    </span>
+	                    </form>    
+	                </div>
                     <div id="setInfo">
                         <h3></h3>
                         <p></p>

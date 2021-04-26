@@ -18,6 +18,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="script/script.js"></script>
 		<script src="script/view.js"></script>
+		<script src="script/main.js"></script>
+		<script src="script/feedWrite.js"></script>
         <script src="//cdn.jsdelivr.net/npm/less@3.13" ></script>  
 	</head>
     <body>
@@ -30,8 +32,8 @@
                 <h2>Upload your feed</h2>
                 <p class="subtitle">Please write down your story.</p>
             </div>
-		    <form>
-				<!--반장 또는 선생님만 보이는 체크박스-->
+		    <form id="uploadForm" action="/playddit/feed/writeFeed.do" method="post" enctype="multipart/form-data">
+				<!--반장 또는 선생님만 보이는 체크박스
 				<div id="moniterCho">
 					<h3>업로드할 계정을 선택해주세요.</h3>
 					<input type="checkbox" name="user" id="moniterName" value="josh" />
@@ -45,6 +47,7 @@
 						<span>풀스택 개발자과정 6기 - 302호</span>
 					</label>
 				</div>
+				-->
 				
 				<div id="picup">
 					<h3>사진업로드(선택)</h3>
@@ -54,9 +57,9 @@
 					</p>
 					
 					<div id="fileBox">
-						<input type="file" id="input_imgs" multiple style="display: none;"/>
+						<input type="file" name="file" id="input_imgs" accept="image/*" multiple style="display: none;"/>
 						<div id="uploadBox" class="file">
-							<div id="fileBtn" onclick="onclick=document.all.input_imgs.click()">
+							<div id="fileBtn">
 								<i class="fas fa-plus"></i>
 							</div>
 						</div>
@@ -66,9 +69,7 @@
 	    		<div id="textup">
 	    			<h3>내용을 작성해주세요.</h3>
 	    			<span id="bytes">0자 / 최대 700자</span>
-	    			<textarea id="content" style="resize: none;">
-	    				
-	    			</textarea>
+	    			<textarea id="content" name="feedcont" style="resize: none;"></textarea>
 	    		</div>
 	    		
 	    		<div id="uploadBtn">
@@ -105,67 +106,6 @@
 	    <jsp:include page="/viewFooter.jsp"></jsp:include>
        
         <script>
-            $(function(){
-				$('#content').on('keyup', function() {
-					$('#bytes').html("("+$(this).val().length+"자 / 최대 700자)");
-
-					if($(this).val().length > 700) {
-						$(this).val($(this).val().substring(0, 700));
-						$('#bytes').html("(700자 / 최대 700자)");
-					}
-				});
-                
-                /*uploadBtn*/
-
-                $("#uploadBtn a span").click(function() {
-                    var btn = $(this).parent().parent();
-                    var loadSVG = btn.children("a").children(".load");
-                    var loadBar = btn.children("div").children("span");
-                    var checkSVG = btn.children("a").children(".check");
-                    
-                    btn.children("a").children("span").fadeOut(200, function() {
-                      btn.children("a").animate({
-                        width: 56 
-                      }, 100, function() {
-                        loadSVG.fadeIn(300);
-                        btn.animate({
-                          width: 320  
-                        }, 200, function() {
-                          btn.children("div").fadeIn(200, function() {
-                            loadBar.animate({
-                              width: "100%" 
-                            }, 1000, function() {
-                              loadSVG.fadeOut(200, function() {
-                                checkSVG.fadeIn(200, function() {
-                                  setTimeout(function() {
-                                    btn.children("div").fadeOut(200, function() {
-                                      loadBar.width(0);
-                                      checkSVG.fadeOut(200, function() {
-                                        btn.children("a").animate({
-                                          width: 150  
-                                        });
-                                        btn.animate({
-                                          width: 150
-                                        }, 300, function() {
-                                          btn.children("a").children("span").fadeIn(200);
-                                        });
-                                      });
-                                    });
-                                  }, 1000); 
-                                });
-                              });
-                            });
-                          });
-                        });
-                      });
-                    });
-                    
-                    setTimeout(function() {
-	                    location.href="feed.jsp";
-	        		}, 3000);
-                    
-                });
-			});
 			
 			function checkOnlyOne(element) {
 				const checkboxes = document.getElementsByName("user");
@@ -177,51 +117,8 @@
 				element.checked = true;
 			}
         </script>
-        <script>
-			var sel_files = [];
- 
-			$(document).ready(function() {
-				$("#input_imgs").on("change", handleImgsFilesSelect);
-				
-				$("#fileBox").on("click", ".deleteBtn", function(){
-					$(this).parent(".file").remove();
-				});
-			}); 
-
-			function handleImgsFilesSelect(e) {
-				var files = e.target.files;
-				var filesArr = Array.prototype.slice.call(files);
-
-				filesArr.forEach(function(f) {
-					if(!f.type.match("image.*")) {
-						alert("이미지만 업로드 하실 수 있습니다.");
-						return;
-					}
-
-					sel_files.push(f);
-
-					var reader = new FileReader();
-					reader.onload = function(e) {
-						var img_html = '<div class="file"><img src=\"' + e.target.result + '\" /><div class=\"deleteBtn\"><i class=\"far fa-trash-alt\"></i></div></div>';
-						$("#fileBox").append(img_html);
-					}
-					reader.readAsDataURL(f);
-				});
-			}
-		</script>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

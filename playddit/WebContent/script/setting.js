@@ -1,9 +1,36 @@
 $(function() {
 	loadProfile();
-	selectClass();
+	loadtClass();
+	
+	// 프로필 사진 수정하기 버튼
+	$('#modiPic').on('click',function(){
+		$('#profileUpload').click();
+	})
+	
+	// 프로필 사진 변경되면 바로 form 비동기 제출
+	$('#profileUpload').on('change',function(){
+		const form = $('#changeProfile')[0];
+		let formData = new FormData(form);
+		$.ajax({
+			type : 'post',
+			encytype : 'multipart/form-data',
+			url : '/playddit/users/setUserPic.do',
+			data : formData,
+			processData : false,
+			contentType : false,
+			cache : false,
+			timeout : 60000,
+			error : function(xhr){
+				alert("error code : " + xhr)
+			}
+			
+		})		
+	})
+	
 })
 
 
+// 프로필 정보 불러오기
 function loadProfile(){
 	className = "";
 	
@@ -25,7 +52,6 @@ function loadProfile(){
 				res.user_pic = 'default.png';
 			}
 			
-			
 		},
 		error : function(xhr){
 			if(xhr.status == 500){
@@ -39,7 +65,8 @@ function loadProfile(){
 
 }
 
-selectClass = function(){
+// 학급 정보 불러오기
+loadtClass = function(){
 	$.ajax({
 		url : '/playddit/join/getClassList.do',
 		type : 'get',
@@ -48,12 +75,11 @@ selectClass = function(){
 			code += '<select name="myClass">';
 			
 			$.each(res, function(i, v){
-				
+				let selected = "";
 				if(className == v.class_id){
-					code += "<option idx=" + v.class_id +" selected>" + v.classname  + "</option>"; 
+					selected = "selected"
 				}
-		
-				code += "<option idx=" + v.class_id +" >" + v.classname + "</option>"; 
+				code += '<option idx="' + v.class_id +'" '+selected+'> '+ v.classname + '</option>'; 
 			})
 			
 			code += '</select>';
