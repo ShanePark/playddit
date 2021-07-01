@@ -20,10 +20,10 @@ www.playddit.net
 ### Team blog
 >[playddit team blog](./teamBlog/teamblog.md)
 ### Team members ⌚️
->[Shane](https://github.com/Shane-Park)   
->[Scarlett](https://github.com/Scarl-ett)   
->[josh](https://github.com/JeonghoonWon)   
->[summer](https://github.com/5UMMER)   
+>[Shane (PL)](https://github.com/Shane-Park)   
+>[Scarlett (UA)](https://github.com/Scarl-ett)   
+>[josh (DA)](https://github.com/JeonghoonWon)   
+>[summer (AA)](https://github.com/5UMMER)   
 
 ### playddit.net 시연영상
 [![Video Label](http://img.youtube.com/vi/gp4PaVysbNw/maxresdefault.jpg)](https://youtu.be/gp4PaVysbNw) 
