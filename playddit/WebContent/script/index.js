@@ -5,6 +5,13 @@ $(function(){
 		$('#idCheck').val(idCookie);
 	}
 	
+	$('#demo').on('click', function(){
+		event.preventDefault();
+		$('#idCheck').val('guest@playddit.net');
+		$('#passCheck').val('guest');
+		$('#signIn').click();
+	});
+	
 })
 
 function sendTempPass(){

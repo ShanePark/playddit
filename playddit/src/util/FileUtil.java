@@ -27,16 +27,16 @@ public class FileUtil {
 	 */
 	public static String getProjectPath() {
 		// 톰캣 서버에서 돌릴때는 아래 주석 풀고 switch문 전체 주석걸기
-		// return "C:\\Users\\psh40\\Desktop\\apache-tomcat-8.5.64\\webapps\\playddit"; 하드코딩했음. 잘작동중.
+		 return "C:\\Users\\psh40\\Desktop\\apache-tomcat-8.5.64\\webapps\\playddit";
 
-		switch(getOSName()) {
-		case "mac":
-			return MAC_PROJECT_PATH;
-		case "win":
-			return WIN_PROJECT_PATH;
-		default:
-			return WIN_PROJECT_PATH;
-		}
+//		switch(getOSName()) {
+//		case "mac":
+//			return MAC_PROJECT_PATH;
+//		case "win":
+//			return WIN_PROJECT_PATH;
+//		default:
+//			return WIN_PROJECT_PATH;
+//		}
 	}
 	
 	/**
@@ -44,18 +44,18 @@ public class FileUtil {
 	 * @return
 	 */
 	public static String getProfilePath() {
-		return getProjectPath() + SEP + "WebContent"+SEP+"images"+SEP+"profile";
+		//return getProjectPath() + SEP + "WebContent"+SEP+"images"+SEP+"profile";
 		// 테스트 환경에서는 위의 return을 사용, 톰캣 배포시에는 아래의 return을 사용 
-		//return getProjectPath() + SEP +"images"+SEP+"profile";
+		return getProjectPath() + SEP +"images"+SEP+"profile";
 	}
 	/**
 	 * 피드 사진을 저장할 폴더를 찾아내 반환해주는 메서드
 	 * @return
 	 */
 	public static String getFeedPath() {
-		return getProjectPath() + SEP + "WebContent"+SEP+"images"+SEP+"feed";
+		//return getProjectPath() + SEP + "WebContent"+SEP+"images"+SEP+"feed";
 		// 테스트 환경에서는 위의 return을 사용, 톰캣 배포시에는 아래의 return을 사용 
-		//return getProjectPath() +SEP +"images"+SEP+"feed";
+		return getProjectPath() +SEP +"images"+SEP+"feed";
 	}
 	
 }
