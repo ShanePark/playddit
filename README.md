@@ -15,6 +15,7 @@ www.playddit.net
 ### playddit는 2021년 2월 5일부터
 ### 중간 프로젝트의 일환으로 시작되었어요.
 ### 소중한 피드백을 남겨주세요!
+<a href="https://shanepark.tistory.com/70">playddit 후기 읽기</a>
 <br>
 
 ### Team blog
