@@ -16,7 +16,7 @@ $(function(){
 				return;
 			}
 			termsCookie();
-			location.href="join.html";
+			location.href="join.jsp";
 		})		
 	})
 termsCookie = function(){
@@ -44,7 +44,7 @@ function getCookie(name){
 // 필수 약관 제목 
 showTerm = function(){
 	$.ajax({
-		url : '/playddit/join/terms.do',
+		url : getContextPath()+'/join/terms.do',
 		type : 'get',
 		success : function(res){
 			code = "";
@@ -74,7 +74,7 @@ showTerm = function(){
 // 선택 약관 제목
 showTerm2 = function(){
 	$.ajax({
-		url : '/playddit/join/terms2.do',
+		url : getContextPath()+'/join/terms2.do',
 		type : 'get',
 		success : function(res){
 			code = "";
@@ -102,7 +102,7 @@ showTerm2 = function(){
 // 약관 내용 출력하기
 termsCon = function(terms_no){
 	$.ajax({
-		url : '/playddit/join/termsCon.do',
+		url : getContextPath()+'/join/termsCon.do',
 		type : 'get',
 		data : { "no" : terms_no },
 		success : function(res){

@@ -4,6 +4,7 @@
 <html lang="ko">
 	<head>
 		<meta charset="utf-8" />
+		<jsp:include page="/preScript.jsp"></jsp:include>
 		<meta name="viewport" content="initial-scale=1, width=device-width" />
 		<meta name="author" content="playddit" />
 		<meta name="description" content="대덕인재개발원 학생들을 위한 스터디그룹, 소모임, 학급 공지사항, 주변 맛집 검색 등 다양한커뮤니티 서비스를 제공합니다." />

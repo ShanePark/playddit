@@ -36,7 +36,7 @@ function play(){
 	var class_id = $('.item').find('select').val();
 	
 	$.ajax({
-		url : '/playddit/login/play.do',
+		url : getContextPath()+'/login/play.do',
 		type : 'post',
 		data : {'class_id' : class_id, 'user_id' : user_id, 'user_nickname' : user_nickname },
 		success : function(){
@@ -52,7 +52,7 @@ function play(){
 
 follow = function(targetId){
 	$.ajax({
-		url : '/playddit/users/followUser.do',
+		url : getContextPath()+'/users/followUser.do',
 		type : 'post',
 		data : {'targetId' : targetId},
 		success : function(res){
@@ -70,7 +70,7 @@ follow = function(targetId){
 
 unfollow = function(targetId){
 	$.ajax({
-		url : '/playddit/users/unfollowUser.do',
+		url : getContextPath()+'/users/unfollowUser.do',
 		type : 'post',
 		data : {'targetId' : targetId},
 		success : function(res){
@@ -92,7 +92,7 @@ unfollow = function(targetId){
 
 function loadPlay(){
 	$.ajax({
-		url : '/playddit/login/loadPlay.do',
+		url : getContextPath()+'/login/loadPlay.do',
 		type : 'post',
 		success : function(res){
 			

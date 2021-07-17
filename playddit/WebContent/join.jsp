@@ -2,6 +2,7 @@
 <html lang="ko">
 	<head>
 		<meta charset="utf-8" />
+		<jsp:include page="/preScript.jsp"></jsp:include>
 		<meta name="viewport" content="initial-scale=1, width=device-width" />
 		<meta name="author" content="playddit" />
 		<meta name="description" content="대덕인재개발원 학생들을 위한 스터디그룹, 소모임, 학급 공지사항, 주변 맛집 검색 등 다양한
@@ -21,7 +22,7 @@
     <body class="sky over">
 	    <div id="wrap" class="cen">
             <div id="header">
-                <a href="index.html" id="back">
+                <a href="index.jsp" id="back">
                     <i class="fas fa-arrow-left"></i>
                 </a>
                 <img src="images/logo1.png" alt="logo" />

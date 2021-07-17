@@ -3,7 +3,7 @@ function checkPass() {
 	let passCheck = $('#passCheck').val()
 
 	$.ajax({
-		url: '/playddit/users/ChangePassword.do',
+		url: getContextPath()+'/users/ChangePassword.do',
 		type: 'post',
 		data: { 'passCheck': passCheck },
 		success: function(res) {
@@ -34,7 +34,7 @@ function changePass() {
 		return
 	} else {
 		$.ajax({
-			url: '/playddit/users/ChangePassword.do',
+			url: getContextPath()+'/users/ChangePassword.do',
 			type: 'post',
 			data: { 'newPass': newPass },
 			success: function(res) {

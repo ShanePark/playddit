@@ -162,7 +162,7 @@
 	
 selectClass = function(){
 	$.ajax({
-		url : '/playddit/join/getClassList.do',
+		url : getContextPath()+'/join/getClassList.do',
 		type : 'get',
 		success : function(res){
 			code = "";
@@ -325,7 +325,7 @@ function codeSubmit(){
 	}
 
 	$.ajax({
-		url : '/playddit/join/joinSessionAdd.do',
+		url : getContextPath()+'/join/joinSessionAdd.do',
 		type : 'post',
 		data : { 
 				 'mail' : mail,
@@ -352,7 +352,7 @@ function codeSubmit(){
 nickCheck = function(btn){
 	nickvalue = $('input[name=nickname]').val().trim();
 	$.ajax({
-		url : '/playddit/users/nicknameCheck.do',
+		url : getContextPath()+'/users/nicknameCheck.do',
 		type : 'post',
 		data : { 'user_nickname' : nickvalue },
 		success : function(res){
@@ -380,7 +380,7 @@ idDcheck = function(btn){
 		return false;
 	}
 	$.ajax({
-		url : '/playddit/users/idCheck.do',
+		url : getContextPath()+'/users/idCheck.do',
 		type : 'post',
 		data : { 'id' : idvalue },
 		success : function(res){
@@ -415,7 +415,7 @@ codeCheck = function(){
 	var code = $('input[name=code]').val().trim();
 	
 	$.ajax({
-		url : '/playddit/join/codeCheck.do',
+		url : getContextPath()+'/join/codeCheck.do',
 		type : 'post',
 		data : { 'code' : code},
 		success : function(res){
@@ -438,7 +438,7 @@ codeCheck = function(){
 function sendCode(){
 		
 	$.ajax({
-		url : '/playddit/join/sendCode.do',
+		url : getContextPath()+'/join/sendCode.do',
 		type : 'post',
 		success : function(res){
 			if(res == '1'){
@@ -459,7 +459,7 @@ function join(){
 	var pick3 = getCookie("pick3");		
 		
 	$.ajax({
-		url : '/playddit/join/join.do',
+		url : getContextPath()+'/join/join.do',
 		type : 'post',
 		data : { 
 				'pick1' : pick1,
@@ -472,7 +472,7 @@ function join(){
 				$("#codeModal").animate({marginTop:"300px"},300);
 				$("#modal").delay(100).fadeOut(300);
 
-				location.href="/playddit/play.html";
+				location.href= getContextPath() +"/play.jsp";
 
 			}else{
 				alert("회원 가입에 실패했습니다. 반복 실패시 관리자에게 문의해주세요.");
@@ -480,7 +480,7 @@ function join(){
 				$("#codeModal").animate({marginTop:"300px"},300);
 				$("#modal").delay(100).fadeOut(300);
 				
-				location.href="/playddit/conditions.html";
+				location.href= getContextPath() + "/conditions.jsp";
 			}
 		},
 		error : function(xhr){

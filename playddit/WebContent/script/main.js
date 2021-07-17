@@ -24,7 +24,7 @@ $(function(){
 		}
 		
 		$.ajax({
-		url : '/playddit/users/approveClass.do',
+		url : getContextPath()+'/users/approveClass.do',
 		type : 'post',
 		data : {'targetId' : targetId, 'approve' : approve},
 		error : function(xhr){
@@ -85,7 +85,7 @@ function searchFunc(){
 	$('#keyword').text(keyword);
 	
 	$.ajax({
-		url : '/playddit/message/searchToChat.do',
+		url : getContextPath()+'/message/searchToChat.do',
 		type : 'post',
 		data : {'keyword' : keyword},
 		error : function(xhr){
@@ -122,7 +122,7 @@ function searchFunc(){
 
 function loadGroup(){
 	$.ajax({
-		url : '/playddit/users/getGroup.do',
+		url : getContextPath()+'/users/getGroup.do',
 		error : function(xhr){
 			if(xhr.status == 500){
 				location.href="index.html";
@@ -160,7 +160,7 @@ function loadGroup(){
 function logout(){
 	setCookie("user_id",'',-1);
 	$.ajax({
-		url : '/playddit/login/logout.do',
+		url : getContextPath()+'/login/logout.do',
 		error : function(xhr){
 			alert("status : " + xhr.status);
 		}
@@ -170,7 +170,7 @@ function logout(){
 
 function loadProfile(){
 	$.ajax({
-		url : '/playddit/login/login.do',
+		url : getContextPath()+'/login/login.do',
 		type : 'post',
 		success : function(res){
 			$('#allFeed').text(res.allfeed);
@@ -210,7 +210,7 @@ function loadProfile(){
 loadFollower = function(){
 	$('.followList').empty();
 	$.ajax({
-		url : '/playddit/users/followerList.do',
+		url : getContextPath()+'/users/followerList.do',
 		type : 'post',
 		data : {'id' : user_id},
 		success : function(res){
@@ -238,7 +238,7 @@ loadFollower = function(){
 loadFollowing = function(){
 	$('.followList').empty();
 	$.ajax({
-		url : '/playddit/users/followingList.do',
+		url : getContextPath()+'/users/followingList.do',
 		type : 'post',
 		data : {'id' : user_id},
 		success : function(res){
@@ -268,7 +268,7 @@ loadFollowing = function(){
 
 follow = function(targetId){
 	$.ajax({
-		url : '/playddit/users/followUser.do',
+		url : getContextPath()+'/users/followUser.do',
 		type : 'post',
 		data : {'targetId' : targetId},
 		success : function(res){
@@ -285,7 +285,7 @@ follow = function(targetId){
 }
 unfollow = function(targetId){
 	$.ajax({
-		url : '/playddit/users/unfollowUser.do',
+		url : getContextPath()+'/users/unfollowUser.do',
 		type : 'post',
 		data : {'targetId' : targetId},
 		success : function(res){
@@ -308,7 +308,7 @@ unfollow = function(targetId){
 getAlarm = function(){
 	
 	$.ajax({
-		url : '/playddit/alarm/getAlarm.do',
+		url : getContextPath()+'/alarm/getAlarm.do',
 		success : function(res){
 			var alarm = '';
 			$.each(res, function(i,v){

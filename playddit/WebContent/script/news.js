@@ -13,7 +13,7 @@ $(function(){
 
 getNewsList = function(){
 	$.ajax({
-		url : '/playddit/news/getNewsList.do',
+		url : getContextPath()+'/news/getNewsList.do',
 		type : 'post',
 		success : function(res){
 							

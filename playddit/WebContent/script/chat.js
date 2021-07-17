@@ -154,7 +154,7 @@ sendClassMessage = function(){
 	$('#curChatBox').scrollTop($('#curChatBox')[0].scrollHeight);
 	
 	$.ajax({
-		url : '/playddit/message/sendMessageClass.do',
+		url : getContextPath()+'/message/sendMessageClass.do',
 		type : 'post',
 		data : {'content' : content},
 		error : function(xhr){
@@ -178,7 +178,7 @@ getClassMessage = function(){
 	$('#chatUserPic').attr('href','#');
 		
 	$.ajax({
-		url : '/playddit/message/getClassMessage.do',
+		url : getContextPath()+'/message/getClassMessage.do',
 		type : 'post',
 		error : function(xhr){
 			if(xhr.status == 500){
@@ -231,7 +231,7 @@ getClassMessage = function(){
 }
 getClassChatInfo = function(){
 	$.ajax({
-		url : '/playddit/message/getClassChatInfo.do',
+		url : getContextPath()+'/message/getClassChatInfo.do',
 		type : 'post',
 		error : function(xhr){
 			if(xhr.status == 500){
@@ -277,7 +277,7 @@ createChat = function(){
 	event.preventDefault();
 	var keyword = $('#createModal').find('input').val();
 	$.ajax({
-		url : '/playddit/message/searchToChat.do',
+		url : getContextPath()+'/message/searchToChat.do',
 		type : 'post',
 		data : {'keyword' : keyword},
 		error : function(xhr){
@@ -360,7 +360,7 @@ sendMessage = function(){
 	$('#curChatBox').scrollTop($('#curChatBox')[0].scrollHeight);
 	
 	$.ajax({
-		url : '/playddit/message/sendMessage.do',
+		url : getContextPath()+'/message/sendMessage.do',
 		type : 'post',
 		data : {'receiver' : receiver, 'content' : content},
 		error : function(xhr){
@@ -372,7 +372,7 @@ sendMessage = function(){
 getAudiences = function(){
 
 	$.ajax({
-		url : '/playddit/message/getAudiences.do',
+		url : getContextPath()+'/message/getAudiences.do',
 		type : 'post',
 		success : function(res){
 
@@ -408,7 +408,7 @@ getMessage = function(audience, audience_nickname){
 	$('#curChatBox').empty();
 	
 	$.ajax({
-		url : '/playddit/message/getMessage.do',
+		url : getContextPath()+'/message/getMessage.do',
 		type : 'post',
 		data : {'audience' : audience},
 		success : function(msg){
