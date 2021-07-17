@@ -103,7 +103,7 @@ $(function(){
 loadFollower = function(){
 	$('.followList').empty();
 	$.ajax({
-		url : '/playddit/users/followerList.do',
+		url : getContextPath()+'/users/followerList.do',
 		type : 'post',
 		data : {'id' : feed_id},
 		success : function(res){
@@ -136,7 +136,7 @@ loadFollower = function(){
 loadFollowing = function(){
 	$('.followList').empty();
 	$.ajax({
-		url : '/playddit/users/followingList.do',
+		url : getContextPath()+'/users/followingList.do',
 		type : 'post',
 		data : {'id' : feed_id},
 		success : function(res){
@@ -171,7 +171,7 @@ loadFollowing = function(){
 
 followOwner = function(targetId){
 	$.ajax({
-		url : '/playddit/users/followUser.do',
+		url : getContextPath()+'/users/followUser.do',
 		type : 'post',
 		data : {'targetId' : targetId},
 		error : function(xhr){
@@ -181,7 +181,7 @@ followOwner = function(targetId){
 }
 unfollowOwner = function(targetId){
 	$.ajax({
-		url : '/playddit/users/unfollowUser.do',
+		url : getContextPath()+'/users/unfollowUser.do',
 		type : 'post',
 		data : {'targetId' : targetId},
 		error : function(xhr){
@@ -193,7 +193,7 @@ unfollowOwner = function(targetId){
 
 followFunc = function(targetId){
 	$.ajax({
-		url : '/playddit/users/followUser.do',
+		url : getContextPath()+'/users/followUser.do',
 		type : 'post',
 		data : {'targetId' : targetId},
 		success : function(res){
@@ -209,7 +209,7 @@ followFunc = function(targetId){
 }
 unfollowFunc = function(targetId){
 	$.ajax({
-		url : '/playddit/users/unfollowUser.do',
+		url : getContextPath()+'/users/unfollowUser.do',
 		type : 'post',
 		data : {'targetId' : targetId},
 		success : function(res){
@@ -231,7 +231,7 @@ unfollowFunc = function(targetId){
 
 function loadUserProfile(){
 	$.ajax({
-		url : '/playddit/users/LoadSomeonesProfile.do',
+		url : getContextPath()+'/users/LoadSomeonesProfile.do',
 		type : 'post',
 		data : {'feed_id' : feed_id, 'user_id' : user_id},
 		success : function(res){
@@ -289,7 +289,7 @@ function loadUserProfile(){
 }
 function loadUserFeeds(){
 	$.ajax({
-		url : '/playddit/feed/loadUserFeeds.do',
+		url : getContextPath()+'/feed/loadUserFeeds.do',
 		type : 'post',
 		data : {'feed_id' : feed_id},
 		success : function(feedList){

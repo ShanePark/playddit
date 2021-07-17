@@ -16,7 +16,7 @@ $(function(){
 		}
 		
 		$.ajax({
-		url : '/playddit/users/approveClass.do',
+		url : getContextPath()+'/users/approveClass.do',
 		type : 'post',
 		data : {'targetId' : targetId, 'approve' : approve},
 		error : function(xhr){
@@ -42,7 +42,7 @@ function searchFunc(){
 	$('#keyword').text(keyword);
 	
 	$.ajax({
-		url : '/playddit/message/searchToChat.do',
+		url : getContextPath()+'/message/searchToChat.do',
 		type : 'post',
 		data : {'keyword' : keyword},
 		error : function(xhr){
@@ -80,7 +80,7 @@ function searchFunc(){
 getAlarm = function(){
 	
 	$.ajax({
-		url : '/playddit/alarm/getAlarm.do',
+		url : getContextPath()+'/alarm/getAlarm.do',
 		success : function(res){
 			var alarm = '';
 			$.each(res, function(i,v){

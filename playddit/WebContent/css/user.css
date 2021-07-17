@@ -99,7 +99,7 @@ body {
     font-family: 'Gmarket Sans', 'Nanum Gothic', sans-serif;
     float: right;
 }
-#loginRight #signIn {
+#loginRight #signIn, #loginRight #demo {
     margin-top: 18px;
     padding: 3.1%;
 }

@@ -14,7 +14,7 @@ $(function() {
 		$.ajax({
 			type : 'post',
 			encytype : 'multipart/form-data',
-			url : '/playddit/users/setUserPic.do',
+			url : getContextPath()+'/users/setUserPic.do',
 			data : formData,
 			processData : false,
 			contentType : false,
@@ -35,7 +35,7 @@ function loadProfile(){
 	className = "";
 	
 	$.ajax({
-		url : '/playddit/login/login.do',
+		url : getContextPath()+'/login/login.do',
 		type : 'post',
 		success : function(res){
 			$('#cir').attr("style",'background-image : url(images/profile/'+ res.user_pic + ');');
@@ -68,7 +68,7 @@ function loadProfile(){
 // 학급 정보 불러오기
 loadtClass = function(){
 	$.ajax({
-		url : '/playddit/join/getClassList.do',
+		url : getContextPath()+'/join/getClassList.do',
 		type : 'get',
 		success : function(res){
 			code = "";

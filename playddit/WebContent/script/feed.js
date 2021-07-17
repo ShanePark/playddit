@@ -113,7 +113,7 @@ $(function(){
 
 var loadFeed = function(){
 	$.ajax({
-		url : '/playddit/feed/getFeed.do',
+		url : getContextPath()+'/feed/getFeed.do',
 		dataType : 'json',
 		success : function(res) {
 			
@@ -278,7 +278,7 @@ var loadFeed = function(){
 
 var insertLike = function(feedno){
 	   $.ajax({
-		 url : '/playddit/feed/insertLike.do',
+		 url : getContextPath()+'/feed/insertLike.do',
 		 type : 'post',
 		 data : {'feedno' : feedno},
 		 success : function(res) {
@@ -292,7 +292,7 @@ var insertLike = function(feedno){
 
 var deleteLike = function(feedno){
 	$.ajax({
-		url : '/playddit/feed/deleteLike.do',
+		url : getContextPath()+'/feed/deleteLike.do',
 		type : 'post',
 		data : {'feedno' : feedno},
 		error : function(xhr){
@@ -305,7 +305,7 @@ var deleteLike = function(feedno){
 var delFeed = function(feedno){
 
 	$.ajax({
-		url : '/playddit/feed/deleteFeed.do',
+		url : getContextPath()+'/feed/deleteFeed.do',
 		type : 'post',
 		data : {'feedno' : feedno},
 		error : function(xhr){

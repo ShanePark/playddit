@@ -5,6 +5,13 @@ $(function(){
 		$('#idCheck').val(idCookie);
 	}
 	
+	$('#demo').on('click', function(){
+		event.preventDefault();
+		$('#idCheck').val('guest@playddit.net');
+		$('#passCheck').val('guest');
+		$('#signIn').click();
+	});
+	
 })
 
 function sendTempPass(){
@@ -19,7 +26,7 @@ function sendTempPass(){
 	}
 	
 	$.ajax({
-		url : '/playddit/users/idCheck.do',
+		url : getContextPath()+'/users/idCheck.do',
 		type : 'post',
 		data : { 'id' : email },
 		success : function(res){
@@ -39,7 +46,7 @@ function sendTempPass(){
 
 function sendTempPass2(email){
 	$.ajax({
-		url : '/playddit/users/sendTempPass2.do',
+		url : getContextPath()+'/users/sendTempPass2.do',
 		type : 'post',
 		data : {'email' : email},
 		success : function(res){
@@ -83,7 +90,7 @@ function idPassCheck(){
 	}
 	
 	$.ajax({
-		url : '/playddit/users/match.do',
+		url : getContextPath()+'/users/match.do',
 		type : 'post',
 		data : { 'user_id': idvalue,
 				 'user_pw' : pwvalue },

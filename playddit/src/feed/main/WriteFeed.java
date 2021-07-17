@@ -115,7 +115,7 @@ public class WriteFeed implements IAction {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("/playddit/feed.jsp");
+		response.sendRedirect(request.getContextPath() + "/feed.jsp");
 		
 		return null;
 	

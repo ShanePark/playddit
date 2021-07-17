@@ -13,7 +13,7 @@ $(function(){
 
 getNews = function(news_no){
 	$.ajax({
-		url : '/playddit/news/getNews.do',
+		url : getContextPath()+'/news/getNews.do',
 		type : 'post',
 		data : { "news_no" : news_no},
 		success : function(res){

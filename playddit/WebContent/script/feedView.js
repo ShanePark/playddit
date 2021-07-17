@@ -196,7 +196,7 @@ $(function(){
 
 function delFeed(feedno){
 	$.ajax({
-		url : '/playddit/feed/deleteFeed.do',
+		url : getContextPath()+'/feed/deleteFeed.do',
 		type : 'post',
 		data : {'feedno' : feedno},
 		error : function(xhr){
@@ -212,7 +212,7 @@ function delFeed(feedno){
 // 대댓글 등록
 function insertComReply(comno, content){
 	$.ajax({
-		url : '/playddit/feed/insertCommentReply.do',
+		url : getContextPath()+'/feed/insertCommentReply.do',
 		type : 'post',
 		data : {'comno' : comno, 'content' : content},
 		success : function(comrep) {
@@ -243,7 +243,7 @@ function insertComReply(comno, content){
 function deleteComReply(comRepNo){
 
    $.ajax({
-	 url : '/playddit/feed/deleteCommentReply.do',
+	 url : getContextPath()+'/feed/deleteCommentReply.do',
 	 type : 'post',
 	 data : {'comRepNo' : comRepNo},
 	 error : function(xhr){
@@ -256,7 +256,7 @@ function deleteComReply(comRepNo){
 function insertComment(feedno,content){
 	
    $.ajax({
-	 url : '/playddit/feed/insertComment.do',
+	 url : getContextPath()+'/feed/insertComment.do',
 	 type : 'post',
 	 data : {'feedno' : feedno, 'content' : content},
 	 success : function(v) {
@@ -287,7 +287,7 @@ function insertComment(feedno,content){
 function deleteComment(comno){
 	
    $.ajax({
-	 url : '/playddit/feed/deleteComment.do',
+	 url : getContextPath()+'/feed/deleteComment.do',
 	 type : 'post',
 	 data : {'comno' : comno},
 	 error : function(xhr){
@@ -305,7 +305,7 @@ function getParameterByName(name) {
 
 function loadFeed(feedno){
 	$.ajax({
-		url : '/playddit/feed/getOneFeed.do',
+		url : getContextPath()+'/feed/getOneFeed.do',
 		type : 'post',
 		error : function(xhr){
 			if(xhr.status == 500){
@@ -455,7 +455,7 @@ function getCookie(name) {
 
 var insertLike = function(feedno){
    $.ajax({
-	 url : '/playddit/feed/insertLike.do',
+	 url : getContextPath()+'/feed/insertLike.do',
 	 type : 'post',
 	 data : {'feedno' : feedno},
 	 success : function(res) {
@@ -469,7 +469,7 @@ var insertLike = function(feedno){
 
 var deleteLike = function(feedno){
 	$.ajax({
-		url : '/playddit/feed/deleteLike.do',
+		url : getContextPath()+'/feed/deleteLike.do',
 		type : 'post',
 		data : {'feedno' : feedno},
 		success : function(res) {
