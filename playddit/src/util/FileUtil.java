@@ -27,7 +27,7 @@ public class FileUtil {
 	 */
 	public static String getProjectPath() {
 		// 톰캣 서버에서 돌릴때는 아래 주석 풀고 switch문 전체 주석걸기
-		 return "C:\\Users\\psh40\\Desktop\\apache-tomcat-8.5.64\\webapps\\playddit";
+		 return "C:\\Users\\psh40\\Desktop\\apache-tomcat-8.5.64\\webapps\\ROOT";
 
 //		switch(getOSName()) {
 //		case "mac":
